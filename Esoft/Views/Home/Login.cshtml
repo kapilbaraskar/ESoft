@@ -1,0 +1,124 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+            /* border-bottom: 2px solid transparent;
+        border-image: linear-gradient(0.25turn, rgba(255,249,34), rgba(255,0,128), rgba(56,2,155,0));
+        border-image-slice: 1; */
+    </style>
+</head>
+
+<body class="" style="background-image: linear-gradient(to left, #3d1746, #2d1e48, #1d2345, #13253f, #102537);">
+    <!-- <body class="bg-gradient-primary"> -->
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-5 col-lg-12 col-md-9">
+                <!-- <div class="col-xl-10 col-lg-12 col-md-9"> -->
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+                            <div class="col-lg-12">
+                                <!-- <div class="col-lg-6"> -->
+                                <div class="p-3">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">
+                                            <strong style="border-bottom: 2px solid transparent;
+                                            border-image: linear-gradient(0.25turn, rgb(6, 1, 52), rgb(28, 22, 64), rgba(56,2,155,0));
+                                            border-image-slice: 1; font-family: serif;">Login To eSoft</strong>
+                                        </h1>
+                                    </div>
+                                    <form class="user">
+                                        <div class="form-group">
+                                            <label for="" style="margin-right: 13%;">Group:-</label>
+                                            <input type="text" style="display: inline-block;
+                                            width: 72%;" class="form-control form-control-user" id="exampleInputGroup" aria-describedby="groupHelp" placeholder="Enter Group...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" style="margin-right: 1%;">Current Date:-</label>
+                                            <input type="date" style="display: inline-block;
+                                            width: 72%;" class="form-control form-control-user" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter Date...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" style="margin-right: 11%;">User ID:-</label>
+                                            <input type="email" style="display: inline-block;
+                                            width: 72%;" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter User ID...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" style="margin-right: 6.9%;">Password:-</label>
+                                            <input type="password" style="display: inline-block;
+                                            width: 72%;" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                        </div>
+                                       
+                                        <a href="/Home/index" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </a>
+                                        <hr>
+                                      
+                                    </form>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+    <script>
+        const date = new Date();
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        if (month < 10) {
+            let Ddd = year + '-0' + month + '-' + day
+            $("#dateInputGroup").val(Ddd)
+        } else {
+            let Ddd = year + '-' + month + '-' + day
+            $("#dateInputGroup").val(Ddd)
+        }
+    </script>
+</body>
+
+</html>
