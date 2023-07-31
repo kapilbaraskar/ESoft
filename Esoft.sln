@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esoft", "Esoft\Esoft.csproj", "{94613100-519E-46DA-9047-AF2461B90A14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94613100-519E-46DA-9047-AF2461B90A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94613100-519E-46DA-9047-AF2461B90A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94613100-519E-46DA-9047-AF2461B90A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94613100-519E-46DA-9047-AF2461B90A14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A365175-C75B-4D2E-979E-DAB32C478E6D}
+	EndGlobalSection
+EndGlobal
