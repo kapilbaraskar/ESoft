@@ -21,6 +21,50 @@
     <!-- Custom styles for this page -->
     <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <style>
+        li{
+            list-style-type:none;
+        }
+
+
+        .showParentUl {
+            display: block !important;
+            animation: fadeIn 0.5s;
+        }
+
+        .hideParentUl {
+            display: none !important;
+            animation: fadeOut 0.5s;
+        }
+        .showChildUl {
+            display: block !important;
+            animation: fadeIn 0.5s;
+        }
+        .hideChildUl {
+            display: none !important;
+            animation: fadeOut 0.5s;
+        }
+
+        .showSubChildUl {
+            display: block !important;
+            animation: fadeIn 0.5s;
+        }
+
+        .hideSubChildUl {
+            display: none !important;
+            animation: fadeOut 0.5s;
+        }
+
+        @@keyframes fadeIn {
+          from {
+              opacity: 0;
+          }
+
+          to {
+              opacity: 1;
+          }
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -28,377 +72,381 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
+
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-            <!-- <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"> -->
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <!-- <i class="fas fa-laugh-wink"></i> -->
-                    <img class="img-profile rounded-circle" src="~/Content/img/esoft.jpeg" alt="" width="50%">
-                </div>
-                <div class="sidebar-brand-text mx-3">eSoft</div>
-            </a>
+        </ul>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/Home/index">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Services
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Enquiry</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-whitew py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Login Screens:</h6> -->
-                        <a class="collapse-item" href="loginn.html">Report</a>
-                        <a class="collapse-item" href="register2.html">My Report</a>
-                        <a class="collapse-item" href="forgot-password1.html">Whatsapp</a>
-                        <!-- <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6> -->
-                        <a class="collapse-item" href="4042.html">Way Bils</a>
-                        <!-- <a class="collapse-item" href="blank.html">Blank Page</a> -->
+            <!-- Sidebar -->
+            <ul class="navbar-nav sidebar sidebar-dark accordion d-none" id="accordionSidebar">
+                <!-- <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"> -->
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <!-- <i class="fas fa-laugh-wink"></i> -->
+                        <img class="img-profile rounded-circle" src="~/Content/img/esoft.jpeg" alt="" width="50%">
                     </div>
+                    <div class="sidebar-brand-text mx-3">eSoft</div>
+                </a>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/index">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Services
                 </div>
-            </li>
 
-           
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Report</span>
-                </a>
-            </li>
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Enquiry</span>
+                    </a>
+                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                        <div class="bg-whitew py-2 collapse-inner rounded">
+                            <!-- <h6 class="collapse-header">Login Screens:</h6> -->
+                            <a class="collapse-item" href="loginn.html">Report</a>
+                            <a class="collapse-item" href="register2.html">My Report</a>
+                            <a class="collapse-item" href="forgot-password1.html">Whatsapp</a>
+                            <!-- <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Other Pages:</h6> -->
+                            <a class="collapse-item" href="4042.html">Way Bils</a>
+                            <!-- <a class="collapse-item" href="blank.html">Blank Page</a> -->
+                        </div>
+                    </div>
+                </li>
 
-            <!-- I create New Links -->
-            <li class="nav-item">
-                @*@Html.ActionLink("TripSheet", "TripSheet", "Home")*@
-                <a class="nav-link" href="/Home/TripSheet">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>TripSheet</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="charts1.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>VehOrd</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="charts1.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Booking Slip</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="charts1.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Delivery</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="charts1.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Gate Pass</span>
-                </a>
-            </li>
-            <!-- END -->
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+                <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="tables.html">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Report</span>
+                    </a>
+                </li>
 
-            <!-- Sidebar Message -->
-            <!-- <div class="sidebar-card d-none d-lg-flex">
+                <!-- I create New Links -->
+                <li class="nav-item">
+                    @*@Html.ActionLink("TripSheet", "TripSheet", "Home")*@
+                    <a class="nav-link" href="/Home/TripSheet">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>TripSheet</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="charts1.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>VehOrd</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="charts1.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Booking Slip</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="charts1.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Delivery</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="charts1.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Gate Pass</span>
+                    </a>
+                </li>
+                <!-- END -->
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+
+                <!-- Sidebar Message -->
+                <!-- <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
             </div> -->
 
-        </ul>
-        <!-- End of Sidebar -->
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+            </ul>
+            <!-- End of Sidebar -->
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
-            <div id="content">
+                <!-- Main Content -->
+                <div id="content">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow">
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
 
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-blockf form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
+                        <!-- Topbar Search -->
+                        <form class="d-none d-sm-inline-blockf form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
 
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
+                                    </form>
+                                </div>
+                            </li>
 
 
 
-                        <li class="nav-item dropdown no-arrow mx-0">
-                            <span class="nav-link" href="#"  role="button" style="color:black ;cursor:pointer">
-                                07-07-2023
-                                @*<span class="">07-07-2023</span>*@
+                            <li class="nav-item dropdown no-arrow mx-0">
+                                <span class="nav-link" href="#" role="button" style="color:black ;cursor:pointer">
+                                    07-07-2023
+                                    @*<span class="">07-07-2023</span>*@
                                 </span>
-                        </li>
-                        <li class="nav-item dropdown no-arrow mx-0">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-print fa-fw" style="font-size: 18px;
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-0">
+                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-print fa-fw" style="font-size: 18px;
                                 color: #3d1746;"></i>
-                                <!-- Counter - Messages -->
-                                <!-- <span class="badge badge-danger badge-counter">7</span> -->
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown no-arrow mx-0">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-file-pdf fa-fw" style="font-size: 18px;
+                                    <!-- Counter - Messages -->
+                                    <!-- <span class="badge badge-danger badge-counter">7</span> -->
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-0">
+                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-file-pdf fa-fw" style="font-size: 18px;
                                 color: #3d1746;"></i>
-                                <!-- Counter - Messages -->
-                                <!-- <span class="badge badge-danger badge-counter">7</span> -->
-                            </a>
-                        </li>
+                                    <!-- Counter - Messages -->
+                                    <!-- <span class="badge badge-danger badge-counter">7</span> -->
+                                </a>
+                            </li>
 
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-0">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <!-- <i class="fas fa-bell fa-fw"></i> -->
-                                <i class="fas fa-phone fa-fw" style="font-size: 18px;
+                            <!-- Nav Item - Alerts -->
+                            <li class="nav-item dropdown no-arrow mx-0">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <!-- <i class="fas fa-bell fa-fw"></i> -->
+                                    <i class="fas fa-phone fa-fw" style="font-size: 18px;
                                 color: #3d1746;"></i>
-                                <!-- //Counter - Alerts -->
-                                <!-- <span class="badge badge-danger badge-counter">3+</span> -->
-                            </a>
-                            <!-- //Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Contact
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-envelope text-white"></i>
+                                    <!-- //Counter - Alerts -->
+                                    <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+                                </a>
+                                <!-- //Dropdown - Alerts -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                    <h6 class="dropdown-header">
+                                        Contact
+                                    </h6>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-primary">
+                                                <i class="fas fa-envelope text-white"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <!-- <div class="small text-gray-500">December 12, 2019</div> -->
-                                        <span class="font-weight-bold">support123@gmail.com</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-phone text-white"></i>
+                                        <div>
+                                            <!-- <div class="small text-gray-500">December 12, 2019</div> -->
+                                            <span class="font-weight-bold">support123@gmail.com</span>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <!-- <div class="small text-gray-500">December 7, 2019</div> -->
-                                        +91 1234567890
-                                    </div>
-                                </a>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-success">
+                                                <i class="fas fa-phone text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <!-- <div class="small text-gray-500">December 7, 2019</div> -->
+                                            +91 1234567890
+                                        </div>
+                                    </a>
 
-                            </div>
-                        </li>
+                                </div>
+                            </li>
 
 
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-0 d-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw" style="font-size:18px;
+                            <!-- Nav Item - Messages -->
+                            <li class="nav-item dropdown no-arrow mx-0 d-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-envelope fa-fw" style="font-size:18px;
                                 color: #3d1746;"></i>
-                                <!-- Counter - Messages -->
-                                <!-- <span class="badge badge-danger badge-counter">7</span> -->
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="~/Content/img/undraw_profile_1.svg" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
+                                    <!-- Counter - Messages -->
+                                    <!-- <span class="badge badge-danger badge-counter">7</span> -->
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="~/Content/img/undraw_profile_2.svg" alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="~/Content/img/undraw_profile_3.svg" alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                                    <h6 class="dropdown-header">
+                                        Message Center
+                                    </h6>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="~/Content/img/undraw_profile_1.svg" alt="...">
+                                            <div class="status-indicator bg-success"></div>
+                                        </div>
+                                        <div class="font-weight-bold">
+                                            <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                                            <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="~/Content/img/undraw_profile_2.svg" alt="...">
+                                            <div class="status-indicator"></div>
+                                        </div>
+                                        <div>
+                                            <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                                            <div class="small text-gray-500">Jae Chun · 1d</div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="~/Content/img/undraw_profile_3.svg" alt="...">
+                                            <div class="status-indicator bg-warning"></div>
+                                        </div>
+                                        <div>
+                                            <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                                            <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+                                            <div class="status-indicator bg-success"></div>
+                                        </div>
+                                        <div>
+                                            <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                                            <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                </div>
+                            </li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                            <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <!-- Change Theme  -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="themDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Theme</span>
-                                <i class="fa fa-adjust" style="color: black;"></i>
-                                <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="themDropdown">
-                                <a class="dropdown-item" href="#" onclick="toggleTheme('blue-purple')">
-                                    <!-- <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Blue-Purple -->
-                                    <div class="mr-2 text-gray-400" style="background-image: linear-gradient(to left, #3d1746, #2d1e48, #1d2345, #13253f, #102537); ;height: 25px;
+                            <!-- Change Theme  -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="themDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Theme</span>
+                                    <i class="fa fa-adjust" style="color: black;"></i>
+                                    <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="themDropdown">
+                                    <a class="dropdown-item" href="#" onclick="toggleTheme('blue-purple')">
+                                        <!-- <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Blue-Purple -->
+                                        <div class="mr-2 text-gray-400" style="background-image: linear-gradient(to left, #3d1746, #2d1e48, #1d2345, #13253f, #102537); ;height: 25px;
                                     width: 25px;
                                     border-radius: 50%;
                                     display: inline-block;"></div><span style="vertical-align: super"> Blue-Purple</span>
-                                </a>
-                                <!-- <a class="dropdown-item" href="#">
-                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-            </a> -->
-                                <a class="dropdown-item" href="#" onclick="toggleTheme('grey-dark')">
-                                    <div class="mr-2 text-gray-400" style="background-color:#252525 ;height: 25px;
+                                    </a>
+                                    <!-- <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+                                </a> -->
+                                    <a class="dropdown-item" href="#" onclick="toggleTheme('grey-dark')">
+                                        <div class="mr-2 text-gray-400" style="background-color:#252525 ;height: 25px;
                                     width: 25px;
                                     border-radius: 50%;
                                     display: inline-block;"></div><span style="vertical-align: super"> Gray</span>
-                                </a>
+                                    </a>
 
-                                <a class="dropdown-item" href="#" onclick="toggleTheme('light-blue')">
-                                    <div class="mr-2 bg-gradient-primary text-gray-400" style="height: 25px;
+                                    <a class="dropdown-item" href="#" onclick="toggleTheme('light-blue')">
+                                        <div class="mr-2 bg-gradient-primary text-gray-400" style="height: 25px;
                                     width: 25px;
                                     border-radius: 50%;
                                     display: inline-block;"></div><span style="vertical-align: super"> Light Blue</span>
+                                    </a>
+
+                                </div>
+                            </li>
+
+
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Kapil</span>
+                                    <img class="img-profile rounded-circle" src="~/Content/img/undraw_profile.svg">
                                 </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Forgot Password
+                                    </a>
+                                    <!-- <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                                </a> -->
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                    </a>
+                                </div>
+                            </li>
 
-                            </div>
-                        </li>
+                        </ul>
 
+                    </nav>
+                    <!-- End of Topbar -->
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+                        @RenderBody()
 
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Kapil</span>
-                                <img class="img-profile rounded-circle" src="~/Content/img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Forgot Password
-                                </a>
-                                <!-- <a class="dropdown-item" href="#">
-                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-            </a> -->
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    @RenderBody()
+                    </div>
+                    <!-- /.container-fluid -->
 
                 </div>
-                <!-- /.container-fluid -->
+                <!-- End of Main Content -->
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; eSoft Website 2021</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Main Content -->
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; eSoft Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
+            <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -450,6 +498,232 @@
 
     <!-- Page level custom scripts -->
     <script src="~/Content/js/demo/datatables-demo.js"></script>
+
+
+    <script>
+
+        var menulist = [{ "MnuId": 52, "ParentId": 48, "DispItem": "*Calender", "NavigateUrl": "/Test/Index", "CtrlName": "Test", "ActName": "Index", "MnuIcon": "fas fa-calendar-alt", "LvlNo": 3 }, { "MnuId": 33, "ParentId": 48, "DispItem": "*Challan", "NavigateUrl": "/Test/ChallanMob", "CtrlName": "Test", "ActName": "ChallanMob", "MnuIcon": "fas fa-receipt", "LvlNo": 3 }, { "MnuId": 49, "ParentId": 48, "DispItem": "*City Master", "NavigateUrl": "/CityMaster/CityMasterList", "CtrlName": "CityMaster", "ActName": "CityMasterList", "MnuIcon": "fa fa-city", "LvlNo": 3 }, { "MnuId": 37, "ParentId": 48, "DispItem": "*Customer Equipment", "NavigateUrl": "/EndUser/CecMaster", "CtrlName": "EndUser", "ActName": "CecMaster", "MnuIcon": "fas fa-address-card", "LvlNo": 3 }, { "MnuId": 59, "ParentId": 48, "DispItem": "*Enquiry", "NavigateUrl": "/Enquiry/TrPrEnquiry", "CtrlName": "Enquiry", "ActName": "TrPrEnquiry", "MnuIcon": "fa fa-envelope", "LvlNo": 3 }, { "MnuId": 82, "ParentId": 48, "DispItem": "*Loan", "NavigateUrl": "/Loan/LoanfrmI", "CtrlName": "Loan", "ActName": "", "MnuIcon": "fas fa-rupee-sign", "LvlNo": 3 }, { "MnuId": 61, "ParentId": 48, "DispItem": "*Menu", "NavigateUrl": "/Menufrm/Menuform?EntryMode=1&mMnuId=0", "CtrlName": "Menufrm", "ActName": "Menuform", "MnuIcon": "fas fa-clipboard-check", "LvlNo": 3 }, { "MnuId": 88, "ParentId": 48, "DispItem": "*Recruitment Web", "NavigateUrl": "/Recruitment/hrRecuI", "CtrlName": "Recruitment", "ActName": "hrRecuI", "MnuIcon": "fas fa-credit-card", "LvlNo": 3 }, { "MnuId": 86, "ParentId": 4, "DispItem": "FMaster", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 14, "ParentId": 2, "DispItem": "Transportation", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 63, "ParentId": 100, "DispItem": "xAccounting Voucher", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 90, "ParentId": 44, "DispItem": "xBilty", "NavigateUrl": "/Test/BiltyMob", "CtrlName": "Test", "ActName": "BiltyMob", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 65, "ParentId": 13, "DispItem": "xBroker", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 36, "ParentId": 13, "DispItem": "xBusiness Partner", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 76, "ParentId": 13, "DispItem": "xCity Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 45, "ParentId": 13, "DispItem": "xConfiguration", "NavigateUrl": "/modules/Outsourcing/itm.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 67, "ParentId": 13, "DispItem": "xConsignee / Consignor Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 98, "ParentId": 13, "DispItem": "xDelivery At", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 83, "ParentId": 86, "DispItem": "xDepreciation Chart", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 31, "ParentId": 14, "DispItem": "xEnquiry", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 15, "ParentId": 71, "DispItem": "xGeneral Ledger", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 22, "ParentId": 86, "DispItem": "xGL Group Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 68, "ParentId": 13, "DispItem": "xItem Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 99, "ParentId": 71, "DispItem": "xMY Reports", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 84, "ParentId": 86, "DispItem": "xOpening Trial Balance", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 85, "ParentId": 100, "DispItem": "xPDC Entry", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 78, "ParentId": 13, "DispItem": "xRateList", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 20, "ParentId": 7, "DispItem": "xReset Password", "NavigateUrl": "/Administration/Changpwd.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 91, "ParentId": 100, "DispItem": "xSettlements", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 96, "ParentId": 71, "DispItem": "xTrial Balance", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 77, "ParentId": 13, "DispItem": "xVehicle Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 1, "ParentId": 0, "DispItem": "File", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": "fas fa-file", "LvlNo": 1 }, { "MnuId": 100, "ParentId": 4, "DispItem": "Transactions", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 16, "ParentId": 44, "DispItem": "xCrossing Inward", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 53, "ParentId": 7, "DispItem": "xImport/Export", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 13, "ParentId": 14, "DispItem": "xMaster", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 44, "ParentId": 14, "DispItem": "Transactions", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 17, "ParentId": 44, "DispItem": "xChallan", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 55, "ParentId": 7, "DispItem": "xRewrite Data", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 26, "ParentId": 14, "DispItem": "*Reports", "NavigateUrl": "/Reports/Reportfrm", "CtrlName": "Reports", "ActName": "Reportfrm", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 71, "ParentId": 4, "DispItem": "Reports", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 4, "ParentId": 0, "DispItem": "Finance", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 1 }, { "MnuId": 35, "ParentId": 44, "DispItem": "xFreight Memo", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 18, "ParentId": 44, "DispItem": "xBilling", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 19, "ParentId": 44, "DispItem": "xGoods Delivery", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 74, "ParentId": 44, "DispItem": "Gate Pass", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 7, "ParentId": 0, "DispItem": "Utility", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 1 }, { "MnuId": 95, "ParentId": 44, "DispItem": "Refunds", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 48, "ParentId": 1, "DispItem": "Admin Setup", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": " fas fa-user-cog", "LvlNo": 2 }, { "MnuId": 47, "ParentId": 44, "DispItem": "xCartage Payment", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 10, "ParentId": 7, "DispItem": "x10", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 11, "ParentId": 7, "DispItem": "x11", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 39, "ParentId": 7, "DispItem": "x39", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 43, "ParentId": 7, "DispItem": "x43", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 21, "ParentId": 7, "DispItem": "xCast ", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 69, "ParentId": 7, "DispItem": "xDownloads", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 41, "ParentId": 7, "DispItem": "xMenu", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 24, "ParentId": 7, "DispItem": "xMenu Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 23, "ParentId": 7, "DispItem": "xN P S", "NavigateUrl": "/Service/nps.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 28, "ParentId": 7, "DispItem": "xN P S Enquiery", "NavigateUrl": "/Service/npsenquiery.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 25, "ParentId": 7, "DispItem": "xN P S List", "NavigateUrl": "/Service/npsreport.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 87, "ParentId": 7, "DispItem": "xNew AMC", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 75, "ParentId": 7, "DispItem": "xNew Ter", "NavigateUrl": "/Testing/ternew.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 12, "ParentId": 7, "DispItem": "xOthers", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 60, "ParentId": 7, "DispItem": "xPaySlip", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 64, "ParentId": 44, "DispItem": "xPOD", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 72, "ParentId": 7, "DispItem": "xRecipe", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 62, "ParentId": 7, "DispItem": "xRecp DocUpdate", "NavigateUrl": "/CourierMngt/recpdcupd.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 58, "ParentId": 7, "DispItem": "xReports", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 56, "ParentId": 7, "DispItem": "xRet - Stock Out", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 29, "ParentId": 7, "DispItem": "xSales Employee Details", "NavigateUrl": "/Service/SalesDetails.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 38, "ParentId": 7, "DispItem": "xSales Platform", "NavigateUrl": "/modules/Outsourcing/salespfm.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 101, "ParentId": 7, "DispItem": "xSecurity", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 80, "ParentId": 7, "DispItem": "xSend Email", "NavigateUrl": "srndemail.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 40, "ParentId": 7, "DispItem": "xService Amc Con.", "NavigateUrl": "/util/amcdem.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 50, "ParentId": 7, "DispItem": "xSms", "NavigateUrl": "/Util/sms.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 73, "ParentId": 7, "DispItem": "xState&City", "NavigateUrl": "/Testing/State.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 30, "ParentId": 7, "DispItem": "xTER", "NavigateUrl": " /service/TER.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 66, "ParentId": 7, "DispItem": "xTer (Travel Expenses Report)", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 79, "ParentId": 7, "DispItem": "xTest Image", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 89, "ParentId": 7, "DispItem": "xTest Page", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 51, "ParentId": 7, "DispItem": "xTO DO List", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 54, "ParentId": 7, "DispItem": "xVehicle Order", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 57, "ParentId": 44, "DispItem": "xPOD Acknowledgement", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 81, "ParentId": 44, "DispItem": "xLocal Bilty", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 97, "ParentId": 44, "DispItem": "xLocal Crossing Inward", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 92, "ParentId": 44, "DispItem": "xLocal Challan", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 46, "ParentId": 44, "DispItem": "xLocal Goods Delivery", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 93, "ParentId": 7, "DispItem": "xCVP / CVR", "NavigateUrl": "/modules/Outsourcing/cvp.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }]
+
+        $(document).ready(function () {
+            Displaymenu(menulist)
+        });
+
+
+    var parentlist = new Array();
+    var child_list = new Array();
+    var sub_child_list = new Array();
+    function first_level_list(menulist) {
+        parentlist.splice(0, parentlist.length)  // To delete all data from array Which is already exist.
+        for (var i = 0; i < menulist.length; i++) {
+            if (menulist[i]["ParentId"] == 0) {
+                parentlist.push(menulist[i]);
+            }
+        }
+        //parentlist.sort(function (a, b) {
+        //    return a.MnuId - b.MnuId;
+        //});
+    }
+    // this is for the second level or the second block
+    function second_level_list(id, menulist) {
+
+        child_list.splice(0, child_list.length);
+        for (var j = 0; j < menulist.length; j++) {
+            if (id == menulist[j]["ParentId"]) {
+                child_list.push(menulist[j]);
+            }
+        }
+        //child_list.sort(function (a, b) {
+        //    return a.MnuId - b.MnuId;
+        //});
+    }
+    //this is for the third level or the third block
+    function third_level_list(id, menulist) {
+        sub_child_list.splice(0, sub_child_list.length);
+
+        for (var j = 0; j < menulist.length; j++) {
+            if (id == menulist[j]["ParentId"]) {
+                sub_child_list.push(menulist[j]);
+            }
+        }
+
+        //sub_child_list.sort(function (a, b) {
+        //    return a.MnuId - b.MnuId;
+        //});
+    }
+        var str = '';
+        function Displaymenu(menu) {
+        var thirdlevelId = "0", secondlevelId = "0", firstlevelId = "0";
+            $("#accordionSidebar").html('');    //To Empty HTML Code Which is already exist
+            first_level_list(menu);
+            var Currentmenu = $.grep(menu, function (n, i) {
+                @*return n.ActName === '@actionName';*@
+                return n.ActName;
+            });
+            if (Currentmenu.length > 0) {
+                thirdlevelId = Currentmenu[0]["ParentId"];
+                if (Currentmenu[0]["ParentId"] != "0") {
+                    var ParentCurrentmenu = $.grep(menu, function (n, i) {
+                        return n.MnuId === Currentmenu[0]["ParentId"];
+                    });
+                    if (ParentCurrentmenu.length > 0) {
+                        secondlevelId = ParentCurrentmenu[0]["ParentId"];
+                        if (ParentCurrentmenu[0]["ParentId"] != "0") {
+                            var FirstParentCurrentmenu = $.grep(menu, function (n, i) {
+                                return n.MnuId === ParentCurrentmenu[0]["ParentId"];
+                            });
+                            firstlevelId = FirstParentCurrentmenu[0]["ParentId"];
+                        }
+                    }
+                }
+            }
+       // str = '<ul class="sidebar-menu tree" data-widget="tree">'  //data-widget is used to make drop down list
+
+
+            str = '<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">';
+            str += '<div class="sidebar-brand-icon rotate-n-15" >';
+            str += '<img class="img-profile rounded-circle" src="/Content/img/esoft.jpeg" alt="" width="50%" />';
+            str += '</div>';
+            str += '<div class="sidebar-brand-text mx-3">Company Name</div>'
+            str += '</a>'
+            str += '<hr class="sidebar-divider my-0">';
+
+        for (var i = 0; i < parentlist.length; i++) {
+            second_level_list(parentlist[i]["MnuId"], menu);  //In parentlist array data is available in the form of array of object.
+            if (child_list.length > 0) {
+                str += '<li class="nav-item treeview admin ' + (((secondlevelId == "0" ?thirdlevelId:secondlevelId) == parentlist[i]["MnuId"]) ? 'menu-open' : '') +'">';
+                //str += '<a class="nav-link" href="javascript:void(0)">'
+                str += '<a class="nav-link" href="javascript:void(0)" onclick="myfunc(this)">'
+                str += '<i class="' + parentlist[i]["MnuIcon"] + '"></i>'
+                str += '<span style="font-size: 1rem;">' + parentlist[i]["DispItem"] + '</span>'
+                str += '<span class="pull-right-container">'
+                str += '<i style="font-size:1rem;vertical-align: middle;float: right;" class="fa fa-angle-right pull-right"></i>'
+                str += '</span>'
+                str += '</a>'
+
+                //str += '<ul class="nav-link pt-0 hideshowUl treeview-menu" style ="display:' + (((secondlevelId == "0" ? thirdlevelId : secondlevelId) == parentlist[i]["MnuId"]) ? 'block;' : 'none;') + '">'
+                str += '<ul class="nav-link pt-0 hideshowUl treeview-menu hideParentUl pb-1">'
+                for (var j = 0; j < child_list.length; j++) {
+                    third_level_list(child_list[j]["MnuId"], menu);
+                    if (sub_child_list.length > 0) {
+                        str += '<li class="nav-item hideShowChild treeview admin mb-1 ' + ((thirdlevelId == child_list[j]["MnuId"]) ? 'menu-open' : '') +'">';
+                        str += '<a class="nav-link pt-1 pb-1" href="javascript:void(0)" onclick="HideShowChild(this)">';
+                        str += '<span>' + child_list[j]["DispItem"] + '</span>';
+                        str += '<span class="pull-right-container">';
+                        str += '<i  style="font-size:1rem;vertical-align: middle;float: right;margin-right: 10%;" class="fa fa-angle-right pull-right"></i>';
+                        str += '</span>';
+                        str += '</a>';
+                        //str += '<ul  class="nav-link pt-0 hideshowUl treeview-menu" style ="display:' + ((thirdlevelId == child_list[j]["MnuId"]) ? 'block;' : 'none;') + '">';
+                        str += '<ul  class="nav-link pt-0 hideshowUl treeview-menu pb-1 " style ="display:none">';
+                        for (var k = 0; k < sub_child_list.length; k++) {
+                            var classnameNew = "";
+
+                            @*if (sub_child_list[k]["CtrlName"] + '/' + sub_child_list[k]["ActName"] == "@pageName/@actionName") {
+                                classnameNew = "active";
+                            }*@
+                            str += '<li class="nav-item pt-1 pb-1 ' + classnameNew +'"><a  class="nav-link pt-1 pb-0 " href="javascript:void(0)" data-url="/' + sub_child_list[k]["CtrlName"] + '/' + sub_child_list[k]["ActName"] + '"  ><span>' + sub_child_list[k]["DispItem"] + '</span></a></li>';
+                        }
+                        str += '</ul>';
+                        str += '</li>';
+                    }
+                    else {
+                         var classnameNew = "";
+
+                        @*if (child_list[j]["CtrlName"] + '/' + child_list[j]["ActName"] == "@pageName/@actionName") {
+                            }*@
+                        str += '<li class="nav-item admin ' + classnameNew +'">';
+                        str += '<a class="nav-link pt-1 pb-0 " href="javascript:void(0)" data-url="/' + child_list[j]["CtrlName"] + '/' + child_list[j]["ActName"] + '"  >';
+                        str += '<span>' + child_list[j]["DispItem"] + '</span>';
+                        str += '</a>';
+                        str += '</li>'; classnameNew = "active";
+
+                    }
+                }
+                str += '</ul>'
+                str += '</li>'
+            }
+            else {
+                var classnameNew = "";
+
+                @*if (parentlist[i]["CtrlName"] + '/' + parentlist[i]["ActName"] == "@pageName/@actionName") {
+                                classnameNew = "active";
+                            }*@
+                str += '<li class="nav-item admin ' + classnameNew +'">'
+                str += ' <a class="nav-link" href="javascript:void(0)" data-url="/' + parentlist[i]["CtrlName"] + '/' + parentlist[i]["ActName"] + '">'
+                str += ' <span>' + parentlist[i]["DispItem"] + '</span>'
+                str += '</a>'
+                str += '</li>'
+            }
+        }
+        //str += '</ul>';
+            //str += '<hr class="sidebar-divider d-none d-md-block">';
+            //str += '<div class="text-center d-none d-md-inline">';
+            //str += '<button class="rounded-circle border-0" id="sidebarToggle"></button>';
+            //str +='</div>';
+            $("#accordionSidebar").html(str)
+
+        }
+
+
+
+        function myfunc(e) {
+            debugger
+            
+            //e.nextSibling.classList.add('hideParentUl')
+            //e.nextSibling.classList.add('hideChildUl')
+            //e.nextSibling.classList.add('hideSubChildUl')
+           // $("ul.showParentUl").removeClass("showParentUl")
+
+            if(e.nextSibling.className.indexOf('showParentUl') >0 ){
+                e.nextSibling.classList.remove('showParentUl')
+                e.nextSibling.classList.add('hideParentUl')
+            }
+            else {
+                e.nextSibling.classList.remove('hideParentUl')
+                e.nextSibling.classList.add('showParentUl')
+            }
+
+
+
+
+            //$(".hideshowUl").css("display", "none");
+            //e.nextSibling.style.cssText = 'display:block';
+
+        }
+        function HideShowChild(e) {
+            //if (e.nextSibling.style.display == "block") {
+            //}
+           // $(".hideshowUl ").css("display", "none")
+            //e.nextSibling.style.cssText = 'display:block';
+
+            //$("ul.showParentUl").removeClass("showParentUl")
+
+            if (e.nextSibling.className.indexOf('showChildUl') > 0 ){
+                e.nextSibling.classList.remove('showChildUl')
+                e.nextSibling.classList.add('hideChildUl')
+            }
+            else {
+                e.nextSibling.classList.remove('hideChildUl')
+                e.nextSibling.classList.add('showChildUl')
+            }
+        }
+
+        function HideShowSubChild(e) {
+            //e.nextSibling.className.indexOf('mt'){
+            //}
+            //$(".HideShowSubChild").css("display", "none")
+            //e.nextSibling.style.cssText = 'display:block';
+
+
+            if (e.nextSibling.className.indexOf('showSubChildUl') > 0 ){
+                e.nextSibling.classList.remove('showSubChildUl')
+                e.nextSibling.classList.add('hideSubChildUl')
+            }
+            else {
+                e.nextSibling.classList.remove('hideSubChildUl')
+                e.nextSibling.classList.add('showSubChildUl')
+            }
+        }
+    </script>
 
 </body>
 
