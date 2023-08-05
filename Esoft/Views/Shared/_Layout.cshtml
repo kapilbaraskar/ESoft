@@ -585,6 +585,13 @@
             str += '</div>';
             str += '<div class="sidebar-brand-text mx-3">Company Name</div>'
             str += '</a>'
+            str += '<hr class="sidebar-divider my-0">';           
+            str += '<li class="nav-item">';
+            str += '<span class="nav-link">';
+            str += '<span class="mr-1">' + sessionStorage.CityName+'</span>';
+            str += '<span>Division</span>';
+            str += '</span>';
+            str += '</li>';
             str += '<hr class="sidebar-divider my-0">';
 
         for (var i = 0; i < parentlist.length; i++) {
@@ -673,14 +680,60 @@
             //e.nextSibling.classList.add('hideSubChildUl')
            // $("ul.showParentUl").removeClass("showParentUl")
 
-            if(e.nextSibling.className.indexOf('showParentUl') >0 ){
-                e.nextSibling.classList.remove('showParentUl')
-                e.nextSibling.classList.add('hideParentUl')
-            }
-            else {
+            var classList = ''
+            var boxes = document.querySelectorAll('.showParentUl');
+            if (boxes != null && boxes.length > 0 && boxes != undefined) {
+
+
+                boxes.forEach(function (box) {
+                     classList = box.classList;
+
+
+                    if (classList.contains('showParentUl')) {
+                        //classList.remove('showParentUl')
+                        //classList.add('hideParentUl')
+
+                        if (e.nextSibling.classList.contains('showParentUl') == true) {
+                            classList.remove('showParentUl')
+
+                            e.nextSibling.classList.remove('showParentUl')
+                            e.nextSibling.classList.add('hideParentUl')
+                        }
+                        else if (e.nextSibling.classList.contains('hideParentUl') == true) {
+                            classList.remove('showParentUl')
+                            classList.add('hideParentUl')
+
+                            e.nextSibling.classList.remove('showParentUl')
+                            e.nextSibling.classList.add('hideParentUl')
+                        }
+                        else {
+                            classList.remove('hideParentUl')
+
+                            e.nextSibling.classList.add('hideParentUl')
+                            e.nextSibling.classList.remove('showParentUl')
+                        }
+                    }
+                    else {
+                        classList.remove('hideParentUl')
+                        e.nextSibling.classList.remove('hideParentUl')
+                        e.nextSibling.classList.add('showParentUl')
+                    }
+                });
+            } else {
+                //classList.remove('showParentUl')
+                //classList.add('hideParentUl')
+
                 e.nextSibling.classList.remove('hideParentUl')
                 e.nextSibling.classList.add('showParentUl')
             }
+            //if(e.nextSibling.className.indexOf('showParentUl') >0 ){
+            //    e.nextSibling.classList.remove('showParentUl')
+            //    e.nextSibling.classList.add('hideParentUl')
+            //}
+            //else {
+            //    e.nextSibling.classList.remove('hideParentUl')
+            //    e.nextSibling.classList.add('showParentUl')
+            //}
 
 
 
@@ -690,35 +743,117 @@
 
         }
         function HideShowChild(e) {
-            //if (e.nextSibling.style.display == "block") {
+            
+
+            //if (e.nextSibling.className.indexOf('showChildUl') > 0 ){
+            //    e.nextSibling.classList.remove('showChildUl')
+            //    e.nextSibling.classList.add('hideChildUl')
             //}
-           // $(".hideshowUl ").css("display", "none")
-            //e.nextSibling.style.cssText = 'display:block';
+            //else {
+            //    e.nextSibling.classList.remove('hideChildUl')
+            //    e.nextSibling.classList.add('showChildUl')
+            //}
 
-            //$("ul.showParentUl").removeClass("showParentUl")
+            //var boxes = document.querySelectorAll('.showChildUl');
+            //boxes.forEach(function (box) {
+            //    var classList = box.classList;
 
-            if (e.nextSibling.className.indexOf('showChildUl') > 0 ){
-                e.nextSibling.classList.remove('showChildUl')
-                e.nextSibling.classList.add('hideChildUl')
-            }
-            else {
+
+            //    if (classList.contains('showChildUl')) {
+            //        classList.remove('showChildUl')
+            //        classList.add('hideChildUl')
+            //        console.log(classList)
+
+            //    }
+            //    else {
+            //        classList.remove('hideChildUl')
+
+            //    }
+            //});
+            //e.nextSibling.classList.remove('hideChildUl')
+            //e.nextSibling.classList.add('showChildUl')
+
+
+            var boxes = document.querySelectorAll('.showChildUl');
+            if (boxes != null && boxes.length > 0 && boxes != undefined) {
+
+
+                boxes.forEach(function (box) {
+                    var classList = box.classList;
+
+                    if (classList.contains('showChildUl')) {
+                        classList.remove('showChildUl')
+                        classList.add('hideChildUl')
+
+                        e.nextSibling.classList.remove('hideChildUl')
+                        e.nextSibling.classList.add('showChildUl')
+                    }
+                    else {
+                        classList.remove('hideChildUl')
+                        e.nextSibling.classList.remove('hideChildUl')
+                        e.nextSibling.classList.add('showChildUl')
+                    }
+                });
+            } else {
                 e.nextSibling.classList.remove('hideChildUl')
                 e.nextSibling.classList.add('showChildUl')
             }
         }
 
         function HideShowSubChild(e) {
-            //e.nextSibling.className.indexOf('mt'){
+
+
+            //if (e.nextSibling.className.indexOf('showSubChildUl') > 0 ){
+            //    e.nextSibling.classList.remove('showSubChildUl')
+            //    e.nextSibling.classList.add('hideSubChildUl')
             //}
-            //$(".HideShowSubChild").css("display", "none")
-            //e.nextSibling.style.cssText = 'display:block';
+            //else {
+            //    e.nextSibling.classList.remove('hideSubChildUl')
+            //    e.nextSibling.classList.add('showSubChildUl')
+            //}
 
 
-            if (e.nextSibling.className.indexOf('showSubChildUl') > 0 ){
-                e.nextSibling.classList.remove('showSubChildUl')
-                e.nextSibling.classList.add('hideSubChildUl')
-            }
-            else {
+            //var boxes = document.querySelectorAll('.showSubChildUl');
+            //boxes.forEach(function (box) {
+            //    var classList = box.classList;
+
+
+            //    if (classList.contains('showSubChildUl')) {
+            //        classList.remove('showSubChildUl')
+            //        classList.add('hideSubChildUl')
+            //        console.log(classList)
+
+            //    }
+            //    else {
+            //        classList.remove('hideSubChildUl')
+
+            //    }
+            //});
+            //e.nextSibling.classList.remove('hideSubChildUl')
+            //e.nextSibling.classList.add('showSubChildUl')
+
+            var boxes = document.querySelectorAll('.showSubChildUl');
+            if (boxes != null && boxes.length > 0 && boxes != undefined) {
+
+
+                boxes.forEach(function (box) {
+                    var classList = box.classList;
+
+
+                    if (classList.contains('showSubChildUl')) {
+                        classList.remove('showSubChildUl')
+                        classList.add('hideSubChildUl')
+                        e.nextSibling.classList.remove('hideSubChildUl')
+                        e.nextSibling.classList.add('showSubChildUl')
+
+                    }
+                    else {
+                        classList.remove('hideSubChildUl')
+                        e.nextSibling.classList.remove('hideSubChildUl')
+                        e.nextSibling.classList.add('showSubChildUl')
+                    }
+                });
+            } else {
                 e.nextSibling.classList.remove('hideSubChildUl')
                 e.nextSibling.classList.add('showSubChildUl')
             }

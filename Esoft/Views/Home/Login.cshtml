@@ -7,14 +7,14 @@
 <html lang="en">
 
 <head>
-      
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title> 
+    <title>SB Admin 2 - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
     <!-- Custom styles for this template-->
     <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet">
     <style>
-            /* border-bottom: 2px solid transparent;
+        /* border-bottom: 2px solid transparent;
         border-image: linear-gradient(0.25turn, rgba(255,249,34), rgba(255,0,128), rgba(56,2,155,0));
         border-image-slice: 1; */
     </style>
@@ -63,8 +63,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="" style="margin-right: 1%;">Current Date:-</label>
-                                            <input type="date" style="display: inline-block;
-                                            width: 72%;" class="form-control form-control-user" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter Date...">
+                                            <input required type="date" style="display: inline-block;width: 72%;" class="form-control form-control-user" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter Date...">
                                         </div>
                                         <div class="form-group">
                                             <label for="" style="margin-right: 11%;">User ID:-</label>
@@ -76,14 +75,37 @@
                                             <input type="password" style="display: inline-block;
                                             width: 72%;" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                         </div>
-                                       
+
+                                        <div class="row mb-1">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <a href="#" data-toggle="modal" data-target="#TransportlogoffModal" class="text-primary d-flex float-right">Forgot Password?</a>
+                                            </div>
+                                        </div>
                                         <a href="/Home/index" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
                                         <hr>
-                                      
+                                        <div class="row">
+                                            <div class="col-4 mb-2 text-center">
+                                                <span for="latitude" class="m-0" style="border-bottom:1px solid gray">latitude</span>
+                                                <p id="latitude" class="m-0"></p>
+                                            </div>
+                                            <div class="col-4 mb-2 text-center">
+                                                <span for="latitude" class="m-0" style="border-bottom:1px solid gray">longitude</span>
+                                                <p id="longitude" class="m-0"></p>
+                                            </div>
+                                            <div class="col-4 mb-2 text-center">
+                                                <label for="Device" class="m-0" style="border-bottom:1px solid gray">Device</label>
+                                                <p id="deviceName" class="m-0"></p>
+                                            </div>
+                                        </div>
+                                        @*<div class="row">
+                                                <table></table>
+                                            </div>
+                                            <span id="longitude"></span>
+                                            <span id="latitude"></span>*@
                                     </form>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -96,6 +118,153 @@
 
     </div>
 
+    <!-- Transport Logoff Modal-->
+    <div class="modal fade" id="TransportlogoffModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">Transport Logoff</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                            <div class="col-md-6 clo-lg-6 mb-3">
+                                <label for="validationCustom01">User ID</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="userid" placeholder="User Id" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 mb-3">
+                                <label for="validationCustom02">Password</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" id="pass" placeholder="Password" value="" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 col-lg-12 mb-3">
+                                <label for="validationCustom03">Location</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-map-marker-alt" "></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="location" placeholder="Location" required>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href="/Home/Login">Login</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HR Logoff Modal-->
+    <div class="modal fade" id="TransportlogoffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">HR Logoff</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                            <div class="col-md-6 clo-lg-6 mb-3">
+                                <label for="validationCustom01">User ID</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="userid" placeholder="User Code" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 mb-3">
+                                <label for="validationCustom02">Password</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" id="pass" placeholder="Password" value="" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 col-lg-12 mb-3">
+                                <label for="validationCustom03">Company</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="P"><i class="fas fa-building" aria-hidden="true"></i></span>
+                                    </div>
+                                    <select id="Company" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>...</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12 mb-3">
+                                <label for="validationCustom03">Division</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-compass"></i></span>
+                                    </div>
+                                    <select id="division" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>...</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12 mb-3">
+                                <label for="validationCustom03">Segment</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-map-marker-alt"></i></span>
+                                    </div>
+                                    <select id="location" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href="/Home/Login">Login</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="~/Content/vendor/jquery/jquery.min.js"></script>
     <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -106,19 +275,123 @@
     <!-- Custom scripts for all pages-->
     <script src="~/Content/js/sb-admin-2.min.js"></script>
     <script>
-        const date = new Date();
+        
+        $(document).ready(function () {
+            const date = new Date();
 
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-        if (month < 10) {
-            let Ddd = year + '-0' + month + '-' + day
-            $("#dateInputGroup").val(Ddd)
-        } else {
-            let Ddd = year + '-' + month + '-' + day
-            $("#dateInputGroup").val(Ddd)
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            let year = date.getFullYear();
+            if (month < 10) {
+                let Ddd = year + '-0' + month + '-' + day
+                $("#dateInputGroup").val(Ddd)
+            } else {
+                let Ddd = year + '-' + month + '-' + day
+                $("#dateInputGroup").val(Ddd)
+            }
+
+            getCurrentPosition(success)
+            getCurrentPosition(success, error)
+            getCurrentPosition(success, error, options)
+
+            
+        });
+     
+
+        //-----------------------
+
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0,
+        };
+
+        function success(pos) {
+            debugger
+            const crd = pos.coords;
+
+            console.log("Your current position is:");
+            console.log(`Latitude : ${crd.latitude}`);
+            console.log(`Longitude: ${crd.longitude}`);
+            console.log(`More or less ${crd.accuracy} meters.`);
+            $("#latitude").html(crd.latitude)
+            $("#longitude").html(crd.longitude)
+            getCity()
+        }
+
+        function error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+        }
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+
+
+        //---------------------
+        var x = '';
+        function showError(error) {
+            if (error.code == 1) {
+                x.innerHTML = "User denied the request for Geolocation."
+            }
+            else if (error.code == 2) {
+                x.innerHTML = "Location information is unavailable."
+            }
+            else if (error.code == 3) {
+                x.innerHTML = "The request to get user location timed out."
+            }
+            else {
+                x.innerHTML = "An unknown error occurred."
+            }
+        }
+        //----------------
+
+        $("input,button, #agreeTerms ").focus(function () {
+            $(this).css("background-color", "rgb(255, 255, 49)");
+            $(this).css("color", "black");
+        });
+        $("input,button, #agreeTerms").focusout(function () {
+            $(this).css("background-color", "");
+
+        });
+
+
+        const device = detectDevice();
+        $("#deviceName").html(device)
+        function detectDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.indexOf('mobile') !== -1) {
+                return 'Mobile';
+            } else if (userAgent.indexOf('tablet') !== -1) {
+                return 'Tablet';
+            } else {
+                return 'Desktop';
+            }
+        }
+
+        function getCity() {
+           var lat = $("#latitude").text();
+           var long = $("#longitude").text();
+
+            if ((lat != null && lat != null && lat != undefined) && (long != null && long != null && long != undefined)) {
+                var nominatimApiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}`;
+
+                fetch(nominatimApiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        var city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "City not found";
+                          
+                        console.log(`City: ${city}`);
+                        sessionStorage.setItem('CityName', city)
+                    })
+                    .catch(error => {
+                        console.error("Error fetching reverse geolocation data:", error);
+                    })
+            }
+
         }
     </script>
 </body>
 
 </html>
+
