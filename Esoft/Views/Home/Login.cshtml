@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>eSoft- Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -78,12 +78,11 @@
 
                                         <div class="row mb-1">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <a href="#" data-toggle="modal" data-target="#TransportlogoffModal" class="text-primary d-flex float-right">Forgot Password?</a>
+                                                <a href="#" data-toggle="modal" data-target="#ForgotPasswordModal" class="text-primary d-flex float-right">Forgot Password?</a>
                                             </div>
                                         </div>
-                                        <a href="/Home/index" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                        @*<a href="/Home/index"  class="btn btn-primary btn-user btn-block">Login</a>*@
+                                        <a href="#"  data-toggle="modal" data-target="#HRlogoffModal" class="btn btn-primary btn-user btn-block">Login</a>
                                         <hr>
                                         <div class="row">
                                             <div class="col-4 mb-2 text-center">
@@ -176,7 +175,7 @@
     </div>
 
     <!-- HR Logoff Modal-->
-    <div class="modal fade" id="TransportlogoffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="HRlogoffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -189,7 +188,7 @@
                     <form class="needs-validation" novalidate>
                         <div class="form-row">
                             <div class="col-md-6 clo-lg-6 mb-3">
-                                <label for="validationCustom01">User ID</label>
+                                <label for="validationCustom01">User Code</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
@@ -256,13 +255,59 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary" href="/Home/Login">Login</a>
+                    <a class="btn btn-primary" href="/Home/index">Login</a>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
 
+
+    <!-- HR Logoff Modal-->
+    <div class="modal fade" id="ForgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">Forgot Password</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                            <div class="col-md-12 clo-lg-12 mb-3">
+                                <label for="validationCustom01">User ID</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="userid" placeholder="User ID" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 mb-3">
+                                <label for="validationCustom02">Password</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" id="pass" placeholder="Password" value="" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </form>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href="/Home/Login">Login</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Bootstrap core JavaScript-->
@@ -275,18 +320,29 @@
     <!-- Custom scripts for all pages-->
     <script src="~/Content/js/sb-admin-2.min.js"></script>
     <script>
-        
+
         $(document).ready(function () {
             const date = new Date();
 
             let day = date.getDate();
             let month = date.getMonth() + 1;
             let year = date.getFullYear();
+            let Ddd = "";
             if (month < 10) {
-                let Ddd = year + '-0' + month + '-' + day
+
+                if (day < 10) {
+                     Ddd = year + '-0' + month + '-0' + day
+                } else {
+                     Ddd = year + '-0' + month + '-' + day
+                }
                 $("#dateInputGroup").val(Ddd)
-            } else {
-                let Ddd = year + '-' + month + '-' + day
+            }
+            else {
+                if (day < 10) {
+                     Ddd = year + '-0' + month + '-0' + day
+                } else {
+                     Ddd = year + '-' + month + '-' + day
+                }
                 $("#dateInputGroup").val(Ddd)
             }
 
@@ -294,9 +350,9 @@
             getCurrentPosition(success, error)
             getCurrentPosition(success, error, options)
 
-            
+
         });
-     
+
 
         //-----------------------
 
@@ -305,11 +361,18 @@
             timeout: 5000,
             maximumAge: 0,
         };
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                // Extract latitude and longitude from the position object
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
 
+                // Do something with the latitude and longitude, e.g., display on a map
+                console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+            })
         function success(pos) {
-            debugger
             const crd = pos.coords;
-
+            console.log(pos)
             console.log("Your current position is:");
             console.log(`Latitude : ${crd.latitude}`);
             console.log(`Longitude: ${crd.longitude}`);
@@ -324,7 +387,6 @@
         }
 
         navigator.geolocation.getCurrentPosition(success, error, options);
-
 
 
 
@@ -370,8 +432,8 @@
         }
 
         function getCity() {
-           var lat = $("#latitude").text();
-           var long = $("#longitude").text();
+            var lat = $("#latitude").text();
+            var long = $("#longitude").text();
 
             if ((lat != null && lat != null && lat != undefined) && (long != null && long != null && long != undefined)) {
                 var nominatimApiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}`;
@@ -380,7 +442,7 @@
                     .then(response => response.json())
                     .then(data => {
                         var city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "City not found";
-                          
+
                         console.log(`City: ${city}`);
                         sessionStorage.setItem('CityName', city)
                     })
@@ -390,6 +452,15 @@
             }
 
         }
+
+        //Vallidation Code form Login Form
+        function validataionLoginForm(){
+
+        }
+        function ValidGrouup(){
+
+        }
+
     </script>
 </body>
 
