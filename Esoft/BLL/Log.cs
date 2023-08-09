@@ -15,7 +15,7 @@ namespace Esoft.BLL
         public int AddErrorLog(string userid, string controller_name, string action_name, string data, string message, string stack_trace)
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Rezmytrip"].ToString();
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
             try
             {
                 string ip_address = HttpContext.Current.Request.UserHostName;
