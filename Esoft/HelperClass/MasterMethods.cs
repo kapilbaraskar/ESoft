@@ -165,7 +165,7 @@ namespace Esoft.HelperClass
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
             string con_str = "";
             if(misRemotServ == "")
-                con_str = "Data Source=DESKTOP-MT93DST;Initial Catalog="+ HttpContext.Current.Session["CurrentDB"] + ";Integrated Security=true";
+                con_str = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
             else
                 con_str = System.Configuration.ConfigurationManager.ConnectionStrings["ESoft"].ToString();
             try

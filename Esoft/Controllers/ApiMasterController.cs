@@ -51,5 +51,23 @@ namespace Esoft.Controllers
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
+
+        [HttpGet]
+        public HttpResponseMessage LoginByUserCodeNPwd(String musercode, String mpwd)
+        {
+            GroupCodeValidate obj = new GroupCodeValidate();
+            DataTable dt = obj.LoginByUserCodeNPwd("",musercode, mpwd, "1", "");
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                resObj["status"] = 1;
+                resObj["message"] = dt;
+            }
+            else
+            {
+                resObj["status"] = 0;
+                resObj["message"] = "Wrong Credential.";
+            }
+            return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
+        }
     }
 }
