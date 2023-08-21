@@ -63,8 +63,6 @@ namespace Esoft.HelperClass
             MasterMethods objMaster = new MasterMethods();
             try
             {
-                int b = 0;
-                int a = 9 / b;
                 DataTable dt = new DataTable();
                 dt = objMaster.GetDataTableBySp(misRemotServ, db, "spGetuserwsCmpDiv", "@Objtyp", "LOGINBYCODEPWD", "@compid", mcompid, "@DivId", "", "", "", "", "", "@usercode", musercode, "@pwd", mpwd, "@myMacAdd", mmyMacAdd, "@Empid", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                 if (dt != null && dt.Rows.Count > 0)
