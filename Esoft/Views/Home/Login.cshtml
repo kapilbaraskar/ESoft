@@ -26,11 +26,47 @@
         /* border-bottom: 2px solid transparent;
         border-image: linear-gradient(0.25turn, rgba(255,249,34), rgba(255,0,128), rgba(56,2,155,0));
         border-image-slice: 1; */
+
+        #ErrorMsgDiv {
+            position: fixed;
+            width: 100%;
+            left: 0%;
+            z-index:9999;
+            overflow:hidden;
+            height:100%;
+        }
+        .errorValidmsg {
+            font-size: 12px;
+            justify-content: center;
+            color: red;
+        }
     </style>
 </head>
 
 <body class="" style="background-image: linear-gradient(to left, #3d1746, #2d1e48, #1d2345, #13253f, #102537);">
     <!-- <body class="bg-gradient-primary"> -->
+
+    <div id="ErrorMsgDiv" class="" style="display:none">
+        <div style="background-color: rgba(169, 168, 168, 0.3);height: 100%;">
+            <div class="row justify-content-center" style="top: 35%;position: relative;">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="card">
+                        <div class="card-header alert-danger">
+                            Error
+                            <button type="button" class="close closeErrormsg">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" id="ErrorMsg">Special title treatment</h5>
+                            @*<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>*@
+                            <a href="#" class="btn btn-primary float-right closeErrormsg">Ok</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
 
@@ -57,23 +93,26 @@
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
-                                            <label for="" style="margin-right: 13%;">Group:-</label>
+                                            <label for="InputGroupCode" style="margin-right: 2%;">Group Code:-</label>
                                             <input type="text" style="display: inline-block;
-                                            width: 72%;" class="form-control form-control-user" id="exampleInputGroup" aria-describedby="groupHelp" placeholder="Enter Group...">
+                                            width: 72%;" class="form-control form-control-user" id="InputGroupCode" aria-describedby="groupHelp" placeholder="Enter Group Code...">
+                                            <span style="display:none;" id="GroupCodeErrorMsg" class="errorValidmsg">Enter Group Code</span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="" style="margin-right: 1%;">Current Date:-</label>
+                                            <label for="" style="margin-right: 0%;">Current Date:-</label>
                                             <input required type="date" style="display: inline-block;width: 72%;" class="form-control form-control-user" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter Date...">
                                         </div>
                                         <div class="form-group">
-                                            <label for="" style="margin-right: 11%;">User ID:-</label>
+                                            <label for="" style="margin-right: 9%;">User ID:-</label>
                                             <input type="email" style="display: inline-block;
-                                            width: 72%;" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter User ID...">
+                                            width: 72%;" class="form-control form-control-user" id="InputUserId" aria-describedby="emailHelp" placeholder="Enter User ID...">
+                                            <span style="display:none;" id="UserIdErrorMsg" class="errorValidmsg">Enter User ID</span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="" style="margin-right: 6.9%;">Password:-</label>
+                                            <label for="" style="margin-right: 5%;">Password:-</label>
                                             <input type="password" style="display: inline-block;
-                                            width: 72%;" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            width: 72%;" class="form-control form-control-user" id="InputPassword" placeholder="Password">
+                                            <span style="display:none;" id="PasswordErrorMsg" class="errorValidmsg">Enter Password</span>
                                         </div>
 
                                         <div class="row mb-1">
@@ -82,7 +121,8 @@
                                             </div>
                                         </div>
                                         @*<a href="/Home/index"  class="btn btn-primary btn-user btn-block">Login</a>*@
-                                        <a href="#"  data-toggle="modal" data-target="#TransportlogoffModal1" class="btn btn-primary btn-user btn-block">Login</a>
+                                        @*<a href="#" data-toggle="modal" data-target="#TransportlogoffModal1" id="Loginbtn" onclick="loginFun()" class="btn btn-primary btn-user btn-block">Login</a>*@
+                                        <a href="#" data-toggle="modal"  id="Loginbtn" onclick="loginFun()" class="btn btn-primary btn-user btn-block">Login</a>
                                         <hr>
                                         <div class="row">
                                             <div class="col-4 mb-2 text-center">
@@ -117,153 +157,8 @@
 
     </div>
 
-    <!-- Transport Logoff Modal-->
-    <div class="modal fade" id="TransportlogoffModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-primary" id="exampleModalLabel">Transport Logoff</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="needs-validation" novalidate>
-                        <div class="form-row">
-                            <div class="col-md-6 clo-lg-6 mb-3">
-                                <label for="validationCustom01">User ID</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="userid" placeholder="User Id" value="" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 mb-3">
-                                <label for="validationCustom02">Password</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
-                                    </div>
-                                    <input type="password" class="form-control" id="pass" placeholder="Password" value="" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12 col-lg-12 mb-3">
-                                <label for="validationCustom03">Location</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-map-marker-alt" "></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="location" placeholder="Location" required>
-                                </div>
-                            </div>
-                        </div>
 
-                    </form>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-primary" href="/Home/index">Login</a>
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- HR Logoff Modal-->
-    <div class="modal fade" id="HRlogoffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-primary" id="exampleModalLabel">HR Logoff</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="needs-validation" novalidate>
-                        <div class="form-row">
-                            <div class="col-md-6 clo-lg-6 mb-3">
-                                <label for="validationCustom01">User Code</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="userid" placeholder="User Code" value="" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 mb-3">
-                                <label for="validationCustom02">Password</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
-                                    </div>
-                                    <input type="password" class="form-control" id="pass" placeholder="Password" value="" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12 col-lg-12 mb-3">
-                                <label for="validationCustom03">Company</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="P"><i class="fas fa-building" aria-hidden="true"></i></span>
-                                    </div>
-                                    <select id="Company" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <option>...</option>
-                                    </select>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 col-lg-12 mb-3">
-                                <label for="validationCustom03">Division</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-compass"></i></span>
-                                    </div>
-                                    <select id="division" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <option>...</option>
-                                    </select>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 col-lg-12 mb-3">
-                                <label for="validationCustom03">Segment</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-map-marker-alt"></i></span>
-                                    </div>
-                                    <select id="location" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-primary" href="/Home/index">Login</a>
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- HR Logoff Modal-->
+    <!-- ForgotPassword Logoff Modal-->
     <div class="modal fade" id="ForgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -295,7 +190,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </form>
 
 
@@ -322,29 +217,29 @@
     <script>
 
         $(document).ready(function () {
-            const date = new Date();
+            //const date = new Date();
 
-            let day = date.getDate();
-            let month = date.getMonth() + 1;
-            let year = date.getFullYear();
-            let Ddd = "";
-            if (month < 10) {
+            //let day = date.getDate();
+            //let month = date.getMonth() + 1;
+            //let year = date.getFullYear();
+            //let Ddd = "";
+            //if (month < 10) {
 
-                if (day < 10) {
-                     Ddd = year + '-0' + month + '-0' + day
-                } else {
-                     Ddd = year + '-0' + month + '-' + day
-                }
-                $("#dateInputGroup").val(Ddd)
-            }
-            else {
-                if (day < 10) {
-                     Ddd = year + '-0' + month + '-0' + day
-                } else {
-                     Ddd = year + '-' + month + '-' + day
-                }
-                $("#dateInputGroup").val(Ddd)
-            }
+            //    if (day < 10) {
+            //         Ddd = year + '-0' + month + '-0' + day
+            //    } else {
+            //         Ddd = year + '-0' + month + '-' + day
+            //    }
+            //    $("#dateInputGroup").val(Ddd)
+            //}
+            //else {
+            //    if (day < 10) {
+            //         Ddd = year + '-0' + month + '-0' + day
+            //    } else {
+            //         Ddd = year + '-' + month + '-' + day
+            //    }
+            //    $("#dateInputGroup").val(Ddd)
+            //}
 
             getCurrentPosition(success)
             getCurrentPosition(success, error)
@@ -353,7 +248,7 @@
 
         });
 
-
+        var urlLink = 'http://localhost:10666/Api/'
         //-----------------------
 
         const options = {
@@ -453,11 +348,141 @@
 
         }
 
-        //Vallidation Code form Login Form
-        function validataionLoginForm(){
 
+        //Code For Call API on Group Code
+        //$("#dateInputGroup").focusout(function (e) {
+        $("#dateInputGroup").focus(function (e) {
+            //$(this).css("background-color", "#FFFFFF");
+            debugger;
+            $("#loader").css("display", "block");
+            var groupCode = $("#InputGroupCode").val();
+
+            if (groupCode == null || groupCode == undefined || groupCode == '') {
+
+                $("#GroupCodeErrorMsg").css("display", 'flex');
+              
+            }
+            else {
+                $("#GroupCodeErrorMsg").css("display", 'none');
+
+                $.ajax({
+                    url: urlLink + 'ApiMaster/ValidateGroupCode',
+                    type: "GET",
+                    data: { "GroupCode": groupCode },
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    success: function (result) {
+                        debugger;
+
+                        if (result.status == 1) {
+                            var Data = new Date();
+                            Data = result.message
+                            var CrrDate = Data[0]['clDate'].split("T", 1);
+                            $("#dateInputGroup").val(CrrDate[0])
+                            console.log(Data)
+                            for (var key in Data[0]) {
+                                sessionStorage.setItem(key, Data[0][key])
+                            }
+                        }
+                        else {
+                            $("#InputGroupCode").val('');
+                            $("#dateInputGroup").val('');
+                            DisplayErroeMsg(result.message)          
+                        }
+                        $("#loader").css("display", "none");
+
+                    }
+                });
+            }
+        });
+        //-----------------------END-------------------------
+
+        $('.closeErrormsg').click(function () {
+            $("#ErrorMsgDiv").hide();
+        });
+
+        function DisplayErroeMsg(msg) {
+            $("#ErrorMsgDiv").show();
+            $("#ErrorMsg").html(msg);
+            $('.closeErrormsg').focus();
         }
-        function ValidGrouup(){
+
+        function loginFun() {
+            debugger
+            var GroupCode = $("#InputGroupCode").val();
+            var UserID = $("#InputUserId").val();
+            var password = $("#InputPassword").val();
+
+            if (GroupCode == "" || GroupCode == undefined || GroupCode == null) {
+                $("#GroupCodeErrorMsg").css("display", 'flex');
+            }
+            else {
+                $("#GroupCodeErrorMsg").css("display", 'none');
+            }
+            if (UserID == "" || UserID == undefined || UserID == null) {
+                $("#UserIdErrorMsg").css("display", 'flex');
+            }
+            else {
+                $("#UserIdErrorMsg").css("display", 'none');
+
+            }
+            if (password == "" || password == undefined || password == null) {
+                $("#PasswordErrorMsg").css("display", 'flex');
+            }
+            else {
+                $("#PasswordErrorMsg").css("display", 'none');
+            }
+
+            //if ((GroupCode != "" || GroupCode != undefined || GroupCode != null) && (UserID != "" || UserID != undefined || UserID != null) && (password != "" || password != undefined || password != null)) {
+            if (GroupCode != ""  && UserID != "" && password != "" ) {
+                $("#PasswordErrorMsg").css("display", 'none');
+                $("#UserIdErrorMsg").css("display", 'none');
+                $("#GroupCodeErrorMsg").css("display", 'none');
+
+
+                $.ajax({
+                    url: urlLink + 'ApiMaster/LoginByUserCodeNPwd',
+                    type: "GET",
+                    //dataType: "JSON",
+                    data: { "musercode": UserID, "mpwd": password},
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    //data: JSON.stringify({ "GroupCode": groupCode}),
+                    success: function (result) {
+                        debugger;
+
+                        if (result.status == 1) {
+                            var Data = new Date();
+                            Data = result.message
+                            //var CrrDate = Data[0]['clDate'].split("T", 1);
+                            //$("#dateInputGroup").val(CrrDate[0])
+
+                            sessionStorage.setItem("UserName", Data[0]['UserName']);
+                            var string = JSON.stringify(Data)
+
+                            localStorage.setItem("LogingObj",string)
+
+
+
+
+                            //for (var key in Data[0]) {
+                            //    localStorage.setItem(key, Data[0][key])
+                            //}
+                            location.replace("/Home/index")
+                            //Displaymenu(data)
+                        }
+                        else {                           
+                            DisplayErroeMsg(result.message);
+                        }
+                        $("#loader").css("display", "none");
+                        //$('#TransportlogoffModal1').modal('show');
+
+                    }
+                });
+
+
+
+            }
 
         }
 

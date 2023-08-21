@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this page -->
     <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/Content/css/Common_style.css" rel="stylesheet" />
 
     <style>
         li{
@@ -66,7 +67,7 @@
         }
 
         /*Loager Css start*/
-                
+
         #loader {
             position: fixed;
             left: 0px;
@@ -75,14 +76,62 @@
             height: 100%;
             z-index: 9999;
             /*background: url('https://rmt-local.s3.amazonaws.com/ta-static-images/LatestIcons/loadergif.gif') 50% 50% no-repeat rgba(238,238,238,0.95);*/
-            background: url('/Content/img/loader4.gif') 50% 50% no-repeat rgba(238,238,238,0.95);
+            /*background: url('/Content/img/loader4.gif') 50% 50% no-repeat rgba(238,238,238,0.95);*/
+            background: url('/Content/img/loader_(102537).gif') 50% 50% no-repeat rgba(238,238,238,0.95);
         }
         /*Loager Css End*/
+
+        /*============style form errorMsg*/
+        #ErrorMsgDiv {
+            position: fixed;
+            width: 100%;
+            left: 0%;
+            z-index: 9999;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .errorValidmsg {
+            font-size: 12px;
+            justify-content: center;
+            color: red;
+        }
+
+        /*=================END====================*/
+/*
+        .Manuactivebtn {
+            background-color: #858796;
+            color: black;
+            border-radius: 5px;
+        }*/
+
     </style>
 </head>
 
 <body id="page-top">
     <div id="loader"></div>
+    <div id="ErrorMsgDiv" class="" style="display:none">
+        <div style="background-color: rgba(169, 168, 168, 0.3);height: 100%;">
+            <div class="row justify-content-center" style="top: 35%;position: relative;">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="card">
+                        <div class="card-header alert-danger">
+                            Error
+                            <button type="button" class="close closeErrormsg">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" id="ErrorMsg">Special title treatment</h5>
+                            @*<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>*@
+                            <a href="#" class="btn btn-primary float-right closeErrormsg">Ok</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -118,6 +167,12 @@
                         </div>
                     </form>
 
+                    <h5 class="d-sm-inline-blockf form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <span  id="Userloaction" style="color:black ;cursor:pointer">
+      
+                        </span>
+                    </h5>
+
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -140,6 +195,7 @@
                                 </form>
                             </div>
                         </li>
+
 
 
 
@@ -283,8 +339,8 @@
                                     display: inline-block;"></div><span style="vertical-align: super"> Blue-Purple</span>
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-                                </a> -->
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+                </a> -->
                                 <a class="dropdown-item" href="#" onclick="toggleTheme('grey-dark')">
                                     <div class="mr-2 text-gray-400" style="background-color:#252525 ;height: 25px;
                                     width: 25px;
@@ -306,7 +362,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Kapil</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="logUserName"></span>
                                 <img class="img-profile rounded-circle" src="~/Content/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -318,8 +374,8 @@
                                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Forgot Password
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-                                </a> -->
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                </a> -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
@@ -396,6 +452,8 @@
     <!-- Page level custom scripts -->
     <script src="~/Content/js/demo/chart-area-demo.js"></script>
     <script src="~/Content/js/demo/chart-pie-demo.js"></script>
+    <script src="~/Content/js/demo/chart-bar-demo.js"></script>
+    <script src="~/Content/js/Common_js.js"></script>
 
 
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
@@ -423,13 +481,14 @@
 
     <script>
         var urlLink ='http://localhost:10666/Api/'
-        //var menulist = [{ "MnuId": 52, "ParentId": 48, "DispItem": "*Calender", "NavigateUrl": "/Test/Index", "CtrlName": "Test", "ActName": "Index", "MnuIcon": "fas fa-calendar-alt", "LvlNo": 3 }, { "MnuId": 33, "ParentId": 48, "DispItem": "*Challan", "NavigateUrl": "/Test/ChallanMob", "CtrlName": "Test", "ActName": "ChallanMob", "MnuIcon": "fas fa-receipt", "LvlNo": 3 }, { "MnuId": 49, "ParentId": 48, "DispItem": "*City Master", "NavigateUrl": "/CityMaster/CityMasterList", "CtrlName": "CityMaster", "ActName": "CityMasterList", "MnuIcon": "fa fa-city", "LvlNo": 3 }, { "MnuId": 37, "ParentId": 48, "DispItem": "*Customer Equipment", "NavigateUrl": "/EndUser/CecMaster", "CtrlName": "EndUser", "ActName": "CecMaster", "MnuIcon": "fas fa-address-card", "LvlNo": 3 }, { "MnuId": 59, "ParentId": 48, "DispItem": "*Enquiry", "NavigateUrl": "/Enquiry/TrPrEnquiry", "CtrlName": "Enquiry", "ActName": "TrPrEnquiry", "MnuIcon": "fa fa-envelope", "LvlNo": 3 }, { "MnuId": 82, "ParentId": 48, "DispItem": "*Loan", "NavigateUrl": "/Loan/LoanfrmI", "CtrlName": "Loan", "ActName": "", "MnuIcon": "fas fa-rupee-sign", "LvlNo": 3 }, { "MnuId": 61, "ParentId": 48, "DispItem": "*Menu", "NavigateUrl": "/Menufrm/Menuform?EntryMode=1&mMnuId=0", "CtrlName": "Menufrm", "ActName": "Menuform", "MnuIcon": "fas fa-clipboard-check", "LvlNo": 3 }, { "MnuId": 88, "ParentId": 48, "DispItem": "*Recruitment Web", "NavigateUrl": "/Recruitment/hrRecuI", "CtrlName": "Recruitment", "ActName": "hrRecuI", "MnuIcon": "fas fa-credit-card", "LvlNo": 3 }, { "MnuId": 86, "ParentId": 4, "DispItem": "FMaster", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 14, "ParentId": 2, "DispItem": "Transportation", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 63, "ParentId": 100, "DispItem": "xAccounting Voucher", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 90, "ParentId": 44, "DispItem": "xBilty", "NavigateUrl": "/Test/BiltyMob", "CtrlName": "Test", "ActName": "BiltyMob", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 65, "ParentId": 13, "DispItem": "xBroker", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 36, "ParentId": 13, "DispItem": "xBusiness Partner", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 76, "ParentId": 13, "DispItem": "xCity Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 45, "ParentId": 13, "DispItem": "xConfiguration", "NavigateUrl": "/modules/Outsourcing/itm.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 67, "ParentId": 13, "DispItem": "xConsignee / Consignor Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 98, "ParentId": 13, "DispItem": "xDelivery At", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 83, "ParentId": 86, "DispItem": "xDepreciation Chart", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 31, "ParentId": 14, "DispItem": "xEnquiry", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 15, "ParentId": 71, "DispItem": "xGeneral Ledger", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 22, "ParentId": 86, "DispItem": "xGL Group Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 68, "ParentId": 13, "DispItem": "xItem Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 99, "ParentId": 71, "DispItem": "xMY Reports", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 84, "ParentId": 86, "DispItem": "xOpening Trial Balance", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 85, "ParentId": 100, "DispItem": "xPDC Entry", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 78, "ParentId": 13, "DispItem": "xRateList", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 20, "ParentId": 7, "DispItem": "xReset Password", "NavigateUrl": "/Administration/Changpwd.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 91, "ParentId": 100, "DispItem": "xSettlements", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 96, "ParentId": 71, "DispItem": "xTrial Balance", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 77, "ParentId": 13, "DispItem": "xVehicle Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 1, "ParentId": 0, "DispItem": "File", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": "fas fa-file", "LvlNo": 1 }, { "MnuId": 100, "ParentId": 4, "DispItem": "Transactions", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 16, "ParentId": 44, "DispItem": "xCrossing Inward", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 53, "ParentId": 7, "DispItem": "xImport/Export", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 13, "ParentId": 14, "DispItem": "xMaster", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 44, "ParentId": 14, "DispItem": "Transactions", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 17, "ParentId": 44, "DispItem": "xChallan", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 55, "ParentId": 7, "DispItem": "xRewrite Data", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 26, "ParentId": 14, "DispItem": "*Reports", "NavigateUrl": "/Reports/Reportfrm", "CtrlName": "Reports", "ActName": "Reportfrm", "MnuIcon": null, "LvlNo": 3 }, { "MnuId": 71, "ParentId": 4, "DispItem": "Reports", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 4, "ParentId": 0, "DispItem": "Finance", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 1 }, { "MnuId": 35, "ParentId": 44, "DispItem": "xFreight Memo", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 18, "ParentId": 44, "DispItem": "xBilling", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 19, "ParentId": 44, "DispItem": "xGoods Delivery", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 74, "ParentId": 44, "DispItem": "Gate Pass", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 7, "ParentId": 0, "DispItem": "Utility", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 1 }, { "MnuId": 95, "ParentId": 44, "DispItem": "Refunds", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 48, "ParentId": 1, "DispItem": "Admin Setup", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": " fas fa-user-cog", "LvlNo": 2 }, { "MnuId": 47, "ParentId": 44, "DispItem": "xCartage Payment", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 10, "ParentId": 7, "DispItem": "x10", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 11, "ParentId": 7, "DispItem": "x11", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 39, "ParentId": 7, "DispItem": "x39", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 43, "ParentId": 7, "DispItem": "x43", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 21, "ParentId": 7, "DispItem": "xCast ", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 69, "ParentId": 7, "DispItem": "xDownloads", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 41, "ParentId": 7, "DispItem": "xMenu", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 24, "ParentId": 7, "DispItem": "xMenu Master", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 23, "ParentId": 7, "DispItem": "xN P S", "NavigateUrl": "/Service/nps.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 28, "ParentId": 7, "DispItem": "xN P S Enquiery", "NavigateUrl": "/Service/npsenquiery.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 25, "ParentId": 7, "DispItem": "xN P S List", "NavigateUrl": "/Service/npsreport.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 87, "ParentId": 7, "DispItem": "xNew AMC", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 75, "ParentId": 7, "DispItem": "xNew Ter", "NavigateUrl": "/Testing/ternew.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 12, "ParentId": 7, "DispItem": "xOthers", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 60, "ParentId": 7, "DispItem": "xPaySlip", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 64, "ParentId": 44, "DispItem": "xPOD", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 72, "ParentId": 7, "DispItem": "xRecipe", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 62, "ParentId": 7, "DispItem": "xRecp DocUpdate", "NavigateUrl": "/CourierMngt/recpdcupd.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 58, "ParentId": 7, "DispItem": "xReports", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 56, "ParentId": 7, "DispItem": "xRet - Stock Out", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 29, "ParentId": 7, "DispItem": "xSales Employee Details", "NavigateUrl": "/Service/SalesDetails.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 38, "ParentId": 7, "DispItem": "xSales Platform", "NavigateUrl": "/modules/Outsourcing/salespfm.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 101, "ParentId": 7, "DispItem": "xSecurity", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 80, "ParentId": 7, "DispItem": "xSend Email", "NavigateUrl": "srndemail.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 40, "ParentId": 7, "DispItem": "xService Amc Con.", "NavigateUrl": "/util/amcdem.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 50, "ParentId": 7, "DispItem": "xSms", "NavigateUrl": "/Util/sms.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 73, "ParentId": 7, "DispItem": "xState&City", "NavigateUrl": "/Testing/State.aspx", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 30, "ParentId": 7, "DispItem": "xTER", "NavigateUrl": " /service/TER.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 66, "ParentId": 7, "DispItem": "xTer (Travel Expenses Report)", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 79, "ParentId": 7, "DispItem": "xTest Image", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 89, "ParentId": 7, "DispItem": "xTest Page", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 51, "ParentId": 7, "DispItem": "xTO DO List", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 54, "ParentId": 7, "DispItem": "xVehicle Order", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }, { "MnuId": 57, "ParentId": 44, "DispItem": "xPOD Acknowledgement", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 81, "ParentId": 44, "DispItem": "xLocal Bilty", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 97, "ParentId": 44, "DispItem": "xLocal Crossing Inward", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 92, "ParentId": 44, "DispItem": "xLocal Challan", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 46, "ParentId": 44, "DispItem": "xLocal Goods Delivery", "NavigateUrl": "", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 4 }, { "MnuId": 93, "ParentId": 7, "DispItem": "xCVP / CVR", "NavigateUrl": "/modules/Outsourcing/cvp.aspx?p0=0", "CtrlName": "", "ActName": "", "MnuIcon": null, "LvlNo": 2 }]
-
+       
         $(document).ready(function () {
             //Displaymenu(menulist)
             $("#loader").css("display", "block");
-
+            
             GetSideMenuLink()
+            $("#Userloaction").html(sessionStorage.CityName);
+            $("#logUserName").html(sessionStorage.UserName);
         });
 
         function GetSideMenuLink() {
@@ -453,9 +512,10 @@
                     }
                     else {
                         console.log(error);
+                        DisplayErroeMsg(data.message)
                     }
                     $("#loader").css("display", "none");
-
+                    $('#TransportlogoffModal1').modal('show');
                 }
             });
         }
@@ -537,20 +597,20 @@
             str += '<div class="sidebar-brand-text mx-3">Company Name</div>'
             str += '</a>'
             str += '<hr class="sidebar-divider my-0">';
-            str += '<li class="nav-item">';
-            str += '<span class="nav-link">';
-            str += '<span class="mr-1">' + sessionStorage.CityName+'</span>';
-            str += '<span>Division</span>';
-            str += '</span>';
-            str += '</li>';
-            str += '<hr class="sidebar-divider my-0">';
+            //str += '<li class="nav-item">';
+            //str += '<span class="nav-link">';
+            //str += '<span class="mr-1">' + sessionStorage.CityName+'</span>';
+            //str += '<span>Division</span>';
+            //str += '</span>';
+            //str += '</li>';
+            //str += '<hr class="sidebar-divider my-0">';
 
         for (var i = 0; i < parentlist.length; i++) {
             second_level_list(parentlist[i]["MnuId"], menu);  //In parentlist array data is available in the form of array of object.
             if (child_list.length > 0) {
                 str += '<li class="nav-item treeview admin ' + (((secondlevelId == "0" ?thirdlevelId:secondlevelId) == parentlist[i]["MnuId"]) ? 'menu-open' : '') +'">';
                 //str += '<a class="nav-link" href="javascript:void(0)">'
-                str += '<a class="nav-link" href="javascript:void(0)" onclick="HideShowParent(this)">'
+                str += '<a class="nav-link mainmenuParent " href="javascript:void(0)" onclick="HideShowParent(this)">'
                 str += '<i class="' + parentlist[i]["MnuIcon"] + '"></i>'
                 str += '<span style="font-size: 1rem;">' + parentlist[i]["DispItem"] + '</span>'
                 str += '<span class="pull-right-container">'
@@ -564,7 +624,7 @@
                     third_level_list(child_list[j]["MnuId"], menu);
                     if (sub_child_list.length > 0) {
                         str += '<li class="nav-item hideShowChild treeview admin mb-1 ' + ((thirdlevelId == child_list[j]["MnuId"]) ? 'menu-open' : '') +'">';
-                        str += '<a class="nav-link pt-1 pb-1" href="javascript:void(0)" onclick="HideShowChild(this)">';
+                        str += '<a style="width:100%" class="nav-link pt-1 pb-1 mainmenuChild " href="javascript:void(0)" onclick="HideShowChild(this)">';
                         str += '<span>' + child_list[j]["DispItem"] + '</span>';
                         str += '<span class="pull-right-container">';
                         str += '<i  style="font-size:1rem;vertical-align: middle;float: right;margin-right: 10%;" class="fa fa-angle-right pull-right"></i>';
@@ -578,7 +638,7 @@
                             @*if (sub_child_list[k]["CtrlName"] + '/' + sub_child_list[k]["ActName"] == "@pageName/@actionName") {
                                 classnameNew = "active";
                             }*@
-                            str += '<li class="nav-item pt-1 pb-1 ' + classnameNew +'"><a  class="nav-link pt-1 pb-0 " href="javascript:void(0)" data-url="/' + sub_child_list[k]["CtrlName"] + '/' + sub_child_list[k]["ActName"] + '"  ><span>' + sub_child_list[k]["DispItem"] + '</span></a></li>';
+                            str += '<li class="nav-item pt-1 pb-1 ' + classnameNew +'"><a style="width:100%" class="nav-link pt-1 pb-0 mainmenuSubChild " href="javascript:void(0)" data-url="/' + sub_child_list[k]["CtrlName"] + '/' + sub_child_list[k]["ActName"] + '"  ><span>' + sub_child_list[k]["DispItem"] + '</span></a></li>';
                         }
                         str += '</ul>';
                         str += '</li>';
@@ -589,7 +649,7 @@
                         @*if (child_list[j]["CtrlName"] + '/' + child_list[j]["ActName"] == "@pageName/@actionName") {
                             }*@
                         str += '<li class="nav-item admin ' + classnameNew +'">';
-                        str += '<a class="nav-link pt-1 pb-0 " href="javascript:void(0)" data-url="/' + child_list[j]["CtrlName"] + '/' + child_list[j]["ActName"] + '"  >';
+                        str += '<a style="width:100%" class="nav-link pt-1 pb-0 mainmenuChild " href="javascript:void(0)" data-url="/' + child_list[j]["CtrlName"] + '/' + child_list[j]["ActName"] + '"  >';
                         str += '<span>' + child_list[j]["DispItem"] + '</span>';
                         str += '</a>';
                         str += '</li>'; classnameNew = "active";
@@ -621,10 +681,10 @@
 
         }
 
-
-
         function HideShowParent(e) {
-
+            debugger
+            $(".mainmenuParent.Manuactivebtn").removeClass('Manuactivebtn')
+            e.classList.add('Manuactivebtn');
             var classList = ''
             var boxes = document.querySelectorAll('.showParentUl');
             if (boxes != null && boxes.length > 0 && boxes != undefined) {
@@ -674,6 +734,8 @@
         }
 
         function HideShowChild(e) {
+            $(".mainmenuChild.Manuactivebtn").removeClass('Manuactivebtn')
+            e.classList.add('Manuactivebtn');
 
             var boxes = document.querySelectorAll('.showChildUl');
             if (boxes != null && boxes.length > 0 && boxes != undefined) {
@@ -702,6 +764,9 @@
         }
 
         function HideShowSubChild(e) {
+            debugger
+            $(".mainmenuSubChild.Manuactivebtn").removeClass('Manuactivebtn')
+            e.classList.add('Manuactivebtn');
 
             var boxes = document.querySelectorAll('.showSubChildUl');
             if (boxes != null && boxes.length > 0 && boxes != undefined) {
@@ -729,6 +794,23 @@
                 e.nextSibling.classList.add('showSubChildUl')
             }
         }
+
+
+        $(".mainmenuSubChild").click(function (e) {
+            $(".mainmenuSubChild.Manuactivebtn").removeClass('Manuactivebtn')
+            e.classList.add('Manuactivebtn');
+        })
+
+        //=============Code For Error Msg========08-08-2023=========
+        function DisplayErroeMsg(msg) {
+            $("#ErrorMsgDiv").show();
+            $("#ErrorMsg").html(msg);
+            $('.closeErrormsg').focus();
+        }
+        $('.closeErrormsg').click(function () {
+            $("#ErrorMsgDiv").hide();
+        });
+        //===========================END==================================
     </script>
 
 </body>

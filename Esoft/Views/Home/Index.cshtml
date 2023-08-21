@@ -9,8 +9,8 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-            <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
-        </a>*@
+                <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+            </a>*@
     </div>
 </div>
 
@@ -105,83 +105,14 @@
 
 <!-- Content Row -->
 
-<div class="row d-none">
-
-    <!-- Area Chart -->
-    <div class="col-xl-8 col-lg-7">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pie Chart -->
-    <div class="col-xl-4 col-lg-5">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                </div>
-                <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- DataTales Example -->
 <div class="row d-none">
     <div class="card shadow mb-1 mt-2 col-lg-12">
         @*<div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Example Data</h6>
-        </div>*@
+                <h6 class="m-0 font-weight-bold text-primary">Example Data</h6>
+            </div>*@
         <div class="card-body p-2">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -195,7 +126,7 @@
                             <th>Salary</th>
                         </tr>
                     </thead>
-                   
+
                     <tbody>
                         <tr>
                             <td>Tiger Nixon</td>
@@ -661,5 +592,437 @@
 </div>
 
 
-<div id="display_grid" class="row" style="width:100%"></div>
+@*Dynamic Datta table*@
+<div id="display_grid" class="row d-none" style="width:100%"></div>
 
+
+
+<!----- Dashboard Content ------>
+<!-- Dashboard -->
+<div class="row" style="height: 325px;" id="DashrowOne">
+    <div class="col-xl-6 col-lg-6 col-sm-6 pl-0 pr-2">
+        <div style="box-shadow: 0 0 6px #311b0b;border-radius: 5px;">
+            <div style="background-color: #fff; border-radius: 5px;">
+                <h5 class="p-2 text-center">Recruitment Detail</h5>
+            </div>
+            <div class="row px-2 pb-2 pt-2">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                    <div class="form-inline">
+                        <div class="form-group input-group-sm mr-2">
+                            <label for="" class="mr-2">From Date:-</label>
+                            <input type="date" class="form-control" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter From Date">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 ">
+                    <div class="form-inline">
+                        <div class="form-group input-group-sm">
+                            <label for="" class="mr-2">To Date:-</label>
+                            <input required type="date" class="form-control" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter To Date">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">SEARCH</button>
+                </div>
+            </div>
+
+
+            <div class="row mt-1">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div style="height: 218px;width: 100%;overflow: auto;padding-left: 1%;">
+                        <table class="table table-sm">
+                            <thead style="position: sticky;top: 0;">
+                                <tr>
+                                    <th scope="col" class="w-75">Description</th>
+                                    <th scope="col">No. of Candidates</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6 col-sm-6 col-md-6 p-0">
+        <div style="box-shadow: 0 0 6px #311b0b;border-radius: 5px;">
+            <div style="background-color: #fff; border-radius: 5px;">
+                <h5 class="p-2 text-center">Birthday / Anniversary List</h5>
+            </div>
+            <div class="row px-2 pt-0 pb-2">
+                <div class="col-lg-4 col-xl-4 col-md-4">
+                    <button type="button" style="width: 100%;" class="btn btn-sm btn-outline-secondary DashBirthAnnibtn activebtn">Birthday</button>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-4">
+                    <button type="button" style="width: 100%;" class="btn btn-sm btn-outline-secondary DashBirthAnnibtn ">Marriage Anniversary</button>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-4">
+                    <button type="button" style="width: 100%;" class="btn btn-sm btn-outline-secondary DashBirthAnnibtn ">Joining Anniversary</button>
+                </div>
+            </div>
+            <div class="row px-2 pb-2 pt-2">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                    <div class="form-inline">
+                        <div class="form-group input-group-sm mr-2">
+                            <label for="" class="mr-2">From Date:-</label>
+                            <input type="date" class="form-control" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter From Date">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 ">
+                    <div class="form-inline">
+                        <div class="form-group input-group-sm">
+                            <label for="" class="mr-2">To Date:-</label>
+                            <input required type="date" class="form-control" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter To Date">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">SEARCH</button>
+                </div>
+            </div>
+
+
+            <div class="row mt-1">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div style="height: 180px;overflow-y: scroll;overflow-x: hidden; padding-left: 1%;">
+                        <table class="table table-sm">
+                            <thead style="position: sticky;top: 0;">
+                                <tr>
+                                    <th scope="col" class="w-75">Description</th>
+                                    <th scope="col">No. of Candidates</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3" style="height: 300px;" id="DashrowTwo">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 pl-0 pr-2">
+        <div style="box-shadow: 0 0 6px #311b0b;border-radius: 5px;">
+            <div style="background-color: #fff; border-radius: 5px;">
+                <h5 class="p-2 text-center">Pending Requests</h5>
+            </div>
+            <div class="row mt-1">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div style="height: 250px;width: 100%;overflow: auto;padding-left: 1%;">
+                        <table class="table table-sm">
+                            <thead style="position: sticky;top: 0;">
+                                <tr>
+                                    <th scope="col" class="w-75">Description</th>
+                                    <th scope="col">No. of Candidates</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 p-0">
+        <div style="box-shadow: 0 0 6px #311b0b;border-radius: 5px;">
+            <div style="background-color: #fff; border-radius: 5px;">
+                <h5 class="p-2 text-center">Employee's Getting Confirmed</h5>
+            </div>
+            <div class="form-group col-md-12 col-xl-12 col-lg-12 col-sm-12">
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>Within One Month</option>
+                </select>
+            </div>
+            <div class="row mt-1">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div style="height: 196px;width: 100%;overflow: auto;padding-left: 1%;">
+                        <table class="table table-sm">
+                            <thead style="position: sticky;top: 0;">
+                                <tr>
+                                    <th scope="col" class="w-75">Description</th>
+                                    <th scope="col">No. of Candidates</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row mt-3" id="DashrowThree">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="box-shadow: 0 0 6px #311b0b;border-radius: 5px;">
+        <div>
+            <div style="background-color: #fff; border-radius: 5px;">
+                <h5 class="p-2 text-center">Recruitment Detail</h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-bar">
+                    <canvas id="myBarChart"></canvas>
+                </div>               
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END -->
+<!---- END ------->
+<!-- Transport Logoff Modal-->
+<div class="modal fade" id="TransportlogoffModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="exampleModalLabel">Transport Logoff</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-6 clo-lg-6 mb-3">
+                            <label for="validationCustom01">User ID</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="userid" placeholder="User Id" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 mb-3">
+                            <label for="validationCustom02">Password</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" id="pass" placeholder="Password" value="" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 col-lg-12 mb-3">
+                            <label for="validationCustom03">Location</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-map-marker-alt" "></i></span>
+                                </div>
+                                <select id="loc" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                                @*<input type="text" class="form-control" id="location" placeholder="Location" required>*@
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" href="">Login</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HR Logoff Modal-->
+<div class="modal fade" id="HRlogoffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="exampleModalLabel">HR Logoff</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-6 clo-lg-6 mb-3">
+                            <label for="validationCustom01">User Code</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="userid" placeholder="User Code" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 mb-3">
+                            <label for="validationCustom02">Password</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" id="pass" placeholder="Password" value="" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 col-lg-12 mb-3">
+                            <label for="validationCustom03">Company</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="P"><i class="fas fa-building" aria-hidden="true"></i></span>
+                                </div>
+                                <select id="Company" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-lg-12 mb-3">
+                            <label for="validationCustom03">Division</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-compass"></i></span>
+                                </div>
+                                <select id="division" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-lg-12 mb-3">
+                            <label for="validationCustom03">Segment</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-map-marker-alt"></i></span>
+                                </div>
+                                <select id="location" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" href="/Home/index">Login</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
