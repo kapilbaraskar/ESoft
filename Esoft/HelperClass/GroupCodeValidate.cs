@@ -10,7 +10,7 @@ namespace Esoft.HelperClass
 {
     public class GroupCodeValidate
     {
-        public DataTable CheckBpStatus(string mGroupCode)
+        public DataTable CheckBpStatus(string mGroupCode, string db = "")
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
             string con_str = System.Configuration.ConfigurationManager.ConnectionStrings["ESoft"].ToString();
@@ -21,19 +21,19 @@ namespace Esoft.HelperClass
 
                 if (mGroupCode == "0" || mGroupCode == "00" || mGroupCode == "000" || mGroupCode == "X")
                 {
-                    dt = objMaster.GetDataTableBySp("1", "spGetBPCode", "@GROUPCODE", mGroupCode, "@ObjId", "OFFLINEBP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+                    dt = objMaster.GetDataTableBySp("1", db, "spGetBPCode", "@GROUPCODE", mGroupCode, "@ObjId", "OFFLINEBP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                 }
                 else if (mGroupCode == "1" || mGroupCode == "11")
                 {
-                    dt = objMaster.GetDataTableBySp("1", "spGetBPCode", "@GROUPCODE", mGroupCode, "@ObjId", "OFFLINEBP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+                    dt = objMaster.GetDataTableBySp("1", db, "spGetBPCode", "@GROUPCODE", mGroupCode, "@ObjId", "OFFLINEBP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                 }
                 else if (mGroupCode == "2")
                 {
-                    dt = objMaster.GetDataTableBySp("1", "spGetBPCode", "@GROUPCODE", mGroupCode, "@ObjId", "OFFLINEBP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+                    dt = objMaster.GetDataTableBySp("1", db, "spGetBPCode", "@GROUPCODE", mGroupCode, "@ObjId", "OFFLINEBP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                 }
                 else if (mGroupCode != "")
                 {
-                    dt = objMaster.GetDataTableBySp("1", "spGetBPCode", "@GROUPCODE", mGroupCode, "@ObjId", "ONLINEBP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+                    dt = objMaster.GetDataTableBySp("1", db, "spGetBPCode", "@GROUPCODE", mGroupCode, "@ObjId", "ONLINEBP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                 }
                 else
                 {
@@ -57,15 +57,16 @@ namespace Esoft.HelperClass
             }
         }
 
-        public DataTable LoginByUserCodeNPwd(string misRemotServ, string musercode, string mpwd, string mcompid, string mmyMacAdd)
+        public DataTable LoginByUserCodeNPwd(string misRemotServ, string musercode, string mpwd, string mcompid, string mmyMacAdd, string db = "")
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
-            string con_str = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
             MasterMethods objMaster = new MasterMethods();
             try
             {
+                int b = 0;
+                int a = 9 / b;
                 DataTable dt = new DataTable();
-                dt = objMaster.GetDataTableBySp(misRemotServ, "spGetuserwsCmpDiv", "@Objtyp", "LOGINBYCODEPWD", "@compid", mcompid, "@DivId", "", "", "", "", "", "@usercode", musercode, "@pwd", mpwd, "@myMacAdd", mmyMacAdd, "@Empid", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+                dt = objMaster.GetDataTableBySp(misRemotServ, db, "spGetuserwsCmpDiv", "@Objtyp", "LOGINBYCODEPWD", "@compid", mcompid, "@DivId", "", "", "", "", "", "@usercode", musercode, "@pwd", mpwd, "@myMacAdd", mmyMacAdd, "@Empid", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                 if (dt != null && dt.Rows.Count > 0)
                     return dt;
                 else

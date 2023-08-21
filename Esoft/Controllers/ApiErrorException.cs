@@ -17,6 +17,10 @@ namespace Esoft.Controllers
             Log objLog = new Log();
             string user = "";
             Int32 Error_Log = 0;
+            var httpRequest = HttpContext.Current.Request;
+            
+            String DBNAME = httpRequest.Headers.Get("DBNAME");
+            
             #endregion
 
             const int MaxLength = 50000;
@@ -67,7 +71,7 @@ namespace Esoft.Controllers
             }
             #endregion
 
-            Error_Log = objLog.AddErrorLog(user, controllerName, actionName, Parameter_Data, exceptionMessage, stackTrace);
+            Error_Log = objLog.AddErrorLog(user, controllerName, actionName, Parameter_Data, exceptionMessage, stackTrace, DBNAME);
 
             filterContext.Response = objLog.ReturnHttpContext("3", ReturnType);
         }

@@ -12,10 +12,10 @@ namespace Esoft.HelperClass
 {
     public class MasterMethods
     {
-        public DataTable GetMenuData(Req_MenuData Obj)
+        public DataTable GetMenuData(Req_MenuData Obj, string db)
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
-            string con_str = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+            string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
             try
             {
                 DataSet ds = new DataSet();
@@ -150,7 +150,7 @@ namespace Esoft.HelperClass
             }
         }
 
-        public DataTable GetDataTableBySp(string misRemotServ, string spName, string para1, string value1, string para2, string value2,
+        public DataTable GetDataTableBySp(string misRemotServ, string db, string spName, string para1, string value1, string para2, string value2,
             string para3, string value3, string para4, string dtpvalue4, string para5,
             string dtpvalue5, string para6, string value6, string para7, string value7,
             string para8, string value8, string para9, string value9,
@@ -165,7 +165,7 @@ namespace Esoft.HelperClass
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
             string con_str = "";
             if(misRemotServ == "")
-                con_str = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+                con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
             else
                 con_str = System.Configuration.ConfigurationManager.ConnectionStrings["ESoft"].ToString();
             try

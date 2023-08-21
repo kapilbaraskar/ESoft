@@ -14,22 +14,36 @@ namespace Esoft.Controllers
 {
     public class ApiMasterController : ApiController
     {
+        String DBNAME = "";
         MasterMethods objMaster = new MasterMethods();
         Dictionary<string, object> resObj = new Dictionary<string, object>();
 
         [HttpPost]
         public HttpResponseMessage GetMenuData(Req_MenuData Obj)
         {
-            DataTable dt = objMaster.GetMenuData(Obj);
-            if(dt != null && dt.Rows.Count > 0)
+            IEnumerable<string> DB_NAME;
+            if (Request.Headers.TryGetValues("DBNAME", out DB_NAME))
             {
-                resObj["status"] = 1;
-                resObj["message"] = dt;
+                DBNAME = ((string[])DB_NAME)[0].ToString();
+            }
+            if(DBNAME != "")
+            {
+                DataTable dt = objMaster.GetMenuData(Obj, DBNAME);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    resObj["status"] = 1;
+                    resObj["message"] = dt;
+                }
+                else
+                {
+                    resObj["status"] = 0;
+                    resObj["message"] = "Data Not Found.";
+                }
             }
             else
             {
                 resObj["status"] = 0;
-                resObj["message"] = "Data Not Found.";
+                resObj["message"] = "Database not found.";
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
@@ -55,17 +69,30 @@ namespace Esoft.Controllers
         [HttpGet]
         public HttpResponseMessage LoginByUserCodeNPwd(String musercode, String mpwd)
         {
-            GroupCodeValidate obj = new GroupCodeValidate();
-            DataTable dt = obj.LoginByUserCodeNPwd("",musercode, mpwd, "1", "");
-            if (dt != null && dt.Rows.Count > 0)
+            IEnumerable<string> DB_NAME;
+            if (Request.Headers.TryGetValues("DBNAME", out DB_NAME))
             {
-                resObj["status"] = 1;
-                resObj["message"] = dt;
+                DBNAME = ((string[])DB_NAME)[0].ToString();
+            }
+            if (DBNAME != "")
+            {
+                GroupCodeValidate obj = new GroupCodeValidate();
+                DataTable dt = obj.LoginByUserCodeNPwd("", musercode, mpwd, "1", "", DBNAME);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    resObj["status"] = 1;
+                    resObj["message"] = dt;
+                }
+                else
+                {
+                    resObj["status"] = 0;
+                    resObj["message"] = "Wrong Credential.";
+                }
             }
             else
             {
                 resObj["status"] = 0;
-                resObj["message"] = "Wrong Credential.";
+                resObj["message"] = "Database not found.";
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
