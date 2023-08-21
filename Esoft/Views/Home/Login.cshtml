@@ -448,6 +448,9 @@
                     async: false,
                     contentType: "application/json; charset=utf-8",
                     //data: JSON.stringify({ "GroupCode": groupCode}),
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
+                    },
                     success: function (result) {
                         debugger;
 
