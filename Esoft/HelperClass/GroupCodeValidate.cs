@@ -13,7 +13,6 @@ namespace Esoft.HelperClass
         public DataTable CheckBpStatus(string mGroupCode, string db = "")
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
-            string con_str = System.Configuration.ConfigurationManager.ConnectionStrings["ESoft"].ToString();
             MasterMethods objMaster = new MasterMethods();
             try
             {

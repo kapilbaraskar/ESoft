@@ -96,5 +96,36 @@ namespace Esoft.Controllers
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
+
+        [HttpGet]
+        public HttpResponseMessage GetDataForDashboard(String Ind, String PROJCODE)
+        {
+            IEnumerable<string> DB_NAME;
+            if (Request.Headers.TryGetValues("DBNAME", out DB_NAME))
+            {
+                DBNAME = ((string[])DB_NAME)[0].ToString();
+            }
+            if (DBNAME != "")
+            {
+                Dashboard obj = new Dashboard();
+                DataSet ds = obj.GetDataForDashboard(Ind, PROJCODE, DBNAME);
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    resObj["status"] = 1;
+                    resObj["message"] = ds;
+                }
+                else
+                {
+                    resObj["status"] = 0;
+                    resObj["message"] = "Data not found.";
+                }
+            }
+            else
+            {
+                resObj["status"] = 0;
+                resObj["message"] = "Database not found.";
+            }
+            return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
+        }
     }
 }

@@ -1,4 +1,22 @@
-﻿------------------------17-08-023--------------------------
+﻿------------------------22-08-23 (After taking new database)--------------------------
+
+CREATE TABLE [dbo].[error_log](
+	[sr_no] [int] IDENTITY(1,1) NOT NULL,
+	[user_id] [nvarchar](100) NULL,
+	[error_controller_name] [nvarchar](100) NULL,
+	[error_action_name] [nvarchar](200) NULL,
+	[error_data] [nvarchar](max) NULL,
+	[error_message] [nvarchar](max) NULL,
+	[error_stack_trace] [nvarchar](max) NULL,
+	[error_datetime] [datetime] NULL,
+	[ip_address] [nvarchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[sr_no] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+------------------------17-08-023--------------------------
 
 UPDATE  mUsers SET UserPWD = '.' Where UserCode = '1571';
 
