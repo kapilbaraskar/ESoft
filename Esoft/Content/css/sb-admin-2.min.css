@@ -11670,9 +11670,10 @@ body.sidebar-toggled footer.sticky-footer {
     --color-text: #ffffff;
     --sidebar-bg: linear-gradient(to top, #3d1746, #2d1e48, #1d2345, #13253f, #102537);
     --bg-body: #fff;
-    --btn-primary: #113b60!important;
-    --btn-hover: #5871bcd1!important;
-    --table-thead: #113b60!important;
+    --btn-primary: #113b60 !important;
+    --btn-hover: #5871bcd1 !important;
+    --table-thead: #113b60 !important;
+    --memu-active-color: linear-gradient(to left, rgba(255,0,0,0), rgba(255, 199, 65));
     /* var(--orange); */
 }
 
@@ -11682,21 +11683,27 @@ body.sidebar-toggled footer.sticky-footer {
     --bg-body: #fff;
     --btn-primary: #2d2d2d;
     --btn-hover: #636363;
-    --table-thead: #2d2d2d!important;
+    --table-thead: #2d2d2d !important;
+    --memu-active-color: linear-gradient(to left, rgba(255,0,0,0), rgba(202, 206, 209 ));
 }
 
 .light-blue {
     --color-text: #ffffff;
     --sidebar-bg: linear-gradient(to bottom, #a091f991, #5a78aa, #1a214e, #000000, #122d45);
     --bg-body: #fff;
-    --btn-primary: #5a78aa!important;
+    --btn-primary: #5a78aa !important;
     --btn-hover: #5a78aa;
-    --table-thead: #5a78aa!important;
+    --table-thead: #5a78aa !important;
+    --memu-active-color: linear-gradient(to left, rgba(255,0,0,0), rgba(77, 93, 192 ));
+}
+
+.Manuactivebtn {
+    background-image: var(--memu-active-color)
 }
 
 .sidebar {
     background-image: var(--sidebar-bg);
-    color: black!important;
+    color: black !important;
 }
 
 .btn-primary {
@@ -11721,4 +11728,17 @@ thead {
     background: var(--table-thead);
     /* background-image: linear-gradient(to top, #2f0b37, #3d1d4c, #3f1d49, #172942, #172f43); */
     border-radius: 10px;
+}
+
+.DashboardTableMainDiv::-webkit-scrollbar {
+    width: 8px;
+    padding-left: 2%;
+    padding-right:1%;
+}
+
+.DashboardTableMainDiv::-webkit-scrollbar-thumb {
+    background: var(--table-thead);
+    /* background-image: linear-gradient(to top, #2f0b37, #3d1d4c, #3f1d49, #172942, #172f43); */
+    border-radius: 8px;
+   
 }
