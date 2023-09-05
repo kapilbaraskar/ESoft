@@ -65,7 +65,7 @@ namespace Esoft.HelperClass
                 string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
                 DataTable dt = new DataTable();
 
-                dt = objMaster.GetDataTableBySp("", db, "spGetTableData", "@ObjId", "MLOCT2", "@LocId", "1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+                dt = objMaster.GetDataTableBySp("", db, "spGetTableData", "@ObjId", "MLOCT2", "@LocId", DfLocDetId, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
