@@ -127,5 +127,67 @@ namespace Esoft.Controllers
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
+
+        [HttpGet]
+        public HttpResponseMessage GetDataForCityMasterTreeView()
+        {
+            IEnumerable<string> DB_NAME;
+            if (Request.Headers.TryGetValues("DBNAME", out DB_NAME))
+            {
+                DBNAME = ((string[])DB_NAME)[0].ToString();
+            }
+            if (DBNAME != "")
+            {
+                CityMaster obj = new CityMaster();
+                DataTable dt = obj.GetDataForCityMasterTreeView(DBNAME);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    resObj["status"] = 1;
+                    resObj["message"] = dt;
+                }
+                else
+                {
+                    resObj["status"] = 0;
+                    resObj["message"] = "Data not found.";
+                }
+            }
+            else
+            {
+                resObj["status"] = 0;
+                resObj["message"] = "Database not found.";
+            }
+            return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
+        }
+        
+        [HttpGet]
+        public HttpResponseMessage GetDataForCityMasterDropDowns(String DfLocDetId)
+        {
+            IEnumerable<string> DB_NAME;
+            if (Request.Headers.TryGetValues("DBNAME", out DB_NAME))
+            {
+                DBNAME = ((string[])DB_NAME)[0].ToString();
+            }
+            if (DBNAME != "")
+            {
+                CityMaster obj = new CityMaster();
+                DataSet ds = obj.GetDataForCityMasterDropDowns(DfLocDetId, DBNAME);
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    resObj["status"] = 1;
+                    resObj["message"] = ds;
+                }
+                else
+                {
+                    resObj["status"] = 0;
+                    resObj["message"] = "Data not found.";
+                }
+            }
+            else
+            {
+                resObj["status"] = 0;
+                resObj["message"] = "Database not found.";
+            }
+            return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
+        }
     }
 }
