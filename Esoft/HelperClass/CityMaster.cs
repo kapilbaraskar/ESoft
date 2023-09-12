@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esoft.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -108,6 +109,186 @@ namespace Esoft.HelperClass
                 {
                     writer.WriteLine("-----Start Log-----");
                     writer.WriteLine("Method Name --> GetDataForCityMasterDropDowns : " + EX.Message.ToString() + Environment.NewLine + EX.StackTrace);
+                    writer.WriteLine("-----Stop Log-----");
+                    writer.Close();
+                }
+                throw EX;
+            }
+        }
+        public string SaveCityMasterData(CityMasterData Obj, string UserCode, string CompId, string db)
+        {
+            string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
+            string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(con_str))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        con.Open();
+                    SqlCommand objCommand = new SqlCommand();
+                    objCommand.Connection = con;
+
+                    #region System Generated Booking Details
+                    objCommand.Parameters.Clear();
+                    if (Obj.EntryMode != null && Obj.EntryMode != "")
+                        objCommand.Parameters.Add("@EntryMode", SqlDbType.VarChar).Value = Obj.EntryMode;
+                    else
+                        objCommand.Parameters.Add("@EntryMode", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.cityid != null && Obj.cityid != "")
+                        objCommand.Parameters.Add("@cityid", SqlDbType.VarChar).Value = Obj.cityid;
+                    else
+                        objCommand.Parameters.Add("@cityid", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.CityName != null && Obj.CityName != "")
+                        objCommand.Parameters.Add("@CityName", SqlDbType.VarChar).Value = Obj.CityName;
+                    else
+                        objCommand.Parameters.Add("@CityName", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.CtAlias != null && Obj.CtAlias != "")
+                        objCommand.Parameters.Add("@CtAlias", SqlDbType.VarChar).Value = Obj.CtAlias;
+                    else
+                        objCommand.Parameters.Add("@CtAlias", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.Zip != null && Obj.Zip != "")
+                        objCommand.Parameters.Add("@Zip", SqlDbType.VarChar).Value = Obj.Zip;
+                    else
+                        objCommand.Parameters.Add("@Zip", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.DefDocChrgs != null && Obj.DefDocChrgs != "")
+                        objCommand.Parameters.Add("@DefDocChrgs", SqlDbType.VarChar).Value = Obj.DefDocChrgs;
+                    else
+                        objCommand.Parameters.Add("@DefDocChrgs", SqlDbType.VarChar).Value = "";
+
+                    objCommand.Parameters.Add("@usercode", SqlDbType.VarChar).Value = UserCode;
+
+                    if (Obj.DfTransport != null && Obj.DfTransport != "")
+                        objCommand.Parameters.Add("@DfTransport", SqlDbType.VarChar).Value = Obj.DfTransport;
+                    else
+                        objCommand.Parameters.Add("@DfTransport", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.isRoute != null && Obj.isRoute != "")
+                        objCommand.Parameters.Add("@isRoute", SqlDbType.VarChar).Value = Obj.isRoute;
+                    else
+                        objCommand.Parameters.Add("@isRoute", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.isLocked != null && Obj.isLocked != "")
+                        objCommand.Parameters.Add("@isLocked", SqlDbType.VarChar).Value = Obj.isLocked;
+                    else
+                        objCommand.Parameters.Add("@isLocked", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.isStation != null && Obj.isStation != "")
+                        objCommand.Parameters.Add("@isStation", SqlDbType.VarChar).Value = Obj.isStation;
+                    else
+                        objCommand.Parameters.Add("@isStation", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.GlAcId != null && Obj.GlAcId != "")
+                        objCommand.Parameters.Add("@GlAcId", SqlDbType.VarChar).Value = Obj.GlAcId;
+                    else
+                        objCommand.Parameters.Add("@GlAcId", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.StateId != null && Obj.StateId != "")
+                        objCommand.Parameters.Add("@StateId", SqlDbType.VarChar).Value = Obj.StateId;
+                    else
+                        objCommand.Parameters.Add("@StateId", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.RouteId != null && Obj.RouteId != "")
+                        objCommand.Parameters.Add("@RouteId", SqlDbType.VarChar).Value = Obj.RouteId;
+                    else
+                        objCommand.Parameters.Add("@RouteId", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.DeliveryAt != null && Obj.DeliveryAt != "")
+                        objCommand.Parameters.Add("@DeliveryAt", SqlDbType.VarChar).Value = Obj.DeliveryAt;
+                    else
+                        objCommand.Parameters.Add("@DeliveryAt", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.DeliveryAdd != null && Obj.DeliveryAdd != "")
+                        objCommand.Parameters.Add("@DeliveryAdd", SqlDbType.VarChar).Value = Obj.DeliveryAdd;
+                    else
+                        objCommand.Parameters.Add("@DeliveryAdd", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.ContactNo != null && Obj.ContactNo != "")
+                        objCommand.Parameters.Add("@ContactNo", SqlDbType.VarChar).Value = Obj.ContactNo;
+                    else
+                        objCommand.Parameters.Add("@ContactNo", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.ChargesUpTo != null && Obj.ChargesUpTo != "")
+                        objCommand.Parameters.Add("@ChargesUpTo", SqlDbType.VarChar).Value = Obj.ChargesUpTo;
+                    else
+                        objCommand.Parameters.Add("@ChargesUpTo", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.isMultiRoute != null && Obj.isMultiRoute != "")
+                        objCommand.Parameters.Add("@isMultiRoute", SqlDbType.VarChar).Value = Obj.isMultiRoute;
+                    else
+                        objCommand.Parameters.Add("@isMultiRoute", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.OrderNo != null && Obj.OrderNo != "")
+                        objCommand.Parameters.Add("@OrderNo", SqlDbType.VarChar).Value = Obj.OrderNo;
+                    else
+                        objCommand.Parameters.Add("@OrderNo", SqlDbType.VarChar).Value = "";
+                    
+                    if (Obj.BusChg != null && Obj.BusChg != "")
+                        objCommand.Parameters.Add("@BusChg", SqlDbType.VarChar).Value = Obj.BusChg;
+                    else
+                        objCommand.Parameters.Add("@BusChg", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.Distance != null && Obj.Distance != "")
+                        objCommand.Parameters.Add("@Distance", SqlDbType.VarChar).Value = Obj.Distance;
+                    else
+                        objCommand.Parameters.Add("@Distance", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.Catg != null && Obj.Catg != "")
+                        objCommand.Parameters.Add("@Catg", SqlDbType.VarChar).Value = Obj.Catg;
+                    else
+                        objCommand.Parameters.Add("@Catg", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.ParentId != null && Obj.ParentId != "")
+                        objCommand.Parameters.Add("@ParentId", SqlDbType.VarChar).Value = Obj.ParentId;
+                    else
+                        objCommand.Parameters.Add("@ParentId", SqlDbType.VarChar).Value = "";
+
+                    objCommand.Parameters.Add("@CompId", SqlDbType.VarChar).Value = CompId;
+
+                    if (Obj.LocId != null && Obj.LocId != "")
+                        objCommand.Parameters.Add("@LocId", SqlDbType.VarChar).Value = Obj.LocId;
+                    else
+                        objCommand.Parameters.Add("@LocId", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.DfToLocId != null && Obj.DfToLocId != "")
+                        objCommand.Parameters.Add("@DfToLocId", SqlDbType.VarChar).Value = Obj.DfToLocId;
+                    else
+                        objCommand.Parameters.Add("@DfToLocId", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.DefDelComPer != null && Obj.DefDelComPer != "")
+                        objCommand.Parameters.Add("@DefDelComPer", SqlDbType.VarChar).Value = Obj.DefDelComPer;
+                    else
+                        objCommand.Parameters.Add("@DefDelComPer", SqlDbType.VarChar).Value = "";
+
+                    if (Obj.Remark != null && Obj.Remark != "")
+                        objCommand.Parameters.Add("@Remark", SqlDbType.VarChar).Value = Obj.Remark;
+                    else
+                        objCommand.Parameters.Add("@Remark", SqlDbType.VarChar).Value = "";
+                    
+                    if (Obj.DistId != null && Obj.DistId != "")
+                        objCommand.Parameters.Add("@DistId", SqlDbType.VarChar).Value = Obj.DistId;
+                    else
+                        objCommand.Parameters.Add("@DistId", SqlDbType.VarChar).Value = "";
+
+                    objCommand.CommandText = "spmcity";
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    if (objCommand.ExecuteNonQuery() <= 0)
+                        return "0";
+                    else
+                        return "1";
+                    #endregion
+                }
+            }
+            catch (Exception EX)
+            {
+                using (StreamWriter writer = new StreamWriter(path, true))
+                {
+                    writer.WriteLine("-----Start Log-----");
+                    writer.WriteLine("Method Name --> SaveCityMasterData : " + EX.Message.ToString() + Environment.NewLine + EX.StackTrace);
                     writer.WriteLine("-----Stop Log-----");
                     writer.Close();
                 }

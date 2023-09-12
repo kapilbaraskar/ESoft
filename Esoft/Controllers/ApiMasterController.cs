@@ -14,7 +14,7 @@ namespace Esoft.Controllers
 {
     public class ApiMasterController : ApiController
     {
-        String DBNAME = "";
+        String DBNAME = "", UserCode = "", CompId = "";
         MasterMethods objMaster = new MasterMethods();
         Dictionary<string, object> resObj = new Dictionary<string, object>();
 
@@ -26,7 +26,7 @@ namespace Esoft.Controllers
             {
                 DBNAME = ((string[])DB_NAME)[0].ToString();
             }
-            if(DBNAME != "")
+            if (DBNAME != "")
             {
                 DataTable dt = objMaster.GetMenuData(Obj, DBNAME);
                 if (dt != null && dt.Rows.Count > 0)
@@ -158,7 +158,7 @@ namespace Esoft.Controllers
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
-        
+
         [HttpGet]
         public HttpResponseMessage GetDataForCityMasterDropDowns(String DfLocDetId)
         {
@@ -180,6 +180,48 @@ namespace Esoft.Controllers
                 {
                     resObj["status"] = 0;
                     resObj["message"] = "Data not found.";
+                }
+            }
+            else
+            {
+                resObj["status"] = 0;
+                resObj["message"] = "Database not found.";
+            }
+            return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
+        }
+
+        [HttpPost]
+        public HttpResponseMessage SaveCityMasterData(CityMasterData data)
+        {
+            string result = "";
+            IEnumerable<string> DB_NAME;
+            IEnumerable<string> User_Code;
+            IEnumerable<string> Comp_Id;
+            if (Request.Headers.TryGetValues("DBNAME", out DB_NAME))
+            {
+                DBNAME = ((string[])DB_NAME)[0].ToString();
+            }
+            if (Request.Headers.TryGetValues("UserCode", out User_Code))
+            {
+                UserCode = ((string[])User_Code)[0].ToString();
+            }
+            if (Request.Headers.TryGetValues("CompId", out Comp_Id))
+            {
+                CompId = ((string[])Comp_Id)[0].ToString();
+            }
+            if (DBNAME != "")
+            {
+                CityMaster obj = new CityMaster();
+                result = obj.SaveCityMasterData(data, UserCode, CompId, DBNAME);
+                if (result == "1")
+                {
+                    resObj["status"] = 1;
+                    resObj["message"] = "data save successfully.";
+                }
+                else
+                {
+                    resObj["status"] = 0;
+                    resObj["message"] = "Something went wrong.";
                 }
             }
             else
