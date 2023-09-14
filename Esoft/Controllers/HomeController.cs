@@ -36,5 +36,34 @@ namespace Esoft.Controllers
 
             return View();
         }
+
+
+        public ActionResult CityMasterList()
+        {
+            ViewBag.Message = "Your CityMasterList page.";
+
+            return View();
+        }
+
+        public ActionResult RateListBilty()
+        {
+            ViewBag.Message = "Your RateListBilty page.";
+
+            return View();
+        }
+
+        public ActionResult CoOprativeLoan()
+        {
+            ViewBag.Message = "Your CoOprativeLoan page.";
+
+            return View();
+        }
+
+        public ActionResult RefundsReceipts()
+        {
+            ViewBag.Message = "Your RefundsReceipts page.";
+
+            return View();
+        }
     }
 }

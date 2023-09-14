@@ -11742,3 +11742,15 @@ thead {
     border-radius: 8px;
    
 }
+
+
+.CommonScroleStyle::-webkit-scrollbar {
+    width: 8px;
+    padding-left: 2%;
+    padding-right: 1%;
+}
+.CommonScroleStyle::-webkit-scrollbar-thumb {
+    background: var(--table-thead);
+    /* background-image: linear-gradient(to top, #2f0b37, #3d1d4c, #3f1d49, #172942, #172f43); */
+    border-radius: 10px;
+}

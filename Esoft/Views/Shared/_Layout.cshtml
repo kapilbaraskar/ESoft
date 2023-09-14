@@ -95,6 +95,15 @@
             height: 100%;
         }
 
+        #SeccessMsgDiv {
+            position: fixed;
+            width: 100%;
+            left: 0%;
+            z-index: 9999;
+            overflow: hidden;
+            height: 100%;
+        }
+
         .errorValidmsg {
             font-size: 12px;
             justify-content: center;
@@ -140,6 +149,28 @@
         </div>
     </div>
 
+    <div id="SeccessMsgDiv" class="" style="display:none">
+        <div style="background-color: rgba(169, 168, 168, 0.3);height: 100%;">
+            <div class="row justify-content-center" style="top: 35%;position: relative;">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="card">
+                        <div class="card-header alert-success">
+                            Success
+                            <button type="button" class="close closeErrormsg">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" id="SeccessMsg">Special title treatment</h5>
+                            @*<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>*@
+                            <a href="#" class="btn btn-primary float-right closeErrormsg">Ok</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -176,8 +207,8 @@
                     </form>
 
                     <h5 class="d-sm-inline-blockf form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <span  id="Userloaction" style="color:black ;cursor:pointer">
-      
+                        <span id="Userloaction" style="color:black ;cursor:pointer">
+
                         </span>
                     </h5>
 
@@ -347,8 +378,8 @@
                                     display: inline-block;"></div><span style="vertical-align: super"> Blue-Purple</span>
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-                </a> -->
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+                                </a> -->
                                 <a class="dropdown-item" href="#" onclick="toggleTheme('grey-dark')">
                                     <div class="mr-2 text-gray-400" style="background-color:#252525 ;height: 25px;
                                     width: 25px;
@@ -382,8 +413,8 @@
                                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Forgot Password
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-                </a> -->
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                                </a> -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
@@ -487,10 +518,13 @@
     <!-- Page level custom scripts -->
     <script src="~/Content/js/demo/datatables-demo.js"></script>
 
+    @*Link for Chart*@
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+
 
     <script>
         var urlLink ='http://localhost:10666/Api/'
-       
+
         $(document).ready(function () {
             //Displaymenu(menulist)
             $("#loader").css("display", "block");
@@ -501,8 +535,10 @@
             $("#Userloaction").html(sessionStorage.CityName);
             $("#logUserName").html(sessionStorage.UserName);
 
-            
+
         });
+
+
 
         function GetSideMenuLink() {
             $("#loader").css("display", "block");
@@ -811,7 +847,7 @@
             }
         }
 
-        
+
         //$(".mainmenuSubChild").on('click', function (e) {
         //    $(".mainmenuSubChild.Manuactivebtn").removeClass('Manuactivebtn')
         //    e.classList.add('Manuactivebtn');
@@ -828,8 +864,15 @@
             $("#ErrorMsg").html(msg);
             $('.closeErrormsg').focus();
         }
+        function DisplaySeccessMsg(msg) {
+            $("#SeccessMsgDiv").show();
+            $("#SeccessMsg").html(msg);
+            $('.closeErrormsg').focus();
+        }
+
         $('.closeErrormsg').click(function () {
             $("#ErrorMsgDiv").hide();
+            $("#SeccessMsgDiv").hide();
         });
         //===========================END==================================
 
@@ -839,13 +882,13 @@
         var DashBoardData = new Array();
         function GetDashboardData() {
             $("#loader").css("display", "block");
-            
+
             $.ajax({
                 url: urlLink + 'ApiMaster/GetDataForDashboard',
                 type: "GET",
-                dataType: "JSON", 
+                dataType: "JSON",
                 data: { "Ind": '1', "PROJCODE": 'trpr' },
-                contentType: "application/json; charset=utf-8",                
+                contentType: "application/json; charset=utf-8",
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
                 },
@@ -863,11 +906,10 @@
                         DisplayErroeMsg(data.message)
                     $("#loader").css("display", "none");
                     }
-                   
+
                 }
             });
         }
-
 
     </script>
 

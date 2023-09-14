@@ -4,12 +4,9 @@
     if (Data.Table != null && Data.Table.length > 0 && Data.Table != undefined) {
         $("#marqueeTag").html(Data.Table[0]['mrqTest'])
     } else { $("#marqueeTag").html(''); $("#marqueeTag").html('No Data'); }
-
-    //if (Data.Table1 != null && Data.Table1.length > 0 && Data1.Table != undefined) { } else { $("#tb1").html(''); $("#tb1").html('No Data'); }
-    //if (Data.Table3 != null && Data.Table3.length > 0 && Data.Table3 != undefined) { } else { $("#tb1").html(''); $("#tb1").html('No Data'); }
-
     //Code For Pending Request
     if (Data.Table5 != null && Data.Table5.length > 0 && Data.Table5 != undefined) {
+
         var str =''
         str += '<table class="table table-sm" >';
         str += '<thead style="position: sticky;top: 0;">';
@@ -29,9 +26,12 @@
         str += '</table>';
 
         $("#dashboardPendingReq").html(str);
+        $("#dashboardPendingReq").css("padding-top", "0%");
     } else {
         $("#dashboardPendingReq").html('');
         $("#dashboardPendingReq").html('No Data');
+        $("#dashboardPendingReq").css("text-align", "center");
+        $("#dashboardPendingReq").css("padding-top", "10%");
     }
 
     // Code For Employee Detail
@@ -55,48 +55,125 @@
         str += '</table>';
 
         $("#dashboardEmployeeDetail").html(str);
+        $("#dashboardEmployeeDetail").css("padding-top", "0%")
+
     } else {
         $("#dashboardEmployeeDetail").html('');
         $("#dashboardEmployeeDetail").html('No Data');
+        $("#dashboardEmployeeDetail").css("text-align", "center")
+        $("#dashboardEmployeeDetail").css("padding-top", "10%")
     }
 
 
     // Code For Birthday/Anniversary Data
     if (Data.Table4 != null && Data.Table4.length > 0 && Data.Table4 != undefined) {
-        
         var str = ''
-        str += '<table class="table table-sm" >';
+        str += '<table class="table table-sm" id="dashboardBirthdayAnni">';
         str += '<thead style="position: sticky;top: 0;">';
         str += '<tr>';
         str += '<th style="width: 100px;">EMP ID</th>';
         str += '<th style="">EMP Name</th>';
         str += '<th style="">Mobile</th>';
         str += '<th style="">BirthDay</th>';
-       
 
-      
-            str += '</tr>';
-            str += '</thead>';
-            str += '<tbody>';
-            for (var i = 0; i < Data.Table4.length; i++) {
-                str += '<tr>'
-                str += '<td>' + Data.Table4[i]['EmpID'] + '</td>'
-                str += '<td>' + Data.Table4[i]['EmpName'] + '</td>'
-                str += '<td>' + Data.Table4[i]['MobNum'] + '</td>'
-                str += '<td>' + Data.Table4[i]['BirthDayDate'] + '</td>'
-                str += '</tr>'
-            }
-        
-        
+
+
+        str += '</tr>';
+        str += '</thead>';
+        str += '<tbody>';
+        for (var i = 0; i < Data.Table4.length; i++) {
+            str += '<tr>'
+            str += '<td>' + Data.Table4[i]['EmpID'] + '</td>'
+            str += '<td>' + Data.Table4[i]['EmpName'] + '</td>'
+            str += '<td>' + Data.Table4[i]['MobNum'] + '</td>'
+            str += '<td>' + Data.Table4[i]['BirthDayDate'] + '</td>'
+            str += '</tr>'
+        }
+
+
         str += '</tbody>';
         str += '</table>';
 
-        $("#dashboardBirthdayAnni").html(str);
+
+        $("#BirthAnniReportDiv").html(str);
+        $("#BirthAnniReportDiv").css("padding-top", "0%")
     } else {
-        $("#dashboardBirthdayAnni").html('');
-        $("#dashboardBirthdayAnni").html('No Data');
+        $("#BirthAnniReportDiv").html('');
+        $("#BirthAnniReportDiv").html('No Data');
+        $("#BirthAnniReportDiv").css("text-align", "center")
+        $("#BirthAnniReportDiv").css("padding-top", "10%")
     }
-    //if (Data.Table != null && Data.Table.length > 0 && Data.Table != undefined) { } else { $("#tb1").html(''); $("#tb1").html('No Data'); }
+
+
+    //Code For Chart Data
+    if (Data.Table6 != null && Data.Table6.length > 0 && Data.Table6 != undefined) {
+        var ChartData = new Array();
+        var lables = new Array();
+        var lableChart = new Array();
+        var DataSource = new Array();
+        var BarColor = new Array();
+        var LableFieldTitle = new Array();
+        ChartData = Data.Table6;
+        lableChart = ['ValFld1', 'ValFld2', 'ValFld3', 'ValFld4', 'ValFld5']
+        BarColor = ['#AFBAFD', '#AFFDF5', '#B3FDAF', '#FDAFC3', '#FDEDAF']
+        LableFieldTitle = ['ValFld1Title', 'Prv Yr Sal', 'ValFld3Title', 'ValFld4Title', 'ValFld5Title']
+
+        for (var i = 0; i < ChartData.length; i++) {
+            lables.push(ChartData[i]['FldDscription']);
+
+        }
+
+        for (var k = 0; k < lableChart.length; k++) {
+            var obj = new Object();
+            var labelData = new Array()
+            obj['label'] = LableFieldTitle[k];
+            obj['backgroundColor'] = BarColor[k];
+
+            for (var j = 0; j < ChartData.length; j++) {
+                labelData.push(ChartData[j][lableChart[k]]);
+            }
+            obj['data'] = labelData
+            DataSource.push(obj)
+        }
+
+
+        var myContext = document.getElementById("stackedChartID").getContext('2d');
+        var myChart = new Chart(myContext, {
+            type: 'bar',
+            data: {
+                labels: lables,
+                datasets: DataSource,
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: false,
+                        text: 'Stacked Bar chart for pollution status'
+                    },
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true
+                    }
+                }
+            }
+        });
+
+
+        $("#stackedChartID").css("padding-top", "0%")
+    } else {
+
+        $("#stackedChartID").html(''); $("#stackedChartID").html('No Data');
+        $("#stackedChartID").css("text-align", "center")
+        $("#stackedChartID").css("padding-top", "10%")
+    }
 
 }
 
@@ -105,11 +182,11 @@ function BirthAnniJoing(e) {
     e.classList.add('activebtn');
     var btnData = $('.DashBirthAnnibtn.activebtn').attr('detalData');
     Data = DashBoardData
-    $("#dashboardBirthdayAnni").html('');
+    $("#BirthAnniReportDiv").html('');
     if (btnData == 'Birthday') {
         if (Data.Table4 != null && Data.Table4.length > 0 && Data.Table4 != undefined) {
             var str = ''
-            str += '<table class="table table-sm" >';
+            str += '<table class="table table-sm" id="dashboardBirthdayAnni">';
             str += '<thead style="position: sticky;top: 0;">';
             str += '<tr>';
             str += '<th style="width: 100px;">EMP ID</th>';
@@ -130,22 +207,25 @@ function BirthAnniJoing(e) {
             str += '</tbody>';
             str += '</table>';
 
-            $("#dashboardBirthdayAnni").html(str);
+            $("#BirthAnniReportDiv").html(str);
+            $("#BirthAnniReportDiv").css("padding-top", "0%")
         }
         else {
-            $("#dashboardBirthdayAnni").html('');
-            $("#dashboardBirthdayAnni").html('No Data');
+            $("#BirthAnniReportDiv").html('');
+            $("#BirthAnniReportDiv").html('No Data');
+            $("#BirthAnniReportDiv").css("text-align", "center")
+            $("#BirthAnniReportDiv").css("padding-top", "10%")
         }
     }
     if (btnData == 'Anniversary') {
         if (Data.Table8 != null && Data.Table8.length > 0 && Data.Table8 != undefined) {
             var str = ''
-            str += '<table class="table table-sm" >';
+            str += '<table class="table table-sm" id="dashboardBirthdayAnni">';
             str += '<thead style="position: sticky;top: 0;">';
             str += '<tr>';
             str += '<th style="width: 100px;">EMP ID</th>';
             str += '<th style="">EMP Name</th>';
-            str += '<th style="">Mobile</th>';      
+            str += '<th style="">Mobile</th>';
             str += '<th style="">Anniversary</th>';
             str += '</tr>';
             str += '</thead>';
@@ -161,22 +241,26 @@ function BirthAnniJoing(e) {
             str += '</tbody>';
             str += '</table>';
 
-            $("#dashboardBirthdayAnni").html(str);
+            $("#BirthAnniReportDiv").html(str);
+
+            $("#BirthAnniReportDiv").css("padding-top", "0%")
         }
         else {
-            $("#dashboardBirthdayAnni").html('');
-            $("#dashboardBirthdayAnni").html('No Data');
+            $("#BirthAnniReportDiv").html('');
+            $("#BirthAnniReportDiv").html('No Data');
+            $("#BirthAnniReportDiv").css("text-align", "center")
+            $("#BirthAnniReportDiv").css("padding-top", "10%")
         }
     }
     if (btnData == 'Joining') {
         if (Data.Table9 != null && Data.Table9.length > 0 && Data.Table9 != undefined) {
             var str = ''
-            str += '<table class="table table-sm" >';
+            str += '<table class="table table-sm" id="dashboardBirthdayAnni">';
             str += '<thead style="position: sticky;top: 0;">';
             str += '<tr>';
             str += '<th style="width: 100px;">EMP ID</th>';
             str += '<th style="">EMP Name</th>';
-            str += '<th style="">Mobile</th>';         
+            str += '<th style="">Mobile</th>';
             str += '<th style="">Joining</th>';
             str += '</tr>';
             str += '</thead>';
@@ -192,26 +276,20 @@ function BirthAnniJoing(e) {
             str += '</tbody>';
             str += '</table>';
 
-            $("#dashboardBirthdayAnni").html(str);
-            $('#dashboardBirthdayAnni').DataTable(
-                {
-                    pagingType: 'full_numbers',
-                    scrollX: true,
-                    dom: 'Bfrtip',
-                    buttons: [
-                        // 'copyHtml5',
-                        'excelHtml5', 'csvHtml5'
-                        //, 'pdfHtml5'
+            $("#BirthAnniReportDiv").html(str);
+            $("#BirthAnniReportDiv").css("padding-top", "0%")
 
-                        //'copy', 'csv', 'excel', 'pdf', 'print'
-                    ]
-                });
         }
         else {
-            $("#dashboardBirthdayAnni").html('');
-            $("#dashboardBirthdayAnni").html('No Data');
+            $("#BirthAnniReportDiv").html('');
+            $("#BirthAnniReportDiv").html('No Data');
+            $("#BirthAnniReportDiv").css("text-align", "center")
+            $("#BirthAnniReportDiv").css("padding-top", "10%")
         }
+
     }
+
 }
+
 
 
