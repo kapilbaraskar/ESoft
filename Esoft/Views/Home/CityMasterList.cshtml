@@ -631,7 +631,7 @@
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
                 xhr.setRequestHeader("UserCode", LocalDataStorage[0]['UserCode']);
-                xhr.setRequestHeader("CampId", LocalDataStorage[0]['dfCompId']);
+                xhr.setRequestHeader("CompId", LocalDataStorage[0]['dfCompId']);
             },
             success: function (data) {
                 debugger;
