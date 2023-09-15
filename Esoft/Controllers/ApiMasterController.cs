@@ -212,8 +212,9 @@ namespace Esoft.Controllers
             if (DBNAME != "")
             {
                 CityMaster obj = new CityMaster();
-                result = obj.SaveCityMasterData(data, UserCode, CompId, DBNAME);
-                if (result == "1")
+                DataSet ds = new DataSet();
+                ds = obj.SaveCityMasterData(data, UserCode, CompId, DBNAME);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows[0]["cityid"].ToString() != "0")
                 {
                     resObj["status"] = 1;
                     resObj["message"] = "data save successfully.";
