@@ -10,7 +10,7 @@ $(document).ready(function() {
         ]
     });
 
-    display_grid(resultdata, datatableProp_Json, DisplayGridDivId);
+    //display_grid(resultdata, datatableProp_Json, DisplayGridDivId);
    
 });
 

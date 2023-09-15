@@ -285,8 +285,11 @@
     var LocalDataStorage = new Array();
     LocalDataStorage = JSON.parse(localStorage.LogingObj);
 
-    getCityHiererchiView();
-    GetCityMasterDropdownData();
+    $(document).ready(function () {
+        getCityHiererchiView();
+        GetCityMasterDropdownData();
+
+    });
 
     function getCityHiererchiView() {
         console.log('Error')
@@ -628,6 +631,7 @@
             dataType: "JSON",
             data:JSON.stringify(obj) ,
             contentType: "application/json; charset=utf-8",
+            async:false,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
                 xhr.setRequestHeader("UserCode", LocalDataStorage[0]['UserCode']);
@@ -644,7 +648,7 @@
                     DisplaySeccessMsg(data)
                 }
                 else {
-                    console.log(error);
+                   
                     DisplayErroeMsg(data.message)
                     $("#loader").css("display", "none");
                 }
