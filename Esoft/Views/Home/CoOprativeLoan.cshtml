@@ -1,0 +1,248 @@
+﻿
+@{
+    ViewBag.Title = "CoOprativeLoan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+        <h1 class="h3 mb-0 text-gray-800">Co-Oprative Loan</h1>
+    </div>
+</div>
+
+<section>
+    <div class="row" style="background-color: #fff; box-shadow: 0 6px 4px -4px rgba(0,0,0,0.7); ">
+        <div class="col-lg-9 col-sm-6 col-md-6" style="box-shadow: 3px 3px 6px -3px rgba(0,0,0,0.7); ">
+            <form>
+
+                <div class="form-row ItemDetailsCommonCss">
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="">Doc Date</label>
+                        <input required type="date" class="form-control form-control-user form-control-sm" id="CoOprativeDocdate" aria-describedby="dateHelp">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="inputRateName">Doc Id </label>
+                        <input type="text" id="inputRateName" class="form-control form-control-sm ">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="inputRateName">Employee Id </label>
+                        <input type="text" id="inputRateName" class="form-control form-control-sm">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeEmpName">Employee Name </label>
+                        <input type="text" id="CoOprativeEmpName" class="form-control form-control-sm">
+                    </div>
+
+                </div>
+
+                <div class="form-row ItemDetailsCommonCss">
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeLoanType">Loan Type </label>
+                        <select id="CoOprativeLoanType" class="form-control form-control-sm">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeRateOfInt">Ratwe Of Int% </label>
+                        <input type="text" id="CoOprativeRateOfInt" class="form-control form-control-sm ">
+
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeLoanAmt">Loan Ammount </label>
+                        <input type="text" id="CoOprativeLoanAmt" class="form-control form-control-sm">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeTotalEMI">Total EMI </label>
+                        <input type="text" id="CoOprativeTotalEMI" class="form-control form-control-sm">
+                    </div>
+                </div>
+
+                <div class="form-row ItemDetailsCommonCss">
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeEmpName">EMI </label>
+                        <input type="text" id="CoOprativeEmpName" class="form-control form-control-sm">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeLastEMI">Last EMI </label>
+                        <input type="text" id="CoOprativeLastEMI" class="form-control form-control-sm">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeLoanChqdate">Loan Chq.Date</label>
+                        <input required type="date" class="form-control form-control-user form-control-sm" id="CoOprativeLoanChqdate" aria-describedby="dateHelp">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeLoanChqNo">ChqNo </label>
+                        <input type="text" id="CoOprativeLoanChqNo" class="form-control form-control-sm">
+                    </div>
+                </div>
+
+                <div class="form-row ItemDetailsCommonCss">
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeLoanChqAmt">Chq. Ammount </label>
+                        <input type="text" id="CoOprativeLoanChqAmt" class="form-control form-control-sm">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeLoanBanker">Banker </label>
+                        <input type="text" id="CoOprativeLoanBanker" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="form-group col-lg-2 col-md-2 col-sm-2">
+                        <label for="CoOprativeLoanEmiStartdate">Emi Starting Date</label>
+                        <input required type="date" class="form-control form-control-user form-control-sm" id="CoOprativeLoanEmiStartdate" aria-describedby="dateHelp">
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-4">
+                        <label for="CoOprativeLoanEnddate">End Date</label>
+                        <div class="row pl-1">
+                            <input required type="date" class="form-control form-control-user form-control-sm col-lg-6 col-md-6 col-sm-6 ml-1" id="CoOprativeLoanEnddate" aria-describedby="dateHelp">
+                            <input required type="date" class="form-control form-control-user form-control-sm col-lg-5 col-md-5 col-sm-5 ml-1" id="CoOprativeLoanTodate" aria-describedby="dateHelp">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-row ItemDetailsCommonCss">
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeRefId">Ref Id </label>
+                        <input type="text" id="CoOprativeRefId" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                        <label for="CoOprativeDocRemark">Doc Remoark </label>
+                        <select id="CoOprativeDocRemark" class="form-control form-control-sm ">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3" style="padding-top: 3%; margin-bottom: 1.6%;">
+                        @*<label for="CoOprativeLoanBanker">Banker </label>*@
+                        <input type="text" id="CoOprativeLoanBlank" class="form-control form-control-sm ">
+                    </div>
+                    <div class="form-group form-check col-lg-3 col-md-3 col-sm-3" style="padding-top: 3%; margin-bottom: 1.6%;">
+                        <div class="ml-4">
+                            <input type="checkbox" class="form-check-input" id="CoOprativeLoanIsManual">
+                            <label class="form-check-label" for="CoOprativeLoanIsManual">Is Manual</label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+
+        <div class="col-lg-3 col-sm-6 col-md-6">
+            <form>
+                <div class="form-row ItemDetailsCommonCss">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 ">
+                        <label for="CoOprativeLoanStatus">Loan Status </label>
+                        <select id="CoOprativeLoanStatus" class="form-control form-control-sm ">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 ">
+                        <label for="CoOprativeLoanDivision">Division </label>
+                        <select id="CoOprativeLoanDivision" class="form-control form-control-sm ">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row ItemDetailsCommonCss">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                        <label for="CoOprativeLoanSecChqNo">Security Chq.No </label>
+                        <input type="text" id="CoOprativeLoanSecChqNo" class="form-control form-control-sm ">
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                        <label for="CoOprativeLoanSecBank">Security Bank </label>
+                        <input type="text" id="CoOprativeLoanSecBank" class="form-control form-control-sm ">
+                    </div>
+
+
+                </div>
+
+                <div class="form-row ItemDetailsCommonCss">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <label for="CoOprativeLoanSecBank">Settlement Amt/Dt. </label>
+                        <div class="row pl-3">
+                            <input type="text" id="CoOprativeLoanSecBank" class="form-control form-control-sm col-lg-5 col-md-5 col-sm-5">
+                            <input required type="date" class="form-control form-control-user form-control-sm col-lg-6 col-md-6 col-sm-6 ml-3" id="CoOprativeLoanSettAmtDt" aria-describedby="dateHelp">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row ItemDetailsCommonCss">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                        <label for="CoOprativeLoanSettChqNo">Settlement Chq.No </label>
+                        <input type="text" id="CoOprativeLoanSettChqNo" class="form-control form-control-sm ">
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                        <label for="CoOprativeLoanSecRemark">Settlement Remark </label>
+                        <input type="text" id="CoOprativeLoanSettRemark" class="form-control form-control-sm ">
+                    </div>
+
+                </div>
+                <div class="form-row ItemDetailsCommonCss">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <div class="row" style="padding: 0 5% 0px 5%;">
+                            <button type="submit" class="btn btn-sm btn-primary col-lg-3 col-md-3 col-sm-3 ">EMI</button>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 ml-3">
+                                <input type="checkbox" class="form-check-input" id="CoOprativeLoanIsManual">
+                                <label class="form-check-label" for="CoOprativeLoanIsManual">IsApprovid</label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 ml-2">
+                                <input type="checkbox" class="form-check-input" id="CoOprativeLoanIsManual">
+                                <label class="form-check-label" for="CoOprativeLoanIsManual">IsCanceled</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row ItemDetailsCommonCss" style="position: absolute;bottom: 0;right: 0;padding-right: 1%;">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                        <button type="submit" class="btn btn-sm btn-primary">Add</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Cancle</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="LoanSchedular-tab" data-toggle="tab" data-target="#LoanSchedular" type="button" role="tab" aria-controls="LoanSchedular" aria-selected="true">Loan Schedular</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="OldLoand-tab" data-toggle="tab" data-target="#OldLoand" type="button" role="tab" aria-controls="OldLoand" aria-selected="false">Old Loans</button>
+                </li>
+              
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="LoanSchedular" role="tabpanel" aria-labelledby="LoanSchedular-tab" style="background-color:#fff;padding:1%">
+
+            
+                </div>
+
+
+                <div class="tab-pane fade" id="OldLoand" role="tabpanel" aria-labelledby="OldLoand-tab">...</div>
+              
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
