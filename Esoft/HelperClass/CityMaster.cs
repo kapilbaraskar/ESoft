@@ -66,42 +66,42 @@ namespace Esoft.HelperClass
                 string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
                 DataTable dt = new DataTable();
 
-                dt = objMaster.GetDataTableBySp("", db, "spGetTableData", "@ObjId", "MLOCT2", "@LocId", DfLocDetId, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+                //dt = objMaster.GetDataTableBySp("", db, "spGetTableData", "@ObjId", "MLOCT2", "@LocId", DfLocDetId, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-                if (dt != null && dt.Rows.Count > 0)
+                //if (dt != null && dt.Rows.Count > 0)
+                //{
+                DataSet ds = new DataSet();
+                using (SqlConnection con = new SqlConnection(con_str))
                 {
-                    DataSet ds = new DataSet();
-                    using (SqlConnection con = new SqlConnection(con_str))
-                    {
-                        if (con.State == ConnectionState.Closed)
-                            con.Open();
-                        SqlCommand objCommand = new SqlCommand();
-                        objCommand.Connection = con;
+                    if (con.State == ConnectionState.Closed)
+                        con.Open();
+                    SqlCommand objCommand = new SqlCommand();
+                    objCommand.Connection = con;
 
-                        Qry = "";
-                        Qry = @"Select GlAcId,GlName from mGlActMst where (GlType='C' or GlType='R') and isLocked='False' and islocked ='False' order by GLName
+                    Qry = "";
+                    Qry = @"Select GlAcId,GlName from mGlActMst where (GlType='C' or GlType='R') and isLocked='False' and islocked ='False' order by GLName
                                 Select CityId, CityName from mCity where islocked ='False' order by CityName
                                 Select StateId,StateName from mState order by StateName
                                 Select CityId, CityName from mCity where islocked ='False' order by CityName
                                 Select LocId, LocName from MLoct where islocked ='False' order by LocName
                                 Select DistId, DistName from mDist where islocked ='False' order by DistName";
-                        objCommand.CommandText = Qry;
-                        SqlDataAdapter objAdapter = new SqlDataAdapter(objCommand);
-                        objAdapter.TableMappings.Add("Table", "mGlActMst");
-                        objAdapter.TableMappings.Add("Table1", "Route");
-                        objAdapter.TableMappings.Add("Table2", "mState");
-                        objAdapter.TableMappings.Add("Table3", "NodeText");
-                        objAdapter.TableMappings.Add("Table4", "mLoc");
-                        objAdapter.TableMappings.Add("Table5", "mDist");
-                        objAdapter.Fill(ds);
-                        if (ds != null && ds.Tables.Count > 0)
-                            return ds;
-                        else
-                            return null;
-                    }
+                    objCommand.CommandText = Qry;
+                    SqlDataAdapter objAdapter = new SqlDataAdapter(objCommand);
+                    objAdapter.TableMappings.Add("Table", "mGlActMst");
+                    objAdapter.TableMappings.Add("Table1", "Route");
+                    objAdapter.TableMappings.Add("Table2", "mState");
+                    objAdapter.TableMappings.Add("Table3", "NodeText");
+                    objAdapter.TableMappings.Add("Table4", "mLoc");
+                    objAdapter.TableMappings.Add("Table5", "mDist");
+                    objAdapter.Fill(ds);
+                    if (ds != null && ds.Tables.Count > 0)
+                        return ds;
+                    else
+                        return null;
                 }
-                else
-                    return null;
+                //}
+                //else
+                //return null;
             }
             catch (Exception EX)
             {
@@ -226,7 +226,7 @@ namespace Esoft.HelperClass
                         objCommand.Parameters.Add("@OrderNo", SqlDbType.VarChar).Value = Obj.OrderNo;
                     else
                         objCommand.Parameters.Add("@OrderNo", SqlDbType.VarChar).Value = DBNull.Value;
-                    
+
                     if (Obj.BusChg != null && Obj.BusChg != "")
                         objCommand.Parameters.Add("@BusChg", SqlDbType.VarChar).Value = Obj.BusChg;
                     else
@@ -268,7 +268,7 @@ namespace Esoft.HelperClass
                         objCommand.Parameters.Add("@Remark", SqlDbType.VarChar).Value = Obj.Remark;
                     else
                         objCommand.Parameters.Add("@Remark", SqlDbType.VarChar).Value = DBNull.Value;
-                    
+
                     if (Obj.DistId != null && Obj.DistId != "")
                         objCommand.Parameters.Add("@DistId", SqlDbType.VarChar).Value = Obj.DistId;
                     else
@@ -292,6 +292,49 @@ namespace Esoft.HelperClass
                 {
                     writer.WriteLine("-----Start Log-----");
                     writer.WriteLine("Method Name --> SaveCityMasterData : " + EX.Message.ToString() + Environment.NewLine + EX.StackTrace);
+                    writer.WriteLine("-----Stop Log-----");
+                    writer.Close();
+                }
+                throw EX;
+            }
+        }
+
+        public DataTable GetCityMasterData(string cityid, string db)
+        {
+            string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
+            MasterMethods objMaster = new MasterMethods();
+            try
+            {
+                string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+                DataTable dt = new DataTable();
+
+                using (SqlConnection con = new SqlConnection(con_str))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        con.Open();
+                    SqlCommand objCommand = new SqlCommand();
+                    objCommand.Connection = con;
+
+                    Qry = "";
+                    Qry = "Select * from mCity ";
+                    if(cityid != null && cityid != "")
+                        Qry += "Where CityId = '"+ cityid + "'";
+                    Qry += "order by CityName";
+                    objCommand.CommandText = Qry;
+                    SqlDataAdapter objAdapter = new SqlDataAdapter(objCommand);
+                    objAdapter.Fill(dt);
+                    if (dt != null && dt.Rows.Count > 0)
+                        return dt;
+                    else
+                        return null;
+                }
+            }
+            catch (Exception EX)
+            {
+                using (StreamWriter writer = new StreamWriter(path, true))
+                {
+                    writer.WriteLine("-----Start Log-----");
+                    writer.WriteLine("Method Name --> GetCityMasterData : " + EX.Message.ToString() + Environment.NewLine + EX.StackTrace);
                     writer.WriteLine("-----Stop Log-----");
                     writer.Close();
                 }

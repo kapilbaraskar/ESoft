@@ -217,12 +217,48 @@ namespace Esoft.Controllers
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows[0]["cityid"].ToString() != "0")
                 {
                     resObj["status"] = 1;
-                    resObj["message"] = "data save successfully.";
+                    if(data.EntryMode == "1")
+                        resObj["message"] = "data save successfully.";
+                    else if(data.EntryMode == "2")
+                        resObj["message"] = "data updated successfully.";
+                    else
+                        resObj["message"] = "data deleted successfully.";
                 }
                 else
                 {
                     resObj["status"] = 0;
                     resObj["message"] = "Something went wrong.";
+                }
+            }
+            else
+            {
+                resObj["status"] = 0;
+                resObj["message"] = "Database not found.";
+            }
+            return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetCityMasterData(String cityid = "")
+        {
+            IEnumerable<string> DB_NAME;
+            if (Request.Headers.TryGetValues("DBNAME", out DB_NAME))
+            {
+                DBNAME = ((string[])DB_NAME)[0].ToString();
+            }
+            if (DBNAME != "")
+            {
+                CityMaster obj = new CityMaster();
+                DataTable dt = obj.GetCityMasterData(cityid, DBNAME);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    resObj["status"] = 1;
+                    resObj["message"] = dt;
+                }
+                else
+                {
+                    resObj["status"] = 0;
+                    resObj["message"] = "Data not found.";
                 }
             }
             else
