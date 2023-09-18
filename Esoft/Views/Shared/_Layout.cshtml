@@ -171,6 +171,7 @@
         </div>
     </div>
 
+    
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -864,17 +865,27 @@
             $("#ErrorMsgDiv").show();
             $("#ErrorMsg").html(msg);
             $('.closeErrormsg').focus();
+            return true
         }
         function DisplaySeccessMsg(msg) {
             //debugger;
             $("#SeccessMsgDiv").show();
             $("#SeccessMsg").html(msg);
             $('.closeErrormsg').focus();
+            return true
+        }
+        function DisplayConfomMsg(msg) {
+            //debugger;
+            $("#ConFomMsgDiv").show();
+            $("#ConFomMsg").html(msg);
+            $('.closeErrormsg').focus();
         }
 
         $('.closeErrormsg').click(function () {
             $("#ErrorMsgDiv").hide();
             $("#SeccessMsgDiv").hide();
+           
+            location.reload();
         });
         //===========================END==================================
 

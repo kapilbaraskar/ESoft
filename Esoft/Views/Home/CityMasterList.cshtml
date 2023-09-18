@@ -8,10 +8,535 @@
 <div>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">City Master</h1>
+        <button id="btnAddListCity" type="submit" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)">Add City</button>
+        <button id="btnBackListCity" type="submit" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)" style="display:none">Back</button>
     </div>
 </div>
 
-<section>
+<section id="FindCity_Mst">
+    
+    <div id="bindCityMstList">
+        <table class="d-none table table-bordered" id="CityMstdataTable2" width="100%" cellspacing="0">
+            <thead style="color: #fff;">
+                <tr>
+                    <th>City ID</th>
+                    <th>City Name</th>
+                    <th>Zip Code</th>
+                    <th>Contact</th>            
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>111</td>
+                    <td>Ahmedabad</td>
+                    <td>13415</td>
+                    <td>1234567890</td>
+                    <td><span onclick="EditCityMst(this)"><i class="fas fa-pencil-alt"></i></span> <span onclick="DeleteCityMst(this)"><i class="fa fa-trash" /></span></td>
+                </tr>
+                <tr>
+                    <td>112</td>
+                    <td>Surat</td>
+                    <td>84755</td>
+                    <td>7894561230</td>
+                    <td><span onclick="EditCityMst(this)"><i class="fas fa-pencil-alt"></i></span> <span onclick="DeleteCityMst(this)"><i class="fa fa-trash" /></span></td>
+                </tr>
+                <tr>
+                    <td>113</td>
+                    <td>Nagpur</td>
+                    <td>85264</td>
+                    <td>8546791230</td>
+                    <td><span onclick="EditCityMst(this)"><i class="fas fa-pencil-alt"></i></span> <span onclick="DeleteCityMst(this)"><i class="fa fa-trash" /></span></td>
+                </tr>
+                <tr>
+                    <td>114</td>
+                    <td>Warud</td>
+                    <td>985632</td>
+                    <td>7896543210</td>
+                    <td><span onclick="EditCityMst(this)"><i class="fas fa-pencil-alt"></i></span> <span onclick="DeleteCityMst(this)"><i class="fa fa-trash" /></span></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+
+        <table class="table table-bordered d-none" id="CityMstdataTable1" width="100%" cellspacing="0">
+            <thead style="color: #fff;">
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                </tr>
+                <tr>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>63</td>
+                    <td>2011/07/25</td>
+                    <td>$170,750</td>
+                </tr>
+                <tr>
+                    <td>Ashton Cox</td>
+                    <td>Junior Technical Author</td>
+                    <td>San Francisco</td>
+                    <td>66</td>
+                    <td>2009/01/12</td>
+                    <td>$86,000</td>
+                </tr>
+                <tr>
+                    <td>Cedric Kelly</td>
+                    <td>Senior Javascript Developer</td>
+                    <td>Edinburgh</td>
+                    <td>22</td>
+                    <td>2012/03/29</td>
+                    <td>$433,060</td>
+                </tr>
+                <tr>
+                    <td>Airi Satou</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>33</td>
+                    <td>2008/11/28</td>
+                    <td>$162,700</td>
+                </tr>
+                <tr>
+                    <td>Brielle Williamson</td>
+                    <td>Integration Specialist</td>
+                    <td>New York</td>
+                    <td>61</td>
+                    <td>2012/12/02</td>
+                    <td>$372,000</td>
+                </tr>
+                <tr>
+                    <td>Herrod Chandler</td>
+                    <td>Sales Assistant</td>
+                    <td>San Francisco</td>
+                    <td>59</td>
+                    <td>2012/08/06</td>
+                    <td>$137,500</td>
+                </tr>
+                <tr>
+                    <td>Rhona Davidson</td>
+                    <td>Integration Specialist</td>
+                    <td>Tokyo</td>
+                    <td>55</td>
+                    <td>2010/10/14</td>
+                    <td>$327,900</td>
+                </tr>
+                <tr>
+                    <td>Colleen Hurst</td>
+                    <td>Javascript Developer</td>
+                    <td>San Francisco</td>
+                    <td>39</td>
+                    <td>2009/09/15</td>
+                    <td>$205,500</td>
+                </tr>
+                <tr>
+                    <td>Sonya Frost</td>
+                    <td>Software Engineer</td>
+                    <td>Edinburgh</td>
+                    <td>23</td>
+                    <td>2008/12/13</td>
+                    <td>$103,600</td>
+                </tr>
+                <tr>
+                    <td>Jena Gaines</td>
+                    <td>Office Manager</td>
+                    <td>London</td>
+                    <td>30</td>
+                    <td>2008/12/19</td>
+                    <td>$90,560</td>
+                </tr>
+                <tr>
+                    <td>Quinn Flynn</td>
+                    <td>Support Lead</td>
+                    <td>Edinburgh</td>
+                    <td>22</td>
+                    <td>2013/03/03</td>
+                    <td>$342,000</td>
+                </tr>
+                <tr>
+                    <td>Charde Marshall</td>
+                    <td>Regional Director</td>
+                    <td>San Francisco</td>
+                    <td>36</td>
+                    <td>2008/10/16</td>
+                    <td>$470,600</td>
+                </tr>
+                <tr>
+                    <td>Haley Kennedy</td>
+                    <td>Senior Marketing Designer</td>
+                    <td>London</td>
+                    <td>43</td>
+                    <td>2012/12/18</td>
+                    <td>$313,500</td>
+                </tr>
+                <tr>
+                    <td>Tatyana Fitzpatrick</td>
+                    <td>Regional Director</td>
+                    <td>London</td>
+                    <td>19</td>
+                    <td>2010/03/17</td>
+                    <td>$385,750</td>
+                </tr>
+                <tr>
+                    <td>Michael Silva</td>
+                    <td>Marketing Designer</td>
+                    <td>London</td>
+                    <td>66</td>
+                    <td>2012/11/27</td>
+                    <td>$198,500</td>
+                </tr>
+                <tr>
+                    <td>Paul Byrd</td>
+                    <td>Chief Financial Officer (CFO)</td>
+                    <td>New York</td>
+                    <td>64</td>
+                    <td>2010/06/09</td>
+                    <td>$725,000</td>
+                </tr>
+                <tr>
+                    <td>Gloria Little</td>
+                    <td>Systems Administrator</td>
+                    <td>New York</td>
+                    <td>59</td>
+                    <td>2009/04/10</td>
+                    <td>$237,500</td>
+                </tr>
+                <tr>
+                    <td>Bradley Greer</td>
+                    <td>Software Engineer</td>
+                    <td>London</td>
+                    <td>41</td>
+                    <td>2012/10/13</td>
+                    <td>$132,000</td>
+                </tr>
+                <tr>
+                    <td>Dai Rios</td>
+                    <td>Personnel Lead</td>
+                    <td>Edinburgh</td>
+                    <td>35</td>
+                    <td>2012/09/26</td>
+                    <td>$217,500</td>
+                </tr>
+                <tr>
+                    <td>Jenette Caldwell</td>
+                    <td>Development Lead</td>
+                    <td>New York</td>
+                    <td>30</td>
+                    <td>2011/09/03</td>
+                    <td>$345,000</td>
+                </tr>
+                <tr>
+                    <td>Yuri Berry</td>
+                    <td>Chief Marketing Officer (CMO)</td>
+                    <td>New York</td>
+                    <td>40</td>
+                    <td>2009/06/25</td>
+                    <td>$675,000</td>
+                </tr>
+                <tr>
+                    <td>Caesar Vance</td>
+                    <td>Pre-Sales Support</td>
+                    <td>New York</td>
+                    <td>21</td>
+                    <td>2011/12/12</td>
+                    <td>$106,450</td>
+                </tr>
+                <tr>
+                    <td>Doris Wilder</td>
+                    <td>Sales Assistant</td>
+                    <td>Sidney</td>
+                    <td>23</td>
+                    <td>2010/09/20</td>
+                    <td>$85,600</td>
+                </tr>
+                <tr>
+                    <td>Angelica Ramos</td>
+                    <td>Chief Executive Officer (CEO)</td>
+                    <td>London</td>
+                    <td>47</td>
+                    <td>2009/10/09</td>
+                    <td>$1,200,000</td>
+                </tr>
+                <tr>
+                    <td>Gavin Joyce</td>
+                    <td>Developer</td>
+                    <td>Edinburgh</td>
+                    <td>42</td>
+                    <td>2010/12/22</td>
+                    <td>$92,575</td>
+                </tr>
+                <tr>
+                    <td>Jennifer Chang</td>
+                    <td>Regional Director</td>
+                    <td>Singapore</td>
+                    <td>28</td>
+                    <td>2010/11/14</td>
+                    <td>$357,650</td>
+                </tr>
+                <tr>
+                    <td>Brenden Wagner</td>
+                    <td>Software Engineer</td>
+                    <td>San Francisco</td>
+                    <td>28</td>
+                    <td>2011/06/07</td>
+                    <td>$206,850</td>
+                </tr>
+                <tr>
+                    <td>Fiona Green</td>
+                    <td>Chief Operating Officer (COO)</td>
+                    <td>San Francisco</td>
+                    <td>48</td>
+                    <td>2010/03/11</td>
+                    <td>$850,000</td>
+                </tr>
+                <tr>
+                    <td>Shou Itou</td>
+                    <td>Regional Marketing</td>
+                    <td>Tokyo</td>
+                    <td>20</td>
+                    <td>2011/08/14</td>
+                    <td>$163,000</td>
+                </tr>
+                <tr>
+                    <td>Michelle House</td>
+                    <td>Integration Specialist</td>
+                    <td>Sidney</td>
+                    <td>37</td>
+                    <td>2011/06/02</td>
+                    <td>$95,400</td>
+                </tr>
+                <tr>
+                    <td>Suki Burks</td>
+                    <td>Developer</td>
+                    <td>London</td>
+                    <td>53</td>
+                    <td>2009/10/22</td>
+                    <td>$114,500</td>
+                </tr>
+                <tr>
+                    <td>Prescott Bartlett</td>
+                    <td>Technical Author</td>
+                    <td>London</td>
+                    <td>27</td>
+                    <td>2011/05/07</td>
+                    <td>$145,000</td>
+                </tr>
+                <tr>
+                    <td>Gavin Cortez</td>
+                    <td>Team Leader</td>
+                    <td>San Francisco</td>
+                    <td>22</td>
+                    <td>2008/10/26</td>
+                    <td>$235,500</td>
+                </tr>
+                <tr>
+                    <td>Martena Mccray</td>
+                    <td>Post-Sales support</td>
+                    <td>Edinburgh</td>
+                    <td>46</td>
+                    <td>2011/03/09</td>
+                    <td>$324,050</td>
+                </tr>
+                <tr>
+                    <td>Unity Butler</td>
+                    <td>Marketing Designer</td>
+                    <td>San Francisco</td>
+                    <td>47</td>
+                    <td>2009/12/09</td>
+                    <td>$85,675</td>
+                </tr>
+                <tr>
+                    <td>Howard Hatfield</td>
+                    <td>Office Manager</td>
+                    <td>San Francisco</td>
+                    <td>51</td>
+                    <td>2008/12/16</td>
+                    <td>$164,500</td>
+                </tr>
+                <tr>
+                    <td>Hope Fuentes</td>
+                    <td>Secretary</td>
+                    <td>San Francisco</td>
+                    <td>41</td>
+                    <td>2010/02/12</td>
+                    <td>$109,850</td>
+                </tr>
+                <tr>
+                    <td>Vivian Harrell</td>
+                    <td>Financial Controller</td>
+                    <td>San Francisco</td>
+                    <td>62</td>
+                    <td>2009/02/14</td>
+                    <td>$452,500</td>
+                </tr>
+                <tr>
+                    <td>Timothy Mooney</td>
+                    <td>Office Manager</td>
+                    <td>London</td>
+                    <td>37</td>
+                    <td>2008/12/11</td>
+                    <td>$136,200</td>
+                </tr>
+                <tr>
+                    <td>Jackson Bradshaw</td>
+                    <td>Director</td>
+                    <td>New York</td>
+                    <td>65</td>
+                    <td>2008/09/26</td>
+                    <td>$645,750</td>
+                </tr>
+                <tr>
+                    <td>Olivia Liang</td>
+                    <td>Support Engineer</td>
+                    <td>Singapore</td>
+                    <td>64</td>
+                    <td>2011/02/03</td>
+                    <td>$234,500</td>
+                </tr>
+                <tr>
+                    <td>Bruno Nash</td>
+                    <td>Software Engineer</td>
+                    <td>London</td>
+                    <td>38</td>
+                    <td>2011/05/03</td>
+                    <td>$163,500</td>
+                </tr>
+                <tr>
+                    <td>Sakura Yamamoto</td>
+                    <td>Support Engineer</td>
+                    <td>Tokyo</td>
+                    <td>37</td>
+                    <td>2009/08/19</td>
+                    <td>$139,575</td>
+                </tr>
+                <tr>
+                    <td>Thor Walton</td>
+                    <td>Developer</td>
+                    <td>New York</td>
+                    <td>61</td>
+                    <td>2013/08/11</td>
+                    <td>$98,540</td>
+                </tr>
+                <tr>
+                    <td>Finn Camacho</td>
+                    <td>Support Engineer</td>
+                    <td>San Francisco</td>
+                    <td>47</td>
+                    <td>2009/07/07</td>
+                    <td>$87,500</td>
+                </tr>
+                <tr>
+                    <td>Serge Baldwin</td>
+                    <td>Data Coordinator</td>
+                    <td>Singapore</td>
+                    <td>64</td>
+                    <td>2012/04/09</td>
+                    <td>$138,575</td>
+                </tr>
+                <tr>
+                    <td>Zenaida Frank</td>
+                    <td>Software Engineer</td>
+                    <td>New York</td>
+                    <td>63</td>
+                    <td>2010/01/04</td>
+                    <td>$125,250</td>
+                </tr>
+                <tr>
+                    <td>Zorita Serrano</td>
+                    <td>Software Engineer</td>
+                    <td>San Francisco</td>
+                    <td>56</td>
+                    <td>2012/06/01</td>
+                    <td>$115,000</td>
+                </tr>
+                <tr>
+                    <td>Jennifer Acosta</td>
+                    <td>Junior Javascript Developer</td>
+                    <td>Edinburgh</td>
+                    <td>43</td>
+                    <td>2013/02/01</td>
+                    <td>$75,650</td>
+                </tr>
+                <tr>
+                    <td>Cara Stevens</td>
+                    <td>Sales Assistant</td>
+                    <td>New York</td>
+                    <td>46</td>
+                    <td>2011/12/06</td>
+                    <td>$145,600</td>
+                </tr>
+                <tr>
+                    <td>Hermione Butler</td>
+                    <td>Regional Director</td>
+                    <td>London</td>
+                    <td>47</td>
+                    <td>2011/03/21</td>
+                    <td>$356,250</td>
+                </tr>
+                <tr>
+                    <td>Lael Greer</td>
+                    <td>Systems Administrator</td>
+                    <td>London</td>
+                    <td>21</td>
+                    <td>2009/02/27</td>
+                    <td>$103,500</td>
+                </tr>
+                <tr>
+                    <td>Jonas Alexander</td>
+                    <td>Developer</td>
+                    <td>San Francisco</td>
+                    <td>30</td>
+                    <td>2010/07/14</td>
+                    <td>$86,500</td>
+                </tr>
+                <tr>
+                    <td>Shad Decker</td>
+                    <td>Regional Director</td>
+                    <td>Edinburgh</td>
+                    <td>51</td>
+                    <td>2008/11/13</td>
+                    <td>$183,000</td>
+                </tr>
+                <tr>
+                    <td>Michael Bruce</td>
+                    <td>Javascript Developer</td>
+                    <td>Singapore</td>
+                    <td>29</td>
+                    <td>2011/06/27</td>
+                    <td>$183,000</td>
+                </tr>
+                <tr>
+                    <td>Donna Snider</td>
+                    <td>Customer Support</td>
+                    <td>New York</td>
+                    <td>27</td>
+                    <td>2011/01/25</td>
+                    <td>$112,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<section id="CityMstFormSection" style="display:none">
     <div class="row" style="height: 600px;">
         @*code for Tree View*@
         <div class="col-lg-3 col-md-3 col-sm-3" style="background-color: #fff; box-shadow: 3px 3px 6px -3px rgba(0,0,0,0.7); ">
@@ -26,7 +551,7 @@
                     <div class="row">
                         <div class="form-group col-md-9 col-lg-9 col-sm-9">
                             <select id="inputTreeCityMstState" class="form-control form-control-sm CommonScroleStyle ">
-                                <option selected>Choose...</option>
+                                <option value="0" selected>Choose...</option>
                                 <option>...</option>
                             </select>
                         </div>
@@ -111,7 +636,7 @@
                         <div class="col-md-5">
                             <div class="form-group row pl-3">
                                 <div class="form-check col-md-5">
-                                    <input class="form-check-input" type="checkbox" id="BookingCityCheck">
+                                    <input class="form-check-input" type="checkbox" id="BookingCityCheck" >
                                     <label class="form-check-label" for="BookinCityCheck">
                                         Is Booking City
                                     </label>
@@ -124,7 +649,7 @@
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <input type="text" class="form-control form-control-sm" id="inputNo">
+                                    <input type="text" class="form-control form-control-sm" disabled id="inputCityId">
                                 </div>
 
                             </div>
@@ -134,7 +659,7 @@
                             <div class="form-group row">
                                 <div class="row col-md-6">
                                     <label for="inputCityMstSrNo" class="col-md-4">SrNo.:- </label>
-                                    <input type="text" class="form-control form-control-sm col-md-8" id="inputCityMstSrNo">
+                                    <input type="text" class="form-control form-control-sm col-md-8" value="51" id="inputCityMstSrNo">
                                 </div>
                                 <div class="row col-md-6">
                                     <label for="inpuCityMstRefNo" class="col-md-4">Ref.No:- </label>
@@ -147,20 +672,33 @@
 
                     </div>
                     <div class="form-row mt-2">
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstName">City Name</label>
-                            <input type="text" class="form-control form-control-sm" id="inputCityMstName">
+                        <div class="form-group col-md-6">
+                            <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control form-control-sm" id="inputCityMstName">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
+                                </div>
+                            </div>
+                            <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
+
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstPinCode">Pin Code</label>
-                            <input type="text" class="form-control form-control-sm" id="inputCityMstPinCode">
+                        <div class="form-group col-md-3">
+                            <label for="inputCityMstPinCode">Pin Code</label><span style="color:red">*</span>
+                            <input type="text" class="form-control form-control-sm" onfocus="ValidationCityForm()" id="inputCityMstPinCode">
+                            <span id="validMsgCityMstPinCode" style="color: red; font-size: 14px; display: none">Enter Pin Code</span>
+
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstState">State</label>
-                            <select id="inputCityMstState" class="form-control form-control-sm CommonScroleStyle ">
-                                <option selected>Select State</option>
-                                
+                        <div class="form-group col-md-3">
+                            <label for="inputCityMstState">State</label><span style="color:red">*</span>
+                            <select id="inputCityMstState" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="0" selected>Select State</option>
+
                             </select>
+                            <span id="validMsgCityMstState" style="color:red;font-size: 14px;display:none">Select State</span>
+
                         </div>
 
                     </div>
@@ -168,15 +706,15 @@
                     <div class="form-row mt-1">
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDistrict">District</label>
-                            <select id="inputCityMstDistrict" class="form-control form-control-sm CommonScroleStyle ">
-                                <option selected>Select District</option>
+                            <select id="inputCityMstDistrict" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="0" selected>Select District</option>
                               
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstParentCity">Parent City</label>
                             <select id="inputCityMstParentCity" class="form-control form-control-sm CommonScroleStyle ">
-                                <option selected>Select Parent City</option>
+                                <option value="0" selected>Select Parent City</option>
                                
                             </select>
                         </div>
@@ -199,7 +737,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputCityMstBranchAc">Branch A/C</label>
                             <select id="inputCityMstBranchAc" class="form-control form-control-sm CommonScroleStyle ">
-                                <option selected>Select Branch A/C</option>
+                                <option value="0" selected>Select Branch A/C</option>
                                
                             </select>
                         </div>
@@ -217,7 +755,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputCityMstCityLocation">Location</label>
                             <select id="inputCityMstCityLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                <option selected>Select Location</option>
+                                <option value="0" selected>Select Location</option>
                                 
                             </select>
                         </div>
@@ -227,7 +765,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDfLocation">Df. To Location</label>
                             <select id="inputCityMstDfLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                <option selected>Select Df. Location</option>
+                                <option value="0" selected>Select Df. Location</option>
                                
                             </select>
                         </div>
@@ -235,7 +773,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputCityMstRoute">Route</label>
                             <select id="inputCityMstRoute" class="form-control form-control-sm CommonScroleStyle ">
-                                <option selected>Select Route</option>                              
+                                <option value="0" selected>Select Route</option>                              
                             </select>
                         </div>
 
@@ -259,8 +797,8 @@
                         <div class="col-md-4 offset-8">
                             <div style="float:right">
                                 @*<button type="submit" class="btn btn-primary">New</button>*@
-                                <button type="submit" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
-                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <button type="submit" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                                <button type="submit" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
                                 <button type="submit" class="btn btn-primary" onclick="ClearForm()">Clear</button>
                             </div>
                         </div>
@@ -284,13 +822,97 @@
 
     var LocalDataStorage = new Array();
     LocalDataStorage = JSON.parse(localStorage.LogingObj);
-
+    var tableCityMst=''
     $(document).ready(function () {
+
+        GetCityMst();
+        $("#BookingCityCheck").prop('checked', true);
+        $('#CityMstdataTable thead tr')
+            .clone(true)
+            .addClass('filters')
+            .appendTo('#CityMstdataTable thead');
+
+        //$('#CityMstdataTable').DataTable({
+
+        //var tableCityMst = new DataTable('#CityMstdataTable', {
+
+         tableCityMst = $('#CityMstdataTable').DataTable({
+            //dom: 'Bfrtip',
+            //buttons: [
+            //    'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+
+            //    //'copy', 'csv', 'excel', 'pdf', 'print'
+            //],
+
+
+            
+            orderCellsTop: true,
+            fixedHeader: true,
+            initComplete: function () {
+                var api = this.api();
+
+                // For each column
+                api
+                    .columns()
+                    .eq(0)
+                    .each(function (colIdx) {
+                        // Set the header cell to contain the input element
+                        var cell = $('.filters th').eq(
+                            $(api.column(colIdx).header()).index()
+                        );
+                        var title = $(cell).text();
+                        if (title != 'Action') {
+                            $(cell).html('<input type="text" placeholder="' + title + '" />');
+                        }
+                        else {
+                            $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
+                        }
+
+                        // On every keypress in this input
+                        $(
+                            'input',
+                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                        )
+                            .off('keyup change')
+                            .on('change', function (e) {
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                    .column(colIdx)
+                                    .search(
+                                        this.value != ''
+                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                            : '',
+                                        this.value != '',
+                                        this.value == ''
+                                    )
+                                    .draw();
+                            })
+                            .on('keyup', function (e) {
+                                e.stopPropagation();
+
+                                $(this).trigger('change');
+                                $(this)
+                                    .focus()[0]
+                                    .setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                    });
+            },
+
+        });
+
         getCityHiererchiView();
         GetCityMasterDropdownData();
 
+        
     });
 
+
+    //================ Code For get City Tree View===================
     function getCityHiererchiView() {
         console.log('Error')
         $.ajax({
@@ -442,6 +1064,10 @@
         e.classList.add('activeTreeView');
     }
 
+    //================ City Tree View END===================
+
+
+    //================ Code For get City Dropdown ===================
 
     function GetCityMasterDropdownData() {
         $.ajax({
@@ -517,6 +1143,14 @@
                     text: item.CityName
                 }));
             });
+
+            const ParentCitydropdown = $('#inputCityMstParentCity');
+            data.forEach(function (item) {
+                ParentCitydropdown.append($('<option>', {
+                    value: item.CityId,
+                    text: item.CityName
+                }));
+            });
         }
         else {
 
@@ -538,89 +1172,139 @@
         }
 
     }
+    //================ City Dropdown END ===================
 
+    var DaleteCityListEntryMode = 0;
+    var DeleteCityIdList = 0;
     function SaveCityMstData(e) {
+        if (DaleteCityListEntryMode != 3) {
+            if ($('#inputCityMstName').val() == '') {
+                $("#validMsgCityMstCityName").css("display", "block")
+                return
+            }
+            else {
+                $("#validMsgCityMstCityName").css("display", "none")
+            }    
+
+            if ($('#inputCityMstPinCode').val() == '') {
+                $("#validMsgCityMstPinCode").css("display", "block")
+                return
+            }
+            else {
+                $("#validMsgCityMstPinCode").css("display", "none")
+            }
+            if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
+                $("#validMsgCityMstState").css("display", "block")
+                return
+            }
+            else {
+                $("#validMsgCityMstState").css("display", "none")
+            }
+
+        }
+
+
+        
+
+
+
         var EntryMode = ''; var cityid = ''; var CityName = ''; var CtAlias = ''; var Zip = ''; var DefDocChrgs = ''; var usercode = ''; var DfTransport = '';
         var isRoute = ''; var isLocked = ''; var isStation = ''; var GlAcId = ''; var StateId = ''; var RouteId = ''; var DeliveryAt = '';
         var DeliveryAdd = ''; var ContactNo = ''; var ChargesUpTo = ''; var isMultiRoute = ''; var OrderNo = ''; var BusChg = ''; var Distance = '';
         var Catg = ''; var ParentId = ''; var CompId = ''; var LocId = ''; var DfToLocId = ''; var DefDelComPer = ''; var Remark = ''; var DistId = '';
 
+
+        var JasonCityMstData = new Array();
+        var obj = new Object();
+
         if (e.textContent == 'Save') {
             EntryMode = 1;
         }
-        else if (e.textContent == 'Edit') {
+        else if (e.textContent == 'Update') {
             EntryMode = 2;
         }
         else if (e.textContent == 'Delete') {
             EntryMode = 3;
 
         }
-        //cityid = $('#').val();
-
-        CityName = $('#inputCityMstName').val();
-        //CtAlias = $('#').val();
-        Zip = $('#inputCityMstPinCode').val();
-        DefDocChrgs = $('#inputCityMstBiltyCharg').val();
-        //usercode = $('#').val();
-        DfTransport = $('#inputCityMstDfTransport').val();
-        isRoute = $('#RouteCheck').is(":checked"); //Checkbox
-        isLocked = $('#CityMstLockedCheck').is(":checked");//Checkbox
-        isStation = $('#BookingCityCheck').is(":checked");  //Checkbox
-        GlAcId = $('#inputCityMstBranchAc').val();
-        StateId = $('#inputCityMstState').val();
-        RouteId = $('#inputCityMstRoute').val();
-        DeliveryAt = $('#inputCityMstDeliveryAt').val();
-        //DeliveryAdd = $('#').val();
-        //ContactNo = $('#').val();
-        ChargesUpTo = $('#inputCityMstChargeUpTo').val();
-        isMultiRoute = $('#CityMstIsMultRoutCheck').is(":checked");//Checkbox
-        OrderNo = $('#inputCityMstSrNo').val();
-        //BusChg = $('#').val();
-        //Distance = $('#').val();
-        //Catg = $('#').val();
-        ParentId = $('#inputCityMstParentCity').val();
-        //CompId = $('#').val();
-        LocId = $('#inputCityMstCityLocation').val();
-        DfToLocId = $('#inputCityMstDfLocation').val();
-        DefDelComPer = $('#inputCityMstDelComm').val();
-        Remark = $('#inputCityMstRefNo').val();
-        DistId = $('#inputCityMstDistrict').val();
 
 
-        var JasonCityMstData = new Array();
-        var obj = new Object();
+        if (EntryMode == 3 || DaleteCityListEntryMode == 3) {
+           obj["EntryMode"] = 3 
+           obj["cityid"] = DeleteCityIdList
+        }
+        else {
 
-        if (EntryMode != '') { obj["EntryMode"] = EntryMode } else { obj["EntryMode"] = '' }
-        if (cityid != '') { obj["cityid"] = cityid } else { obj["cityid"] = '' }
-        if (CityName != '') { obj["CityName"] = CityName } else { obj["CityName"] = '' }
-        if (CtAlias != '') { obj["CtAlias"] = CtAlias } else { obj["CtAlias"] ='' }
-        if (Zip != '') { obj["Zip"] = Zip } else { obj["Zip"] = '' }
-        if (DefDocChrgs != '') { obj["DefDocChrgs"] = DefDocChrgs } else { obj["DefDocChrgs"] = '' }
-        if (usercode != '') { obj["usercode"] = usercode } else { obj["usercode"] = '' }
-        if (DfTransport != '') { obj["DfTransport"] = DfTransport } else { obj["DfTransport"] = '' }
-        if (isRoute != '') { obj["isRoute"] = isRoute } else { obj["isRoute"] = '' }
-        if (isLocked != '') { obj["isLocked"] = isLocked } else { obj["isLocked"] = '' }
-        if (isStation != '') { obj["isStation"] = isStation } else { obj["isStation"] = '' }
-        if (GlAcId != '' && GlAcId != 'Select Branch A/C') { obj["GlAcId"] = GlAcId } else { obj["GlAcId"] = '' }
-        if (StateId != '' && StateId != 'Select State') { obj["StateId"] = StateId } else { obj["StateId"] = '' }
-        if (RouteId != '' && RouteId != 'Select Route') { obj["RouteId"] = RouteId } else { obj["RouteId"] = '' }
-        if (DeliveryAt != '') { obj["DeliveryAt"] = DeliveryAt } else { obj["DeliveryAt"] = '' }
-        if (DeliveryAdd != '') { obj["DeliveryAdd"] = DeliveryAdd } else { obj["DeliveryAdd"] = '' }
-        if (ContactNo != '') { obj["ContactNo"] = ContactNo } else { obj["ContactNo"] = '' }
-        if (ChargesUpTo != '') { obj["ChargesUpTo"] = ChargesUpTo } else { obj["ChargesUpTo"] = '' }
-        if (isMultiRoute != '') { obj["isMultiRoute"] = isMultiRoute } else { obj["isMultiRoute"] = '' }
-        if (OrderNo != '') { obj["OrderNo"] = OrderNo } else { obj["OrderNo"] = '' }
-        if (BusChg != '') { obj["BusChg"] = BusChg } else { obj["BusChg"] = '' }
-        if (Distance != '') { obj["Distance"] = Distance } else { obj["Distance"] = '' }
-        if (Catg != '') { obj["Catg"] = Catg } else { obj["Catg"] = '' }
-        if (ParentId != '' && ParentId != 'Select Parent City') { obj["ParentId"] = ParentId } else { obj["ParentId"] = '' }
-        if (CompId != '') { obj["CompId"] = CompId } else { obj["CompId"] = '' }
-        if (LocId != '' && LocId != 'Select Location') { obj["LocId"] = LocId } else { obj["LocId"] = '' }
-        if (DfToLocId != '' && DfToLocId != 'Select Df. Location') { obj["DfToLocId"] = DfToLocId } else { obj["DfToLocId"] = '' }
-        if (DefDelComPer != '') { obj["DefDelComPer"] = DefDelComPer } else { obj["DefDelComPer"] = '' }
-        if (Remark != '') { obj["Remark"] = Remark } else { obj["Remark"] = '' }
-        if (DistId != '' && DistId != 'Select District') { obj["DistId"] = DistId } else { obj["DistId"] = '' }
+            cityid = $('#inputCityId').val();
+            CityName = $('#inputCityMstName').val();
+            CtAlias = $('#inputCityMstNameAlias').val();
+            Zip = $('#inputCityMstPinCode').val();
+            DefDocChrgs = $('#inputCityMstBiltyCharg').val();
+            //usercode = $('#').val();
+            DfTransport = $('#inputCityMstDfTransport').val();
+            isRoute = $('#RouteCheck').is(":checked"); //Checkbox
+            //if (isRoute == true) { isRoute = 1 } else { isRoute = 0 }
 
+            isLocked = $('#CityMstLockedCheck').is(":checked");//Checkbox
+            //if (isLocked == true) { isLocked = 1 } else { isLocked = 0 }
+
+            isStation = $('#BookingCityCheck').is(":checked");  //Checkbox
+            //if (isStation == true) { isStation = 1 } else { isStation = 0 }
+
+            GlAcId = $('#inputCityMstBranchAc').val();
+            StateId = $('#inputCityMstState').val();
+            RouteId = $('#inputCityMstRoute').val();
+            DeliveryAt = $('#inputCityMstDeliveryAt').val();
+            //DeliveryAdd = $('#').val();
+            //ContactNo = $('#').val();
+            ChargesUpTo = $('#inputCityMstChargeUpTo').val();
+            isMultiRoute = $('#CityMstIsMultRoutCheck').is(":checked");//Checkbox
+            //if (isMultiRoute == true) { isMultiRoute = 1 } else { isMultiRoute = 0 }
+
+            OrderNo = $('#inputCityMstSrNo').val();
+            //BusChg = $('#').val();
+            //Distance = $('#').val();
+            //Catg = $('#').val();
+            ParentId = $('#inputCityMstParentCity').val();
+            //CompId = $('#').val();
+            LocId = $('#inputCityMstCityLocation').val();
+            DfToLocId = $('#inputCityMstDfLocation').val();
+            DefDelComPer = $('#inputCityMstDelComm').val();
+            Remark = $('#inputCityMstRefNo').val();
+            DistId = $('#inputCityMstDistrict').val();
+            
+
+            if (EntryMode != '') { obj["EntryMode"] = EntryMode } else { obj["EntryMode"] = '' }
+            if (cityid != '') { obj["cityid"] = cityid } else { obj["cityid"] = '' }
+            if (CityName != '') { obj["CityName"] = CityName } else { obj["CityName"] = '' }
+            if (CtAlias != '') { obj["CtAlias"] = CtAlias } else { obj["CtAlias"] = '' }
+            if (Zip != '') { obj["Zip"] = Zip } else { obj["Zip"] = '' }
+            if (DefDocChrgs != '') { obj["DefDocChrgs"] = DefDocChrgs } else { obj["DefDocChrgs"] = '' }
+            if (usercode != '') { obj["usercode"] = usercode } else { obj["usercode"] = '' }
+            if (DfTransport != '') { obj["DfTransport"] = DfTransport } else { obj["DfTransport"] = '' }
+            if (isRoute != '') { obj["isRoute"] = isRoute } else { obj["isRoute"] = 0 }
+            if (isLocked != '') { obj["isLocked"] = isLocked } else { obj["isLocked"] = 0 }
+            if (isStation != '') { obj["isStation"] = isStation } else { obj["isStation"] = 0 }
+            if (GlAcId != '' && GlAcId != 'Select Branch A/C' && GlAcId != null && GlAcId != undefined && GlAcId != 0) { obj["GlAcId"] = GlAcId } else { obj["GlAcId"] = -1 }
+            if (StateId != '' && StateId != 'Select State' && StateId != null && StateId != undefined && StateId != 0) { obj["StateId"] = StateId } else { obj["StateId"] = -1 }
+            if (RouteId != '' && RouteId != 'Select Route' && RouteId != null && RouteId != undefined && RouteId != 0) { obj["RouteId"] = RouteId } else { obj["RouteId"] = -1 }
+            if (DeliveryAt != '') { obj["DeliveryAt"] = DeliveryAt } else { obj["DeliveryAt"] = '' }
+            if (DeliveryAdd != '') { obj["DeliveryAdd"] = DeliveryAdd } else { obj["DeliveryAdd"] = '' }
+            if (ContactNo != '') { obj["ContactNo"] = ContactNo } else { obj["ContactNo"] = '' }
+            if (ChargesUpTo != '') { obj["ChargesUpTo"] = ChargesUpTo } else { obj["ChargesUpTo"] = '' }
+            if (isMultiRoute != '') { obj["isMultiRoute"] = isMultiRoute } else { obj["isMultiRoute"] = 0 }
+            if (OrderNo != '') { obj["OrderNo"] = OrderNo } else { obj["OrderNo"] = '' }
+            if (BusChg != '') { obj["BusChg"] = BusChg } else { obj["BusChg"] = '' }
+            if (Distance != '') { obj["Distance"] = Distance } else { obj["Distance"] = '' }
+            if (Catg != '') { obj["Catg"] = Catg } else { obj["Catg"] = '' }
+            if (ParentId != '' && ParentId != 'Select Parent City' && ParentId != null && ParentId != undefined) { obj["ParentId"] = ParentId } else { obj["ParentId"] = '' }
+            if (CompId != '') { obj["CompId"] = CompId } else { obj["CompId"] = '' }
+            if (LocId != '' && LocId != 'Select Location' && LocId != null && LocId != undefined && LocId != 0) { obj["LocId"] = LocId } else { obj["LocId"] = '' }
+            if (DfToLocId != '' && DfToLocId != 'Select Df. Location' && DfToLocId != null && DfToLocId != undefined && DfToLocId != 0) { obj["DfToLocId"] = DfToLocId } else { obj["DfToLocId"] = '' }
+            if (DefDelComPer != '') { obj["DefDelComPer"] = DefDelComPer } else { obj["DefDelComPer"] = '' }
+            if (Remark != '') { obj["Remark"] = Remark } else { obj["Remark"] = '' }
+            if (DistId != '' && DistId != 'Select District') { obj["DistId"] = DistId } else { obj["DistId"] = -1 }
+        }
 
         JasonCityMstData.push(obj);
 
@@ -645,7 +1329,8 @@
                     data = data.message
                     //alert(data)
                     //DashBoardData = data
-                    DisplaySeccessMsg(data)
+                    DisplaySeccessMsg(data);
+                   
                 }
                 else {
                    
@@ -657,11 +1342,276 @@
         });
     }
 
+    function ValidationCityForm() {
+       
+        if ($('#inputCityMstName').val() == '') {
+            $("#validMsgCityMstCityName").css("display", "block")
+            return
+        }
+        else {
+            $("#validMsgCityMstCityName").css("display", "none")
+        }
+
+        if ($('#inputCityMstPinCode').val() == '') {
+            $("#validMsgCityMstPinCode").css("display", "block")
+            return
+        }
+        else {
+            $("#validMsgCityMstPinCode").css("display", "none")
+        }
+        if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() =='0') {
+            $("#validMsgCityMstState").css("display", "block")
+            return
+        }
+        else {
+            $("#validMsgCityMstState").css("display", "none")
+        }
+      
+    }
+
     function ClearForm() {
         $('#CityMstForm')[0].reset();
     }
 
-    //=================END===========================
+    //================ Code For get City Table View ===================
+    var TotalCityMstDataArray = new Array();
+    function GetCityMst() {
+        $.ajax({
+            url: urlLink + 'ApiMaster/GetCityMasterData',
+            type: "GET",
+            dataType: "JSON",
+            async: false,
+            //data: { "DfLocDetId": LocalDataStorage[0]['LocId'] },
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
+               // xhr.setRequestHeader("UserCode", LocalDataStorage[0]['UserCode']);
+                //xhr.setRequestHeader("CampId", LocalDataStorage[0]['dfCompId']);
+            },
+            success: function (data) {
+                debugger;
+
+                if (data.status == 1) {
+                    TotalCityMstDataArray=[]
+                    TotalCityMstDataArray = data.message
+                    DisplayAllCityTableView(TotalCityMstDataArray)
+                }
+                else {
+                    console.log(error);
+                    DisplayErroeMsg(data.message)
+                    $("#loader").css("display", "none");
+                }
+
+            }
+        });
+    }
+
+    function DisplayAllCityTableView(Data) {
+        if (Data.length > 0) {
+            var str = ''
+            str += '<table class="table table-sm table-bordered" id="CityMstdataTable" width="100%" cellspacing="0">';
+            str += '<thead style="position: sticky;top: 0;">';
+            str += '<tr>';
+            str += '<th style="width: 100px;">City ID</th>';
+            str += '<th style="">City Name</th>';
+            str += '<th style="">Zip Code</th>';
+            str += '<th style="">Contact</th>';
+            str += '<th style="">Action</th>';
+
+
+
+            str += '</tr>';
+            str += '</thead>';
+            str += '<tbody>';
+            for (var i = 0; i < Data.length; i++) {
+                str += '<tr>';
+                if (Data[i]['CityId'] == null) {
+                    str += '<td></td>';
+                } else {
+                    str += '<td>' + Data[i]['CityId'] + '</td>';
+                }
+
+                if (Data[i]['CityName']  == null) {
+                    str += '<td></td>';
+                } else {
+                    str += '<td>' + Data[i]['CityName'] + '</td>';
+                }
+
+                if (Data[i]['Zip'] == null) {
+                    str += '<td></td>';
+                }
+                else {
+                    str += '<td>' + Data[i]['Zip'] + '</td>';
+                }
+                if (Data[i]['ContactNo'] == null) {
+                    str += '<td></td>';
+                } else {
+                    str += '<td>' + Data[i]['ContactNo'] + '</td>';    
+                }
+                str += '<td><span style="padding: 4%;" onclick="EditCityMst(this)"><i class="fas fa-pencil-alt"></i></span> <span style="padding: 4%;" onclick="DeleteCityMst(this)"><i class="fa fa-trash" /></span></td>';
+                str += '</tr>';
+            }
+
+
+            str += '</tbody>';
+            str += '</table>';
+
+
+            $("#bindCityMstList").html(str);
+        }
+        else {
+
+        }
+    }
+
+    function EditCityMst(e) {
+        debugger;
+        var cityTr = e.closest('tr')
+        var CityId = cityTr.cells[0].textContent
+        
+        var FilterData = new Array();
+        FilterData = $.grep(TotalCityMstDataArray, function (element) {
+            return (element.CityId == CityId);
+        });
+
+        $("#CityMstFormSection").css('display', 'block');
+        $('#FindCity_Mst').css('display', 'none');
+        $('#btnAddListCity').css('display', 'none');
+        $('#btnBackListCity').css('display', 'block');
+        $('#UpdateOldCity').css('display', 'none');
+        $('#SaveNewCity').css('display', 'none');
+        $('#UpdateOldCity').css('display', 'inline-block');
+
+        $("#inputCityId").val(FilterData[0]['CityId'])
+        $("#inputCityMstSrNo").val(FilterData[0]['OrderNo'])
+        $("#inputCityMstRefNo").val(FilterData[0]['Remark'])
+
+        if (FilterData[0]['isStation'] == 1) {
+            $("#BookingCityCheck").prop('checked', true);
+        } else {
+            $("#BookingCityCheck").prop('checked', false);
+        }
+
+        if (FilterData[0]['isRoute'] == 1) {
+            $("#RouteCheck").prop('checked', true);
+        }
+        else {
+            $("#RouteCheck").prop('checked', false);
+        }
+
+        $("#inputCityMstName").val(FilterData[0]['CityName'])
+        $("#inputCityMstPinCode").val(FilterData[0]['Zip'])
+        if (FilterData[0]['StateId'] >= 0) {
+            $("#inputCityMstState").val(FilterData[0]['StateId'])
+        }
+        else {
+            $("#inputCityMstState").val(0)
+        }
+        if (FilterData[0]['DistId'] >= 0) {
+            $("#inputCityMstDistrict").val(FilterData[0]['DistId'])
+        }
+        else {
+            $("#inputCityMstDistrict").val(0)
+        }
+        if (FilterData[0]['ParentId'] >= 0) {
+            $("#inputCityMstParentCity").val(FilterData[0]['ParentId'])
+        }
+        else {
+            $("#inputCityMstParentCity").val(0)
+        }
+        if (FilterData[0]['DeliveryAt'] >= 0) {
+            $("#inputCityMstDeliveryAt").val(FilterData[0]['DeliveryAt'])
+        }
+        else {
+            $("#inputCityMstDeliveryAt").val(0)
+        }
+
+        $("#inputCityMstChargeUpTo").val(FilterData[0]['ChargesUpTo'])     
+        $("#inputCityMstDfTransport").val(FilterData[0]['DfTransport'])
+
+        if (FilterData[0]['GlAcId'] >= 0) {
+            $("#inputCityMstBranchAc").val(FilterData[0]['GlAcId'])
+        }
+        else {
+            $("#inputCityMstBranchAc").val(0)
+        }
+        $("#inputCityMstBiltyCharg").val(FilterData[0]['DefDocChrgs'])
+        $("#inputCityMstDelComm").val(FilterData[0]['DefDelComPer'])
+
+        if (FilterData[0]['LocId'] >= 0) {
+            $("#inputCityMstCityLocation").val(FilterData[0]['LocId'])
+        }
+        else {
+            $("#inputCityMstCityLocation").val(0)
+        }
+
+        if (FilterData[0]['DfToLocId'] >= 0) {
+            $("#inputCityMstDfLocation").val(FilterData[0]['DfToLocId'])
+        }
+        else {
+            $("#inputCityMstDfLocation").val(0)
+        }
+        if (FilterData[0]['RouteId'] >= 0) {
+            $("#inputCityMstRoute").val(FilterData[0]['RouteId'])
+        }
+        else {
+            $("#inputCityMstRoute").val(0)
+        }
+
+        if (FilterData[0]['isMultiRoute'] == 1) {
+            $("#CityMstIsMultRoutCheck").prop('checked', true);
+        } else {
+            $("#CityMstIsMultRoutCheck").prop('checked', false);
+        }
+
+        if (FilterData[0]['isLocked'] == 1) {
+            $("#CityMstLockedCheck").prop('checked', true);
+        } else {
+            $("#CityMstLockedCheck").prop('checked', false);
+        }
+
+      
+    }
+    function DeleteCityMst(e) {
+
+        var confim = confirm("Are You Sure, You Want To Delete This Record?");
+
+        if (!confim) {
+            return false
+        }
+       var cityTr = e.closest('tr')
+       var CityId = cityTr.cells[0].textContent
+
+        DeleteCityIdList = CityId
+        DaleteCityListEntryMode = 3;
+        SaveCityMstData(e);
+    }
+
+    function AddBackNewCity(e) {
+        if (e.textContent == 'Add City') {
+            $('#FindCity_Mst').css('display', 'none');
+            $('#btnAddListCity').css('display', 'none');
+            $('#UpdateOldCity').css('display', 'none');
+            $('#SaveNewCity').css('display', 'inline-block');
+
+            $('#btnBackListCity').css('display', 'block');
+            $('#CityMstFormSection').css('display', 'block');
+            $('#CityMstForm')[0].reset();
+            $("#BookingCityCheck").prop('checked', true);
+        }
+        else if (e.textContent == 'Back') {
+            $('#FindCity_Mst').css('display', 'block');
+            $('#btnAddListCity').css('display', 'block');
+            $('#btnBackListCity').css('display', 'none');
+            $('#CityMstFormSection').css('display', 'none');
+            $('#UpdateOldCity').css('display', 'inline-block');
+            $('#SaveNewCity').css('display', 'none');
+
+        }
+
+    }
+
+    //================= City Table END ===========================
 
 
 
