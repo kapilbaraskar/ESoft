@@ -907,7 +907,9 @@
 
         getCityHiererchiView();
         GetCityMasterDropdownData();
-
+        $('#inputCityMstName').css("background-color", "rgb(255, 255, 49)");
+        $('#inputCityMstName').focus();
+        
         
     });
 
@@ -1613,6 +1615,13 @@
 
     //================= City Table END ===========================
 
+    $("input,button,#inputCityMstName").focus(function () {
+        $(this).css("background-color", "rgb(255, 255, 49)");
+        $(this).css("color", "black");
+    });
+    $("input,button").focusout(function () {
+        $(this).css("background-color", "");
 
+    });
 
 </script>
