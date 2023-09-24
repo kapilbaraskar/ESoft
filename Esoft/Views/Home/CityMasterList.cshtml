@@ -8,8 +8,8 @@
 <div>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">City Master</h1>
-        <button id="btnAddListCity" type="submit" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)">Add City</button>
-        <button id="btnBackListCity" type="submit" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)" style="display:none">Back</button>
+        <button id="btnAddListCity" type="button" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)">Add City</button>
+        <button id="btnBackListCity" type="button" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)" style="display:none">Back</button>
     </div>
 </div>
 
@@ -556,7 +556,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-3 col-lg-3 col-sm-3">
-                            <button type="submit" class="btn btn-sm btn-primary" style="width: 100%;">Find</button>
+                            <button type="button" class="btn btn-sm btn-primary" style="width: 100%;">Find</button>
                         </div>
                     </div>
 
@@ -797,9 +797,9 @@
                         <div class="col-md-4 offset-8">
                             <div style="float:right">
                                 @*<button type="submit" class="btn btn-primary">New</button>*@
-                                <button type="submit" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
-                                <button type="submit" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
-                                <button type="submit" class="btn btn-primary" onclick="ClearForm()">Clear</button>
+                                <button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                                <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
+                                <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
                             </div>
                         </div>
                     </div>
@@ -907,6 +907,16 @@
 
         getCityHiererchiView();
         GetCityMasterDropdownData();
+
+        //$('input').keypress(function (event) {
+        //    var keycode = (event.keyCode ? event.keyCode : event.which);
+        //    if (keycode == 13) {
+        //        //keycode.preventDefault();
+        //        var nxtIdx = $inp.index(this) + 1;
+        //        $(":input:text:eq(" + nxtIdx + ")").focus();
+        //    }
+        //});
+
         $('#inputCityMstName').css("background-color", "rgb(255, 255, 49)");
         $('#inputCityMstName').focus();
         
@@ -1623,5 +1633,7 @@
         $(this).css("background-color", "");
 
     });
+
+   
 
 </script>
