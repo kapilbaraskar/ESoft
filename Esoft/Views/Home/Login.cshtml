@@ -95,22 +95,22 @@
                                         <div class="form-group">
                                             <label for="InputGroupCode" style="margin-right: 2%;">Group Code:-</label>
                                             <input type="text" style="display: inline-block;
-                                            width: 72%;" class="form-control form-control-user" id="InputGroupCode" aria-describedby="groupHelp" placeholder="Enter Group Code...">
+                                            width: 72%;" class="form-control form-control-user" onkeydown="moveToNextInput(event)" id="InputGroupCode" aria-describedby="groupHelp" placeholder="Enter Group Code...">
                                             <span style="display:none;" id="GroupCodeErrorMsg" class="errorValidmsg">Enter Group Code</span>
                                         </div>
                                         <div class="form-group">
                                             <label for="" style="margin-right: 0%;">Current Date:-</label>
-                                            <input required type="date" style="display: inline-block;width: 72%;" class="form-control form-control-user" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter Date...">
+                                            <input required type="date" onkeydown="moveToNextInput(event)" style="display: inline-block;width: 72%;" class="form-control form-control-user" id="dateInputGroup" aria-describedby="dateHelp" placeholder="Enter Date...">
                                         </div>
                                         <div class="form-group">
                                             <label for="" style="margin-right: 9%;">User ID:-</label>
-                                            <input type="email" style="display: inline-block;
+                                            <input type="email" onkeydown="moveToNextInput(event)" style="display: inline-block;
                                             width: 72%;" class="form-control form-control-user" id="InputUserId" aria-describedby="emailHelp" placeholder="Enter User ID...">
                                             <span style="display:none;" id="UserIdErrorMsg" class="errorValidmsg">Enter User ID</span>
                                         </div>
                                         <div class="form-group">
                                             <label for="" style="margin-right: 5%;">Password:-</label>
-                                            <input type="password" style="display: inline-block;
+                                            <input type="password" onkeydown="moveToNextInput(event)" style="display: inline-block;
                                             width: 72%;" class="form-control form-control-user" id="InputPassword" placeholder="Password">
                                             <span style="display:none;" id="PasswordErrorMsg" class="errorValidmsg">Enter Password</span>
                                         </div>
@@ -489,6 +489,22 @@
 
         }
 
+
+        //Code for Go to Next Field 24-09-2023
+        function moveToNextInput(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent the default Enter key behavior (submitting the form)
+                const inputs = document.querySelectorAll('input');
+                const currentInput = event.target;
+                const currentIndex = Array.from(inputs).indexOf(currentInput);
+
+                if (currentIndex !== -1 && currentIndex < inputs.length - 1) {
+                    inputs[currentIndex + 1].focus(); // Focus on the next input field
+                }
+            }
+        }
+
+        //==================END======================
     </script>
 </body>
 

@@ -636,20 +636,20 @@
                         <div class="col-md-5">
                             <div class="form-group row pl-3">
                                 <div class="form-check col-md-5">
-                                    <input class="form-check-input" type="checkbox" id="BookingCityCheck" >
+                                    <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="BookingCityCheck" >
                                     <label class="form-check-label" for="BookinCityCheck">
                                         Is Booking City
                                     </label>
                                 </div>
                                 <div class="form-check col-md-3">
-                                    <input class="form-check-input" type="checkbox" id="RouteCheck">
+                                    <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="RouteCheck">
                                     <label class="form-check-label" for="RouteCheck">
                                         Is Route
                                     </label>
                                 </div>
 
                                 <div class="form-group col-md-3">
-                                    <input type="text" class="form-control form-control-sm" disabled id="inputCityId">
+                                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" disabled id="inputCityId">
                                 </div>
 
                             </div>
@@ -659,11 +659,11 @@
                             <div class="form-group row">
                                 <div class="row col-md-6">
                                     <label for="inputCityMstSrNo" class="col-md-4">SrNo.:- </label>
-                                    <input type="text" class="form-control form-control-sm col-md-8" value="51" id="inputCityMstSrNo">
+                                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm col-md-8" value="51" id="inputCityMstSrNo">
                                 </div>
                                 <div class="row col-md-6">
                                     <label for="inpuCityMstRefNo" class="col-md-4">Ref.No:- </label>
-                                    <input type="text" class="form-control form-control-sm col-md-8" id="inputCityMstRefNo">
+                                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm col-md-8" id="inputCityMstRefNo">
                                 </div>
 
                             </div>
@@ -676,24 +676,37 @@
                             <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control form-control-sm" id="inputCityMstName">
+                                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstName">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
+                                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
                                 </div>
                             </div>
                             <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
 
                         </div>
+
+                        @*<div class="form-group col-md-3">
+                            <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstName">
+                            <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
+
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input onkeydown="moveToNextInput(event)" style="position: absolute; bottom: 0%; left: 0;" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
+                            <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
+
+                        </div>*@
+
                         <div class="form-group col-md-3">
                             <label for="inputCityMstPinCode">Pin Code</label><span style="color:red">*</span>
-                            <input type="text" class="form-control form-control-sm" onfocus="ValidationCityForm()" id="inputCityMstPinCode">
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" onfocus="ValidationCityForm()" id="inputCityMstPinCode">
                             <span id="validMsgCityMstPinCode" style="color: red; font-size: 14px; display: none">Enter Pin Code</span>
 
                         </div>
                         <div class="form-group col-md-3">
                             <label for="inputCityMstState">State</label><span style="color:red">*</span>
-                            <select id="inputCityMstState" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstState" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
                                 <option value="0" selected>Select State</option>
 
                             </select>
@@ -706,37 +719,37 @@
                     <div class="form-row mt-1">
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDistrict">District</label>
-                            <select id="inputCityMstDistrict" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstDistrict" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
                                 <option value="0" selected>Select District</option>
                               
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstParentCity">Parent City</label>
-                            <select id="inputCityMstParentCity" class="form-control form-control-sm CommonScroleStyle ">
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstParentCity" class="form-control form-control-sm CommonScroleStyle ">
                                 <option value="0" selected>Select Parent City</option>
                                
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDeliveryAt">Delivery At</label>
-                            <input type="text" class="form-control form-control-sm" id="inputCityMstDeliveryAt">
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDeliveryAt">
                         </div>
 
                     </div>
                     <div class="form-row mt-1">
                         <div class="form-group col-md-4">
                             <label for="inputCityMstChargeUpTo">Charges Up To</label>
-                            <input type="text" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDfTransport">Df. Transport</label>
-                            <input type="text" class="form-control form-control-sm" id="inputCityMstDfTransport">
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDfTransport">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="inputCityMstBranchAc">Branch A/C</label>
-                            <select id="inputCityMstBranchAc" class="form-control form-control-sm CommonScroleStyle ">
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstBranchAc" class="form-control form-control-sm CommonScroleStyle ">
                                 <option value="0" selected>Select Branch A/C</option>
                                
                             </select>
@@ -746,15 +759,15 @@
                     <div class="form-row mt-1">
                         <div class="form-group col-md-4">
                             <label for="inputCityMstBiltyCharg">Df. Bilty Charg</label>
-                            <input type="text" class="form-control form-control-sm" id="inputCityMstBiltyCharg">
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstBiltyCharg">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDelComm">Df.Del. Comm% </label>
-                            <input type="text" class="form-control form-control-sm" id="inputCityMstDelComm">
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDelComm">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstCityLocation">Location</label>
-                            <select id="inputCityMstCityLocation" class="form-control form-control-sm CommonScroleStyle ">
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstCityLocation" class="form-control form-control-sm CommonScroleStyle ">
                                 <option value="0" selected>Select Location</option>
                                 
                             </select>
@@ -764,7 +777,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDfLocation">Df. To Location</label>
-                            <select id="inputCityMstDfLocation" class="form-control form-control-sm CommonScroleStyle ">
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstDfLocation" class="form-control form-control-sm CommonScroleStyle ">
                                 <option value="0" selected>Select Df. Location</option>
                                
                             </select>
@@ -772,7 +785,7 @@
 
                         <div class="form-group col-md-4">
                             <label for="inputCityMstRoute">Route</label>
-                            <select id="inputCityMstRoute" class="form-control form-control-sm CommonScroleStyle ">
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstRoute" class="form-control form-control-sm CommonScroleStyle ">
                                 <option value="0" selected>Select Route</option>                              
                             </select>
                         </div>
@@ -780,13 +793,13 @@
                     </div>
                     <div class="form-row mt-1 pl-3">
                         <div class="form-check col-md-2">
-                            <input class="form-check-input" type="checkbox" id="CityMstIsMultRoutCheck">
+                            <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstIsMultRoutCheck">
                             <label class="form-check-label" for="CityMstIsMultRoutCheck">
                                 Is Multi Route
                             </label>
                         </div>
                         <div class="form-check col-md-2">
-                            <input class="form-check-input" type="checkbox" id="CityMstLockedCheck">
+                            <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstLockedCheck">
                             <label class="form-check-label" for="CityMstLockedCheck">
                                 Locked
                             </label>
@@ -797,9 +810,13 @@
                         <div class="col-md-4 offset-8">
                             <div style="float:right">
                                 @*<button type="submit" class="btn btn-primary">New</button>*@
-                                <button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
-                                <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
-                                <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
+                                <input type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Save" />
+                                <input type="button" id="UpdateOldCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Update" />
+                                <input type="button" id="SaveNewCity" class="btn btn-primary" onclick="ClearForm(this)" value="Clear" />
+
+                                @*<button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>*@
+                                @*<button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
+                                <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>*@
                             </div>
                         </div>
                     </div>

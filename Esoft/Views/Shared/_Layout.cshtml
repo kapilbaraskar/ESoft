@@ -643,7 +643,7 @@
        // str = '<ul class="sidebar-menu tree" data-widget="tree">'  //data-widget is used to make drop down list
 
 
-            str = '<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">';
+            str = '<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index">';
             str += '<div class="sidebar-brand-icon rotate-n-15" >';
             str += '<img class="img-profile rounded-circle" src="/Content/img/esoft.jpeg" alt="" width="50%" />';
             str += '</div>';
@@ -923,6 +923,45 @@
                 }
             });
         }
+
+
+        //Code for Go to Next Field 24-09-2023
+        function moveToNextInput(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent the default Enter key behavior (submitting the form)
+                //const inputs = document.querySelectorAll('input');
+                //const currentInput = event.target;
+                //const currentIndex = Array.from(inputs).indexOf(currentInput);
+
+
+                //const selects = document.querySelectorAll('select');
+                //const currentselects = event.target;
+                //const currentselectsIndex = Array.from(selects).indexOf(currentselects);
+                //const selectOpt = event.currentTarget.parentElement.nextElementSibling.getElementsByTagName('select')
+
+                //if (selectOpt.length == 0 || selectOpt == null || selectOpt == '') {
+                    //if (currentIndex !== -1 && currentIndex < inputs.length - 1) {
+                    //    inputs[currentIndex + 1].focus(); // Focus on the next input field
+                    //}
+                //}
+                //else {
+                //    if (currentselectsIndex !== -1 && currentselectsIndex < selects.length - 1) {
+                //        selects[currentselectsIndex + 1].focus(); // Focus on the next input field
+                //    }
+                //}
+
+
+                const formElements = document.querySelectorAll('input, select');
+                const currentElement = event.target;
+                const currentIndex = Array.from(formElements).indexOf(currentElement);
+
+                if (currentIndex !== -1 && currentIndex < formElements.length - 1) {
+                    formElements[currentIndex + 1].focus();
+                }
+            }
+        }
+
+        //==================END======================
 
     </script>
 
