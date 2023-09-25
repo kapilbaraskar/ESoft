@@ -810,13 +810,13 @@
                         <div class="col-md-4 offset-8">
                             <div style="float:right">
                                 @*<button type="submit" class="btn btn-primary">New</button>*@
-                                <input type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Save" />
+                                @*<input type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Save" />
                                 <input type="button" id="UpdateOldCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Update" />
-                                <input type="button" id="SaveNewCity" class="btn btn-primary" onclick="ClearForm(this)" value="Clear" />
+                                <input type="button" id="SaveNewCity" class="btn btn-primary" onclick="ClearForm(this)" value="Clear" />*@
 
-                                @*<button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>*@
-                                @*<button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
-                                <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>*@
+                                <button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                                <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
+                                <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
                             </div>
                         </div>
                     </div>
@@ -1206,6 +1206,7 @@
     var DaleteCityListEntryMode = 0;
     var DeleteCityIdList = 0;
     function SaveCityMstData(e) {
+        debugger;
         if (DaleteCityListEntryMode != 3) {
             if ($('#inputCityMstName').val() == '') {
                 $("#validMsgCityMstCityName").css("display", "block")

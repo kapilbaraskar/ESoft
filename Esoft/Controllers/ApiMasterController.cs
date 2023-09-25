@@ -43,7 +43,7 @@ namespace Esoft.Controllers
             else
             {
                 resObj["status"] = 0;
-                resObj["message"] = "Database not found.";
+                resObj["message"] = "Database Not Found.";
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
@@ -92,7 +92,7 @@ namespace Esoft.Controllers
             else
             {
                 resObj["status"] = 0;
-                resObj["message"] = "Database not found.";
+                resObj["message"] = "Database Not Found.";
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
@@ -117,13 +117,13 @@ namespace Esoft.Controllers
                 else
                 {
                     resObj["status"] = 0;
-                    resObj["message"] = "Data not found.";
+                    resObj["message"] = "Data Not Found.";
                 }
             }
             else
             {
                 resObj["status"] = 0;
-                resObj["message"] = "Database not found.";
+                resObj["message"] = "Database Not Found.";
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
@@ -148,13 +148,13 @@ namespace Esoft.Controllers
                 else
                 {
                     resObj["status"] = 0;
-                    resObj["message"] = "Data not found.";
+                    resObj["message"] = "Data Not Found.";
                 }
             }
             else
             {
                 resObj["status"] = 0;
-                resObj["message"] = "Database not found.";
+                resObj["message"] = "Database Not Found.";
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
@@ -179,13 +179,13 @@ namespace Esoft.Controllers
                 else
                 {
                     resObj["status"] = 0;
-                    resObj["message"] = "Data not found.";
+                    resObj["message"] = "Data Not Found.";
                 }
             }
             else
             {
                 resObj["status"] = 0;
-                resObj["message"] = "Database not found.";
+                resObj["message"] = "Database Not Found.";
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
@@ -218,22 +218,22 @@ namespace Esoft.Controllers
                 {
                     resObj["status"] = 1;
                     if(data.EntryMode == "1")
-                        resObj["message"] = "data save successfully.";
+                        resObj["message"] = "Data Save Successfully.";
                     else if(data.EntryMode == "2")
-                        resObj["message"] = "data updated successfully.";
+                        resObj["message"] = "Data Updated Successfully.";
                     else
-                        resObj["message"] = "data deleted successfully.";
+                        resObj["message"] = "Data Deleted Successfully.";
                 }
                 else
                 {
                     resObj["status"] = 0;
-                    resObj["message"] = "Something went wrong.";
+                    resObj["message"] = "Something Went Wrong.";
                 }
             }
             else
             {
                 resObj["status"] = 0;
-                resObj["message"] = "Database not found.";
+                resObj["message"] = "Database Not Found.";
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
@@ -258,13 +258,13 @@ namespace Esoft.Controllers
                 else
                 {
                     resObj["status"] = 0;
-                    resObj["message"] = "Data not found.";
+                    resObj["message"] = "Data Not Found.";
                 }
             }
             else
             {
                 resObj["status"] = 0;
-                resObj["message"] = "Database not found.";
+                resObj["message"] = "Database Not Found.";
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }

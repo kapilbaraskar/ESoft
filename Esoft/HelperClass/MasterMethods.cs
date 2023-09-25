@@ -2,20 +2,24 @@
 using Esoft.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 
 namespace Esoft.HelperClass
 {
     public class MasterMethods
     {
+        string DataSourceName = System.Configuration.ConfigurationManager.AppSettings["DataSourceName"].ToString();
         public DataTable GetMenuData(Req_MenuData Obj, string db)
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
-            string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+            string con_str = "Data Source=" + DataSourceName + ";Initial Catalog=" + db + ";Integrated Security=true";
+
             try
             {
                 DataSet ds = new DataSet();
@@ -164,10 +168,14 @@ namespace Esoft.HelperClass
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
             string con_str = "";
-            if(misRemotServ == "")
-                con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+            if (misRemotServ == "")
+            { 
+                con_str = "Data Source="+ DataSourceName + ";Initial Catalog="+db+";Integrated Security=true";
+            }
             else
+            {
                 con_str = System.Configuration.ConfigurationManager.ConnectionStrings["ESoft"].ToString();
+            }
             try
             {
                 DataTable dt = new DataTable();

@@ -12,6 +12,7 @@ namespace Esoft.BLL
 {
     public class Log
     {
+        string DataSourceName = System.Configuration.ConfigurationManager.AppSettings["DataSourceName"].ToString();
         public int AddErrorLog(string userid, string controller_name, string action_name, string data, string message, string stack_trace, string db)
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
@@ -19,7 +20,7 @@ namespace Esoft.BLL
             if(db == "")
                 connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ESoft"].ToString();
             else
-                connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+                connectionString = "Data Source=" + DataSourceName + ";Initial Catalog=" + db + ";Integrated Security=true";
             try
             {
                 string ip_address = HttpContext.Current.Request.UserHostName;

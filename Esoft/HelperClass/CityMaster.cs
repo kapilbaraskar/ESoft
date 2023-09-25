@@ -12,10 +12,11 @@ namespace Esoft.HelperClass
     public class CityMaster
     {
         String Qry = "";
+        string DataSourceName = System.Configuration.ConfigurationManager.AppSettings["DataSourceName"].ToString();
         public DataTable GetDataForCityMasterTreeView(string db)
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
-            string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+            string con_str = "Data Source=" + DataSourceName + ";Initial Catalog=" + db + ";Integrated Security=true";
             try
             {
                 DataTable dt = new DataTable();
@@ -63,7 +64,7 @@ namespace Esoft.HelperClass
             MasterMethods objMaster = new MasterMethods();
             try
             {
-                string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+                string con_str = "Data Source=" + DataSourceName + ";Initial Catalog=" + db + ";Integrated Security=true";
                 DataTable dt = new DataTable();
 
                 //dt = objMaster.GetDataTableBySp("", db, "spGetTableData", "@ObjId", "MLOCT2", "@LocId", DfLocDetId, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
@@ -118,7 +119,7 @@ namespace Esoft.HelperClass
         public DataSet SaveCityMasterData(CityMasterData Obj, string UserCode, string CompId, string db)
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
-            string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+            string con_str = "Data Source=" + DataSourceName + ";Initial Catalog=" + db + ";Integrated Security=true";
             try
             {
                 using (SqlConnection con = new SqlConnection(con_str))
@@ -305,7 +306,7 @@ namespace Esoft.HelperClass
             MasterMethods objMaster = new MasterMethods();
             try
             {
-                string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+                string con_str = "Data Source=" + DataSourceName + ";Initial Catalog=" + db + ";Integrated Security=true";
                 DataTable dt = new DataTable();
 
                 using (SqlConnection con = new SqlConnection(con_str))

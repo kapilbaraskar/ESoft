@@ -10,10 +10,11 @@ namespace Esoft.HelperClass
 {
     public class Dashboard
     {
+        string DataSourceName = System.Configuration.ConfigurationManager.AppSettings["DataSourceName"].ToString();
         public DataSet GetDataForDashboard(string Ind, string PROJCODE, string db)
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
-            string con_str = System.Configuration.ConfigurationManager.ConnectionStrings[db].ToString();
+            string con_str = "Data Source=" + DataSourceName + ";Initial Catalog=" + db + ";Integrated Security=true";
             try
             {
                 DataSet ds = new DataSet();
