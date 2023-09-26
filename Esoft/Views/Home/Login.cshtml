@@ -115,14 +115,16 @@
                                             <span style="display:none;" id="PasswordErrorMsg" class="errorValidmsg">Enter Password</span>
                                         </div>
 
-                                        <div class="row mb-1">
+                                        <a href="#" data-toggle="modal" id="Loginbtn" onclick="loginFun()" class="btn btn-primary btn-user btn-block">Login</a>
+                                        <div class="row mb-1 mt-1">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <a href="#" data-toggle="modal" data-target="#ForgotPasswordModal" class="text-primary d-flex float-right">Forgot Password?</a>
                                             </div>
                                         </div>
                                         @*<a href="/Home/index"  class="btn btn-primary btn-user btn-block">Login</a>*@
                                         @*<a href="#" data-toggle="modal" data-target="#TransportlogoffModal1" id="Loginbtn" onclick="loginFun()" class="btn btn-primary btn-user btn-block">Login</a>*@
-                                        <a href="#" data-toggle="modal"  id="Loginbtn" onclick="loginFun()" class="btn btn-primary btn-user btn-block">Login</a>
+
+
                                         <hr>
                                         <div class="row">
                                             <div class="col-4 mb-2 text-center">
@@ -139,10 +141,10 @@
                                             </div>
                                         </div>
                                         @*<div class="row">
-                                                <table></table>
-                                            </div>
-                                            <span id="longitude"></span>
-                                            <span id="latitude"></span>*@
+            <table></table>
+        </div>
+        <span id="longitude"></span>
+        <span id="latitude"></span>*@
                                     </form>
 
                                 </div>
@@ -465,9 +467,6 @@
 
                             localStorage.setItem("LogingObj",string)
                             
-
-
-
                             //for (var key in Data[0]) {
                             //    localStorage.setItem(key, Data[0][key])
                             //}
@@ -494,7 +493,7 @@
         function moveToNextInput(event) {
             if (event.key === "Enter") {
                 event.preventDefault(); // Prevent the default Enter key behavior (submitting the form)
-                const inputs = document.querySelectorAll('input');
+                const inputs = document.querySelectorAll('input,a');
                 const currentInput = event.target;
                 const currentIndex = Array.from(inputs).indexOf(currentInput);
 

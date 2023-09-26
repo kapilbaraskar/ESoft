@@ -23,6 +23,7 @@
     <!-- Custom styles for this page -->
     <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="~/Content/css/Common_style.css" rel="stylesheet" />
+   
 
     <style>
         li {
@@ -113,14 +114,31 @@
         /*=================END====================*/
 
         .Manuactivebtn {
-            
             border-radius: 50px;
-            color:#fff;
+            color: #fff;
         }
 
-        .table thead th{
-            color:#fff;
+        .table thead th {
+            color: #fff;
         }
+
+        /*=================END=============*/
+
+        /*=======Select2 For Dropdown*/
+        .select2-container {
+            display: block !important;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #d1d3e2;
+            border-radius: 0.35rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out !important;
+            height: calc(1.3em + 0.5rem + 2px)!important;
+            padding: 0rem 0rem !important;
+        }
+        .select2-container--default .select2-selection--single{
+            border:0px !important;
+        }
+            /*=============END=======*/
 
     </style>
 </head>
@@ -550,9 +568,12 @@
             $("#logUserName").html(sessionStorage.UserName);
 
 
+            
         });
 
-
+        var DataLocalStore = new Array();
+        DataLocalStore = JSON.parse(localStorage.LogingObj)
+        
 
         function GetSideMenuLink() {
             $("#loader").css("display", "block");
@@ -657,10 +678,10 @@
 
 
             str = '<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index">';
-            str += '<div class="sidebar-brand-icon rotate-n-15" >';
+            str += '<div class="sidebar-brand-icon rotate-n-15" style="display: none;" >';
             str += '<img class="img-profile rounded-circle" src="/Content/img/esoft.jpeg" alt="" width="50%" />';
             str += '</div>';
-            str += '<div class="sidebar-brand-text mx-3">Company Name</div>'
+            str += '<div class="sidebar-brand-text mx-3" id="menuCompNameId">'+DataLocalStore[0]['CompName']+'</div>'
             str += '</a>'
             str += '<hr class="sidebar-divider my-0">';
             //str += '<li class="nav-item">';
