@@ -1376,8 +1376,11 @@
     function ValidationCityForm() {
 
         if ($('#inputCityMstName').val() == '') {
+            $('input').css('background-color', '');
             $("#validMsgCityMstCityName").css("display", "block")
-            return
+           
+            $('#inputCityMstName').focus();
+            return false
         }
         else {
             $("#validMsgCityMstCityName").css("display", "none")
@@ -1385,14 +1388,18 @@
 
         if ($('#inputCityMstPinCode').val() == '') {
             $("#validMsgCityMstPinCode").css("display", "block")
-            return
+            $('input').css('background-color', '');
+            $('#inputCityMstPinCode').focus();
+            return false
         }
         else {
             $("#validMsgCityMstPinCode").css("display", "none")
         }
         if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
             $("#validMsgCityMstState").css("display", "block")
-            return
+            $('input').css('background-color', '');
+            $('#inputCityMstState').focus();
+            return false
         }
         else {
             $("#validMsgCityMstState").css("display", "none")
@@ -1657,15 +1664,16 @@
 
     });
 
-    //$(".select2-selection").focus(function () {
-    //    debugger
-    //    $(this).css("background-color", "rgb(255, 255, 49)");
-    //    $(this).css("color", "black");
-    //});
-    //$(".select2-selection").focusout(function () {
-    //    $(this).css("background-color", "");
+    $("select").focus(function () {
+        alert('Errror')
+        debugger
+        $(this).css("background-color", "rgb(255, 255, 49)");
+        $(this).css("color", "black");
+    });
+    $("select").focusout(function () {
+        $(this).css("background-color", "");
 
-    //});
+    });
 
 
     $('#inputCityMstState,#inputCityMstDistrict,#inputCityMstParentCity,#inputCityMstBranchAc,#inputCityMstDfLocation,#inputCityMstRoute,#inputCityMstCityLocation').select2({
