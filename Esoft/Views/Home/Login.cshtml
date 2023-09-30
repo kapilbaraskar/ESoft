@@ -104,13 +104,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="" style="margin-right: 9%;">User ID:-</label>
-                                            <input type="email" onkeydown="moveToNextInput(event)" style="display: inline-block;
+                                            <input type="text" onblur="ValidLoginForm()" onkeydown="moveToNextInput(event)" style="display: inline-block;
                                             width: 72%;" class="form-control form-control-user" id="InputUserId" aria-describedby="emailHelp" placeholder="Enter User ID...">
                                             <span style="display:none;" id="UserIdErrorMsg" class="errorValidmsg">Enter User ID</span>
                                         </div>
                                         <div class="form-group">
                                             <label for="" style="margin-right: 5%;">Password:-</label>
-                                            <input type="password" onkeydown="moveToNextInput(event)" style="display: inline-block;
+                                            <input type="password"  onblur="ValidLoginForm()" onkeydown="moveToNextInput(event)" style="display: inline-block;
                                             width: 72%;" class="form-control form-control-user" id="InputPassword" placeholder="Password">
                                             <span style="display:none;" id="PasswordErrorMsg" class="errorValidmsg">Enter Password</span>
                                         </div>
@@ -219,29 +219,40 @@
     <script>
 
         $(document).ready(function () {
-            //const date = new Date();
+            const date = new Date();
 
-            //let day = date.getDate();
-            //let month = date.getMonth() + 1;
-            //let year = date.getFullYear();
-            //let Ddd = "";
-            //if (month < 10) {
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            let year = date.getFullYear();
+            let Ddd = "";
+            if (month < 10) {
 
-            //    if (day < 10) {
-            //         Ddd = year + '-0' + month + '-0' + day
-            //    } else {
-            //         Ddd = year + '-0' + month + '-' + day
-            //    }
-            //    $("#dateInputGroup").val(Ddd)
-            //}
-            //else {
-            //    if (day < 10) {
-            //         Ddd = year + '-0' + month + '-0' + day
-            //    } else {
-            //         Ddd = year + '-' + month + '-' + day
-            //    }
-            //    $("#dateInputGroup").val(Ddd)
-            //}
+                if (day < 10) {
+                     Ddd = year + '-0' + month + '-0' + day
+                } else {
+                     Ddd = year + '-0' + month + '-' + day
+                }
+                $("#dateInputGroup").val(Ddd)
+            }
+            else {
+                if (day < 10) {
+                     Ddd = year + '-0' + month + '-0' + day
+                } else {
+                     Ddd = year + '-' + month + '-' + day
+                }
+                $("#dateInputGroup").val(Ddd)
+            }
+
+            if (localStorage.GroupCode != '' && localStorage.GroupCode != null && localStorage.GroupCode != undefined) {
+                $("#InputGroupCode").val(localStorage.GroupCode);
+                $("#InputGroupCode").focus()
+            }
+            if (localStorage.UserID != '' && localStorage.UserID != null && localStorage.UserID != undefined) {
+                $("#InputUserId").val(localStorage.UserID);
+            }
+            if (localStorage.Password != '' && localStorage.Password != null && localStorage.Password != undefined) {
+                $("#InputPassword").val(localStorage.Password);
+            }
 
             getCurrentPosition(success)
             getCurrentPosition(success, error)
@@ -362,6 +373,8 @@
             if (groupCode == null || groupCode == undefined || groupCode == '') {
 
                 $("#GroupCodeErrorMsg").css("display", 'flex');
+                $("#InputGroupCode").focus();
+                return false
               
             }
             else {
@@ -409,6 +422,39 @@
             $('.closeErrormsg').focus();
         }
 
+  
+
+        function ValidLoginForm() {
+            var GroupCode = $("#InputGroupCode").val();
+            var UserID = $("#InputUserId").val();
+            var password = $("#InputPassword").val();
+            if (GroupCode == "" || GroupCode == undefined || GroupCode == null) {
+                $("#GroupCodeErrorMsg").css("display", 'flex');
+                $("#InputGroupCode").focus();
+                return false
+            }
+            else {
+                $("#GroupCodeErrorMsg").css("display", 'none');
+            }
+            if (UserID == "" || UserID == undefined || UserID == null) {
+                $("#UserIdErrorMsg").css("display", 'flex');
+                $("#InputUserId").focus();
+                return false
+            }
+            else {
+                $("#UserIdErrorMsg").css("display", 'none');
+
+            }
+            if (password == "" || password == undefined || password == null) {
+                $("#PasswordErrorMsg").css("display", 'flex');
+                $("#InputPassword").focus();
+                return false
+            }
+            else {
+                $("#PasswordErrorMsg").css("display", 'none');
+            }
+        }
+
         function loginFun() {
             debugger
             var GroupCode = $("#InputGroupCode").val();
@@ -417,12 +463,16 @@
 
             if (GroupCode == "" || GroupCode == undefined || GroupCode == null) {
                 $("#GroupCodeErrorMsg").css("display", 'flex');
+                $("#InputGroupCode").focus();
+                return false
             }
             else {
                 $("#GroupCodeErrorMsg").css("display", 'none');
             }
             if (UserID == "" || UserID == undefined || UserID == null) {
                 $("#UserIdErrorMsg").css("display", 'flex');
+                $("#InputUserId").focus();
+                return false
             }
             else {
                 $("#UserIdErrorMsg").css("display", 'none');
@@ -430,6 +480,8 @@
             }
             if (password == "" || password == undefined || password == null) {
                 $("#PasswordErrorMsg").css("display", 'flex');
+                $("#InputPassword").focus();
+                return false
             }
             else {
                 $("#PasswordErrorMsg").css("display", 'none');
@@ -465,7 +517,10 @@
                             sessionStorage.setItem("UserName", Data[0]['UserName']);
                             var string = JSON.stringify(Data)
 
-                            localStorage.setItem("LogingObj",string)
+                            localStorage.setItem("GroupCode", GroupCode);
+                            localStorage.setItem("UserID", UserID);
+                            localStorage.setItem("Password", password);
+                            localStorage.setItem("LogingObj", string);
                             
                             //for (var key in Data[0]) {
                             //    localStorage.setItem(key, Data[0][key])

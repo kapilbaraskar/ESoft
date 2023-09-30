@@ -26,6 +26,17 @@
    
 
     <style>
+
+        label{
+            color:black;
+        }
+
+        .btnEditDelet{
+            cursor:pointer;
+        }
+         .btnEditDelet:hover {
+                background-color: rgb(255, 255, 49);
+         }
         li {
             list-style-type: none;
         }
@@ -142,7 +153,7 @@
             background-color: rgb(255, 255, 49)
         }
         input:focus {
-            background-color: rgb(255, 255, 49)
+            background-color: rgb(255, 255, 49) !important;
         }
             /*=============END=======*/
 
@@ -967,6 +978,7 @@
 
         //Code for Go to Next Field 24-09-2023
         function moveToNextInput(event) {
+            debugger;
             if (event.key === "Enter") {
                 event.preventDefault(); // Prevent the default Enter key behavior (submitting the form)
                 //const inputs = document.querySelectorAll('input');

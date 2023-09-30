@@ -9,7 +9,9 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">City Master</h1>
         <button id="btnAddListCity" type="button" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)">Add City</button>
+        <button id="btnCityMstCitySearch" type="button" class="btn btn-sm btn-primary" onclick="BindCityDetailModel()" style="display:none" data-toggle="modal" data-target="#CityMstSearcCityModal">Search City</button>
         <button id="btnBackListCity" type="button" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)" style="display:none">Back</button>
+
     </div>
 </div>
 
@@ -676,10 +678,10 @@
                             <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstName">
+                                    <input onkeydown="moveToNextInput(event)"  type="text" class="form-control form-control-sm" id="inputCityMstName">
                                 </div>
                                 <div class="col-md-6">
-                                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
+                                    <input onkeydown="moveToNextInput(event)" onfocus="CityNameTranslate()" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
                                 </div>
                             </div>
                             <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
@@ -830,6 +832,32 @@
 </section>
 
 
+<!-- ForgotPassword Logoff Modal-->
+<div class="modal fade" id="CityMstSearcCityModal" tabindex="-1" role="dialog" aria-labelledby="CityMstSearcCityModal" aria-hidden="true">
+    <div class="modal-dialog  modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="exampleModalLabel">Search City</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                <div id="bindCityMstListModel"></div>
+
+            </div>
+            <div class="modal-footer">
+              
+                <button class="btn btn-secondary" id="btnCloseCityMstModel" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="~/Content/vendor/jquery/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -841,8 +869,16 @@
     var LocalDataStorage = new Array();
     LocalDataStorage = JSON.parse(localStorage.LogingObj);
     var tableCityMst = ''
+    var tableCityMstModle = ''
     $(document).ready(function () {
-
+        if (CityMstModelFlag == false) {
+            CityMstTblId = 'CityMstdataTable'
+            CityMstTblDiv = 'bindCityMstList';
+        }
+        else {
+            CityMstTblId = 'CityMstdataTableModel'
+            CityMstTblDiv = 'bindCityMstListModel';
+        }
         GetCityMst();
         $("#BookingCityCheck").prop('checked', true);
         $('#CityMstdataTable thead tr')
@@ -935,7 +971,7 @@
         //    }
         //});
 
-        $('#inputCityMstName').css("background-color", "rgb(255, 255, 49)");
+       // $('#inputCityMstName').css("background-color", "rgb(255, 255, 49)");
         $('#inputCityMstName').focus();
 
 
@@ -1209,28 +1245,29 @@
     function SaveCityMstData(e) {
         debugger;
         if (DaleteCityListEntryMode != 3) {
-            if ($('#inputCityMstName').val() == '') {
-                $("#validMsgCityMstCityName").css("display", "block")
-                return
-            }
-            else {
-                $("#validMsgCityMstCityName").css("display", "none")
-            }
+            return ValidationCityForm()
+            //if ($('#inputCityMstName').val() == '') {
+            //    $("#validMsgCityMstCityName").css("display", "block")
+            //    return
+            //}
+            //else {
+            //    $("#validMsgCityMstCityName").css("display", "none")
+            //}
 
-            if ($('#inputCityMstPinCode').val() == '') {
-                $("#validMsgCityMstPinCode").css("display", "block")
-                return
-            }
-            else {
-                $("#validMsgCityMstPinCode").css("display", "none")
-            }
-            if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
-                $("#validMsgCityMstState").css("display", "block")
-                return
-            }
-            else {
-                $("#validMsgCityMstState").css("display", "none")
-            }
+            //if ($('#inputCityMstPinCode').val() == '') {
+            //    $("#validMsgCityMstPinCode").css("display", "block")
+            //    return
+            //}
+            //else {
+            //    $("#validMsgCityMstPinCode").css("display", "none")
+            //}
+            //if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
+            //    $("#validMsgCityMstState").css("display", "block")
+            //    return
+            //}
+            //else {
+            //    $("#validMsgCityMstState").css("display", "none")
+            //}
 
         }
 
@@ -1376,11 +1413,12 @@
     function ValidationCityForm() {
 
         if ($('#inputCityMstName').val() == '') {
-            $('input').css('background-color', '');
             $("#validMsgCityMstCityName").css("display", "block")
-           
+            $('#inputCityMstPinCode').css('background-color', '');
             $('#inputCityMstName').focus();
-            return false
+                return false
+            //setTimeout(function () {
+            //}, 100);
         }
         else {
             $("#validMsgCityMstCityName").css("display", "none")
@@ -1390,7 +1428,7 @@
             $("#validMsgCityMstPinCode").css("display", "block")
             $('input').css('background-color', '');
             $('#inputCityMstPinCode').focus();
-            return false
+            //return false
         }
         else {
             $("#validMsgCityMstPinCode").css("display", "none")
@@ -1412,6 +1450,87 @@
     }
 
     //================ Code For get City Table View ===================
+
+    var CityMstModelFlag = false;
+    var CityMstTblId = ''
+    var CityMstTblDiv =''
+   
+    function BindCityDetailModel() {
+        debugger
+        CityMstModelFlag = true;
+        CityMstTblId = 'CityMstdataTableModel';
+        CityMstTblDiv = 'bindCityMstListModel';
+        tableCityMstModle = ''
+        GetCityMst();
+
+        $('#CityMstdataTableModel thead tr')
+            .clone(true)
+            .addClass('filters')
+            .appendTo('#CityMstdataTableModel thead');
+
+        tableCityMstModle = $('#CityMstdataTableModel').DataTable({
+
+            orderCellsTop: true,
+            fixedHeader: true,
+            initComplete: function () {
+                var api = this.api();
+
+                // For each column
+                api
+                    .columns()
+                    .eq(0)
+                    .each(function (colIdx) {
+                        // Set the header cell to contain the input element
+                        var cell = $('#CityMstdataTableModel .filters th').eq(
+                            $(api.column(colIdx).header()).index()
+                        );
+                        var title = $(cell).text();
+                        if (title != 'Action') {
+                            $(cell).html('<input type="text" placeholder="' + title + '" />');
+                        }
+                        else {
+                            $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
+                        }
+
+                        // On every keypress in this input
+                        $(
+                            'input',
+                            $('#CityMstdataTableModel .filters th').eq($(api.column(colIdx).header()).index())
+                        )
+                            .off('keyup change')
+                            .on('change', function (e) {
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                    .column(colIdx)
+                                    .search(
+                                        this.value != ''
+                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                            : '',
+                                        this.value != '',
+                                        this.value == ''
+                                    )
+                                    .draw();
+                            })
+                            .on('keyup', function (e) {
+                                e.stopPropagation();
+
+                                $(this).trigger('change');
+                                $(this)
+                                    .focus()[0]
+                                    .setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                    });
+            },
+
+        });
+
+    }
+
     var TotalCityMstDataArray = new Array();
     function GetCityMst() {
         $.ajax({
@@ -1447,7 +1566,8 @@
     function DisplayAllCityTableView(Data) {
         if (Data.length > 0) {
             var str = ''
-            str += '<table class="table table-sm table-bordered" id="CityMstdataTable" width="100%" cellspacing="0">';
+            //str += '<table class="table table-sm table-bordered" id="CityMstdataTable" width="100%" cellspacing="0">';
+            str += '<table class="table table-sm table-bordered" id="'+CityMstTblId+'" width="100%" cellspacing="0">';
             str += '<thead style="position: sticky;top: 0;">';
             str += '<tr>';
             str += '<th style="width: 100px;">City ID</th>';
@@ -1486,7 +1606,7 @@
                 } else {
                     str += '<td>' + Data[i]['ContactNo'] + '</td>';
                 }
-                str += '<td><span style="padding: 4%;" onclick="EditCityMst(this)"><i class="fas fa-pencil-alt"></i></span> <span style="padding: 4%;" onclick="DeleteCityMst(this)"><i class="fa fa-trash" /></span></td>';
+                str += '<td><span class="btnEditDelet" style="padding: 4%;" onclick="EditCityMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span class="btnEditDelet" style="padding: 4%;" onclick="DeleteCityMst(this)"><i style="color: red;" class="fa fa-trash" /></span></td>';
                 str += '</tr>';
             }
 
@@ -1495,7 +1615,9 @@
             str += '</table>';
 
 
-            $("#bindCityMstList").html(str);
+            $("#" +CityMstTblDiv).html(str);
+            //$("#bindCityMstList").html(str);
+            //$("#bindCityMstListModel").html(str);
         }
         else {
 
@@ -1504,6 +1626,8 @@
 
     function EditCityMst(e) {
         debugger;
+        $('#btnCloseCityMstModel').trigger("click");
+        
         var cityTr = e.closest('tr')
         var CityId = cityTr.cells[0].textContent
 
@@ -1512,6 +1636,7 @@
             return (element.CityId == CityId);
         });
 
+        $("#btnCityMstCitySearch").css('display', 'block');
         $("#CityMstFormSection").css('display', 'block');
         $('#FindCity_Mst').css('display', 'none');
         $('#btnAddListCity').css('display', 'none');
@@ -1523,7 +1648,7 @@
         $("#inputCityId").val(FilterData[0]['CityId'])
         $("#inputCityMstSrNo").val(FilterData[0]['OrderNo'])
         $("#inputCityMstRefNo").val(FilterData[0]['Remark'])
-
+        
         if (FilterData[0]['isStation'] == 1) {
             $("#BookingCityCheck").prop('checked', true);
         } else {
@@ -1608,7 +1733,7 @@
             $("#CityMstLockedCheck").prop('checked', false);
         }
 
-
+        $("#inputCityMstName").focus();
     }
     function DeleteCityMst(e) {
 
@@ -1634,8 +1759,10 @@
 
             $('#btnBackListCity').css('display', 'block');
             $('#CityMstFormSection').css('display', 'block');
+            $('#btnCityMstCitySearch').css('display', 'block');
             $('#CityMstForm')[0].reset();
             $("#BookingCityCheck").prop('checked', true);
+            $("#inputCityMstName").focus();
         }
         else if (e.textContent == 'Back') {
             $('#FindCity_Mst').css('display', 'block');
@@ -1643,6 +1770,7 @@
             $('#btnBackListCity').css('display', 'none');
             $('#CityMstFormSection').css('display', 'none');
             $('#UpdateOldCity').css('display', 'inline-block');
+            $('#btnCityMstCitySearch').css('display', 'none');
             $('#SaveNewCity').css('display', 'none');
 
         }
@@ -1680,5 +1808,28 @@
         selectOnClose: true
     });
 
+
+    function CityNameTranslate() {
+        //var textToTrans =
+        const inputBox1 = $("#inputCityMstName").val();
+        const inputBox2 = $("#inputCityMstNameAlias").val();
+        debugger
+        const textToTranslate =inputBox1;
+        const targetLanguage = 'hi'; // Change this to your desired target language code
+
+        // Make a request to the Google Translate API
+        fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLanguage}&dt=t&q=${encodeURIComponent(textToTranslate)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Extract the translation from the response
+                const translation = data[0][0][0];
+
+                // Update the second input box with the translated text
+                $("#inputCityMstNameAlias").val(translation);
+            })
+            .catch(error => {
+                console.error('Translation error:', error);
+            });
+    }
 
 </script>
