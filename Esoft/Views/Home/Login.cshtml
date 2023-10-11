@@ -225,9 +225,9 @@
             let month = date.getMonth() + 1;
             let year = date.getFullYear();
             let Ddd = "";
-            if (month < 10) {
+            if (month < 10 ) {
 
-                if (day < 10) {
+                if (day < 10 ) {
                      Ddd = year + '-0' + month + '-0' + day
                 } else {
                      Ddd = year + '-0' + month + '-' + day
@@ -235,9 +235,16 @@
                 $("#dateInputGroup").val(Ddd)
             }
             else {
-                if (day < 10) {
+                if (day < 10 && month < 10 ) {
                      Ddd = year + '-0' + month + '-0' + day
-                } else {
+                }
+                else if ((day < 10 && month > 10) || (day < 10 && month == 10)) {
+                    Ddd = year + '-' + month + '-0' + day
+                }
+                //else if (day < 10 && month == 10) {
+                //    Ddd = year + '-' + month + '-0' + day
+                //}
+                else {
                      Ddd = year + '-' + month + '-' + day
                 }
                 $("#dateInputGroup").val(Ddd)

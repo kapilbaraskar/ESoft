@@ -1,0 +1,393 @@
+﻿
+@{
+    ViewBag.Title = "ContractScreen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Heading -->
+<div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+        <h1 class="h3 mb-0 text-gray-800">Contract</h1>
+    </div>
+</div>
+
+<section>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div style="background-color: #fff; padding: 1%; height: 100%; box-shadow: 3px 3px 6px -3px rgba(0,0,0,0.7); ">
+                <form>
+                    <div class="form-row mt-1">
+                        <div class="form-group col-md-4">
+                            <label for="inputContractTrid">TRid</label>
+                            <input onkeydown="moveToNextInput(event)" disabled type="text" value="0" class="form-control form-control-sm" id="inputContractTrid">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputDocDate">Doc. Date</label><span style="color:red">*</span>
+                            <input  type="date" class="form-control form-control-sm" id="inputDocDate">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="inputDiovisionName">Division Name</label><span style="color:red">*</span>
+                            <select onkeydown="moveToNextInput(event)" id="inputDiovisionName" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="0" selected>Select Division Name</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-row mt-1">
+                        <div class="form-group col-md-4">
+                            <label for="inputCustomerName">Customer Name</label><span style="color:red">*</span>
+                            <input type="text" class="form-control form-control-sm" placeholder="Enter Customer Name" id="inputCustomerName">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputContractName">Contact Name</label><span style="color:red">*</span>
+                            <input onkeydown="moveToNextInput(event)" type="text" placeholder="Enter Contact Name" class="form-control form-control-sm" id="inputContractName">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputContractType">Contact Type</label><span style="color:red">*</span>
+                            <select onkeydown="moveToNextInput(event)" id="inputContractType" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="0" selected>Select Contact Type</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12" >
+            <button class="btn btn-sm btn-outline-secondary mb-2 mt-2" id="addRowButton">Add New</button>
+            <div class="DashboardTableMainDiv" style="width: 100%; overflow: auto; padding-left: 1%; padding-right: 1%;">
+                <table id="ContractTableForm" class="table table-sm" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th width="18%">Start date</th>
+                            <th>Salary</th>
+                            <th>Action</th>
+                            @*<th></th>
+                    <th></th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @*<tr>
+                            <td>111</td>
+                            <td>Ahmedabad</td>
+                            <td>13415</td>
+                            <td>1234567890</td>
+                            <td>1234567890</td>
+                            <td>1234567890</td>
+                         
+                            <td><span style="padding: 4%;" onclick="EditContractMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span style="padding: 4%;" onclick="DeleteContractMst(this)"><i style="color: red;"  class="fa fa-trash" /></span></td>
+                        </tr>*@
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="~/Content/vendor/jquery/jquery.min.js"></script>
+
+
+<!---Add New Link For DataTable Edit  -->
+@*<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" />*@
+@*<link href="https://cdn.datatables.net/select/1.7.0/css/select.dataTables.min.css" />
+    <link href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css" />
+    <link href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" />*@
+@*../../extensions/Editor/css/editor.dataTables.min.css*@
+
+<!---- END  ----->
+@*<script src="~/Content/js/demo/datatables-demo.js"></script>*@
+
+<!---Add New Link For DataTable Edit  -->
+@*<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>*@
+@*<script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
+    <script src ="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>*@
+
+<!---- END  ----->
+
+<script>
+    var editor = '';
+    var table = ''
+    $(document).ready(function () {
+        debugger
+        $("#loader").css("display", "none");
+
+
+
+   
+
+        //table = $('#ContractTableForm').DataTable({
+        //    // dom: 'Bfrtip',
+        //    buttons: [
+        //        {
+        //            extend: 'createInline',
+        //            editor,
+        //            formOptions: {
+        //                submitTrigger: -2,
+        //                submitHtml: '<i class="fa fa-play"/>'
+        //            }
+        //        }
+        //    ],
+        //    columns: [
+        //        { data: 'first_name' },
+        //        { data: 'last_name' },
+        //        { data: 'position' },
+        //        { data: 'office' },
+        //        { data: 'start_date' },
+        //        { data: 'salary' },
+        //        //{ data: 'salary', render: DataTable.render.number(null, null, 0, '$') },
+        //        //{
+        //        //    data: null,
+        //        //    defaultContent: '<i class="fa fa-pencil"/>',
+        //        //    className: 'row-edit dt-center',
+        //        //    orderable: false
+        //        //},
+        //        //{
+        //        //    data: null,
+        //        //    defaultContent: '<i class="fa fa-trash"/>',
+        //        //    className: 'row-remove dt-center',
+        //        //    orderable: false
+        //        //}
+        //    ],
+        //    dom: 'Bfrtip',
+        //    select: {
+        //        style: 'os',
+        //        selector: 'td:first-child'
+        //    }
+        //});
+
+
+        //editor = new DataTable.Editor({
+        //    //ajax: '../php/staff.php',
+        //    fields: [
+        //        {
+        //            label: 'First name:',
+        //            name: 'first_name'
+        //        },
+        //        {
+        //            label: 'Last name:',
+        //            name: 'last_name'
+        //        },
+        //        {
+        //            label: 'Position:',
+        //            name: 'position'
+        //        },
+        //        {
+        //            label: 'Office:',
+        //            name: 'office'
+        //        },
+        //        {
+        //            label: 'Extension:',
+        //            name: 'extn'
+        //        },
+        //        {
+        //            label: 'Start date:',
+        //            name: 'start_date',
+        //            type: 'datetime'
+        //        },
+        //        {
+        //            label: 'Salary:',
+        //            name: 'salary'
+        //        }
+        //    ],
+        //    table: '#ContractTableForm'
+        //});
+
+
+
+        table = $('#ContractTableForm').DataTable({
+            //dom: 'Bfrtip',
+            //buttons: [
+            //    'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+
+            //    //'copy', 'csv', 'excel', 'pdf', 'print'
+            //],
+
+        });
+
+
+    });
+
+
+    $('#addRowButtonOld').on('click', function () {
+        // Add a new empty row to the DataTable
+        var newRow = table.row.add(["<input type='text' placeholder='Enter First Name'>", "<input type='text' placeholder='Enter Last Name'>",
+            "<input type='text' placeholder='Position'>", "<input type='text' placeholder='Office'>", "<input type='text' placeholder='Start Date'>", "<input type='text' placeholder='Salary'>",
+            "<button class='delete-row'>Delete</button>"]).draw().node();
+
+        // Add an event listener for the delete button on the new row
+        $(newRow).find('.delete-row').on('click', function () {
+            table.row($(this).closest('tr')).remove().draw();
+        });
+    });
+
+
+    $('#addRowButtonOLD2').on('click', function () {
+        // Add a new empty row to the DataTable
+        var newRow = table.row.add(["<input type='text' class='Fname form-control form-control-sm' placeholder='Enter First Name'>","<input type='text' class='lname form-control form-control-sm' placeholder='Enter Last Name'>",
+            "<input type='text' class='Position form-control form-control-sm' placeholder='Position'>", "<input type='text' class='Office form-control form-control-sm' placeholder='Office'>","<input type='text' class='Sdate form-control form-control-sm' placeholder='Start Date'>",
+            "<input type='text' class='Salary form-control form-control-sm' placeholder='Salary'>",
+            "<span class='save-button' style='padding: 4%;'><i style='color: blue;' class='fa fa-plus'></i></span> <span class='delete-row' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span> "]).draw().node();
+            //"<button class='btn btn-sm btn-outline-secondary delete-row'>Delete</button><button class='btn btn-sm btn-outline-secondary save-button'>Save</button>"]).draw().node();
+
+
+        // Add an event listener for the delete button on the new row
+        $(newRow).find('.delete-row').on('click', function () {
+            table.row($(this).closest('tr')).remove().draw();
+        });
+
+        // Add an event listener for the save button on the new row
+        $(newRow).find('.save-button').on('click', function () {
+            var name = $(newRow).find('.Fname').val();
+            var lname = $(newRow).find('.lname').val();
+            var Poition = $(newRow).find('.Position').val();
+            var Office = $(newRow).find('.Office').val();
+            var Sdate = $(newRow).find('.Sdate').val();
+            var Salary = $(newRow).find('.Salary').val();
+
+            // Perform validation if needed
+
+            // Update the row with the input values
+            //table.row($(newRow)).data([name, lname, Poition, Office, Sdate, Salary, "<button class='edit-button'>Edit</button>"]).draw();
+            table.row($(newRow)).data([name, lname, Poition, Office, Sdate, Salary, "<span class='edit-button' style='padding: 4%;'><i style='color: blue;' class='fa fa-pencil-alt'></i></span> <span class='delete-row' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span>"]).draw();
+
+            // Add an event listener for the delete button on the new row
+            $(newRow).find('.delete-row').on('click', function () {
+                table.row($(this).closest('tr')).remove().draw();
+            });
+
+            // Add an event listener for the edit button on the updated row
+            $(newRow).find('.edit-button').on('click', function () {
+                // Provide the ability to edit the row again if needed
+                //table.row($(newRow)).data(["<input type='text' class='name-input'>", "<input type='text' class='email-input'>", "<button class='save-button'>Save</button>"]).draw();
+
+                var row = $(this).closest('tr');
+                //var rowData = table.row(row).data()
+
+                var FName = row.find('td:eq(0)').text();
+                var Lname = row.find('td:eq(1)').text();
+                var Posit = row.find('td:eq(2)').text();
+                var off = row.find('td:eq(3)').text();
+                var sDate = row.find('td:eq(4)').text();
+                var slarry = row.find('td:eq(5)').text();
+               
+
+
+               // table.row($(newRow)).data([name, lname, Poition, Office, Sdate, Salary, "<span class='edit-button' style='padding: 4%;'><i style='color: blue;' class='fa fa-pencil-alt'></i></span> <span class='delete-row' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span>"]).draw();
+                //table.row($(newRow)).data(["<input type='text' class='Fname form-control form-control-sm' value='"+name+"' placeholder='Enter First'>", "<input type='text' placeholder='Enter Last Name'>",
+                //    "<input type='text' placeholder='Position'>", "<input type='text' placeholder='Office'>", "<input type='text' placeholder='Start Date'>",
+                //    "<input type='text' placeholder='Salary'>",
+                //    "<span class='edit-button' style='padding: 4%;'><i style='color: blue;' class='fa fa-plus'></i></span> <span class='delete-row' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span>"]).draw();
+
+
+                table.row($(newRow)).data(["<input type='text' class='Fname form-control form-control-sm' placeholder='Enter First Name' value='" + FName + "'>", "<input type='text' class='lname form-control form-control-sm' placeholder='Enter Last Name' value='" + Lname + "'>",
+                    "<input type='text' class='Position form-control form-control-sm' placeholder='Position' value='" + Posit + "'>", "<input type='text' class='Office form-control form-control-sm' placeholder='Office' value='" + off + "'>", "<input type='text' class='Sdate form-control form-control-sm' placeholder='Start Date' value='" + sDate + "'>",
+                    "<input type='text' class='Salary form-control form-control-sm' placeholder='Salary' value='" + slarry + "'>",
+                    "<span class='save-button' style='padding: 4%;'><i style='color: blue;' class='fa fa-plus'></i></span> <span class='delete-row' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span> "]).draw();
+            });
+         
+        });
+    });
+
+
+
+    $('#addRowButton').on('click', function () {
+        // Add a new empty row to the DataTable
+        table.row.add(["<input type='text' class='Fname form-control form-control-sm' placeholder='Enter First Name'>", "<input type='text' class='lname form-control form-control-sm' placeholder='Enter Last Name'>",
+            "<input type='text' class='Position form-control form-control-sm' placeholder='Position'>", "<input type='text' class='Office form-control form-control-sm' placeholder='Office'>", "<input type='date' class='Sdate form-control form-control-sm' placeholder='Start Date'>",
+            "<input type='text' class='Salary form-control form-control-sm' placeholder='Salary'>",
+            "<span class='save-button'onclick='savetblData(this)' style='padding: 4%;'><i style='color: blue;' class='fa fa-plus'></i></span> <span class='delete-row' onclick='DeletetblData(this)' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span> "]).draw().node();
+        //"<button class='btn btn-sm btn-outline-secondary delete-row'>Delete</button><button class='btn btn-sm btn-outline-secondary save-button'>Save</button>"]).draw().node();
+
+    });
+
+    function DeletetblData(e) {
+        table.row($(e).closest('tr')).remove().draw();
+    };
+
+    function savetblData(e) {
+        var newRow = e.closest('tr');
+        var name = $(newRow).find('.Fname').val();
+        var lname = $(newRow).find('.lname').val();
+        var Poition = $(newRow).find('.Position').val();
+        var Office = $(newRow).find('.Office').val();
+        var Sdate = $(newRow).find('.Sdate').val();
+        var Salary = $(newRow).find('.Salary').val();
+
+        // Perform validation if needed
+
+        // Update the row with the input values
+        //table.row($(newRow)).data([name, lname, Poition, Office, Sdate, Salary, "<button class='edit-button'>Edit</button>"]).draw();
+        table.row($(newRow)).data([name, lname, Poition, Office, Sdate, Salary, "<span class='edit-button' onclick='EdittblData(this)' style='padding: 4%;'><i style='color: blue;' class='fa fa-pencil-alt'></i></span> <span class='delete-row' onclick='DeletetblData(this)' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span>"]).draw();
+
+    }
+
+    function EdittblData(e) {
+        // Provide the ability to edit the row again if needed
+        //table.row($(newRow)).data(["<input type='text' class='name-input'>", "<input type='text' class='email-input'>", "<button class='save-button'>Save</button>"]).draw();
+
+        var row = $(e).closest('tr');
+        //var rowData = table.row(row).data()
+
+        var FName = row.find('td:eq(0)').text();
+        var Lname = row.find('td:eq(1)').text();
+        var Posit = row.find('td:eq(2)').text();
+        var off = row.find('td:eq(3)').text();
+        var sDate = row.find('td:eq(4)').text();
+        var slarry = row.find('td:eq(5)').text();
+
+
+
+        // table.row($(newRow)).data([name, lname, Poition, Office, Sdate, Salary, "<span class='edit-button' style='padding: 4%;'><i style='color: blue;' class='fa fa-pencil-alt'></i></span> <span class='delete-row' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span>"]).draw();
+        //table.row($(newRow)).data(["<input type='text' class='Fname form-control form-control-sm' value='"+name+"' placeholder='Enter First'>", "<input type='text' placeholder='Enter Last Name'>",
+        //    "<input type='text' placeholder='Position'>", "<input type='text' placeholder='Office'>", "<input type='text' placeholder='Start Date'>",
+        //    "<input type='text' placeholder='Salary'>",
+        //    "<span class='edit-button' style='padding: 4%;'><i style='color: blue;' class='fa fa-plus'></i></span> <span class='delete-row' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span>"]).draw();
+
+
+        table.row($(row)).data(["<input type='text' class='Fname form-control form-control-sm' placeholder='Enter First Name' value='" + FName + "'>", "<input type='text' class='lname form-control form-control-sm' placeholder='Enter Last Name' value='" + Lname + "'>",
+        "<input type='text' class='Position form-control form-control-sm' placeholder='Position' value='" + Posit + "'>", "<input type='text' class='Office form-control form-control-sm' placeholder='Office' value='" + off + "'>", "<input type='date' class='Sdate form-control form-control-sm' placeholder='Start Date' value='" + sDate + "'>",
+        "<input type='text' class='Salary form-control form-control-sm' placeholder='Salary' value='" + slarry + "'>",
+            "<span class='save-button' onclick='savetblData(this)' style='padding: 4%;'><i style='color: blue;' class='fa fa-plus'></i></span> <span onclick='DeletetblData(this)' class='delete-row' style='padding: 4%;'><i style='color: red;' class='fa fa-trash'></i></span> "]).draw();
+    }
+
+
+
+
+
+
+
+
+
+
+    //// Activate an inline edit on click of a table cell
+    //table.on('click', 'tbody td.row-edit', function (e) {
+    //    editor.inline(table.cells(this.parentNode, '*').nodes(), {
+    //        submitTrigger: -2,
+    //        submitHtml: '<i class="fa fa-play"/>'
+    //    });
+    //});
+
+    //// Delete row
+    //table.on('click', 'tbody td.row-remove', function (e) {
+    //    editor.remove(this.parentNode, {
+    //        title: 'Delete record',
+    //        message: 'Are you sure you wish to delete this record?',
+    //        buttons: 'Delete'
+    //    });
+    //});
+</script>

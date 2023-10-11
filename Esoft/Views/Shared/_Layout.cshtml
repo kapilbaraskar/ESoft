@@ -164,7 +164,7 @@
     <div id="loader"></div>
     <div id="ErrorMsgDiv" class="" style="display:none">
         <div style="background-color: rgba(169, 168, 168, 0.3);height: 100%;">
-            <div class="row justify-content-center" style="top: 35%;position: relative;">
+            <div class="row justify-content-center" style="top: 75%;position: relative;">
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="card">
                         <div class="card-header alert-danger">
@@ -186,7 +186,7 @@
 
     <div id="SeccessMsgDiv" class="" style="display:none">
         <div style="background-color: rgba(169, 168, 168, 0.3);height: 100%;">
-            <div class="row justify-content-center" style="top: 35%;position: relative;">
+            <div class="row justify-content-center" style="top: 75%;position: relative;">
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="card">
                         <div class="card-header alert-success">
@@ -468,6 +468,9 @@
                                 <a class="dropdown-item" href="/Home/CoOprativeLoan">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CoOprativeLoan
                                 </a>
+                                <a class="dropdown-item" href="/Home/ContractScreen">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Contract
+                                </a>
                             </div>
                         </li>
 
@@ -542,7 +545,7 @@
     <script src="~/Content/js/demo/chart-pie-demo.js"></script>
     <script src="~/Content/js/demo/chart-bar-demo.js"></script>
     <script src="~/Content/js/Common_js.js"></script>
-    <script src="~/Content/js/Dashboard.js"></script>
+    @*<script src="~/Content/js/Dashboard.js"></script>*@
 
 
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
@@ -569,6 +572,7 @@
 
     @*Link for Chart*@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+    @*<script src="~/Content/Chart_js_4.0.1/package/dist/chart.umd.js"></script>*@
 
 
     <script>
@@ -576,15 +580,18 @@
 
         $(document).ready(function () {
             //Displaymenu(menulist)
-            $("#loader").css("display", "block");
-            GetDashboardData();
+            //$("#loader").css("display", "block");
+            //GetDashboardData();
             $("#loader").css("display", "block");
 
             GetSideMenuLink();
-            $("#Userloaction").html(sessionStorage.CityName);
+
+            if (sessionStorage.CityName != undefined || sessionStorage.CityName != null || sessionStorage.CityName != '') {
+                $("#Userloaction").html(sessionStorage.CityName);
+            } else {
+                $("#Userloaction").html('');
+            }
             $("#logUserName").html(sessionStorage.UserName);
-
-
             
         });
 
@@ -695,10 +702,10 @@
 
 
             str = '<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index">';
-            str += '<div class="sidebar-brand-icon rotate-n-15" style="display: none;" >';
-            str += '<img class="img-profile rounded-circle" src="/Content/img/esoft.jpeg" alt="" width="50%" />';
+            str += '<div class="sidebar-brand-icon rotate-n-15">';
+            str += '<img class="img-profile rounded-circle" src="/Content/img/esoft.jpeg" alt="" width="100%" />';
             str += '</div>';
-            str += '<div class="sidebar-brand-text mx-3" id="menuCompNameId">'+DataLocalStore[0]['CompName']+'</div>'
+            str += '<div class="sidebar-brand-text mx-3" id="menuCompNameId" style="font-size: 12px;">'+DataLocalStore[0]['CompName']+'</div>'
             str += '</a>'
             str += '<hr class="sidebar-divider my-0">';
             //str += '<li class="nav-item">';
@@ -916,6 +923,9 @@
             $("#ErrorMsgDiv").show();
             $("#ErrorMsg").html(msg);
             $('.closeErrormsg').focus();
+            setTimeout(function () {
+                $("#ErrorMsgDiv").fadeOut(500);
+            }, 5000);
             return true
         }
         function DisplaySeccessMsg(msg) {
@@ -923,6 +933,9 @@
             $("#SeccessMsgDiv").show();
             $("#SeccessMsg").html(msg);
             $('.closeErrormsg').focus();
+            setTimeout(function () {
+                $("#SeccessMsgDiv").fadeOut(500);
+            }, 5000);
             return true
         }
         function DisplayConfomMsg(msg) {
@@ -930,6 +943,10 @@
             $("#ConFomMsgDiv").show();
             $("#ConFomMsg").html(msg);
             $('.closeErrormsg').focus();
+
+            setTimeout(function () {
+                $("#SeccessMsgDiv").fadeOut(500);
+            }, 5000);
         }
 
         $('.closeErrormsg').click(function () {
@@ -938,42 +955,44 @@
            
             location.reload();
         });
+
+       
         //===========================END==================================
 
 
 
         // ============== Code For Dashboard
-        var DashBoardData = new Array();
-        function GetDashboardData() {
-            $("#loader").css("display", "block");
+        ////var DashBoardData = new Array();
+        ////function GetDashboardData() {
+        ////    $("#loader").css("display", "block");
 
-            $.ajax({
-                url: urlLink + 'ApiMaster/GetDataForDashboard',
-                type: "GET",
-                dataType: "JSON",
-                data: { "Ind": '1', "PROJCODE": 'trpr' },
-                contentType: "application/json; charset=utf-8",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
-                },
-                success: function (data) {
-                    // //debugger;
+        ////    $.ajax({
+        ////        url: urlLink + 'ApiMaster/GetDataForDashboard',
+        ////        type: "GET",
+        ////        dataType: "JSON",
+        ////        data: { "Ind": '1', "PROJCODE": 'trpr' },
+        ////        contentType: "application/json; charset=utf-8",
+        ////        beforeSend: function (xhr) {
+        ////            xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
+        ////        },
+        ////        success: function (data) {
+        ////            // //debugger;
 
-                    if (data.status == 1) {
-                        DashBoardData=[]
-                        data = data.message
-                        DashBoardData =data
-                        DisplayDashBoardData(data)
-                    }
-                    else {
-                        console.log(error);
-                        DisplayErroeMsg(data.message)
-                    $("#loader").css("display", "none");
-                    }
+        ////            if (data.status == 1) {
+        ////                DashBoardData=[]
+        ////                data = data.message
+        ////                DashBoardData =data
+        ////                DisplayDashBoardData(data)
+        ////            }
+        ////            else {
+        ////                console.log(error);
+        ////                DisplayErroeMsg(data.message)
+        ////            $("#loader").css("display", "none");
+        ////            }
 
-                }
-            });
-        }
+        ////        }
+        ////    });
+        ////}
 
 
         //Code for Go to Next Field 24-09-2023

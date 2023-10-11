@@ -65,5 +65,12 @@ namespace Esoft.Controllers
 
             return View();
         }
+
+        public ActionResult ContractScreen()
+        {
+            ViewBag.Message = "Your ContractScreen page.";
+
+            return View();
+        }
     }
 }

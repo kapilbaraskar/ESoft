@@ -5,7 +5,7 @@
 }
 
 <!-- Page Heading -->
-<div>
+<div id="PageHeader">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">City Master</h1>
         <button id="btnAddListCity" type="button" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)">Add City</button>
@@ -17,7 +17,7 @@
 
 <section id="FindCity_Mst">
 
-    <div id="bindCityMstList">
+    <div id="bindCityMstList" class="DashboardTableMainDiv" style="height: 600px; overflow: auto;">
         <table class="d-none table table-bordered" id="CityMstdataTable2" width="100%" cellspacing="0">
             <thead style="color: #fff;">
                 <tr>
@@ -702,7 +702,8 @@
 
                         <div class="form-group col-md-3">
                             <label for="inputCityMstPinCode">Pin Code</label><span style="color:red">*</span>
-                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" onfocus="ValidationCityForm()" id="inputCityMstPinCode">
+                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" onfocus="ValidationCityForm()" id="inputCityMstPinCode">
+                            <a href="#" style="font-size: 13px;font-weight: bold">Find Pin Code -></a>
                             <span id="validMsgCityMstPinCode" style="color: red; font-size: 14px; display: none">Enter Pin Code</span>
 
                         </div>
@@ -742,7 +743,7 @@
                     <div class="form-row mt-1">
                         <div class="form-group col-md-4">
                             <label for="inputCityMstChargeUpTo">Charges Up To</label>
-                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
+                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDfTransport">Df. Transport</label>
@@ -761,11 +762,11 @@
                     <div class="form-row mt-1">
                         <div class="form-group col-md-4">
                             <label for="inputCityMstBiltyCharg">Df. Bilty Charg</label>
-                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstBiltyCharg">
+                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstBiltyCharg">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDelComm">Df.Del. Comm% </label>
-                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDelComm">
+                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstDelComm">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstCityLocation">Location</label>
@@ -844,7 +845,7 @@
             </div>
             <div class="modal-body">
                
-                <div id="bindCityMstListModel"></div>
+                <div id="bindCityMstListModel"  class="DashboardTableMainDiv" style="height: 500px; overflow: auto;"></div>
 
             </div>
             <div class="modal-footer">
@@ -859,8 +860,10 @@
 
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@*<link href="~/Content/select2-4.1.0-rc.0/dist/css/select2.min.css"/>*@
 <script src="~/Content/vendor/jquery/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@*<script src="~/Content/select2-4.1.0-rc.0/dist/js/select2.min.js"></script>*@
 <script>
 
     //=================Code For CityMaster Page=================
@@ -898,7 +901,11 @@
             //    //'copy', 'csv', 'excel', 'pdf', 'print'
             //],
 
-
+            //fixedHeader: true,
+            fixedHeader: {
+                header: true,
+                footer: true
+            },
 
             orderCellsTop: true,
             fixedHeader: true,
@@ -973,7 +980,8 @@
 
        // $('#inputCityMstName').css("background-color", "rgb(255, 255, 49)");
         $('#inputCityMstName').focus();
-
+        $("#CityMstdataTable_info").parent().parent().css({ "position": "sticky", "bottom": "0px" })
+        $("#CityMstdataTableModel_info").parent().parent().css({ "position": "sticky", "bottom": "0px" })
 
     });
 
@@ -1176,6 +1184,21 @@
                 dropdown.append($('<option>', {
                     value: item.DistId,
                     text: item.DistName
+                }));
+            });
+        }
+        else {
+
+        }
+
+        if (Data['mLoc'].length > 0) {
+            var data = new Array();
+            const dropdown = $('#inputCityMstCityLocation');
+            data = Data['mLoc']
+            data.forEach(function (item) {
+                dropdown.append($('<option>', {
+                    value: item.LocId,
+                    text: item.LocName
                 }));
             });
         }
@@ -1529,6 +1552,7 @@
 
         });
 
+        $("#CityMstdataTableModel_info").parent().parent().css({ "position": "sticky", "bottom": "0px" })
     }
 
     var TotalCityMstDataArray = new Array();
@@ -1622,6 +1646,7 @@
         else {
 
         }
+        
     }
 
     function EditCityMst(e) {

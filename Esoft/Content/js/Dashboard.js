@@ -291,5 +291,3 @@ function BirthAnniJoing(e) {
 
 }
 
-
-
