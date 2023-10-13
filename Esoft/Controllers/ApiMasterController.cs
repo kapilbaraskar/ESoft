@@ -77,11 +77,11 @@ namespace Esoft.Controllers
             if (DBNAME != "")
             {
                 GroupCodeValidate obj = new GroupCodeValidate();
-                DataTable dt = obj.LoginByUserCodeNPwd("", musercode, mpwd, "1", "", DBNAME);
-                if (dt != null && dt.Rows.Count > 0)
+                DataSet ds = obj.LoginByUserCodeNPwd("", musercode, mpwd, "1", "", DBNAME);
+                if (ds != null && ds.Tables.Count > 0)
                 {
                     resObj["status"] = 1;
-                    resObj["message"] = dt;
+                    resObj["message"] = ds;
                 }
                 else
                 {

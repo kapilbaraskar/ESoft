@@ -71,7 +71,7 @@ namespace Esoft.Controllers
             }
             #endregion
 
-            Error_Log = objLog.AddErrorLog(user, controllerName, actionName, Parameter_Data, exceptionMessage, stackTrace, DBNAME);
+            //Error_Log = objLog.AddErrorLog(user, controllerName, actionName, Parameter_Data, exceptionMessage, stackTrace, DBNAME);
 
             filterContext.Response = objLog.ReturnHttpContext("3", ReturnType);
         }

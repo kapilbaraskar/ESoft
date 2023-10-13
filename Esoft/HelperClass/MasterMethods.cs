@@ -30,7 +30,6 @@ namespace Esoft.HelperClass
                     SqlCommand objCommand = new SqlCommand();
                     objCommand.Connection = con;
 
-                    #region System Generated Booking Details
                     objCommand.Parameters.Clear();
                     if (Obj.ObjId != null && Obj.ObjId != "")
                         objCommand.Parameters.Add("@ObjId", SqlDbType.VarChar).Value = Obj.ObjId;
@@ -138,7 +137,6 @@ namespace Esoft.HelperClass
                     }
                     else
                         return null;
-                    #endregion
                 }
             }
             catch (Exception EX)
@@ -228,6 +226,46 @@ namespace Esoft.HelperClass
                 {
                     writer.WriteLine("-----Start Log-----");
                     writer.WriteLine("Method Name --> GetDataTableBySp : " + EX.Message.ToString() + Environment.NewLine + EX.StackTrace);
+                    writer.WriteLine("-----Stop Log-----");
+                    writer.Close();
+                }
+                throw EX;
+            }
+        }
+
+        public DataTable GetDataForLocationDD(string db)
+        {
+            string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
+            string con_str = "Data Source=" + DataSourceName + ";Initial Catalog=" + db + ";Integrated Security=true";
+
+            try
+            {
+                DataTable dt = new DataTable();
+                using (SqlConnection con = new SqlConnection(con_str))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        con.Open();
+                    SqlCommand objCommand = new SqlCommand();
+                    objCommand.Connection = con;
+
+                    String Qry = @"Select LocId,LocName,ParentLocId,isGlPostingBr,ClusterId from mLoct where islocked ='False' and LocId != 99 
+                                    and (cast('"+DateTime.Now.ToString("dd-MMM-yyyy")+"' as date) between cast( StartDate as date) and cast( EndDate as date) )  order by locName";
+                    objCommand.CommandText = Qry;
+                    SqlDataAdapter objAdapter = new SqlDataAdapter(objCommand);
+                    objAdapter.Fill(dt);
+
+                    if (dt != null && dt.Rows.Count > 0)
+                        return dt;
+                    else
+                        return null;
+                }
+            }
+            catch (Exception EX)
+            {
+                using (StreamWriter writer = new StreamWriter(path, true))
+                {
+                    writer.WriteLine("-----Start Log-----");
+                    writer.WriteLine("Method Name --> GetDataForLocationDD : " + EX.Message.ToString() + Environment.NewLine + EX.StackTrace);
                     writer.WriteLine("-----Stop Log-----");
                     writer.Close();
                 }

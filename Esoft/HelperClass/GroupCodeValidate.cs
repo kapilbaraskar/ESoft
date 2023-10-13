@@ -56,7 +56,7 @@ namespace Esoft.HelperClass
             }
         }
 
-        public DataTable LoginByUserCodeNPwd(string misRemotServ, string musercode, string mpwd, string mcompid, string mmyMacAdd, string db = "")
+        public DataSet LoginByUserCodeNPwd(string misRemotServ, string musercode, string mpwd, string mcompid, string mmyMacAdd, string db = "")
         {
             string path = HttpContext.Current.Server.MapPath("~/Content/LogFile.txt");
             MasterMethods objMaster = new MasterMethods();
@@ -65,7 +65,17 @@ namespace Esoft.HelperClass
                 DataTable dt = new DataTable();
                 dt = objMaster.GetDataTableBySp(misRemotServ, db, "spGetuserwsCmpDiv", "@Objtyp", "LOGINBYCODEPWD", "@compid", mcompid, "@DivId", "", "", "", "", "", "@usercode", musercode, "@pwd", mpwd, "@myMacAdd", mmyMacAdd, "@Empid", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                 if (dt != null && dt.Rows.Count > 0)
-                    return dt;
+                {
+                    DataTable dtLoc = new DataTable();
+                    dtLoc = objMaster.GetDataForLocationDD(db);
+                    DataSet finalData = new DataSet();
+                    dt.TableName = "LoginData";
+                    if (dtLoc != null)
+                        dtLoc.TableName = "LocationData";
+                    finalData.Tables.Add(dt);
+                    finalData.Tables.Add(dtLoc);
+                    return finalData;
+                }
                 else
                     return null;
             }
