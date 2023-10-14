@@ -104,9 +104,6 @@
 </div>
 
 <!-- Content Row -->
-
-
-
 <!-- DataTales Example -->
 <div class="row d-none">
     <div class="card shadow mb-1 mt-2 col-lg-12">
@@ -632,39 +629,39 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div id="dashboardEmployeeDetail" class="DashboardTableMainDiv" style="height: 218px; width: 100%; overflow: auto; padding-left: 1%; padding-right: 1%;">
                         @*<table class="table table-sm">
-                            <thead style="position: sticky;top: 0;">
-                                <tr>
-                                    <th scope="col" class="w-75">Description</th>
-                                    <th scope="col">No. of Candidates</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td>Jacob</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>Larry</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td>Jacob</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>Larry</td>
-                                    <td>3</td>
-                                </tr>
-                            </tbody>
-                        </table>*@
+                                <thead style="position: sticky;top: 0;">
+                                    <tr>
+                                        <th scope="col" class="w-75">Description</th>
+                                        <th scope="col">No. of Candidates</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mark</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jacob</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Larry</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mark</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jacob</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Larry</td>
+                                        <td>3</td>
+                                    </tr>
+                                </tbody>
+                            </table>*@
                     </div>
                 </div>
             </div>
@@ -678,13 +675,13 @@
             </div>
             <div class="row px-2 pt-0 pb-2">
                 <div class="col-lg-4 col-xl-4 col-md-4">
-                    <button type="button" style="width: 100%;" onclick="BirthAnniJoing(this)" detalData ="Birthday" class="btn btn-sm btn-outline-secondary DashBirthAnnibtn activebtn">Birthday</button>
+                    <button type="button" style="width: 100%;" onclick="BirthAnniJoing(this)" detalData="Birthday" class="btn btn-sm btn-outline-secondary DashBirthAnnibtn activebtn">Birthday</button>
                 </div>
                 <div class="col-lg-4 col-xl-4 col-md-4">
-                    <button type="button" style="width: 100%;" onclick="BirthAnniJoing(this)" detalData ="Anniversary" class="btn btn-sm btn-outline-secondary DashBirthAnnibtn ">Marriage Anniversary</button>
+                    <button type="button" style="width: 100%;" onclick="BirthAnniJoing(this)" detalData="Anniversary" class="btn btn-sm btn-outline-secondary DashBirthAnnibtn ">Marriage Anniversary</button>
                 </div>
                 <div class="col-lg-4 col-xl-4 col-md-4">
-                    <button type="button" style="width: 100%;" onclick="BirthAnniJoing(this)" detalData ="Joining" class="btn btn-sm btn-outline-secondary DashBirthAnnibtn ">Joining Anniversary</button>
+                    <button type="button" style="width: 100%;" onclick="BirthAnniJoing(this)" detalData="Joining" class="btn btn-sm btn-outline-secondary DashBirthAnnibtn ">Joining Anniversary</button>
                 </div>
             </div>
             <div class="row px-2 pb-2 pt-2">
@@ -714,7 +711,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     @*<div id="dashboardBirthdayAnni" class="DashboardTableMainDiv" style="height: 180px; overflow-y: scroll; overflow-x: hidden; padding-left: 1%; padding-right: 1%;">
 
-                    </div>*@
+                        </div>*@
                     <div id="BirthAnniReportDiv" class="DashboardTableMainDiv" style="height: 180px; overflow-y: scroll; overflow-x: hidden; padding-left: 1%; padding-right: 1%;">
 
                     </div>
@@ -734,7 +731,7 @@
             <div class="row mt-1">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div id="dashboardPendingReq" class="DashboardTableMainDiv" style="height: 250px; width: 100%; overflow: auto; padding-left: 1%; padding-right: 1%;">
-                       
+
                     </div>
                 </div>
             </div>
@@ -808,7 +805,7 @@
                 <div class="chart-bar">
                     @*<canvas id="myBarChart"></canvas>*@
                     <canvas id="stackedChartID" style="width:100%;height:100%;"></canvas>
-                </div>               
+                </div>
             </div>
         </div>
     </div>
@@ -835,7 +832,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="userid" placeholder="User Id" value="" required>
+                                <input type="text" class="form-control" id="TransportLogOFuserid" placeholder="User Id" value="" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6 mb-3">
@@ -844,7 +841,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input type="password" class="form-control" id="pass" placeholder="Password" value="" required>
+                                <input type="password" class="form-control" id="TransportLogOFpass" placeholder="Password" value="" required>
                             </div>
                         </div>
                     </div>
@@ -855,9 +852,9 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-map-marker-alt" "></i></span>
                                 </div>
-                                <select id="loc" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                <select id="TransportLogOFloc" class="form-control">
+                                    @*<option selected></option>*@
+
                                 </select>
                                 @*<input type="text" class="form-control" id="location" placeholder="Location" required>*@
                             </div>
@@ -966,10 +963,36 @@
 </div>
 
 
+<!-- Link for Search Droupdown Select2-->
+@*<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />*@
 <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+
+@*<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>*@
+<!-- END-->
 <script>
 
     $(document).ready(function () {
+        var LocData = JSON.parse(localStorage['LogLocationObj']);
+        $("#TransportLogOFuserid").val(DataLocalStore[0]['UserCode']);
+
+        if (LocData.length > 0) {
+            var data = new Array();
+            const dropdown = $('#TransportLogOFloc');
+            data = LocData
+            data.forEach(function (item) {
+                dropdown.append($('<option>', {
+                    value: item.LocId,
+                    text: item.LocName
+                }));
+            });
+        }
+        else {
+
+        }
+        //$('#TransportLogOFloc').select2({
+        //    selectOnClose: true
+        //});
+
         GetDashboardData();
     });
 

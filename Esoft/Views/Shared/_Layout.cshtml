@@ -162,7 +162,7 @@
 
 <body id="page-top">
     <div id="loader"></div>
-    <div id="ErrorMsgDiv" class="" style="display:none">
+    @*<div id="ErrorMsgDiv" class="" style="display:none">
         <div style="background-color: rgba(169, 168, 168, 0.3);height: 100%;">
             <div class="row justify-content-center" style="top: 75%;position: relative;">
                 <div class="col-lg-4 col-md-4 col-sm-4">
@@ -174,8 +174,7 @@
                             </button>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title" id="ErrorMsg">Special title treatment</h5>
-                            @*<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>*@
+                            <h5 class="card-title" id="ErrorMsg">Special title treatment</h5>                           
                             <a href="#" class="btn btn-primary float-right closeErrormsg">Ok</a>
                         </div>
                     </div>
@@ -196,17 +195,26 @@
                             </button>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title" id="SeccessMsg">Special title treatment</h5>
-                            @*<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>*@
+                            <h5 class="card-title" id="SeccessMsg">Special title treatment</h5>        
                             <a href="#" class="btn btn-primary float-right closeErrormsg">Ok</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
-    
+
+    <div id="ErrorMsgDiv"  style="display:none">
+        <div class="alert alert-danger" role="alert" style="width: 350px; position: fixed; bottom: 0%; right: 0; font-weight: bold;">
+            <span id="ErrorMsg"></span>
+        </div>
+    </div>
+    <div id="SeccessMsgDiv" style="display:none">
+        <div class="alert alert-success" role="alert" style="width: 350px; position: fixed; bottom: 0%; right: 0; font-weight: bold;">
+            <span id="SeccessMsg"></span>
+        </div>
+    </div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -449,8 +457,8 @@
                                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Forgot Password
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
-        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-    </a> -->
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                                </a> -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
@@ -592,12 +600,12 @@
                 $("#Userloaction").html('');
             }
             $("#logUserName").html(sessionStorage.UserName);
-            
+
         });
 
         var DataLocalStore = new Array();
         DataLocalStore = JSON.parse(localStorage.LogingObj)
-        
+
 
         function GetSideMenuLink() {
             $("#loader").css("display", "block");
@@ -952,11 +960,11 @@
         $('.closeErrormsg').click(function () {
             $("#ErrorMsgDiv").hide();
             $("#SeccessMsgDiv").hide();
-           
+
             location.reload();
         });
 
-       
+
         //===========================END==================================
 
 

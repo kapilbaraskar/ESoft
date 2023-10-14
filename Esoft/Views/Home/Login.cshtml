@@ -257,9 +257,9 @@
             if (localStorage.UserID != '' && localStorage.UserID != null && localStorage.UserID != undefined) {
                 $("#InputUserId").val(localStorage.UserID);
             }
-            if (localStorage.Password != '' && localStorage.Password != null && localStorage.Password != undefined) {
-                $("#InputPassword").val(localStorage.Password);
-            }
+            //if (localStorage.Password != '' && localStorage.Password != null && localStorage.Password != undefined) {
+            //    $("#InputPassword").val(localStorage.Password);
+            //}
 
             getCurrentPosition(success)
             getCurrentPosition(success, error)
@@ -521,13 +521,16 @@
                             //var CrrDate = Data[0]['clDate'].split("T", 1);
                             //$("#dateInputGroup").val(CrrDate[0])
 
-                            sessionStorage.setItem("UserName", Data[0]['UserName']);
-                            var string = JSON.stringify(Data)
+                            sessionStorage.setItem("UserName", Data['LoginData'][0]['UserName']);
+                            var string = JSON.stringify(Data['LoginData'])
+                            var LocationString = JSON.stringify(Data['LocationData'])
+
 
                             localStorage.setItem("GroupCode", GroupCode);
                             localStorage.setItem("UserID", UserID);
                             localStorage.setItem("Password", password);
                             localStorage.setItem("LogingObj", string);
+                            localStorage.setItem("LogLocationObj", LocationString);
                             
                             //for (var key in Data[0]) {
                             //    localStorage.setItem(key, Data[0][key])

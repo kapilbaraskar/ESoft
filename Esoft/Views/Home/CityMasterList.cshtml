@@ -6,10 +6,10 @@
 
 <!-- Page Heading -->
 <div id="PageHeader">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between mb-3">
         <h1 class="h3 mb-0 text-gray-800">City Master</h1>
         <button id="btnAddListCity" type="button" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)">Add City</button>
-        <button id="btnCityMstCitySearch" type="button" class="btn btn-sm btn-primary" onclick="BindCityDetailModel()" style="display:none" data-toggle="modal" data-target="#CityMstSearcCityModal">Search City</button>
+        @*<button id="btnCityMstCitySearch" type="button" class="btn btn-sm btn-primary" onclick="BindCityDetailModel()" style="display:none" data-toggle="modal" data-target="#CityMstSearcCityModal">Search City</button>*@
         <button id="btnBackListCity" type="button" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)" style="display:none">Back</button>
 
     </div>
@@ -673,156 +673,176 @@
                         </div>
 
                     </div>
+
                     <div class="form-row mt-2">
-                        <div class="form-group col-md-6">
-                            <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <input onkeydown="moveToNextInput(event)"  type="text" class="form-control form-control-sm" id="inputCityMstName">
-                                </div>
-                                <div class="col-md-6">
-                                    <input onkeydown="moveToNextInput(event)" onfocus="CityNameTranslate()" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
-                                </div>
-                            </div>
-                            <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
+                        <div style="float:right">
 
+                            <button id="btnCityMstCitySearch" type="button" class="btn btn-sm btn-primary" onclick="BindCityDetailModel()" style="display:none" data-toggle="modal" data-target="#CityMstSearcCityModal">Search City</button>
+                            <button type="button" id="SaveNewCity" class="btn btn-sm btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                            <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-sm btn-primary" onclick="SaveCityMstData(this)">Update</button>
+                            <button type="button" class="btn btn-sm btn-primary" onclick="ClearForm()">Clear</button>
                         </div>
+                    </div>
 
-                        @*<div class="form-group col-md-3">
+
+
+                        <div class="form-row mt-2">
+                            <div class="form-group col-md-6">
                                 <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
-                                <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstName">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstName">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input onkeydown="moveToNextInput(event)" onfocus="CityNameTranslate()" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
+                                    </div>
+                                </div>
                                 <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
+
+                            </div>
+
+                            @*<div class="form-group col-md-3">
+                    <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
+                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstName">
+                    <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
+
+                </div>
+                <div class="form-group col-md-3">
+                    <input onkeydown="moveToNextInput(event)" style="position: absolute; bottom: 0%; left: 0;" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
+                    <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
+
+                </div>*@
+
+                            <div class="form-group col-md-3">
+                                <label for="inputCityMstPinCode">Pin Code</label><span style="color:red">*</span>
+                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" onfocus="ValidationCityForm()" id="inputCityMstPinCode">
+                                <a href="#" style="font-size: 13px;font-weight: bold">Find Pin Code -></a>
+                                <span id="validMsgCityMstPinCode" style="color: red; font-size: 14px; display: none">Enter Pin Code</span>
 
                             </div>
                             <div class="form-group col-md-3">
-                                <input onkeydown="moveToNextInput(event)" style="position: absolute; bottom: 0%; left: 0;" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
-                                <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
+                                <label for="inputCityMstState">State</label><span style="color:red">*</span>
+                                <select onkeydown="moveToNextInput(event)" id="inputCityMstState" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
+                                    <option value="0" selected>Select State</option>
 
-                            </div>*@
+                                </select>
+                                <span id="validMsgCityMstState" style="color:red;font-size: 14px;display:none">Select State</span>
 
-                        <div class="form-group col-md-3">
-                            <label for="inputCityMstPinCode">Pin Code</label><span style="color:red">*</span>
-                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" onfocus="ValidationCityForm()" id="inputCityMstPinCode">
-                            <a href="#" style="font-size: 13px;font-weight: bold">Find Pin Code -></a>
-                            <span id="validMsgCityMstPinCode" style="color: red; font-size: 14px; display: none">Enter Pin Code</span>
-
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputCityMstState">State</label><span style="color:red">*</span>
-                            <select onkeydown="moveToNextInput(event)" id="inputCityMstState" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Select State</option>
-
-                            </select>
-                            <span id="validMsgCityMstState" style="color:red;font-size: 14px;display:none">Select State</span>
+                            </div>
 
                         </div>
 
-                    </div>
+                        <div class="form-row mt-1">
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstDistrict">District</label>
+                                <select onkeydown="moveToNextInput(event)" id="inputCityMstDistrict" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
+                                    <option value="0" selected>Select District</option>
 
-                    <div class="form-row mt-1">
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstDistrict">District</label>
-                            <select onkeydown="moveToNextInput(event)" id="inputCityMstDistrict" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Select District</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstParentCity">Parent City</label>
+                                <select onkeydown="moveToNextInput(event)" id="inputCityMstParentCity" class="form-control form-control-sm CommonScroleStyle ">
+                                    <option value="0" selected>Select Parent City</option>
 
-                            </select>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstDeliveryAt">Delivery At</label>
+                                <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDeliveryAt">
+                            </div>
+
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstParentCity">Parent City</label>
-                            <select onkeydown="moveToNextInput(event)" id="inputCityMstParentCity" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Select Parent City</option>
+                        <div class="form-row mt-1">
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstChargeUpTo">Charges Up To</label>
+                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstDfTransport">Df. Transport</label>
+                                <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDfTransport">
+                            </div>
 
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstDeliveryAt">Delivery At</label>
-                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDeliveryAt">
-                        </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstBranchAc">Branch A/C</label>
+                                <select onkeydown="moveToNextInput(event)" id="inputCityMstBranchAc" class="form-control form-control-sm CommonScroleStyle ">
+                                    <option value="0" selected>Select Branch A/C</option>
 
-                    </div>
-                    <div class="form-row mt-1">
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstChargeUpTo">Charges Up To</label>
-                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstDfTransport">Df. Transport</label>
-                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDfTransport">
-                        </div>
+                                </select>
+                            </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstBranchAc">Branch A/C</label>
-                            <select onkeydown="moveToNextInput(event)" id="inputCityMstBranchAc" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Select Branch A/C</option>
-
-                            </select>
                         </div>
+                        <div class="form-row mt-1">
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstBiltyCharg">Df. Bilty Charg</label>
+                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstBiltyCharg">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstDelComm">Df.Del. Comm% </label>
+                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstDelComm">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstCityLocation">Location</label>
+                                <select onkeydown="moveToNextInput(event)" id="inputCityMstCityLocation" class="form-control form-control-sm CommonScroleStyle ">
+                                    <option value="0" selected>Select Location</option>
 
-                    </div>
-                    <div class="form-row mt-1">
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstBiltyCharg">Df. Bilty Charg</label>
-                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstBiltyCharg">
+                                </select>
+                            </div>
+
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstDelComm">Df.Del. Comm% </label>
-                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstDelComm">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstDfLocation">Df. To Location</label>
+                                <select onkeydown="moveToNextInput(event)" id="inputCityMstDfLocation" class="form-control form-control-sm CommonScroleStyle ">
+                                    <option value="0" selected>Select Df. Location</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="inputCityMstRoute">Route</label>
+                                <select onkeydown="moveToNextInput(event)" id="inputCityMstRoute" class="form-control form-control-sm CommonScroleStyle ">
+                                    <option value="0" selected>Select Route</option>
+                                </select>
+                            </div>
+
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstCityLocation">Location</label>
-                            <select onkeydown="moveToNextInput(event)" id="inputCityMstCityLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Select Location</option>
-
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstDfLocation">Df. To Location</label>
-                            <select onkeydown="moveToNextInput(event)" id="inputCityMstDfLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Select Df. Location</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="inputCityMstRoute">Route</label>
-                            <select onkeydown="moveToNextInput(event)" id="inputCityMstRoute" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Select Route</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="form-row mt-1 pl-3">
-                        <div class="form-check col-md-2">
-                            <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstIsMultRoutCheck">
-                            <label class="form-check-label" for="CityMstIsMultRoutCheck">
-                                Is Multi Route
-                            </label>
-                        </div>
-                        <div class="form-check col-md-2">
-                            <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstLockedCheck">
-                            <label class="form-check-label" for="CityMstLockedCheck">
-                                Locked
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="col-md-4 offset-8">
-                            <div style="float:right">
-                                @*<button type="submit" class="btn btn-primary">New</button>*@
-                                @*<input type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Save" />
-                                    <input type="button" id="UpdateOldCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Update" />
-                                    <input type="button" id="SaveNewCity" class="btn btn-primary" onclick="ClearForm(this)" value="Clear" />*@
-
-                                <button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
-                                <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
-                                <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
+                        <div class="form-row mt-1 pl-3">
+                            <div class="form-check col-md-2">
+                                <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstIsMultRoutCheck">
+                                <label class="form-check-label" for="CityMstIsMultRoutCheck">
+                                    Is Multi Route
+                                </label>
+                            </div>
+                            <div class="form-check col-md-2">
+                                <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstLockedCheck">
+                                <label class="form-check-label" for="CityMstLockedCheck">
+                                    Locked
+                                </label>
+                            </div>
+                            <div class="col-md-4 offset-4">
+                                <div style="float:right">                                  
+                                    <button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                                    <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
+                                    <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="form-row d-none">
+                            <div class="col-md-4 offset-8">
+                                <div style="float:right">
+                                    @*<button type="submit" class="btn btn-primary">New</button>*@
+                                    @*<input type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Save" />
+                        <input type="button" id="UpdateOldCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Update" />
+                        <input type="button" id="SaveNewCity" class="btn btn-primary" onclick="ClearForm(this)" value="Clear" />*@
+
+                                    <button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                                    <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
+                                    <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
+                                </div>
+                            </div>
+                        </div>
 
                 </form>
             </div>
@@ -860,10 +880,10 @@
 
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-@*<link href="~/Content/select2-4.1.0-rc.0/dist/css/select2.min.css"/>*@
+
 <script src="~/Content/vendor/jquery/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-@*<script src="~/Content/select2-4.1.0-rc.0/dist/js/select2.min.js"></script>*@
+
 <script>
 
     //=================Code For CityMaster Page=================
@@ -988,7 +1008,7 @@
 
     //================ Code For get City Tree View===================
     function getCityHiererchiView() {
-        console.log('Error')
+        
         $.ajax({
             url: urlLink + 'ApiMaster/GetDataForCityMasterTreeView',
             type: "GET",
@@ -1268,7 +1288,12 @@
     function SaveCityMstData(e) {
         debugger;
         if (DaleteCityListEntryMode != 3) {
-            return ValidationCityForm()
+            var StatusValid = ValidationCityForm()
+            if (!StatusValid) {
+                return false
+            }
+
+            //return ValidationCityForm()
             //if ($('#inputCityMstName').val() == '') {
             //    $("#validMsgCityMstCityName").css("display", "block")
             //    return
@@ -1451,7 +1476,7 @@
             $("#validMsgCityMstPinCode").css("display", "block")
             $('input').css('background-color', '');
             $('#inputCityMstPinCode').focus();
-            //return false
+            return false
         }
         else {
             $("#validMsgCityMstPinCode").css("display", "none")
@@ -1466,6 +1491,7 @@
             $("#validMsgCityMstState").css("display", "none")
         }
 
+        return true
     }
 
     function ClearForm() {
@@ -1596,11 +1622,16 @@
             str += '<tr>';
             str += '<th style="width: 100px;">City ID</th>';
             str += '<th style="">City Name</th>';
-            str += '<th style="">Zip Code</th>';
-            str += '<th style="">Contact</th>';
+
+            if (CityMstModelFlag == true) {
+                //str += '<th style="display:none">Zip Code</th>';
+                //str += '<th style="display:none">Contact</th>';
+                
+            } else {
+                str += '<th style="">Zip Code</th>';
+                str += '<th style="">Contact</th>';
+            }
             str += '<th style="">Action</th>';
-
-
 
             str += '</tr>';
             str += '</thead>';
@@ -1619,18 +1650,23 @@
                     str += '<td>' + Data[i]['CityName'] + '</td>';
                 }
 
-                if (Data[i]['Zip'] == null) {
-                    str += '<td></td>';
+                 if (CityMstModelFlag == true) {
+                    str += '<td><span class="btnEditDelet" style="padding: 4%;" onclick="EditCityMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span class="btnEditDelet" style="padding: 4%; display:none" onclick="DeleteCityMst(this)"><i style="color: red;" class="fa fa-trash" /></span></td>';
                 }
-                else {
-                    str += '<td>' + Data[i]['Zip'] + '</td>';
+                 else {
+                     if (Data[i]['Zip'] == null) {
+                         str += '<td></td>';
+                     }
+                     else {
+                         str += '<td>' + Data[i]['Zip'] + '</td>';
+                     }
+                     if (Data[i]['ContactNo'] == null) {
+                         str += '<td></td>';
+                     } else {
+                         str += '<td>' + Data[i]['ContactNo'] + '</td>';
+                     }
+                    str += '<td><span class="btnEditDelet" style="padding: 4%;" onclick="EditCityMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span class="btnEditDelet" style="padding: 4%;" onclick="DeleteCityMst(this)"><i style="color: red;" class="fa fa-trash" /></span></td>';
                 }
-                if (Data[i]['ContactNo'] == null) {
-                    str += '<td></td>';
-                } else {
-                    str += '<td>' + Data[i]['ContactNo'] + '</td>';
-                }
-                str += '<td><span class="btnEditDelet" style="padding: 4%;" onclick="EditCityMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span class="btnEditDelet" style="padding: 4%;" onclick="DeleteCityMst(this)"><i style="color: red;" class="fa fa-trash" /></span></td>';
                 str += '</tr>';
             }
 
@@ -1661,7 +1697,7 @@
             return (element.CityId == CityId);
         });
 
-        $("#btnCityMstCitySearch").css('display', 'block');
+        $("#btnCityMstCitySearch").css('display', 'inline-block');
         $("#CityMstFormSection").css('display', 'block');
         $('#FindCity_Mst').css('display', 'none');
         $('#btnAddListCity').css('display', 'none');
@@ -1784,7 +1820,7 @@
 
             $('#btnBackListCity').css('display', 'block');
             $('#CityMstFormSection').css('display', 'block');
-            $('#btnCityMstCitySearch').css('display', 'block');
+            $('#btnCityMstCitySearch').css('display', 'inline-block');
             $('#CityMstForm')[0].reset();
             $("#BookingCityCheck").prop('checked', true);
             $("#inputCityMstName").focus();
@@ -1797,6 +1833,9 @@
             $('#UpdateOldCity').css('display', 'inline-block');
             $('#btnCityMstCitySearch').css('display', 'none');
             $('#SaveNewCity').css('display', 'none');
+
+            //GetCityMst();
+            location.reload();
 
         }
 
@@ -1818,7 +1857,7 @@
     });
 
     $("select").focus(function () {
-        alert('Errror')
+        //alert('Errror')
         debugger
         $(this).css("background-color", "rgb(255, 255, 49)");
         $(this).css("color", "black");
