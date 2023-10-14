@@ -834,6 +834,7 @@
                                 </div>
                                 <input type="text" class="form-control" id="TransportLogOFuserid" placeholder="User Id" value="" required>
                             </div>
+                            <span id="TransportLogOFuseridErrorMsg" style="color: red; display: none; font-size: 14px;">Enter User ID</span>
                         </div>
                         <div class="col-md-6 col-lg-6 mb-3">
                             <label for="validationCustom02">Password</label>
@@ -844,6 +845,7 @@
                                 <input type="password" class="form-control" id="TransportLogOFpass" placeholder="Password" value="" required>
                             </div>
                         </div>
+                        <span id="TransportLogOFpassErrorMsg" style="color: red; display: none; font-size: 14px;">Enter Your Password</span>
                     </div>
                     <div class="form-row">
                         <div class="col-md-12 col-lg-12 mb-3">
@@ -867,8 +869,9 @@
 
             </div>
             <div class="modal-footer">
-                <a class="btn btn-primary" href="">Login</a>
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                @*<a class="btn btn-primary" href="">Login</a>*@
+                <button class="btn btn-secondary" type="button" onclick="TransportLogOfloginFun()">Login</button>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal" id="CloseTransportLogOfModel">Cancel</button>
             </div>
         </div>
     </div>
@@ -1323,6 +1326,106 @@
         }
 
     }
+
+    function TransportLogOfloginFun() {
+        debugger
+        var LogOfLoc = $("#TransportLogOFloc").val();
+        var UserID = $("#TransportLogOFuserid").val();
+        var password = $("#TransportLogOFpass").val();
+
+        //if (LogOfLoc == "" || LogOfLoc == undefined || LogOfLoc == null) {
+        //    $("#GroupCodeErrorMsg").css("display", 'flex');
+        //    $("#InputGroupCode").focus();
+        //    return false
+        //}
+        //else {
+        //    $("#GroupCodeErrorMsg").css("display", 'none');
+        //}
+        if (UserID == "" || UserID == undefined || UserID == null) {
+            $("#TransportLogOFuseridErrorMsg").css("display", 'block');
+            $("#TransportLogOFuseridErrorMsg").focus();
+            return false
+        }
+        else {
+            $("#TransportLogOFuseridErrorMsg").css("display", 'none');
+
+        }
+        if (password == "" || password == undefined || password == null) {
+            $("#TransportLogOFpassErrorMsg").css("display", 'block');
+            $("#TransportLogOFpassErrorMsg").focus();
+            return false
+        }
+        else {
+            $("#TransportLogOFpassErrorMsg").css("display", 'none');
+        }
+       
+        if ( UserID != "" && password != "") {
+            $("#TransportLogOFuseridErrorMsg").css("display", 'none');
+            $("#TransportLogOFpassErrorMsg").css("display", 'none');
+          
+            $.ajax({
+                url: urlLink + 'ApiMaster/LoginByUserCodeNPwd',
+                type: "GET",
+                //dataType: "JSON",
+                data: { "musercode": UserID, "mpwd": password },
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                //data: JSON.stringify({ "GroupCode": groupCode}),
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
+                },
+                success: function (result) {
+                    debugger;
+
+                    if (result.status == 1) {
+                        var Data = new Date();
+                        Data = result.message
+                        //var CrrDate = Data[0]['clDate'].split("T", 1);
+                        //$("#dateInputGroup").val(CrrDate[0])
+
+                        sessionStorage.setItem("UserName", Data['LoginData'][0]['UserName']);
+                        var string = Data['LoginData'];
+                        var LocationString = Data['LocationData']
+                        
+                        var newArray = LocationString.filter(function (el) {
+                            return el.LocId == LogOfLoc;
+                        });
+                        string[0]['LocId'] = newArray[0]['LocId'];
+                        string[0]['LocName'] = newArray[0]['LocName'];
+                        string[0]['dfParentLocId'] = newArray[0]['ParentLocId'];
+                        string[0]['dfClusterId'] = newArray[0]['ClusterId'];
+
+                        string = JSON.stringify(Data['LoginData']);
+                        LocationString = JSON.stringify(Data['LocationData']);
+
+                        //localStorage.removeItem(['LogingObj']);
+                        //localStorage.setItem("GroupCode", GroupCode);
+                        localStorage.setItem("UserID", UserID);
+                        localStorage.setItem("Password", password);
+                        localStorage.setItem("LogingObj", string);
+                        localStorage.setItem("LogLocationObj", LocationString);
+
+                        $("#CloseTransportLogOfModel").trigger('click');
+
+                        DisplaySeccessMsg('Transport Logoff Successfully')
+                       // location.replace("/Home/index")
+                        //Displaymenu(data)
+                    }
+                    else {
+                        DisplayErroeMsg(result.message);
+                    }
+                    $("#loader").css("display", "none");
+                    //$('#TransportlogoffModal1').modal('show');
+
+                }
+            });
+
+
+
+        }
+
+    }
+
 
 
 </script>
