@@ -691,7 +691,7 @@
                                 <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstName">
+                                        <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm"  onblur="validationCityName()" id="inputCityMstName">
                                     </div>
                                     <div class="col-md-6">
                                         <input onkeydown="moveToNextInput(event)" onfocus="CityNameTranslate()" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
@@ -715,14 +715,14 @@
 
                             <div class="form-group col-md-3">
                                 <label for="inputCityMstPinCode">Pin Code</label><span style="color:red">*</span>
-                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" onfocus="ValidationCityForm()" id="inputCityMstPinCode">
-                                <a href="#" style="font-size: 13px;font-weight: bold">Find Pin Code -></a>
+                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" onblur="validationPinCode()" id="inputCityMstPinCode">
+                                <a href="#" onclick="searchPinCode();"  style="font-size: 13px;font-weight: bold">Find Pin Code -></a>
                                 <span id="validMsgCityMstPinCode" style="color: red; font-size: 14px; display: none">Enter Pin Code</span>
 
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputCityMstState">State</label><span style="color:red">*</span>
-                                <select onkeydown="moveToNextInput(event)" id="inputCityMstState" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
+                                <select onkeydown="moveToNextInput(event)" id="inputCityMstState" onblur="validationState()" class="form-control form-control-sm CommonScroleStyle ">
                                     <option value="0" selected>Select State</option>
 
                                 </select>
@@ -735,7 +735,7 @@
                         <div class="form-row mt-1">
                             <div class="form-group col-md-4">
                                 <label for="inputCityMstDistrict">District</label>
-                                <select onkeydown="moveToNextInput(event)" id="inputCityMstDistrict" onfocus="ValidationCityForm()" class="form-control form-control-sm CommonScroleStyle ">
+                                <select onkeydown="moveToNextInput(event)" id="inputCityMstDistrict"  class="form-control form-control-sm CommonScroleStyle ">
                                     <option value="0" selected>Select District</option>
 
                                 </select>
@@ -822,27 +822,27 @@
                             </div>
                             <div class="col-md-4 offset-4">
                                 <div style="float:right">                                  
-                                    <button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
-                                    <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
+                                    <button type="button" id="SaveNewCityForm" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                                    <button type="button" id="UpdateOldCityFrom" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
                                     <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-row d-none">
+                        <!--<div class="form-row d-none">
                             <div class="col-md-4 offset-8">
-                                <div style="float:right">
+                                <div style="float:right">-->
                                     @*<button type="submit" class="btn btn-primary">New</button>*@
                                     @*<input type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Save" />
                         <input type="button" id="UpdateOldCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Update" />
                         <input type="button" id="SaveNewCity" class="btn btn-primary" onclick="ClearForm(this)" value="Clear" />*@
 
-                                    <button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                                    <!--<button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
                                     <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
                                     <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                 </form>
             </div>
@@ -1194,9 +1194,20 @@
         });
     }
 
+
+    var DistrictDropDval = new Array();
+    var StateDropDval = new Array();
+    var ParentRouteCityDropDval = new Array();
+    var BranchACDropDval = new Array();
+    var LocationDropDval = new Array();
+    var DfToLocDropDval = new Array();
+    
+
     function DisplayCityDroupdownData(Data) {
 
         if (Data['mDist'].length > 0) {
+            DistrictDropDval = [];
+            DistrictDropDval = Data['mDist'];
             var data = new Array();
             const dropdown = $('#inputCityMstDistrict');
             data = Data['mDist']
@@ -1212,6 +1223,8 @@
         }
 
         if (Data['mLoc'].length > 0) {
+            LocationDropDval = [];
+            LocationDropDval = Data['mLoc'];
             var data = new Array();
             const dropdown = $('#inputCityMstCityLocation');
             data = Data['mLoc']
@@ -1227,6 +1240,8 @@
         }
 
         if (Data['mState'].length > 0) {
+            StateDropDval = [];
+            StateDropDval = Data['mState'];
             var data = new Array();
             const dropdown = $('#inputCityMstState');
             data = Data['mState']
@@ -1243,6 +1258,8 @@
 
 
         if (Data['Route'].length > 0) {
+            ParentRouteCityDropDval = [];
+            ParentRouteCityDropDval = Data['Route'];
             var data = new Array();
             const dropdown = $('#inputCityMstRoute');
             data = Data['Route']
@@ -1266,6 +1283,8 @@
         }
 
         if (Data['mGlActMst'].length > 0) {
+            BranchACDropDval = [];
+            BranchACDropDval = Data['mGlActMst'];
             var data = new Array();
             const dropdown = $('#inputCityMstBranchAc');
             data = Data['mGlActMst']
@@ -1285,6 +1304,7 @@
 
     var DaleteCityListEntryMode = 0;
     var DeleteCityIdList = 0;
+    var EntryMode = '';
     function SaveCityMstData(e) {
         debugger;
         if (DaleteCityListEntryMode != 3) {
@@ -1324,7 +1344,7 @@
 
 
 
-        var EntryMode = ''; var cityid = ''; var CityName = ''; var CtAlias = ''; var Zip = ''; var DefDocChrgs = ''; var usercode = ''; var DfTransport = '';
+        var cityid = ''; var CityName = ''; var CtAlias = ''; var Zip = ''; var DefDocChrgs = ''; var usercode = ''; var DfTransport = '';
         var isRoute = ''; var isLocked = ''; var isStation = ''; var GlAcId = ''; var StateId = ''; var RouteId = ''; var DeliveryAt = '';
         var DeliveryAdd = ''; var ContactNo = ''; var ChargesUpTo = ''; var isMultiRoute = ''; var OrderNo = ''; var BusChg = ''; var Distance = '';
         var Catg = ''; var ParentId = ''; var CompId = ''; var LocId = ''; var DfToLocId = ''; var DefDelComPer = ''; var Remark = ''; var DistId = '';
@@ -1334,12 +1354,15 @@
         var obj = new Object();
 
         if (e.textContent == 'Save') {
+            EntryMode = '';
             EntryMode = 1;
         }
         else if (e.textContent == 'Update') {
+            EntryMode = '';
             EntryMode = 2;
         }
         else if (e.textContent == 'Delete') {
+            EntryMode = '';
             EntryMode = 3;
 
         }
@@ -1446,7 +1469,9 @@
                     //alert(data)
                     //DashBoardData = data
                     DisplaySeccessMsg(data);
-
+                    if (EntryMode == 2 || DaleteCityListEntryMode == 3) {
+                        location.reload();
+                    }
                 }
                 else {
 
@@ -1456,6 +1481,47 @@
 
             }
         });
+    }
+
+
+    //Code For Validation Form
+    function validationCityName() {
+        if ($('#inputCityMstName').val() == '') {
+            $("#validMsgCityMstCityName").css("display", "block")
+            $('#inputCityMstPinCode').css('background-color', '');
+            $('#inputCityMstName').focus();
+            return false
+            //setTimeout(function () {
+            //}, 100);
+        }
+        else {
+            $("#validMsgCityMstCityName").css("display", "none")
+        }
+    }
+    function validationPinCode() {
+        if ($('#inputCityMstPinCode').val() == '') {
+            $("#validMsgCityMstPinCode").css("display", "block")
+            $('input').css('background-color', '');
+            $('#inputCityMstPinCode').focus();
+            return false
+        }
+        else {
+            $("#validMsgCityMstPinCode").css("display", "none")
+        }
+    }
+    function validationState() {
+        alert(true);
+        if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
+            $("#validMsgCityMstState").css("display", "block")
+            $('input').css('background-color', '');
+            $('#inputCityMstState').focus();
+            return false
+        }
+        else {
+            $("#validMsgCityMstState").css("display", "none")
+        }
+
+        return true
     }
 
     function ValidationCityForm() {
@@ -1704,8 +1770,10 @@
         $('#btnBackListCity').css('display', 'block');
         $('#UpdateOldCity').css('display', 'none');
         $('#SaveNewCity').css('display', 'none');
+        $('#SaveNewCityForm').css('display', 'none');
         $('#UpdateOldCity').css('display', 'inline-block');
-
+        $('#UpdateOldCityFrom').css('display', 'inline-block');
+        
         $("#inputCityId").val(FilterData[0]['CityId'])
         $("#inputCityMstSrNo").val(FilterData[0]['OrderNo'])
         $("#inputCityMstRefNo").val(FilterData[0]['Remark'])
@@ -1723,22 +1791,54 @@
             $("#RouteCheck").prop('checked', false);
         }
 
-        $("#inputCityMstName").val(FilterData[0]['CityName'])
-        $("#inputCityMstPinCode").val(FilterData[0]['Zip'])
+        $("#inputCityMstName").val(FilterData[0]['CityName']);
+        $("#inputCityMstPinCode").val(FilterData[0]['Zip']);
         if (FilterData[0]['StateId'] >= 0) {
-            $("#inputCityMstState").val(FilterData[0]['StateId'])
+            //$("#inputCityMstState").val(FilterData[0]['StateId']).trigger('change')
+            var selectedValue = FilterData[0]['StateId'];
+            const dropdown = $('#inputCityMstState');
+            $('#inputCityMstState').html('');
+
+            StateDropDval.forEach(function (item) {
+                dropdown.append($('<option>', {
+                    value: item.StateId,
+                    text: item.StateName,
+                    selected: item.StateId === selectedValue
+                }));
+            });
         }
         else {
             $("#inputCityMstState").val(0)
         }
         if (FilterData[0]['DistId'] >= 0) {
-            $("#inputCityMstDistrict").val(FilterData[0]['DistId'])
+           // $("#inputCityMstDistrict").val(FilterData[0]['DistId'])
+                       
+            const dropdown = $('#inputCityMstDistrict');
+            var selectedValue = FilterData[0]['DistId'];
+            $('#inputCityMstDistrict').html('');
+            DistrictDropDval.forEach(function (item) {
+                dropdown.append($('<option>', {
+                    value: item.DistId,
+                    text: item.DistName,
+                    selected: item.DistId === selectedValue
+                }));
+            });
         }
         else {
             $("#inputCityMstDistrict").val(0)
         }
         if (FilterData[0]['ParentId'] >= 0) {
-            $("#inputCityMstParentCity").val(FilterData[0]['ParentId'])
+            //$("#inputCityMstParentCity").val(FilterData[0]['ParentId'])
+            var selectedValue = FilterData[0]['ParentId'];
+            const ParentCitydropdown = $('#inputCityMstParentCity');
+            $('#inputCityMstParentCity').html('');
+            ParentRouteCityDropDval.forEach(function (item) {
+                ParentCitydropdown.append($('<option>', {
+                    value: item.CityId,
+                    text: item.CityName,
+                    selected: item.CityId === selectedValue
+                }));
+            });
         }
         else {
             $("#inputCityMstParentCity").val(0)
@@ -1754,7 +1854,18 @@
         $("#inputCityMstDfTransport").val(FilterData[0]['DfTransport'])
 
         if (FilterData[0]['GlAcId'] >= 0) {
-            $("#inputCityMstBranchAc").val(FilterData[0]['GlAcId'])
+            //$("#inputCityMstBranchAc").val(FilterData[0]['GlAcId'])
+            const dropdown = $('#inputCityMstBranchAc');
+            var selectedValue = FilterData[0]['GlAcId'];
+            $('#inputCityMstBranchAc').html('');
+            
+            BranchACDropDval.forEach(function (item) {
+                dropdown.append($('<option>', {
+                    value: item.GlAcId,
+                    text: item.GlName,
+                    selected: item.GlAcId === selectedValue
+                }));
+            });
         }
         else {
             $("#inputCityMstBranchAc").val(0)
@@ -1763,7 +1874,18 @@
         $("#inputCityMstDelComm").val(FilterData[0]['DefDelComPer'])
 
         if (FilterData[0]['LocId'] >= 0) {
-            $("#inputCityMstCityLocation").val(FilterData[0]['LocId'])
+            //$("#inputCityMstCityLocation").val(FilterData[0]['LocId'])
+
+            const dropdown = $('#inputCityMstCityLocation');
+            var selectedValue = FilterData[0]['LocId'];
+            $('#inputCityMstCityLocation').html('');
+            LocationDropDval.forEach(function (item) {
+                dropdown.append($('<option>', {
+                    value: item.LocId,
+                    text: item.LocName,
+                    selected: item.LocId === selectedValue
+                }));
+            });
         }
         else {
             $("#inputCityMstCityLocation").val(0)
@@ -1776,7 +1898,17 @@
             $("#inputCityMstDfLocation").val(0)
         }
         if (FilterData[0]['RouteId'] >= 0) {
-            $("#inputCityMstRoute").val(FilterData[0]['RouteId'])
+            //$("#inputCityMstRoute").val(FilterData[0]['RouteId'])
+            var selectedValue = FilterData[0]['RouteId'];
+            const dropdown = $('#inputCityMstRoute');
+            $('#inputCityMstRoute').html('');
+            ParentRouteCityDropDval.forEach(function (item) {
+                dropdown.append($('<option>', {
+                    value: item.CityId,
+                    text: item.CityName,
+                    selected: item.CityId === selectedValue
+                }));
+            });
         }
         else {
             $("#inputCityMstRoute").val(0)
@@ -1816,7 +1948,9 @@
             $('#FindCity_Mst').css('display', 'none');
             $('#btnAddListCity').css('display', 'none');
             $('#UpdateOldCity').css('display', 'none');
+            $('#UpdateOldCityForm').css('display', 'none');
             $('#SaveNewCity').css('display', 'inline-block');
+            $('#SaveNewCityForm').css('display', 'inline-block');
 
             $('#btnBackListCity').css('display', 'block');
             $('#CityMstFormSection').css('display', 'block');
@@ -1831,8 +1965,10 @@
             $('#btnBackListCity').css('display', 'none');
             $('#CityMstFormSection').css('display', 'none');
             $('#UpdateOldCity').css('display', 'inline-block');
+            $('#UpdateOldCityForm').css('display', 'inline-block');
             $('#btnCityMstCitySearch').css('display', 'none');
             $('#SaveNewCity').css('display', 'none');
+            $('#SaveNewCityForm').css('display', 'none');
 
             //GetCityMst();
             location.reload();
@@ -1896,4 +2032,9 @@
             });
     }
 
+    function searchPinCode() {
+        var cityName = $("#inputCityMstName").val(); //document.getElementById("inputCityMstName").value;
+        var googleSearchUrl = "https://www.google.co.in/search?ei=9aRFWrX3NYPYvASLiLDQBQ&q=" + cityName + "+pin+code&oq=" + cityName + "+&gs_l=psy-ab.3.0.0i131i67k1j0i67k1j0i131i67k1j0i67k1j0l6.154125.155813.0.157410.7.7.0.0.0.0.188.675.0j4.4.0....0...1c.1.64.psy-ab..3.4.672...0i131k1.0.D5su-wrJtNM";
+        window.open(googleSearchUrl, "_blank");
+    }
 </script>

@@ -1034,8 +1034,17 @@
                 const currentElement = event.target;
                 const currentIndex = Array.from(formElements).indexOf(currentElement);
 
-                if (currentIndex !== -1 && currentIndex < formElements.length - 1) {
-                    formElements[currentIndex + 1].focus();
+                const currentElementClass = event.target.className;
+                const currentIndexClass = Array.from(formElements).indexOf(currentElementClass);
+
+                if (currentElementClass == 'form-check-input') {
+                    if (currentIndexClass == -1 ) {                        
+                        $("#" + event.target.id).prop('checked', true);
+                    }
+                } else {
+                    if (currentIndex !== -1 && currentIndex < formElements.length - 1) {
+                        formElements[currentIndex + 1].focus();
+                    }
                 }
             }
         }
