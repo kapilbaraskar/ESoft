@@ -716,7 +716,7 @@
                             <div class="form-group col-md-3">
                                 <label for="inputCityMstPinCode">Pin Code</label><span style="color:red">*</span>
                                 <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" onblur="validationPinCode()" id="inputCityMstPinCode">
-                                <a href="#" onclick="searchPinCode();"  style="font-size: 13px;font-weight: bold">Find Pin Code -></a>
+                                <a href="#" class="pinCodeSearch" onclick="searchPinCode();"  style="font-size: 13px;font-weight: bold">Find Pin Code -></a>
                                 <span id="validMsgCityMstPinCode" style="color: red; font-size: 14px; display: none">Enter Pin Code</span>
 
                             </div>
@@ -1222,16 +1222,19 @@
 
         }
 
+
         if (Data['mLoc'].length > 0) {
             LocationDropDval = [];
             LocationDropDval = Data['mLoc'];
             var data = new Array();
             const dropdown = $('#inputCityMstCityLocation');
+            var selectedValue = LocalDataStorage[0]['LocId'];
             data = Data['mLoc']
             data.forEach(function (item) {
                 dropdown.append($('<option>', {
                     value: item.LocId,
-                    text: item.LocName
+                    text: item.LocName,
+                    selected: item.LocId === selectedValue
                 }));
             });
         }
@@ -1311,38 +1314,8 @@
             var StatusValid = ValidationCityForm()
             if (!StatusValid) {
                 return false
-            }
-
-            //return ValidationCityForm()
-            //if ($('#inputCityMstName').val() == '') {
-            //    $("#validMsgCityMstCityName").css("display", "block")
-            //    return
-            //}
-            //else {
-            //    $("#validMsgCityMstCityName").css("display", "none")
-            //}
-
-            //if ($('#inputCityMstPinCode').val() == '') {
-            //    $("#validMsgCityMstPinCode").css("display", "block")
-            //    return
-            //}
-            //else {
-            //    $("#validMsgCityMstPinCode").css("display", "none")
-            //}
-            //if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
-            //    $("#validMsgCityMstState").css("display", "block")
-            //    return
-            //}
-            //else {
-            //    $("#validMsgCityMstState").css("display", "none")
-            //}
-
+            }            
         }
-
-
-
-
-
 
         var cityid = ''; var CityName = ''; var CtAlias = ''; var Zip = ''; var DefDocChrgs = ''; var usercode = ''; var DfTransport = '';
         var isRoute = ''; var isLocked = ''; var isStation = ''; var GlAcId = ''; var StateId = ''; var RouteId = ''; var DeliveryAt = '';
@@ -1469,9 +1442,9 @@
                     //alert(data)
                     //DashBoardData = data
                     DisplaySeccessMsg(data);
-                    if (EntryMode == 2 || DaleteCityListEntryMode == 3) {
-                        location.reload();
-                    }
+                    //if (EntryMode == 2 || DaleteCityListEntryMode == 3) {
+                       // location.reload();
+                    //}
                 }
                 else {
 
@@ -1928,6 +1901,7 @@
 
         $("#inputCityMstName").focus();
     }
+
     function DeleteCityMst(e) {
 
         var confim = confirm("Are You Sure, You Want To Delete This Record?");
@@ -1970,8 +1944,84 @@
             $('#SaveNewCity').css('display', 'none');
             $('#SaveNewCityForm').css('display', 'none');
 
-            //GetCityMst();
-            location.reload();
+            CityMstModelFlag = false;
+            CityMstTblId = 'CityMstdataTable';
+            CityMstTblDiv = 'bindCityMstList';
+           
+            GetCityMst();
+
+            $('#CityMstdataTable thead tr')
+                .clone(true)
+                .addClass('filters')
+                .appendTo('#CityMstdataTable thead');
+
+
+            tableCityMst = $('#CityMstdataTable').DataTable({
+                //fixedHeader: true,
+                fixedHeader: {
+                    header: true,
+                    footer: true
+                },
+
+                orderCellsTop: true,
+                fixedHeader: true,
+                initComplete: function () {
+                    var api = this.api();
+
+                    // For each column
+                    api
+                        .columns()
+                        .eq(0)
+                        .each(function (colIdx) {
+                            // Set the header cell to contain the input element
+                            var cell = $('.filters th').eq(
+                                $(api.column(colIdx).header()).index()
+                            );
+                            var title = $(cell).text();
+                            if (title != 'Action') {
+                                $(cell).html('<input type="text" placeholder="' + title + '" />');
+                            }
+                            else {
+                                $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
+                            }
+
+                            // On every keypress in this input
+                            $(
+                                'input',
+                                $('.filters th').eq($(api.column(colIdx).header()).index())
+                            )
+                                .off('keyup change')
+                                .on('change', function (e) {
+                                    // Get the search value
+                                    $(this).attr('title', $(this).val());
+                                    var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                    var cursorPosition = this.selectionStart;
+                                    // Search the column for that value
+                                    api
+                                        .column(colIdx)
+                                        .search(
+                                            this.value != ''
+                                                ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                                : '',
+                                            this.value != '',
+                                            this.value == ''
+                                        )
+                                        .draw();
+                                })
+                                .on('keyup', function (e) {
+                                    e.stopPropagation();
+
+                                    $(this).trigger('change');
+                                    $(this)
+                                        .focus()[0]
+                                        .setSelectionRange(cursorPosition, cursorPosition);
+                                });
+                        });
+                },
+
+            });
+            //location.reload();
 
         }
 

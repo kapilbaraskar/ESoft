@@ -974,18 +974,20 @@
 <!-- END-->
 <script>
 
+    var LocData = JSON.parse(localStorage['LogLocationObj']);
     $(document).ready(function () {
-        var LocData = JSON.parse(localStorage['LogLocationObj']);
         $("#TransportLogOFuserid").val(DataLocalStore[0]['UserCode']);
 
         if (LocData.length > 0) {
             var data = new Array();
             const dropdown = $('#TransportLogOFloc');
+            var selectedValue = LocData[0]['LocId'];
             data = LocData
             data.forEach(function (item) {
                 dropdown.append($('<option>', {
                     value: item.LocId,
-                    text: item.LocName
+                    text: item.LocName,
+                    selected: item.LocId === selectedValue
                 }));
             });
         }
