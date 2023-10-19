@@ -553,7 +553,7 @@
                     <div class="row">
                         <div class="form-group col-md-9 col-lg-9 col-sm-9">
                             <select id="inputTreeCityMstState" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Choose...</option>
+                                <option value="-1" selected>Choose...</option>
                                 <option>...</option>
                             </select>
                         </div>
@@ -723,7 +723,7 @@
                             <div class="form-group col-md-3">
                                 <label for="inputCityMstState">State</label><span style="color:red">*</span>
                                 <select onkeydown="moveToNextInput(event)" id="inputCityMstState" onblur="validationState()" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="0" selected>Select State</option>
+                                    <option value="-1" selected>Select State</option>
 
                                 </select>
                                 <span id="validMsgCityMstState" style="color:red;font-size: 14px;display:none">Select State</span>
@@ -736,14 +736,14 @@
                             <div class="form-group col-md-4">
                                 <label for="inputCityMstDistrict">District</label>
                                 <select onkeydown="moveToNextInput(event)" id="inputCityMstDistrict"  class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="0" selected>Select District</option>
+                                    <option value="-1" selected>Select District</option>
 
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputCityMstParentCity">Parent City</label>
                                 <select onkeydown="moveToNextInput(event)" id="inputCityMstParentCity" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="0" selected>Select Parent City</option>
+                                    <option value="-1" selected>Select Parent City</option>
 
                                 </select>
                             </div>
@@ -766,7 +766,7 @@
                             <div class="form-group col-md-4">
                                 <label for="inputCityMstBranchAc">Branch A/C</label>
                                 <select onkeydown="moveToNextInput(event)" id="inputCityMstBranchAc" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="0" selected>Select Branch A/C</option>
+                                    <option value="-1" selected>Select Branch A/C</option>
 
                                 </select>
                             </div>
@@ -784,7 +784,7 @@
                             <div class="form-group col-md-4">
                                 <label for="inputCityMstCityLocation">Location</label>
                                 <select onkeydown="moveToNextInput(event)" id="inputCityMstCityLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="0" selected>Select Location</option>
+                                    <option value="-1" selected>Select Location</option>
 
                                 </select>
                             </div>
@@ -794,7 +794,7 @@
                             <div class="form-group col-md-4">
                                 <label for="inputCityMstDfLocation">Df. To Location</label>
                                 <select onkeydown="moveToNextInput(event)" id="inputCityMstDfLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="0" selected>Select Df. Location</option>
+                                    <option value="-1" selected>Select Df. Location</option>
 
                                 </select>
                             </div>
@@ -802,7 +802,7 @@
                             <div class="form-group col-md-4">
                                 <label for="inputCityMstRoute">Route</label>
                                 <select onkeydown="moveToNextInput(event)" id="inputCityMstRoute" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="0" selected>Select Route</option>
+                                    <option value="-1" selected>Select Route</option>
                                 </select>
                             </div>
 
@@ -1397,9 +1397,9 @@
             if (isRoute != '') { obj["isRoute"] = isRoute } else { obj["isRoute"] = 0 }
             if (isLocked != '') { obj["isLocked"] = isLocked } else { obj["isLocked"] = 0 }
             if (isStation != '') { obj["isStation"] = isStation } else { obj["isStation"] = 0 }
-            if (GlAcId != '' && GlAcId != 'Select Branch A/C' && GlAcId != null && GlAcId != undefined && GlAcId != 0) { obj["GlAcId"] = GlAcId } else { obj["GlAcId"] = -1 }
-            if (StateId != '' && StateId != 'Select State' && StateId != null && StateId != undefined && StateId != 0) { obj["StateId"] = StateId } else { obj["StateId"] = -1 }
-            if (RouteId != '' && RouteId != 'Select Route' && RouteId != null && RouteId != undefined && RouteId != 0) { obj["RouteId"] = RouteId } else { obj["RouteId"] = -1 }
+            if (GlAcId != '' && GlAcId != 'Select Branch A/C' && GlAcId != null && GlAcId != undefined && GlAcId != -1) { obj["GlAcId"] = GlAcId } else { obj["GlAcId"] = -1 }
+            if (StateId != '' && StateId != 'Select State' && StateId != null && StateId != undefined && StateId != -1) { obj["StateId"] = StateId } else { obj["StateId"] = -1 }
+            if (RouteId != '' && RouteId != 'Select Route' && RouteId != null && RouteId != undefined && RouteId != -1) { obj["RouteId"] = RouteId } else { obj["RouteId"] = -1 }
             if (DeliveryAt != '') { obj["DeliveryAt"] = DeliveryAt } else { obj["DeliveryAt"] = '' }
             if (DeliveryAdd != '') { obj["DeliveryAdd"] = DeliveryAdd } else { obj["DeliveryAdd"] = '' }
             if (ContactNo != '') { obj["ContactNo"] = ContactNo } else { obj["ContactNo"] = '' }
@@ -1411,8 +1411,8 @@
             if (Catg != '') { obj["Catg"] = Catg } else { obj["Catg"] = '' }
             if (ParentId != '' && ParentId != 'Select Parent City' && ParentId != null && ParentId != undefined) { obj["ParentId"] = ParentId } else { obj["ParentId"] = '' }
             if (CompId != '') { obj["CompId"] = CompId } else { obj["CompId"] = '' }
-            if (LocId != '' && LocId != 'Select Location' && LocId != null && LocId != undefined && LocId != 0) { obj["LocId"] = LocId } else { obj["LocId"] = '' }
-            if (DfToLocId != '' && DfToLocId != 'Select Df. Location' && DfToLocId != null && DfToLocId != undefined && DfToLocId != 0) { obj["DfToLocId"] = DfToLocId } else { obj["DfToLocId"] = '' }
+            if (LocId != '' && LocId != 'Select Location' && LocId != null && LocId != undefined && LocId != -1) { obj["LocId"] = LocId } else { obj["LocId"] = '' }
+            if (DfToLocId != '' && DfToLocId != 'Select Df. Location' && DfToLocId != null && DfToLocId != undefined && DfToLocId != -1) { obj["DfToLocId"] = DfToLocId } else { obj["DfToLocId"] = '' }
             if (DefDelComPer != '') { obj["DefDelComPer"] = DefDelComPer } else { obj["DefDelComPer"] = '' }
             if (Remark != '') { obj["Remark"] = Remark } else { obj["Remark"] = '' }
             if (DistId != '' && DistId != 'Select District') { obj["DistId"] = DistId } else { obj["DistId"] = -1 }
@@ -1442,9 +1442,91 @@
                     //alert(data)
                     //DashBoardData = data
                     DisplaySeccessMsg(data);
-                    //if (EntryMode == 2 || DaleteCityListEntryMode == 3) {
-                       // location.reload();
-                    //}
+                    if (DaleteCityListEntryMode == 3) {
+                        //location.reload();
+                        GetCityMst();
+                        $('#CityMstdataTable thead tr')
+                            .clone(true)
+                            .addClass('filters')
+                            .appendTo('#CityMstdataTable thead');
+
+                        //$('#CityMstdataTable').DataTable({
+
+                        //var tableCityMst = new DataTable('#CityMstdataTable', {
+
+                        tableCityMst = $('#CityMstdataTable').DataTable({
+                            //dom: 'Bfrtip',
+                            //buttons: [
+                            //    'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+
+                            //    //'copy', 'csv', 'excel', 'pdf', 'print'
+                            //],
+
+                            //fixedHeader: true,
+                            fixedHeader: {
+                                header: true,
+                                footer: true
+                            },
+
+                            orderCellsTop: true,
+                            fixedHeader: true,
+                            initComplete: function () {
+                                var api = this.api();
+
+                                // For each column
+                                api
+                                    .columns()
+                                    .eq(0)
+                                    .each(function (colIdx) {
+                                        // Set the header cell to contain the input element
+                                        var cell = $('.filters th').eq(
+                                            $(api.column(colIdx).header()).index()
+                                        );
+                                        var title = $(cell).text();
+                                        if (title != 'Action') {
+                                            $(cell).html('<input type="text" placeholder="' + title + '" />');
+                                        }
+                                        else {
+                                            $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
+                                        }
+
+                                        // On every keypress in this input
+                                        $(
+                                            'input',
+                                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                                        )
+                                            .off('keyup change')
+                                            .on('change', function (e) {
+                                                // Get the search value
+                                                $(this).attr('title', $(this).val());
+                                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                                var cursorPosition = this.selectionStart;
+                                                // Search the column for that value
+                                                api
+                                                    .column(colIdx)
+                                                    .search(
+                                                        this.value != ''
+                                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                                            : '',
+                                                        this.value != '',
+                                                        this.value == ''
+                                                    )
+                                                    .draw();
+                                            })
+                                            .on('keyup', function (e) {
+                                                e.stopPropagation();
+
+                                                $(this).trigger('change');
+                                                $(this)
+                                                    .focus()[0]
+                                                    .setSelectionRange(cursorPosition, cursorPosition);
+                                            });
+                                    });
+                            },
+
+                        });
+                    }
                 }
                 else {
 
@@ -1932,6 +2014,8 @@
             $('#CityMstForm')[0].reset();
             $("#BookingCityCheck").prop('checked', true);
             $("#inputCityMstName").focus();
+
+            $("#inputCityMstDfTransport").val(LocalDataStorage[0]['LocName']);
         }
         else if (e.textContent == 'Back') {
             $('#FindCity_Mst').css('display', 'block');

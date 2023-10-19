@@ -589,8 +589,12 @@
 
     <script>
         var urlLink ='http://localhost:10666/Api/'
+        var DataLocalStore = new Array();
+        DataLocalStore = JSON.parse(localStorage.LogingObj)
+
 
         $(document).ready(function () {
+            debugger;
             //Displaymenu(menulist)
             //$("#loader").css("display", "block");
             //GetDashboardData();
@@ -599,7 +603,8 @@
             GetSideMenuLink();
 
             if (sessionStorage.CityName != undefined || sessionStorage.CityName != null || sessionStorage.CityName != '') {
-                $("#Userloaction").html(sessionStorage.CityName);
+                //$("#Userloaction").html(sessionStorage.CityName);
+                $("#Userloaction").html(DataLocalStore[0]['LocName']);
             } else {
                 $("#Userloaction").html('');
             }
@@ -607,10 +612,7 @@
 
         });
 
-        var DataLocalStore = new Array();
-        DataLocalStore = JSON.parse(localStorage.LogingObj)
-
-
+    
         function GetSideMenuLink() {
             $("#loader").css("display", "block");
 
@@ -638,7 +640,15 @@
                         DisplayErroeMsg(data.message)
                     }
                     $("#loader").css("display", "none");
-                    $('#TransportlogoffModal1').modal('show');
+                    //$('#TransportlogoffModal1').modal('show');
+                    var prevPath = document.referrer.split('http://localhost:10666/')
+                    if (prevPath != null && prevPath != undefined && prevPath != '') {
+                        if (prevPath[1] == 'Home/Login') {
+                            $('#TransportlogoffModal1').modal('show');
+                        } else {
+                            $('#TransportlogoffModal1').modal('hide');
+                        }
+                    }
                 }
             });
         }

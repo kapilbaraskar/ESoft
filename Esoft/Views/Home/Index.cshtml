@@ -878,11 +878,11 @@
 </div>
 
 <!-- HR Logoff Modal-->
-<div class="modal fade" id="HRlogoffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="HRlogoffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-primary" id="exampleModalLabel">HR Logoff</h5>
+                <h5 class="modal-title text-primary" id="exampleModalLabel2">HR Logoff</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -999,6 +999,8 @@
         //});
 
         GetDashboardData();
+
+       
     });
 
     var DashBoardData = new Array();
@@ -1364,7 +1366,7 @@
         if ( UserID != "" && password != "") {
             $("#TransportLogOFuseridErrorMsg").css("display", 'none');
             $("#TransportLogOFpassErrorMsg").css("display", 'none');
-          
+            debugger
             $.ajax({
                 url: urlLink + 'ApiMaster/LoginByUserCodeNPwd',
                 type: "GET",
@@ -1377,8 +1379,6 @@
                     xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
                 },
                 success: function (result) {
-                    debugger;
-
                     if (result.status == 1) {
                         var Data = new Date();
                         Data = result.message
