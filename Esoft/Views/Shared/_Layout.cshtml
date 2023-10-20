@@ -287,9 +287,13 @@
 
 
                         <li class="nav-item dropdown no-arrow mx-0">
-                            <span class="nav-link" href="#" role="button" style="color:black ;cursor:pointer">
-                                07-07-2023
+                            <span class="nav-link" href="#" role="button" style="color:black ;cursor:pointer" id="CurrentDateHeader">
+                                @*07-07-2023*@
                                 @*<span class="">07-07-2023</span>*@
+                            </span>
+                        </li>
+                        <li class="nav-item dropdown no-arrow mx-0">
+                            <span class="nav-link" href="#" role="button" style="color:black ;" id="ShowDBNameHeader">
                             </span>
                         </li>
                         <li class="nav-item dropdown no-arrow mx-0">
@@ -426,8 +430,8 @@
                                     display: inline-block;"></div><span style="vertical-align: super"> Blue-Purple</span>
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
-                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-                        </a> -->
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+            </a> -->
                                 <a class="dropdown-item" href="#" onclick="toggleTheme('grey-dark')">
                                     <div class="mr-2 text-gray-400" style="background-color:#252525 ;height: 25px;
                                     width: 25px;
@@ -461,9 +465,12 @@
                                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Forgot Password
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
-                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-                        </a> -->
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+            </a> -->
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#TransportlogoffModal1">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> logoff
+                                </a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
                                 </a>
@@ -609,6 +616,8 @@
                 $("#Userloaction").html('');
             }
             $("#logUserName").html(sessionStorage.UserName);
+            $("#ShowDBNameHeader").html(sessionStorage.dbName);
+            $("#CurrentDateHeader").html(sessionStorage.CurrentDate);
 
         });
 
@@ -643,9 +652,10 @@
                     //$('#TransportlogoffModal1').modal('show');
                     var prevPath = document.referrer.split('http://localhost:10666/')
                     if (prevPath != null && prevPath != undefined && prevPath != '') {
-                        if (prevPath[1] == 'Home/Login') {
+                        if (prevPath[1] == 'Home/Login' || prevPath[1] == '') {
                             $('#TransportlogoffModal1').modal('show');
-                        } else {
+                        }                        
+                         else {
                             $('#TransportlogoffModal1').modal('hide');
                         }
                     }

@@ -975,13 +975,16 @@
 <script>
 
     var LocData = JSON.parse(localStorage['LogLocationObj']);
+    var LocalDataStorage = new Array();
+    LocalDataStorage = JSON.parse(localStorage.LogingObj);
     $(document).ready(function () {
         $("#TransportLogOFuserid").val(DataLocalStore[0]['UserCode']);
 
         if (LocData.length > 0) {
+            debugger;
             var data = new Array();
             const dropdown = $('#TransportLogOFloc');
-            var selectedValue = LocData[0]['LocId'];
+            var selectedValue = LocalDataStorage[0]['LocId'];
             data = LocData
             data.forEach(function (item) {
                 dropdown.append($('<option>', {
@@ -1407,6 +1410,7 @@
                         localStorage.setItem("LogingObj", string);
                         localStorage.setItem("LogLocationObj", LocationString);
 
+                        $("#Userloaction").html(newArray[0]['LocName']);
                         $("#CloseTransportLogOfModel").trigger('click');
 
                         DisplaySeccessMsg('Transport Logoff Successfully')

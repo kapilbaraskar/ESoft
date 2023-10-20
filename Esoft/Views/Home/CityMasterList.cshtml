@@ -1638,8 +1638,7 @@
             .addClass('filters')
             .appendTo('#CityMstdataTableModel thead');
 
-        tableCityMstModle = $('#CityMstdataTableModel').DataTable({
-
+        tableCityMstModle = $('#CityMstdataTableModel').DataTable({                        
             orderCellsTop: true,
             fixedHeader: true,
             initComplete: function () {
@@ -1696,6 +1695,12 @@
                             });
                     });
             },
+
+            //dom: 'Bfrtip',
+            //buttons: [
+            //    //'copyHtml5', 'excelHtml5', 'pdfHtml5'
+            //    'csvHtml5',
+            //],
 
         });
 
@@ -1999,8 +2004,10 @@
         SaveCityMstData(e);
     }
 
+    var AddCityFlag = false;
     function AddBackNewCity(e) {
         if (e.textContent == 'Add City') {
+            AddCityFlag = true;
             $('#FindCity_Mst').css('display', 'none');
             $('#btnAddListCity').css('display', 'none');
             $('#UpdateOldCity').css('display', 'none');
@@ -2015,9 +2022,10 @@
             $("#BookingCityCheck").prop('checked', true);
             $("#inputCityMstName").focus();
 
-            $("#inputCityMstDfTransport").val(LocalDataStorage[0]['LocName']);
+            //$("#inputCityMstDfTransport").val(LocalDataStorage[0]['LocName']);
         }
         else if (e.textContent == 'Back') {
+            AddCityFlag = false;
             $('#FindCity_Mst').css('display', 'block');
             $('#btnAddListCity').css('display', 'block');
             $('#btnBackListCity').css('display', 'none');
@@ -2164,11 +2172,35 @@
             .catch(error => {
                 console.error('Translation error:', error);
             });
+
+
+
+        //=============Code for Camel Case====================
+        var inputValue = $('#inputCityMstName').val();
+        var words = inputValue.split(' ');
+        for (var i = 0; i < words.length; i++) {
+            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+        }
+        var camelCaseValue = words.join(" ");
+        $("#inputCityMstName").val(camelCaseValue);
+        // Display the result
+        $('#result').text('Camel Case: ' + camelCaseValue);
+        //============END
+        
+        if (AddCityFlag == true) {
+            $("#inputCityMstChargeUpTo").val('');
+            $("#inputCityMstChargeUpTo").val($("#inputCityMstName").val());
+
+            $("#inputCityMstDeliveryAt").val('');
+            $("#inputCityMstDeliveryAt").val($("#inputCityMstName").val());
+        }
+        
     }
 
     function searchPinCode() {
         var cityName = $("#inputCityMstName").val(); //document.getElementById("inputCityMstName").value;
         var googleSearchUrl = "https://www.google.co.in/search?ei=9aRFWrX3NYPYvASLiLDQBQ&q=" + cityName + "+pin+code&oq=" + cityName + "+&gs_l=psy-ab.3.0.0i131i67k1j0i67k1j0i131i67k1j0i67k1j0l6.154125.155813.0.157410.7.7.0.0.0.0.188.675.0j4.4.0....0...1c.1.64.psy-ab..3.4.672...0i131k1.0.D5su-wrJtNM";
         window.open(googleSearchUrl, "_blank");
+        
     }
 </script>
