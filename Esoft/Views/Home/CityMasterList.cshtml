@@ -855,7 +855,7 @@
 
 <!-- ForgotPassword Logoff Modal-->
 <div class="modal fade" id="CityMstSearcCityModal" tabindex="-1" role="dialog" aria-labelledby="CityMstSearcCityModal" aria-hidden="true">
-    <div class="modal-dialog  modal-xl" role="document">
+    <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-primary" id="exampleModalLabel">Search City</h5>
@@ -1634,16 +1634,33 @@
         GetCityMst();
 
         $('#CityMstdataTableModel thead tr')
+
             .clone(true)
             .addClass('filters')
             .appendTo('#CityMstdataTableModel thead');
 
-        tableCityMstModle = $('#CityMstdataTableModel').DataTable({                        
+        tableCityMstModle = $('#CityMstdataTableModel').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                    //'copyHtml5', 'excelHtml5', 'pdfHtml5'
+                    //'csvHtml5',
+                {
+                    extend: 'csvHtml5',
+                    text: 'Excel Export',
+                    title: 'City Data export',
+                    //customize: function (xlsx) {
+                    //    var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                    //    $('c[r=D2] t', sheet).text('Category');
+                    //},
+                }
+             ],
+
             orderCellsTop: true,
             fixedHeader: true,
             initComplete: function () {
                 var api = this.api();
-
+               
                 // For each column
                 api
                     .columns()
@@ -1696,15 +1713,17 @@
                     });
             },
 
-            //dom: 'Bfrtip',
-            //buttons: [
-            //    //'copyHtml5', 'excelHtml5', 'pdfHtml5'
-            //    'csvHtml5',
-            //],
+            
 
         });
 
-        $("#CityMstdataTableModel_info").parent().parent().css({ "position": "sticky", "bottom": "0px" })
+        $("#CityMstdataTableModel_info").parent().parent().css({ "position": "sticky", "bottom": "0px" });
+
+        $("#CityMstdataTableModel_filter").css({ display: 'none'});
+       // $("#CityMstdataTableModel_filter").css({ display: 'inline-block', float: 'right' });
+        $(".dt-buttons").css("display", "inline-block");
+        $("#CityMstdataTableModel_info").css("display", "inline-block");
+        $("#CityMstdataTableModel_paginate").css({ display: 'inline-block', float: 'right' });
     }
 
     var TotalCityMstDataArray = new Array();
