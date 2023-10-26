@@ -1242,6 +1242,26 @@
 
         }
 
+
+        if (Data['mLoc'].length > 0) {
+            LocationDropDval = [];
+            LocationDropDval = Data['mLoc'];
+            var data = new Array();
+            const dropdown = $('#inputCityMstDfLocation');
+            var selectedValue = LocalDataStorage[0]['LocId'];
+            data = Data['mLoc']
+            data.forEach(function (item) {
+                dropdown.append($('<option>', {
+                    value: item.LocId,
+                    text: item.LocName,
+                    //selected: item.LocId === selectedValue
+                }));
+            });
+        }
+        else {
+
+        }
+
         if (Data['mState'].length > 0) {
             StateDropDval = [];
             StateDropDval = Data['mState'];
@@ -1409,10 +1429,10 @@
             if (BusChg != '') { obj["BusChg"] = BusChg } else { obj["BusChg"] = '' }
             if (Distance != '') { obj["Distance"] = Distance } else { obj["Distance"] = '' }
             if (Catg != '') { obj["Catg"] = Catg } else { obj["Catg"] = '' }
-            if (ParentId != '' && ParentId != 'Select Parent City' && ParentId != null && ParentId != undefined) { obj["ParentId"] = ParentId } else { obj["ParentId"] = '' }
+            if (ParentId != '' && ParentId != 'Select Parent City' && ParentId != null && ParentId != undefined) { obj["ParentId"] = ParentId } else { obj["ParentId"] = -1 }
             if (CompId != '') { obj["CompId"] = CompId } else { obj["CompId"] = '' }
-            if (LocId != '' && LocId != 'Select Location' && LocId != null && LocId != undefined && LocId != -1) { obj["LocId"] = LocId } else { obj["LocId"] = '' }
-            if (DfToLocId != '' && DfToLocId != 'Select Df. Location' && DfToLocId != null && DfToLocId != undefined && DfToLocId != -1) { obj["DfToLocId"] = DfToLocId } else { obj["DfToLocId"] = '' }
+            if (LocId != '' && LocId != 'Select Location' && LocId != null && LocId != undefined && LocId != -1) { obj["LocId"] = LocId } else { obj["LocId"] = -1 }
+            if (DfToLocId != '' && DfToLocId != 'Select Df. Location' && DfToLocId != null && DfToLocId != undefined && DfToLocId != -1) { obj["DfToLocId"] = DfToLocId } else { obj["DfToLocId"] = -1 }
             if (DefDelComPer != '') { obj["DefDelComPer"] = DefDelComPer } else { obj["DefDelComPer"] = '' }
             if (Remark != '') { obj["Remark"] = Remark } else { obj["Remark"] = '' }
             if (DistId != '' && DistId != 'Select District') { obj["DistId"] = DistId } else { obj["DistId"] = -1 }
