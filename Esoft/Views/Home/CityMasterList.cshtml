@@ -686,163 +686,163 @@
 
 
 
-                        <div class="form-row mt-2">
-                            <div class="form-group col-md-6">
-                                <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm"  onblur="validationCityName()" id="inputCityMstName">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input onkeydown="moveToNextInput(event)" onfocus="CityNameTranslate()" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
-                                    </div>
+                    <div class="form-row mt-2">
+                        <div class="form-group col-md-6">
+                            <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" onblur="validationCityName()" id="inputCityMstName">
                                 </div>
+                                <div class="col-md-6">
+                                    <input onkeydown="moveToNextInput(event)" onfocus="CityNameTranslate()" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
+                                </div>
+                            </div>
+                            <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
+
+                        </div>
+
+                        @*<div class="form-group col-md-3">
+                                <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
+                                <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstName">
                                 <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
 
                             </div>
-
-                            @*<div class="form-group col-md-3">
-                    <label for="inputCityMstName">City Name</label><span style="color:red">*</span>
-                    <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstName">
-                    <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
-
-                </div>
-                <div class="form-group col-md-3">
-                    <input onkeydown="moveToNextInput(event)" style="position: absolute; bottom: 0%; left: 0;" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
-                    <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
-
-                </div>*@
-
                             <div class="form-group col-md-3">
-                                <label for="inputCityMstPinCode">Pin Code</label><span style="color:red">*</span>
-                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" onblur="validationPinCode()" id="inputCityMstPinCode">
-                                <a href="#" class="pinCodeSearch" onclick="searchPinCode();"  style="font-size: 13px;font-weight: bold">Find Pin Code -></a>
-                                <span id="validMsgCityMstPinCode" style="color: red; font-size: 14px; display: none">Enter Pin Code</span>
+                                <input onkeydown="moveToNextInput(event)" style="position: absolute; bottom: 0%; left: 0;" type="text" class="form-control form-control-sm" id="inputCityMstNameAlias">
+                                <span id="validMsgCityMstCityName" style="color: red; font-size: 14px; display: none">Enter City Name</span>
 
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputCityMstState">State</label><span style="color:red">*</span>
-                                <select onkeydown="moveToNextInput(event)" id="inputCityMstState" onblur="validationState()" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="-1" selected>Select State</option>
+                            </div>*@
 
-                                </select>
-                                <span id="validMsgCityMstState" style="color:red;font-size: 14px;display:none">Select State</span>
+                        <div class="form-group col-md-3">
+                            <label for="inputCityMstPinCode">Pin Code</label><span style="color:red">*</span>
+                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" onblur="validationPinCode()" id="inputCityMstPinCode">
+                            <a href="#" class="pinCodeSearch" onclick="searchPinCode();" style="font-size: 13px;font-weight: bold">Find Pin Code -></a>
+                            <span id="validMsgCityMstPinCode" style="color: red; font-size: 14px; display: none">Enter Pin Code</span>
 
-                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputCityMstState">State</label><span style="color:red">*</span>
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstState" onblur="validationState()" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="-1" selected>Select State</option>
+
+                            </select>
+                            <span id="validMsgCityMstState" style="color:red;font-size: 14px;display:none">Select State</span>
 
                         </div>
 
-                        <div class="form-row mt-1">
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstDistrict">District</label>
-                                <select onkeydown="moveToNextInput(event)" id="inputCityMstDistrict"  class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="-1" selected>Select District</option>
+                    </div>
 
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstParentCity">Parent City</label>
-                                <select onkeydown="moveToNextInput(event)" id="inputCityMstParentCity" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="-1" selected>Select Parent City</option>
+                    <div class="form-row mt-1">
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstDistrict">District</label>
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstDistrict" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="-1" selected>Select District</option>
 
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstDeliveryAt">Delivery At</label>
-                                <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDeliveryAt">
-                            </div>
-
+                            </select>
                         </div>
-                        <div class="form-row mt-1">
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstChargeUpTo">Charges Up To</label>
-                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstDfTransport">Df. Transport</label>
-                                <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDfTransport">
-                            </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstParentCity">Parent City</label>
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstParentCity" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="-1" selected>Select Parent City</option>
 
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstBranchAc">Branch A/C</label>
-                                <select onkeydown="moveToNextInput(event)" id="inputCityMstBranchAc" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="-1" selected>Select Branch A/C</option>
-
-                                </select>
-                            </div>
-
+                            </select>
                         </div>
-                        <div class="form-row mt-1">
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstBiltyCharg">Df. Bilty Charg</label>
-                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstBiltyCharg">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstDelComm">Df.Del. Comm% </label>
-                                <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstDelComm">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstCityLocation">Location</label>
-                                <select onkeydown="moveToNextInput(event)" id="inputCityMstCityLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="-1" selected>Select Location</option>
-
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstDfLocation">Df. To Location</label>
-                                <select onkeydown="moveToNextInput(event)" id="inputCityMstDfLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="-1" selected>Select Df. Location</option>
-
-                                </select>
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="inputCityMstRoute">Route</label>
-                                <select onkeydown="moveToNextInput(event)" id="inputCityMstRoute" class="form-control form-control-sm CommonScroleStyle ">
-                                    <option value="-1" selected>Select Route</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="form-row mt-1 pl-3">
-                            <div class="form-check col-md-2">
-                                <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstIsMultRoutCheck">
-                                <label class="form-check-label" for="CityMstIsMultRoutCheck">
-                                    Is Multi Route
-                                </label>
-                            </div>
-                            <div class="form-check col-md-2">
-                                <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstLockedCheck">
-                                <label class="form-check-label" for="CityMstLockedCheck">
-                                    Locked
-                                </label>
-                            </div>
-                            <div class="col-md-4 offset-4">
-                                <div style="float:right">                                  
-                                    <button type="button" id="SaveNewCityForm" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
-                                    <button type="button" id="UpdateOldCityFrom" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
-                                    <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
-                                </div>
-                            </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstDeliveryAt">Delivery At</label>
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDeliveryAt">
                         </div>
 
-                        <!--<div class="form-row d-none">
-                            <div class="col-md-4 offset-8">
-                                <div style="float:right">-->
-                                    @*<button type="submit" class="btn btn-primary">New</button>*@
-                                    @*<input type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Save" />
+                    </div>
+                    <div class="form-row mt-1">
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstChargeUpTo">Charges Up To</label>
+                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstDfTransport">Df. Transport</label>
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstDfTransport">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstBranchAc">Branch A/C</label>
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstBranchAc" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="-1" selected>Select Branch A/C</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-row mt-1">
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstBiltyCharg">Df. Bilty Charg</label>
+                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstBiltyCharg">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstDelComm">Df.Del. Comm% </label>
+                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstDelComm">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstCityLocation">Location</label>
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstCityLocation" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="-1" selected>Select Location</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstDfLocation">Df. To Location</label>
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstDfLocation" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="-1" selected>Select Df. Location</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="inputCityMstRoute">Route</label>
+                            <select onkeydown="moveToNextInput(event)" id="inputCityMstRoute" class="form-control form-control-sm CommonScroleStyle ">
+                                <option value="-1" selected>Select Route</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-row mt-1 pl-3">
+                        <div class="form-check col-md-2">
+                            <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstIsMultRoutCheck">
+                            <label class="form-check-label" for="CityMstIsMultRoutCheck">
+                                Is Multi Route
+                            </label>
+                        </div>
+                        <div class="form-check col-md-2">
+                            <input onkeydown="moveToNextInput(event)" class="form-check-input" type="checkbox" id="CityMstLockedCheck">
+                            <label class="form-check-label" for="CityMstLockedCheck">
+                                Locked
+                            </label>
+                        </div>
+                        <div class="col-md-4 offset-4">
+                            <div style="float:right">
+                                <button type="button" id="SaveNewCityForm" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                                <button type="button" id="UpdateOldCityFrom" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
+                                <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div class="form-row d-none">
+                        <div class="col-md-4 offset-8">
+                            <div style="float:right">-->
+                    @*<button type="submit" class="btn btn-primary">New</button>*@
+                    @*<input type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Save" />
                         <input type="button" id="UpdateOldCity" class="btn btn-primary" onclick="SaveCityMstData(this)" value="Update" />
                         <input type="button" id="SaveNewCity" class="btn btn-primary" onclick="ClearForm(this)" value="Clear" />*@
 
-                                    <!--<button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
-                                    <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
-                                    <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
-                                </div>
+                    <!--<button type="button" id="SaveNewCity" class="btn btn-primary" onclick="SaveCityMstData(this)">Save</button>
+                                <button type="button" id="UpdateOldCity" style="display:none" class="btn btn-primary" onclick="SaveCityMstData(this)">Update</button>
+                                <button type="button" class="btn btn-primary" onclick="ClearForm()">Clear</button>
                             </div>
-                        </div>-->
+                        </div>
+                    </div>-->
 
                 </form>
             </div>
@@ -864,12 +864,12 @@
                 </button>
             </div>
             <div class="modal-body">
-               
-                <div id="bindCityMstListModel"  class="DashboardTableMainDiv" style="height: 500px; overflow: auto;"></div>
+
+                <div id="bindCityMstListModel" class="DashboardTableMainDiv" style="height: 500px; overflow: auto;"></div>
 
             </div>
             <div class="modal-footer">
-              
+
                 <button class="btn btn-secondary" id="btnCloseCityMstModel" type="button" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -879,1215 +879,51 @@
 
 
 
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@section  Script{
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-<script src="~/Content/vendor/jquery/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-<script>
-
-    //=================Code For CityMaster Page=================
-    var urlLink = 'http://localhost:10666/Api/'
-
-    var LocalDataStorage = new Array();
-    LocalDataStorage = JSON.parse(localStorage.LogingObj);
-    var tableCityMst = ''
-    var tableCityMstModle = ''
-    $(document).ready(function () {
-        if (CityMstModelFlag == false) {
-            CityMstTblId = 'CityMstdataTable'
-            CityMstTblDiv = 'bindCityMstList';
-        }
-        else {
-            CityMstTblId = 'CityMstdataTableModel'
-            CityMstTblDiv = 'bindCityMstListModel';
-        }
-        GetCityMst();
-        $("#BookingCityCheck").prop('checked', true);
-        $('#CityMstdataTable thead tr')
-            .clone(true)
-            .addClass('filters')
-            .appendTo('#CityMstdataTable thead');
-
-        //$('#CityMstdataTable').DataTable({
-
-        //var tableCityMst = new DataTable('#CityMstdataTable', {
-
-        tableCityMst = $('#CityMstdataTable').DataTable({
-            //dom: 'Bfrtip',
-            //buttons: [
-            //    'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
-
-            //    //'copy', 'csv', 'excel', 'pdf', 'print'
-            //],
-
-            //fixedHeader: true,
-            fixedHeader: {
-                header: true,
-                footer: true
-            },
-
-            orderCellsTop: true,
-            fixedHeader: true,
-            initComplete: function () {
-                var api = this.api();
-
-                // For each column
-                api
-                    .columns()
-                    .eq(0)
-                    .each(function (colIdx) {
-                        // Set the header cell to contain the input element
-                        var cell = $('.filters th').eq(
-                            $(api.column(colIdx).header()).index()
-                        );
-                        var title = $(cell).text();
-                        if (title != 'Action') {
-                            $(cell).html('<input type="text" placeholder="' + title + '" />');
-                        }
-                        else {
-                            $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
-                        }
-
-                        // On every keypress in this input
-                        $(
-                            'input',
-                            $('.filters th').eq($(api.column(colIdx).header()).index())
-                        )
-                            .off('keyup change')
-                            .on('change', function (e) {
-                                // Get the search value
-                                $(this).attr('title', $(this).val());
-                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
-
-                                var cursorPosition = this.selectionStart;
-                                // Search the column for that value
-                                api
-                                    .column(colIdx)
-                                    .search(
-                                        this.value != ''
-                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                            : '',
-                                        this.value != '',
-                                        this.value == ''
-                                    )
-                                    .draw();
-                            })
-                            .on('keyup', function (e) {
-                                e.stopPropagation();
-
-                                $(this).trigger('change');
-                                $(this)
-                                    .focus()[0]
-                                    .setSelectionRange(cursorPosition, cursorPosition);
-                            });
-                    });
-            },
-
-        });
-
-        getCityHiererchiView();
-        GetCityMasterDropdownData();
-
-        //$('input').keypress(function (event) {
-        //    var keycode = (event.keyCode ? event.keyCode : event.which);
-        //    if (keycode == 13) {
-        //        //keycode.preventDefault();
-        //        var nxtIdx = $inp.index(this) + 1;
-        //        $(":input:text:eq(" + nxtIdx + ")").focus();
-        //    }
-        //});
-
-       // $('#inputCityMstName').css("background-color", "rgb(255, 255, 49)");
-        $('#inputCityMstName').focus();
-        $("#CityMstdataTable_info").parent().parent().css({ "position": "sticky", "bottom": "0px" })
-        $("#CityMstdataTableModel_info").parent().parent().css({ "position": "sticky", "bottom": "0px" })
-
-    });
+    @*<script src="~/Content/vendor/jquery/jquery.min.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
-    //================ Code For get City Tree View===================
-    function getCityHiererchiView() {
+    <script>
+
+        //=================Code For CityMaster Page=================
+        //var urlLink = 'http://localhost:10666/Api/'
+
+        //var LocalDataStorage = new Array();
+        //LocalDataStorage = JSON.parse(localStorage.LogingObj);
         
-        $.ajax({
-            url: urlLink + 'ApiMaster/GetDataForCityMasterTreeView',
-            type: "GET",
-            dataType: "JSON",
-            //data: { "Ind": '1', "PROJCODE": 'trpr' },
-            contentType: "application/json; charset=utf-8",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
-            },
-            success: function (data) {
-                // //debugger;
-
-                if (data.status == 1) {
-                    //DashBoardData = []
-                    data = data.message
-                    //DashBoardData = data
-                    DisplayCityTreeStructureData(data)
-                }
-                else {
-                    console.log(error);
-                    DisplayErroeMsg(data.message)
-                    $("#loader").css("display", "none");
-                }
-
-            }
-        });
-    }
-
-
-    var parentlistTreeView = new Array();
-    var child_listTreeView = new Array();
-    var sub_child_listTreeView = new Array();
-
-    function first_level_listTreeView(menulist) {
-        parentlistTreeView.splice(0, parentlistTreeView.length)  // To delete all data from array Which is already exist.
-        for (var i = 0; i < menulist.length; i++) {
-            if (menulist[i]["ParentId"] == 0) {
-                parentlistTreeView.push(menulist[i]);
-            }
-        }
-    }
-    // this is for the second level or the second block
-    function second_level_listTreeView(id, menulist) {
-
-        child_listTreeView.splice(0, child_listTreeView.length);
-        for (var j = 0; j < menulist.length; j++) {
-            if (id == menulist[j]["ParentId"]) {
-                child_listTreeView.push(menulist[j]);
-            }
-        }
-
-    }
-    //this is for the third level or the third block
-    function third_level_listTreeView(id, menulist) {
-        sub_child_listTreeView.splice(0, sub_child_listTreeView.length);
-
-        for (var j = 0; j < menulist.length; j++) {
-            if (id == menulist[j]["ParentId"]) {
-                sub_child_listTreeView.push(menulist[j]);
-            }
-        }
-
-    }
-
-    var strTreeView = '';
-    function DisplayCityTreeStructureData(Data) {
-        var thirdlevelId = "0", secondlevelId = "0", firstlevelId = "0";
-        $("#City_TreeViewStructure").html('');    //To Empty HTML Code Which is already exist
-        first_level_listTreeView(Data);
-
-
-        for (var i = 0; i < parentlistTreeView.length; i++) {
-            second_level_listTreeView(parentlistTreeView[i]["CityId"], Data);  //In parentlistTreeView array data is available in the form of array of object.
-            if (child_listTreeView.length > 0) {
-                // strTreeView += '<li class="nav-item treeview admin ' + (((secondlevelId == "0" ? thirdlevelId : secondlevelId) == parentlistTreeView[i]["MnuId"]) ? 'menu-open' : '') + '">';
-                strTreeView += '<li>';
-                //strTreeView += '<input type="checkbox" checked="checked" id="c'+i+'" />'
-                strTreeView += '<input type="checkbox"  id="c' + i + '" />';
-                strTreeView += '<label class="tree_label ParentTreeViewCls" onclick="ParentTreeViewFun(this)" for= "c' + i + '">' + parentlistTreeView[i]["CityName"] + '</label>';
-
-                //strTreeView += '<ul class="nav-link pt-0 hideshowUl treeview-menu" style ="display:' + (((secondlevelId == "0" ? thirdlevelId : secondlevelId) == parentlistTreeView[i]["MnuId"]) ? 'block;' : 'none;') + '">'
-                strTreeView += '<ul>';
-                for (var j = 0; j < child_listTreeView.length; j++) {
-                    third_level_listTreeView(child_listTreeView[j]["CityId"], Data);
-                    if (sub_child_listTreeView.length > 0) {
-                        strTreeView += '<li>';
-                        //strTreeView += '<input type="checkbox" checked="checked" id="b1' + j + '" />';
-                        strTreeView += '<input type="checkbox" id="b1' + j + '" />';
-                        strTreeView += '<label class="tree_label SubChildTreeViewCls" onclick="SubChildTreeViewFun(this)" for= "b1' + j + '"> ' + child_listTreeView[j]["CityName"] + '</label>';
-
-                        //strTreeView += '<ul  class="nav-link pt-0 hideshowUl treeview-menu" style ="display:' + ((thirdlevelId == child_listTreeView[j]["MnuId"]) ? 'block;' : 'none;') + '">';
-                        strTreeView += '<ul>';
-                        for (var k = 0; k < sub_child_listTreeView.length; k++) {
-                            var classnameNew = "";
-
-                            strTreeView += '<li class="ChildTreeViewCls" onclick="ChildTreeViewFun(this)"><span>' + sub_child_listTreeView[k]["CityName"] + '</span></li>';
-                        }
-                        strTreeView += '</ul>';
-                        strTreeView += '</li>';
-                    }
-                    else {
-
-                        strTreeView += '<li>';
-
-                        //strTreeView += '<input type="checkbox" checked="checked" id="b11'+j+'" />'
-                        strTreeView += '<input type="checkbox" id="b11' + j + '" />';
-                        strTreeView += '<label class="tree_label SubChildTreeViewCls" onclick="SubChildTreeViewFun(this)" for= "b11' + j + '"> ' + child_listTreeView[i]["CityName"] + '</label>';
-                        strTreeView += '</li>';
-
-
-                    }
-                }
-                strTreeView += '</ul>';
-                strTreeView += '</li>';
+        var tableCityMst = ''
+        var tableCityMstModle = ''
+        $(document).ready(function () {
+            if (CityMstModelFlag == false) {
+                CityMstTblId = 'CityMstdataTable'
+                CityMstTblDiv = 'bindCityMstList';
             }
             else {
-                var classnameNew = "";
-
-
-                strTreeView += '<li>'
-                //strTreeView += '<input type="checkbox" checked="checked" id="c'+i+'" />'
-                strTreeView += '<input type="checkbox" id="c' + i + '" />';
-                strTreeView += '<label class="tree_label ParentTreeViewCls" onclick="ParentTreeViewFun(this)" for= "c' + i + '"> ' + parentlistTreeView[i]["CityName"] + '</label>';
-
-                strTreeView += '</li>'
+                CityMstTblId = 'CityMstdataTableModel'
+                CityMstTblDiv = 'bindCityMstListModel';
             }
-        }
-
-        $("#City_TreeViewStructure").html(strTreeView)
-
-    }
-
-    //OnClick On Tree View Element
-    function ParentTreeViewFun(e) {
-        $('.ParentTreeViewCls').removeClass('activeTreeView')
-        e.classList.add('activeTreeView');
-    }
-
-
-    function SubChildTreeViewFun(e) {
-        $('.SubChildTreeViewCls').removeClass('activeTreeView')
-        e.classList.add('activeTreeView');
-    }
-
-    function ChildTreeViewFun(e) {
-        $('.ChildTreeViewCls').removeClass('activeTreeView')
-        e.classList.add('activeTreeView');
-    }
-
-    //================ City Tree View END===================
-
-
-    //================ Code For get City Dropdown ===================
-
-    function GetCityMasterDropdownData() {
-        $.ajax({
-            url: urlLink + 'ApiMaster/GetDataForCityMasterDropDowns',
-            type: "GET",
-            dataType: "JSON",
-            data: { "DfLocDetId": LocalDataStorage[0]['LocId'] },
-            contentType: "application/json; charset=utf-8",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
-                xhr.setRequestHeader("UserCode", LocalDataStorage[0]['UserCode']);
-                xhr.setRequestHeader("CampId", LocalDataStorage[0]['dfCompId']);
-            },
-            success: function (data) {
-                debugger;
-
-                if (data.status == 1) {
-                    DashBoardData = []
-                    data = data.message
-                    //DashBoardData = data
-                    DisplayCityDroupdownData(data)
-                }
-                else {
-                    console.log(error);
-                    DisplayErroeMsg(data.message)
-                    $("#loader").css("display", "none");
-                }
-
-            }
-        });
-    }
-
-
-    var DistrictDropDval = new Array();
-    var StateDropDval = new Array();
-    var ParentRouteCityDropDval = new Array();
-    var BranchACDropDval = new Array();
-    var LocationDropDval = new Array();
-    var DfToLocDropDval = new Array();
-    
-
-    function DisplayCityDroupdownData(Data) {
-
-        if (Data['mDist'].length > 0) {
-            DistrictDropDval = [];
-            DistrictDropDval = Data['mDist'];
-            var data = new Array();
-            const dropdown = $('#inputCityMstDistrict');
-            data = Data['mDist']
-            data.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.DistId,
-                    text: item.DistName
-                }));
-            });
-        }
-        else {
-
-        }
-
-
-        if (Data['mLoc'].length > 0) {
-            LocationDropDval = [];
-            LocationDropDval = Data['mLoc'];
-            var data = new Array();
-            const dropdown = $('#inputCityMstCityLocation');
-            var selectedValue = LocalDataStorage[0]['LocId'];
-            data = Data['mLoc']
-            data.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.LocId,
-                    text: item.LocName,
-                    //selected: item.LocId === selectedValue
-                }));
-            });
-        }
-        else {
-
-        }
-
-
-        if (Data['mLoc'].length > 0) {
-            LocationDropDval = [];
-            LocationDropDval = Data['mLoc'];
-            var data = new Array();
-            const dropdown = $('#inputCityMstDfLocation');
-            var selectedValue = LocalDataStorage[0]['LocId'];
-            data = Data['mLoc']
-            data.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.LocId,
-                    text: item.LocName,
-                    //selected: item.LocId === selectedValue
-                }));
-            });
-        }
-        else {
-
-        }
-
-        if (Data['mState'].length > 0) {
-            StateDropDval = [];
-            StateDropDval = Data['mState'];
-            var data = new Array();
-            const dropdown = $('#inputCityMstState');
-            data = Data['mState']
-            data.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.StateId,
-                    text: item.StateName
-                }));
-            });
-        }
-        else {
-
-        }
-
-
-        if (Data['Route'].length > 0) {
-            ParentRouteCityDropDval = [];
-            ParentRouteCityDropDval = Data['Route'];
-            var data = new Array();
-            const dropdown = $('#inputCityMstRoute');
-            data = Data['Route']
-            data.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.CityId,
-                    text: item.CityName
-                }));
-            });
-
-            const ParentCitydropdown = $('#inputCityMstParentCity');
-            data.forEach(function (item) {
-                ParentCitydropdown.append($('<option>', {
-                    value: item.CityId,
-                    text: item.CityName
-                }));
-            });
-        }
-        else {
-
-        }
-
-        if (Data['mGlActMst'].length > 0) {
-            BranchACDropDval = [];
-            BranchACDropDval = Data['mGlActMst'];
-            var data = new Array();
-            const dropdown = $('#inputCityMstBranchAc');
-            data = Data['mGlActMst']
-            data.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.GlAcId,
-                    text: item.GlName
-                }));
-            });
-        }
-        else {
-
-        }
-
-    }
-    //================ City Dropdown END ===================
-
-    var DaleteCityListEntryMode = 0;
-    var DeleteCityIdList = 0;
-    var EntryMode = '';
-    function SaveCityMstData(e) {
-        debugger;
-        if (DaleteCityListEntryMode != 3) {
-            var StatusValid = ValidationCityForm()
-            if (!StatusValid) {
-                return false
-            }            
-        }
-
-        var cityid = ''; var CityName = ''; var CtAlias = ''; var Zip = ''; var DefDocChrgs = ''; var usercode = ''; var DfTransport = '';
-        var isRoute = ''; var isLocked = ''; var isStation = ''; var GlAcId = ''; var StateId = ''; var RouteId = ''; var DeliveryAt = '';
-        var DeliveryAdd = ''; var ContactNo = ''; var ChargesUpTo = ''; var isMultiRoute = ''; var OrderNo = ''; var BusChg = ''; var Distance = '';
-        var Catg = ''; var ParentId = ''; var CompId = ''; var LocId = ''; var DfToLocId = ''; var DefDelComPer = ''; var Remark = ''; var DistId = '';
-
-
-        var JasonCityMstData = new Array();
-        var obj = new Object();
-
-        if (e.textContent == 'Save') {
-            EntryMode = '';
-            EntryMode = 1;
-        }
-        else if (e.textContent == 'Update') {
-            EntryMode = '';
-            EntryMode = 2;
-        }
-        else if (e.textContent == 'Delete') {
-            EntryMode = '';
-            EntryMode = 3;
-
-        }
-
-
-        if (EntryMode == 3 || DaleteCityListEntryMode == 3) {
-            obj["EntryMode"] = 3
-            obj["cityid"] = DeleteCityIdList
-        }
-        else {
-
-            cityid = $('#inputCityId').val();
-            CityName = $('#inputCityMstName').val();
-            CtAlias = $('#inputCityMstNameAlias').val();
-            Zip = $('#inputCityMstPinCode').val();
-            DefDocChrgs = $('#inputCityMstBiltyCharg').val();
-            //usercode = $('#').val();
-            DfTransport = $('#inputCityMstDfTransport').val();
-            isRoute = $('#RouteCheck').is(":checked"); //Checkbox
-            //if (isRoute == true) { isRoute = 1 } else { isRoute = 0 }
-
-            isLocked = $('#CityMstLockedCheck').is(":checked");//Checkbox
-            //if (isLocked == true) { isLocked = 1 } else { isLocked = 0 }
-
-            isStation = $('#BookingCityCheck').is(":checked");  //Checkbox
-            //if (isStation == true) { isStation = 1 } else { isStation = 0 }
-
-            GlAcId = $('#inputCityMstBranchAc').val();
-            StateId = $('#inputCityMstState').val();
-            RouteId = $('#inputCityMstRoute').val();
-            DeliveryAt = $('#inputCityMstDeliveryAt').val();
-            //DeliveryAdd = $('#').val();
-            //ContactNo = $('#').val();
-            ChargesUpTo = $('#inputCityMstChargeUpTo').val();
-            isMultiRoute = $('#CityMstIsMultRoutCheck').is(":checked");//Checkbox
-            //if (isMultiRoute == true) { isMultiRoute = 1 } else { isMultiRoute = 0 }
-
-            OrderNo = $('#inputCityMstSrNo').val();
-            //BusChg = $('#').val();
-            //Distance = $('#').val();
-            //Catg = $('#').val();
-            ParentId = $('#inputCityMstParentCity').val();
-            //CompId = $('#').val();
-            LocId = $('#inputCityMstCityLocation').val();
-            DfToLocId = $('#inputCityMstDfLocation').val();
-            DefDelComPer = $('#inputCityMstDelComm').val();
-            Remark = $('#inputCityMstRefNo').val();
-            DistId = $('#inputCityMstDistrict').val();
-
-
-            if (EntryMode != '') { obj["EntryMode"] = EntryMode } else { obj["EntryMode"] = '' }
-            if (cityid != '') { obj["cityid"] = cityid } else { obj["cityid"] = '' }
-            if (CityName != '') { obj["CityName"] = CityName } else { obj["CityName"] = '' }
-            if (CtAlias != '') { obj["CtAlias"] = CtAlias } else { obj["CtAlias"] = '' }
-            if (Zip != '') { obj["Zip"] = Zip } else { obj["Zip"] = '' }
-            if (DefDocChrgs != '') { obj["DefDocChrgs"] = DefDocChrgs } else { obj["DefDocChrgs"] = '' }
-            if (usercode != '') { obj["usercode"] = usercode } else { obj["usercode"] = '' }
-            if (DfTransport != '') { obj["DfTransport"] = DfTransport } else { obj["DfTransport"] = '' }
-            if (isRoute != '') { obj["isRoute"] = isRoute } else { obj["isRoute"] = 0 }
-            if (isLocked != '') { obj["isLocked"] = isLocked } else { obj["isLocked"] = 0 }
-            if (isStation != '') { obj["isStation"] = isStation } else { obj["isStation"] = 0 }
-            if (GlAcId != '' && GlAcId != 'Select Branch A/C' && GlAcId != null && GlAcId != undefined && GlAcId != -1) { obj["GlAcId"] = GlAcId } else { obj["GlAcId"] = -1 }
-            if (StateId != '' && StateId != 'Select State' && StateId != null && StateId != undefined && StateId != -1) { obj["StateId"] = StateId } else { obj["StateId"] = -1 }
-            if (RouteId != '' && RouteId != 'Select Route' && RouteId != null && RouteId != undefined && RouteId != -1) { obj["RouteId"] = RouteId } else { obj["RouteId"] = -1 }
-            if (DeliveryAt != '') { obj["DeliveryAt"] = DeliveryAt } else { obj["DeliveryAt"] = '' }
-            if (DeliveryAdd != '') { obj["DeliveryAdd"] = DeliveryAdd } else { obj["DeliveryAdd"] = '' }
-            if (ContactNo != '') { obj["ContactNo"] = ContactNo } else { obj["ContactNo"] = '' }
-            if (ChargesUpTo != '') { obj["ChargesUpTo"] = ChargesUpTo } else { obj["ChargesUpTo"] = '' }
-            if (isMultiRoute != '') { obj["isMultiRoute"] = isMultiRoute } else { obj["isMultiRoute"] = 0 }
-            if (OrderNo != '') { obj["OrderNo"] = OrderNo } else { obj["OrderNo"] = '' }
-            if (BusChg != '') { obj["BusChg"] = BusChg } else { obj["BusChg"] = '' }
-            if (Distance != '') { obj["Distance"] = Distance } else { obj["Distance"] = '' }
-            if (Catg != '') { obj["Catg"] = Catg } else { obj["Catg"] = '' }
-            if (ParentId != '' && ParentId != 'Select Parent City' && ParentId != null && ParentId != undefined) { obj["ParentId"] = ParentId } else { obj["ParentId"] = -1 }
-            if (CompId != '') { obj["CompId"] = CompId } else { obj["CompId"] = '' }
-            if (LocId != '' && LocId != 'Select Location' && LocId != null && LocId != undefined && LocId != -1) { obj["LocId"] = LocId } else { obj["LocId"] = -1 }
-            if (DfToLocId != '' && DfToLocId != 'Select Df. Location' && DfToLocId != null && DfToLocId != undefined && DfToLocId != -1) { obj["DfToLocId"] = DfToLocId } else { obj["DfToLocId"] = -1 }
-            if (DefDelComPer != '') { obj["DefDelComPer"] = DefDelComPer } else { obj["DefDelComPer"] = '' }
-            if (Remark != '') { obj["Remark"] = Remark } else { obj["Remark"] = '' }
-            if (DistId != '' && DistId != 'Select District') { obj["DistId"] = DistId } else { obj["DistId"] = -1 }
-        }
-
-        JasonCityMstData.push(obj);
-
-
-        $.ajax({
-            url: urlLink + 'ApiMaster/SaveCityMasterData',
-            type: "POST",
-            dataType: "JSON",
-            data: JSON.stringify(obj),
-            contentType: "application/json; charset=utf-8",
-            async: false,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
-                xhr.setRequestHeader("UserCode", LocalDataStorage[0]['UserCode']);
-                xhr.setRequestHeader("CompId", LocalDataStorage[0]['dfCompId']);
-            },
-            success: function (data) {
-                debugger;
-
-                if (data.status == 1) {
-                    $('#CityMstForm')[0].reset();
-                    data = data.message
-                    //alert(data)
-                    //DashBoardData = data
-                    DisplaySeccessMsg(data);
-                    if (DaleteCityListEntryMode == 3) {
-                        //location.reload();
-                        GetCityMst();
-                        $('#CityMstdataTable thead tr')
-                            .clone(true)
-                            .addClass('filters')
-                            .appendTo('#CityMstdataTable thead');
-
-                        //$('#CityMstdataTable').DataTable({
-
-                        //var tableCityMst = new DataTable('#CityMstdataTable', {
-
-                        tableCityMst = $('#CityMstdataTable').DataTable({
-                            //dom: 'Bfrtip',
-                            //buttons: [
-                            //    'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
-
-                            //    //'copy', 'csv', 'excel', 'pdf', 'print'
-                            //],
-
-                            //fixedHeader: true,
-                            fixedHeader: {
-                                header: true,
-                                footer: true
-                            },
-
-                            orderCellsTop: true,
-                            fixedHeader: true,
-                            initComplete: function () {
-                                var api = this.api();
-
-                                // For each column
-                                api
-                                    .columns()
-                                    .eq(0)
-                                    .each(function (colIdx) {
-                                        // Set the header cell to contain the input element
-                                        var cell = $('.filters th').eq(
-                                            $(api.column(colIdx).header()).index()
-                                        );
-                                        var title = $(cell).text();
-                                        if (title != 'Action') {
-                                            $(cell).html('<input type="text" placeholder="' + title + '" />');
-                                        }
-                                        else {
-                                            $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
-                                        }
-
-                                        // On every keypress in this input
-                                        $(
-                                            'input',
-                                            $('.filters th').eq($(api.column(colIdx).header()).index())
-                                        )
-                                            .off('keyup change')
-                                            .on('change', function (e) {
-                                                // Get the search value
-                                                $(this).attr('title', $(this).val());
-                                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
-
-                                                var cursorPosition = this.selectionStart;
-                                                // Search the column for that value
-                                                api
-                                                    .column(colIdx)
-                                                    .search(
-                                                        this.value != ''
-                                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                                            : '',
-                                                        this.value != '',
-                                                        this.value == ''
-                                                    )
-                                                    .draw();
-                                            })
-                                            .on('keyup', function (e) {
-                                                e.stopPropagation();
-
-                                                $(this).trigger('change');
-                                                $(this)
-                                                    .focus()[0]
-                                                    .setSelectionRange(cursorPosition, cursorPosition);
-                                            });
-                                    });
-                            },
-
-                        });
-                    }
-                }
-                else {
-
-                    DisplayErroeMsg(data.message)
-                    $("#loader").css("display", "none");
-                }
-
-            }
-        });
-    }
-
-
-    //Code For Validation Form
-    function validationCityName() {
-        if ($('#inputCityMstName').val() == '') {
-            $("#validMsgCityMstCityName").css("display", "block")
-            $('#inputCityMstPinCode').css('background-color', '');
-            $('#inputCityMstName').focus();
-            return false
-            //setTimeout(function () {
-            //}, 100);
-        }
-        else {
-            $("#validMsgCityMstCityName").css("display", "none")
-        }
-    }
-    function validationPinCode() {
-        if ($('#inputCityMstPinCode').val() == '') {
-            $("#validMsgCityMstPinCode").css("display", "block")
-            $('input').css('background-color', '');
-            $('#inputCityMstPinCode').focus();
-            return false
-        }
-        else {
-            $("#validMsgCityMstPinCode").css("display", "none")
-        }
-    }
-    function validationState() {
-        alert(true);
-        if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
-            $("#validMsgCityMstState").css("display", "block")
-            $('input').css('background-color', '');
-            $('#inputCityMstState').focus();
-            return false
-        }
-        else {
-            $("#validMsgCityMstState").css("display", "none")
-        }
-
-        return true
-    }
-
-    function ValidationCityForm() {
-
-        if ($('#inputCityMstName').val() == '') {
-            $("#validMsgCityMstCityName").css("display", "block")
-            $('#inputCityMstPinCode').css('background-color', '');
-            $('#inputCityMstName').focus();
-                return false
-            //setTimeout(function () {
-            //}, 100);
-        }
-        else {
-            $("#validMsgCityMstCityName").css("display", "none")
-        }
-
-        if ($('#inputCityMstPinCode').val() == '') {
-            $("#validMsgCityMstPinCode").css("display", "block")
-            $('input').css('background-color', '');
-            $('#inputCityMstPinCode').focus();
-            return false
-        }
-        else {
-            $("#validMsgCityMstPinCode").css("display", "none")
-        }
-        if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
-            $("#validMsgCityMstState").css("display", "block")
-            $('input').css('background-color', '');
-            $('#inputCityMstState').focus();
-            return false
-        }
-        else {
-            $("#validMsgCityMstState").css("display", "none")
-        }
-
-        return true
-    }
-
-    function ClearForm() {
-        $('#CityMstForm')[0].reset();
-    }
-
-    //================ Code For get City Table View ===================
-
-    var CityMstModelFlag = false;
-    var CityMstTblId = ''
-    var CityMstTblDiv =''
-   
-    function BindCityDetailModel() {
-        debugger
-        CityMstModelFlag = true;
-        CityMstTblId = 'CityMstdataTableModel';
-        CityMstTblDiv = 'bindCityMstListModel';
-        tableCityMstModle = ''
-        GetCityMst();
-
-        $('#CityMstdataTableModel thead tr')
-
-            .clone(true)
-            .addClass('filters')
-            .appendTo('#CityMstdataTableModel thead');
-
-        tableCityMstModle = $('#CityMstdataTableModel').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                    //'copyHtml5', 'excelHtml5', 'pdfHtml5'
-                    //'csvHtml5',
-                {
-                    extend: 'csvHtml5',
-                    text: 'Excel Export',
-                    title: 'City Data export',
-                    //customize: function (xlsx) {
-                    //    var sheet = xlsx.xl.worksheets['sheet1.xml'];
-
-                    //    $('c[r=D2] t', sheet).text('Category');
-                    //},
-                }
-             ],
-
-            orderCellsTop: true,
-            fixedHeader: true,
-            initComplete: function () {
-                var api = this.api();
-               
-                // For each column
-                api
-                    .columns()
-                    .eq(0)
-                    .each(function (colIdx) {
-                        // Set the header cell to contain the input element
-                        var cell = $('#CityMstdataTableModel .filters th').eq(
-                            $(api.column(colIdx).header()).index()
-                        );
-                        var title = $(cell).text();
-                        if (title != 'Action') {
-                            $(cell).html('<input type="text" placeholder="' + title + '" />');
-                        }
-                        else {
-                            $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
-                        }
-
-                        // On every keypress in this input
-                        $(
-                            'input',
-                            $('#CityMstdataTableModel .filters th').eq($(api.column(colIdx).header()).index())
-                        )
-                            .off('keyup change')
-                            .on('change', function (e) {
-                                // Get the search value
-                                $(this).attr('title', $(this).val());
-                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
-
-                                var cursorPosition = this.selectionStart;
-                                // Search the column for that value
-                                api
-                                    .column(colIdx)
-                                    .search(
-                                        this.value != ''
-                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                            : '',
-                                        this.value != '',
-                                        this.value == ''
-                                    )
-                                    .draw();
-                            })
-                            .on('keyup', function (e) {
-                                e.stopPropagation();
-
-                                $(this).trigger('change');
-                                $(this)
-                                    .focus()[0]
-                                    .setSelectionRange(cursorPosition, cursorPosition);
-                            });
-                    });
-            },
-
-            
-
-        });
-
-        $("#CityMstdataTableModel_info").parent().parent().css({ "position": "sticky", "bottom": "0px" });
-
-        $("#CityMstdataTableModel_filter").css({ display: 'none'});
-       // $("#CityMstdataTableModel_filter").css({ display: 'inline-block', float: 'right' });
-        $(".dt-buttons").css("display", "inline-block");
-        $("#CityMstdataTableModel_info").css("display", "inline-block");
-        $("#CityMstdataTableModel_paginate").css({ display: 'inline-block', float: 'right' });
-    }
-
-    var TotalCityMstDataArray = new Array();
-    function GetCityMst() {
-        $.ajax({
-            url: urlLink + 'ApiMaster/GetCityMasterData',
-            type: "GET",
-            dataType: "JSON",
-            async: false,
-            //data: { "DfLocDetId": LocalDataStorage[0]['LocId'] },
-            contentType: "application/json; charset=utf-8",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
-                // xhr.setRequestHeader("UserCode", LocalDataStorage[0]['UserCode']);
-                //xhr.setRequestHeader("CampId", LocalDataStorage[0]['dfCompId']);
-            },
-            success: function (data) {
-                debugger;
-
-                if (data.status == 1) {
-                    TotalCityMstDataArray = []
-                    TotalCityMstDataArray = data.message
-                    DisplayAllCityTableView(TotalCityMstDataArray)
-                }
-                else {
-                    console.log(error);
-                    DisplayErroeMsg(data.message)
-                    $("#loader").css("display", "none");
-                }
-
-            }
-        });
-    }
-
-    function DisplayAllCityTableView(Data) {
-        if (Data.length > 0) {
-            var str = ''
-            //str += '<table class="table table-sm table-bordered" id="CityMstdataTable" width="100%" cellspacing="0">';
-            str += '<table class="table table-sm table-bordered" id="'+CityMstTblId+'" width="100%" cellspacing="0">';
-            str += '<thead style="position: sticky;top: 0;">';
-            str += '<tr>';
-            str += '<th style="width: 100px;">City ID</th>';
-            str += '<th style="">City Name</th>';
-
-            if (CityMstModelFlag == true) {
-                //str += '<th style="display:none">Zip Code</th>';
-                //str += '<th style="display:none">Contact</th>';
-                
-            } else {
-                str += '<th style="">Zip Code</th>';
-                str += '<th style="">Contact</th>';
-            }
-            str += '<th style="">Action</th>';
-
-            str += '</tr>';
-            str += '</thead>';
-            str += '<tbody>';
-            for (var i = 0; i < Data.length; i++) {
-                str += '<tr>';
-                if (Data[i]['CityId'] == null) {
-                    str += '<td></td>';
-                } else {
-                    str += '<td>' + Data[i]['CityId'] + '</td>';
-                }
-
-                if (Data[i]['CityName'] == null) {
-                    str += '<td></td>';
-                } else {
-                    str += '<td>' + Data[i]['CityName'] + '</td>';
-                }
-
-                 if (CityMstModelFlag == true) {
-                    str += '<td><span class="btnEditDelet" style="padding: 4%;" onclick="EditCityMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span class="btnEditDelet" style="padding: 4%; display:none" onclick="DeleteCityMst(this)"><i style="color: red;" class="fa fa-trash" /></span></td>';
-                }
-                 else {
-                     if (Data[i]['Zip'] == null) {
-                         str += '<td></td>';
-                     }
-                     else {
-                         str += '<td>' + Data[i]['Zip'] + '</td>';
-                     }
-                     if (Data[i]['ContactNo'] == null) {
-                         str += '<td></td>';
-                     } else {
-                         str += '<td>' + Data[i]['ContactNo'] + '</td>';
-                     }
-                    str += '<td><span class="btnEditDelet" style="padding: 4%;" onclick="EditCityMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span class="btnEditDelet" style="padding: 4%;" onclick="DeleteCityMst(this)"><i style="color: red;" class="fa fa-trash" /></span></td>';
-                }
-                str += '</tr>';
-            }
-
-
-            str += '</tbody>';
-            str += '</table>';
-
-
-            $("#" +CityMstTblDiv).html(str);
-            //$("#bindCityMstList").html(str);
-            //$("#bindCityMstListModel").html(str);
-        }
-        else {
-
-        }
-        
-    }
-
-    function EditCityMst(e) {
-        debugger;
-        $('#btnCloseCityMstModel').trigger("click");
-        
-        var cityTr = e.closest('tr')
-        var CityId = cityTr.cells[0].textContent
-
-        var FilterData = new Array();
-        FilterData = $.grep(TotalCityMstDataArray, function (element) {
-            return (element.CityId == CityId);
-        });
-
-        $("#btnCityMstCitySearch").css('display', 'inline-block');
-        $("#CityMstFormSection").css('display', 'block');
-        $('#FindCity_Mst').css('display', 'none');
-        $('#btnAddListCity').css('display', 'none');
-        $('#btnBackListCity').css('display', 'block');
-        $('#UpdateOldCity').css('display', 'none');
-        $('#SaveNewCity').css('display', 'none');
-        $('#SaveNewCityForm').css('display', 'none');
-        $('#UpdateOldCity').css('display', 'inline-block');
-        $('#UpdateOldCityFrom').css('display', 'inline-block');
-        
-        $("#inputCityId").val(FilterData[0]['CityId'])
-        $("#inputCityMstSrNo").val(FilterData[0]['OrderNo'])
-        $("#inputCityMstRefNo").val(FilterData[0]['Remark'])
-        
-        if (FilterData[0]['isStation'] == 1) {
-            $("#BookingCityCheck").prop('checked', true);
-        } else {
-            $("#BookingCityCheck").prop('checked', false);
-        }
-
-        if (FilterData[0]['isRoute'] == 1) {
-            $("#RouteCheck").prop('checked', true);
-        }
-        else {
-            $("#RouteCheck").prop('checked', false);
-        }
-
-        $("#inputCityMstName").val(FilterData[0]['CityName']);
-        $("#inputCityMstPinCode").val(FilterData[0]['Zip']);
-        if (FilterData[0]['StateId'] >= 0) {
-            //$("#inputCityMstState").val(FilterData[0]['StateId']).trigger('change')
-            var selectedValue = FilterData[0]['StateId'];
-            const dropdown = $('#inputCityMstState');
-            $('#inputCityMstState').html('');
-
-            StateDropDval.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.StateId,
-                    text: item.StateName,
-                    selected: item.StateId === selectedValue
-                }));
-            });
-        }
-        else {
-            $("#inputCityMstState").val(0)
-        }
-        if (FilterData[0]['DistId'] >= 0) {
-           // $("#inputCityMstDistrict").val(FilterData[0]['DistId'])
-                       
-            const dropdown = $('#inputCityMstDistrict');
-            var selectedValue = FilterData[0]['DistId'];
-            $('#inputCityMstDistrict').html('');
-            DistrictDropDval.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.DistId,
-                    text: item.DistName,
-                    selected: item.DistId === selectedValue
-                }));
-            });
-        }
-        else {
-            $("#inputCityMstDistrict").val(0)
-        }
-        if (FilterData[0]['ParentId'] >= 0) {
-            //$("#inputCityMstParentCity").val(FilterData[0]['ParentId'])
-            var selectedValue = FilterData[0]['ParentId'];
-            const ParentCitydropdown = $('#inputCityMstParentCity');
-            $('#inputCityMstParentCity').html('');
-            ParentRouteCityDropDval.forEach(function (item) {
-                ParentCitydropdown.append($('<option>', {
-                    value: item.CityId,
-                    text: item.CityName,
-                    selected: item.CityId === selectedValue
-                }));
-            });
-        }
-        else {
-            $("#inputCityMstParentCity").val(0)
-        }
-        if (FilterData[0]['DeliveryAt'] >= 0) {
-            $("#inputCityMstDeliveryAt").val(FilterData[0]['DeliveryAt'])
-        }
-        else {
-            $("#inputCityMstDeliveryAt").val(0)
-        }
-
-        $("#inputCityMstChargeUpTo").val(FilterData[0]['ChargesUpTo'])
-        $("#inputCityMstDfTransport").val(FilterData[0]['DfTransport'])
-
-        if (FilterData[0]['GlAcId'] >= 0) {
-            //$("#inputCityMstBranchAc").val(FilterData[0]['GlAcId'])
-            const dropdown = $('#inputCityMstBranchAc');
-            var selectedValue = FilterData[0]['GlAcId'];
-            $('#inputCityMstBranchAc').html('');
-            
-            BranchACDropDval.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.GlAcId,
-                    text: item.GlName,
-                    selected: item.GlAcId === selectedValue
-                }));
-            });
-        }
-        else {
-            $("#inputCityMstBranchAc").val(0)
-        }
-        $("#inputCityMstBiltyCharg").val(FilterData[0]['DefDocChrgs'])
-        $("#inputCityMstDelComm").val(FilterData[0]['DefDelComPer'])
-
-        if (FilterData[0]['LocId'] >= 0) {
-            //$("#inputCityMstCityLocation").val(FilterData[0]['LocId'])
-
-            const dropdown = $('#inputCityMstCityLocation');
-            var selectedValue = FilterData[0]['LocId'];
-            $('#inputCityMstCityLocation').html('');
-            LocationDropDval.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.LocId,
-                    text: item.LocName,
-                    selected: item.LocId === selectedValue
-                }));
-            });
-        }
-        else {
-            $("#inputCityMstCityLocation").val(0)
-        }
-
-        if (FilterData[0]['DfToLocId'] >= 0) {
-            $("#inputCityMstDfLocation").val(FilterData[0]['DfToLocId'])
-        }
-        else {
-            $("#inputCityMstDfLocation").val(0)
-        }
-        if (FilterData[0]['RouteId'] >= 0) {
-            //$("#inputCityMstRoute").val(FilterData[0]['RouteId'])
-            var selectedValue = FilterData[0]['RouteId'];
-            const dropdown = $('#inputCityMstRoute');
-            $('#inputCityMstRoute').html('');
-            ParentRouteCityDropDval.forEach(function (item) {
-                dropdown.append($('<option>', {
-                    value: item.CityId,
-                    text: item.CityName,
-                    selected: item.CityId === selectedValue
-                }));
-            });
-        }
-        else {
-            $("#inputCityMstRoute").val(0)
-        }
-
-        if (FilterData[0]['isMultiRoute'] == 1) {
-            $("#CityMstIsMultRoutCheck").prop('checked', true);
-        } else {
-            $("#CityMstIsMultRoutCheck").prop('checked', false);
-        }
-
-        if (FilterData[0]['isLocked'] == 1) {
-            $("#CityMstLockedCheck").prop('checked', true);
-        } else {
-            $("#CityMstLockedCheck").prop('checked', false);
-        }
-
-        $("#inputCityMstName").focus();
-    }
-
-    function DeleteCityMst(e) {
-
-        var confim = confirm("Are You Sure, You Want To Delete This Record?");
-
-        if (!confim) {
-            return false
-        }
-        var cityTr = e.closest('tr')
-        var CityId = cityTr.cells[0].textContent
-
-        DeleteCityIdList = CityId
-        DaleteCityListEntryMode = 3;
-        SaveCityMstData(e);
-    }
-
-    var AddCityFlag = false;
-    function AddBackNewCity(e) {
-        if (e.textContent == 'Add City') {
-            AddCityFlag = true;
-            $('#FindCity_Mst').css('display', 'none');
-            $('#btnAddListCity').css('display', 'none');
-            $('#UpdateOldCity').css('display', 'none');
-            $('#UpdateOldCityForm').css('display', 'none');
-            $('#SaveNewCity').css('display', 'inline-block');
-            $('#SaveNewCityForm').css('display', 'inline-block');
-
-            $('#btnBackListCity').css('display', 'block');
-            $('#CityMstFormSection').css('display', 'block');
-            $('#btnCityMstCitySearch').css('display', 'inline-block');
-            $('#CityMstForm')[0].reset();
-            $("#BookingCityCheck").prop('checked', true);
-            $("#inputCityMstName").focus();
-
-            //$("#inputCityMstDfTransport").val(LocalDataStorage[0]['LocName']);
-        }
-        else if (e.textContent == 'Back') {
-            AddCityFlag = false;
-            $('#FindCity_Mst').css('display', 'block');
-            $('#btnAddListCity').css('display', 'block');
-            $('#btnBackListCity').css('display', 'none');
-            $('#CityMstFormSection').css('display', 'none');
-            $('#UpdateOldCity').css('display', 'inline-block');
-            $('#UpdateOldCityForm').css('display', 'inline-block');
-            $('#btnCityMstCitySearch').css('display', 'none');
-            $('#SaveNewCity').css('display', 'none');
-            $('#SaveNewCityForm').css('display', 'none');
-
-            CityMstModelFlag = false;
-            CityMstTblId = 'CityMstdataTable';
-            CityMstTblDiv = 'bindCityMstList';
-           
             GetCityMst();
-
+            $("#BookingCityCheck").prop('checked', true);
             $('#CityMstdataTable thead tr')
                 .clone(true)
                 .addClass('filters')
                 .appendTo('#CityMstdataTable thead');
 
+            //$('#CityMstdataTable').DataTable({
+
+            //var tableCityMst = new DataTable('#CityMstdataTable', {
 
             tableCityMst = $('#CityMstdataTable').DataTable({
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+
+                //    //'copy', 'csv', 'excel', 'pdf', 'print'
+                //],
+
                 //fixedHeader: true,
                 fixedHeader: {
                     header: true,
@@ -2152,94 +988,1262 @@
                 },
 
             });
-            //location.reload();
+
+            getCityHiererchiView();
+            GetCityMasterDropdownData();
+
+            //$('input').keypress(function (event) {
+            //    var keycode = (event.keyCode ? event.keyCode : event.which);
+            //    if (keycode == 13) {
+            //        //keycode.preventDefault();
+            //        var nxtIdx = $inp.index(this) + 1;
+            //        $(":input:text:eq(" + nxtIdx + ")").focus();
+            //    }
+            //});
+
+            // $('#inputCityMstName').css("background-color", "rgb(255, 255, 49)");
+            $('#inputCityMstName').focus();
+            $("#CityMstdataTable_info").parent().parent().css({ "position": "sticky", "bottom": "0px" })
+            $("#CityMstdataTableModel_info").parent().parent().css({ "position": "sticky", "bottom": "0px" })
+
+        });
+
+
+        //================ Code For get City Tree View===================
+        function getCityHiererchiView() {
+
+            $.ajax({
+                url: urlLink + 'ApiMaster/GetDataForCityMasterTreeView',
+                type: "GET",
+                dataType: "JSON",
+                //data: { "Ind": '1', "PROJCODE": 'trpr' },
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
+                },
+                success: function (data) {
+                    // //debugger;
+
+                    if (data.status == 1) {
+                        //DashBoardData = []
+                        data = data.message
+                        //DashBoardData = data
+                        DisplayCityTreeStructureData(data)
+                    }
+                    else {
+                        console.log(error);
+                        DisplayErroeMsg(data.message)
+                        $("#loader").css("display", "none");
+                    }
+
+                }
+            });
+        }
+
+
+        var parentlistTreeView = new Array();
+        var child_listTreeView = new Array();
+        var sub_child_listTreeView = new Array();
+
+        function first_level_listTreeView(menulist) {
+            parentlistTreeView.splice(0, parentlistTreeView.length)  // To delete all data from array Which is already exist.
+            for (var i = 0; i < menulist.length; i++) {
+                if (menulist[i]["ParentId"] == 0) {
+                    parentlistTreeView.push(menulist[i]);
+                }
+            }
+        }
+        // this is for the second level or the second block
+        function second_level_listTreeView(id, menulist) {
+
+            child_listTreeView.splice(0, child_listTreeView.length);
+            for (var j = 0; j < menulist.length; j++) {
+                if (id == menulist[j]["ParentId"]) {
+                    child_listTreeView.push(menulist[j]);
+                }
+            }
+
+        }
+        //this is for the third level or the third block
+        function third_level_listTreeView(id, menulist) {
+            sub_child_listTreeView.splice(0, sub_child_listTreeView.length);
+
+            for (var j = 0; j < menulist.length; j++) {
+                if (id == menulist[j]["ParentId"]) {
+                    sub_child_listTreeView.push(menulist[j]);
+                }
+            }
 
         }
 
-    }
-
-    //================= City Table END ===========================
-
-    $("input,button,#inputCityMstName").focus(function () {
-        $(this).css("background-color", "rgb(255, 255, 49)");
-        $(this).css("color", "black");
-    });
-    $("input,button").focusout(function () {
-        $(this).css("background-color", "");
-
-    });
-    $("button").focusout(function () {
-        $(this).css("color", "#fff");
-
-    });
-
-    $("select").focus(function () {
-        //alert('Errror')
-        debugger
-        $(this).css("background-color", "rgb(255, 255, 49)");
-        $(this).css("color", "black");
-    });
-    $("select").focusout(function () {
-        $(this).css("background-color", "");
-
-    });
+        var strTreeView = '';
+        function DisplayCityTreeStructureData(Data) {
+            var thirdlevelId = "0", secondlevelId = "0", firstlevelId = "0";
+            $("#City_TreeViewStructure").html('');    //To Empty HTML Code Which is already exist
+            first_level_listTreeView(Data);
 
 
-    $('#inputCityMstState,#inputCityMstDistrict,#inputCityMstParentCity,#inputCityMstBranchAc,#inputCityMstDfLocation,#inputCityMstRoute,#inputCityMstCityLocation').select2({
-        selectOnClose: true
-    });
+            for (var i = 0; i < parentlistTreeView.length; i++) {
+                second_level_listTreeView(parentlistTreeView[i]["CityId"], Data);  //In parentlistTreeView array data is available in the form of array of object.
+                if (child_listTreeView.length > 0) {
+                    // strTreeView += '<li class="nav-item treeview admin ' + (((secondlevelId == "0" ? thirdlevelId : secondlevelId) == parentlistTreeView[i]["MnuId"]) ? 'menu-open' : '') + '">';
+                    strTreeView += '<li>';
+                    //strTreeView += '<input type="checkbox" checked="checked" id="c'+i+'" />'
+                    strTreeView += '<input type="checkbox"  id="c' + i + '" />';
+                    strTreeView += '<label class="tree_label ParentTreeViewCls" onclick="ParentTreeViewFun(this)" for= "c' + i + '">' + parentlistTreeView[i]["CityName"] + '</label>';
+
+                    //strTreeView += '<ul class="nav-link pt-0 hideshowUl treeview-menu" style ="display:' + (((secondlevelId == "0" ? thirdlevelId : secondlevelId) == parentlistTreeView[i]["MnuId"]) ? 'block;' : 'none;') + '">'
+                    strTreeView += '<ul>';
+                    for (var j = 0; j < child_listTreeView.length; j++) {
+                        third_level_listTreeView(child_listTreeView[j]["CityId"], Data);
+                        if (sub_child_listTreeView.length > 0) {
+                            strTreeView += '<li>';
+                            //strTreeView += '<input type="checkbox" checked="checked" id="b1' + j + '" />';
+                            strTreeView += '<input type="checkbox" id="b1' + j + '" />';
+                            strTreeView += '<label class="tree_label SubChildTreeViewCls" onclick="SubChildTreeViewFun(this)" for= "b1' + j + '"> ' + child_listTreeView[j]["CityName"] + '</label>';
+
+                            //strTreeView += '<ul  class="nav-link pt-0 hideshowUl treeview-menu" style ="display:' + ((thirdlevelId == child_listTreeView[j]["MnuId"]) ? 'block;' : 'none;') + '">';
+                            strTreeView += '<ul>';
+                            for (var k = 0; k < sub_child_listTreeView.length; k++) {
+                                var classnameNew = "";
+
+                                strTreeView += '<li class="ChildTreeViewCls" onclick="ChildTreeViewFun(this)"><span>' + sub_child_listTreeView[k]["CityName"] + '</span></li>';
+                            }
+                            strTreeView += '</ul>';
+                            strTreeView += '</li>';
+                        }
+                        else {
+
+                            strTreeView += '<li>';
+
+                            //strTreeView += '<input type="checkbox" checked="checked" id="b11'+j+'" />'
+                            strTreeView += '<input type="checkbox" id="b11' + j + '" />';
+                            strTreeView += '<label class="tree_label SubChildTreeViewCls" onclick="SubChildTreeViewFun(this)" for= "b11' + j + '"> ' + child_listTreeView[i]["CityName"] + '</label>';
+                            strTreeView += '</li>';
 
 
-    function CityNameTranslate() {
-        //var textToTrans =
-        const inputBox1 = $("#inputCityMstName").val();
-        const inputBox2 = $("#inputCityMstNameAlias").val();
-        debugger
-        const textToTranslate =inputBox1;
-        const targetLanguage = 'hi'; // Change this to your desired target language code
+                        }
+                    }
+                    strTreeView += '</ul>';
+                    strTreeView += '</li>';
+                }
+                else {
+                    var classnameNew = "";
 
-        // Make a request to the Google Translate API
-        fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLanguage}&dt=t&q=${encodeURIComponent(textToTranslate)}`)
-            .then(response => response.json())
-            .then(data => {
-                // Extract the translation from the response
-                const translation = data[0][0][0];
 
-                // Update the second input box with the translated text
-                $("#inputCityMstNameAlias").val(translation);
-            })
-            .catch(error => {
-                console.error('Translation error:', error);
+                    strTreeView += '<li>'
+                    //strTreeView += '<input type="checkbox" checked="checked" id="c'+i+'" />'
+                    strTreeView += '<input type="checkbox" id="c' + i + '" />';
+                    strTreeView += '<label class="tree_label ParentTreeViewCls" onclick="ParentTreeViewFun(this)" for= "c' + i + '"> ' + parentlistTreeView[i]["CityName"] + '</label>';
+
+                    strTreeView += '</li>'
+                }
+            }
+
+            $("#City_TreeViewStructure").html(strTreeView)
+
+        }
+
+        //OnClick On Tree View Element
+        function ParentTreeViewFun(e) {
+            $('.ParentTreeViewCls').removeClass('activeTreeView')
+            e.classList.add('activeTreeView');
+        }
+
+
+        function SubChildTreeViewFun(e) {
+            $('.SubChildTreeViewCls').removeClass('activeTreeView')
+            e.classList.add('activeTreeView');
+        }
+
+        function ChildTreeViewFun(e) {
+            $('.ChildTreeViewCls').removeClass('activeTreeView')
+            e.classList.add('activeTreeView');
+        }
+
+        //================ City Tree View END===================
+
+
+        //================ Code For get City Dropdown ===================
+
+        function GetCityMasterDropdownData() {
+            $.ajax({
+                url: urlLink + 'ApiMaster/GetDataForCityMasterDropDowns',
+                type: "GET",
+                dataType: "JSON",
+                data: { "DfLocDetId": LocalDataStorage[0]['LocId'] },
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
+                    xhr.setRequestHeader("UserCode", LocalDataStorage[0]['UserCode']);
+                    xhr.setRequestHeader("CampId", LocalDataStorage[0]['dfCompId']);
+                },
+                success: function (data) {
+                    debugger;
+
+                    if (data.status == 1) {
+                        DashBoardData = []
+                        data = data.message
+                        //DashBoardData = data
+                        DisplayCityDroupdownData(data)
+                    }
+                    else {
+                        console.log(error);
+                        DisplayErroeMsg(data.message)
+                        $("#loader").css("display", "none");
+                    }
+
+                }
+            });
+        }
+
+
+        var DistrictDropDval = new Array();
+        var StateDropDval = new Array();
+        var ParentRouteCityDropDval = new Array();
+        var BranchACDropDval = new Array();
+        var LocationDropDval = new Array();
+        var DfToLocDropDval = new Array();
+
+
+        function DisplayCityDroupdownData(Data) {
+
+            if (Data['mDist'].length > 0) {
+                DistrictDropDval = [];
+                DistrictDropDval = Data['mDist'];
+                var data = new Array();
+                const dropdown = $('#inputCityMstDistrict');
+                data = Data['mDist']
+                data.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.DistId,
+                        text: item.DistName
+                    }));
+                });
+            }
+            else {
+
+            }
+
+
+            if (Data['mLoc'].length > 0) {
+                LocationDropDval = [];
+                LocationDropDval = Data['mLoc'];
+                var data = new Array();
+                const dropdown = $('#inputCityMstCityLocation');
+                var selectedValue = LocalDataStorage[0]['LocId'];
+                data = Data['mLoc']
+                data.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.LocId,
+                        text: item.LocName,
+                        //selected: item.LocId === selectedValue
+                    }));
+                });
+            }
+            else {
+
+            }
+
+
+            if (Data['mLoc'].length > 0) {
+                LocationDropDval = [];
+                LocationDropDval = Data['mLoc'];
+                var data = new Array();
+                const dropdown = $('#inputCityMstDfLocation');
+                var selectedValue = LocalDataStorage[0]['LocId'];
+                data = Data['mLoc']
+                data.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.LocId,
+                        text: item.LocName,
+                        //selected: item.LocId === selectedValue
+                    }));
+                });
+            }
+            else {
+
+            }
+
+            if (Data['mState'].length > 0) {
+                StateDropDval = [];
+                StateDropDval = Data['mState'];
+                var data = new Array();
+                const dropdown = $('#inputCityMstState');
+                data = Data['mState']
+                data.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.StateId,
+                        text: item.StateName
+                    }));
+                });
+            }
+            else {
+
+            }
+
+
+            if (Data['Route'].length > 0) {
+                ParentRouteCityDropDval = [];
+                ParentRouteCityDropDval = Data['Route'];
+                var data = new Array();
+                const dropdown = $('#inputCityMstRoute');
+                data = Data['Route']
+                data.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.CityId,
+                        text: item.CityName
+                    }));
+                });
+
+                const ParentCitydropdown = $('#inputCityMstParentCity');
+                data.forEach(function (item) {
+                    ParentCitydropdown.append($('<option>', {
+                        value: item.CityId,
+                        text: item.CityName
+                    }));
+                });
+            }
+            else {
+
+            }
+
+            if (Data['mGlActMst'].length > 0) {
+                BranchACDropDval = [];
+                BranchACDropDval = Data['mGlActMst'];
+                var data = new Array();
+                const dropdown = $('#inputCityMstBranchAc');
+                data = Data['mGlActMst']
+                data.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.GlAcId,
+                        text: item.GlName
+                    }));
+                });
+            }
+            else {
+
+            }
+
+        }
+        //================ City Dropdown END ===================
+
+        var DaleteCityListEntryMode = 0;
+        var DeleteCityIdList = 0;
+        var EntryMode = '';
+        function SaveCityMstData(e) {
+            debugger;
+            if (DaleteCityListEntryMode != 3) {
+                var StatusValid = ValidationCityForm()
+                if (!StatusValid) {
+                    return false
+                }
+            }
+
+            var cityid = ''; var CityName = ''; var CtAlias = ''; var Zip = ''; var DefDocChrgs = ''; var usercode = ''; var DfTransport = '';
+            var isRoute = ''; var isLocked = ''; var isStation = ''; var GlAcId = ''; var StateId = ''; var RouteId = ''; var DeliveryAt = '';
+            var DeliveryAdd = ''; var ContactNo = ''; var ChargesUpTo = ''; var isMultiRoute = ''; var OrderNo = ''; var BusChg = ''; var Distance = '';
+            var Catg = ''; var ParentId = ''; var CompId = ''; var LocId = ''; var DfToLocId = ''; var DefDelComPer = ''; var Remark = ''; var DistId = '';
+
+
+            var JasonCityMstData = new Array();
+            var obj = new Object();
+
+            if (e.textContent == 'Save') {
+                EntryMode = '';
+                EntryMode = 1;
+            }
+            else if (e.textContent == 'Update') {
+                EntryMode = '';
+                EntryMode = 2;
+            }
+            else if (e.textContent == 'Delete') {
+                EntryMode = '';
+                EntryMode = 3;
+
+            }
+
+
+            if (EntryMode == 3 || DaleteCityListEntryMode == 3) {
+                obj["EntryMode"] = 3
+                obj["cityid"] = DeleteCityIdList
+            }
+            else {
+
+                cityid = $('#inputCityId').val();
+                CityName = $('#inputCityMstName').val();
+                CtAlias = $('#inputCityMstNameAlias').val();
+                Zip = $('#inputCityMstPinCode').val();
+                DefDocChrgs = $('#inputCityMstBiltyCharg').val();
+                //usercode = $('#').val();
+                DfTransport = $('#inputCityMstDfTransport').val();
+                isRoute = $('#RouteCheck').is(":checked"); //Checkbox
+                //if (isRoute == true) { isRoute = 1 } else { isRoute = 0 }
+
+                isLocked = $('#CityMstLockedCheck').is(":checked");//Checkbox
+                //if (isLocked == true) { isLocked = 1 } else { isLocked = 0 }
+
+                isStation = $('#BookingCityCheck').is(":checked");  //Checkbox
+                //if (isStation == true) { isStation = 1 } else { isStation = 0 }
+
+                GlAcId = $('#inputCityMstBranchAc').val();
+                StateId = $('#inputCityMstState').val();
+                RouteId = $('#inputCityMstRoute').val();
+                DeliveryAt = $('#inputCityMstDeliveryAt').val();
+                //DeliveryAdd = $('#').val();
+                //ContactNo = $('#').val();
+                ChargesUpTo = $('#inputCityMstChargeUpTo').val();
+                isMultiRoute = $('#CityMstIsMultRoutCheck').is(":checked");//Checkbox
+                //if (isMultiRoute == true) { isMultiRoute = 1 } else { isMultiRoute = 0 }
+
+                OrderNo = $('#inputCityMstSrNo').val();
+                //BusChg = $('#').val();
+                //Distance = $('#').val();
+                //Catg = $('#').val();
+                ParentId = $('#inputCityMstParentCity').val();
+                //CompId = $('#').val();
+                LocId = $('#inputCityMstCityLocation').val();
+                DfToLocId = $('#inputCityMstDfLocation').val();
+                DefDelComPer = $('#inputCityMstDelComm').val();
+                Remark = $('#inputCityMstRefNo').val();
+                DistId = $('#inputCityMstDistrict').val();
+
+
+                if (EntryMode != '') { obj["EntryMode"] = EntryMode } else { obj["EntryMode"] = '' }
+                if (cityid != '') { obj["cityid"] = cityid } else { obj["cityid"] = '' }
+                if (CityName != '') { obj["CityName"] = CityName } else { obj["CityName"] = '' }
+                if (CtAlias != '') { obj["CtAlias"] = CtAlias } else { obj["CtAlias"] = '' }
+                if (Zip != '') { obj["Zip"] = Zip } else { obj["Zip"] = '' }
+                if (DefDocChrgs != '') { obj["DefDocChrgs"] = DefDocChrgs } else { obj["DefDocChrgs"] = '' }
+                if (usercode != '') { obj["usercode"] = usercode } else { obj["usercode"] = '' }
+                if (DfTransport != '') { obj["DfTransport"] = DfTransport } else { obj["DfTransport"] = '' }
+                if (isRoute != '') { obj["isRoute"] = isRoute } else { obj["isRoute"] = 0 }
+                if (isLocked != '') { obj["isLocked"] = isLocked } else { obj["isLocked"] = 0 }
+                if (isStation != '') { obj["isStation"] = isStation } else { obj["isStation"] = 0 }
+                if (GlAcId != '' && GlAcId != 'Select Branch A/C' && GlAcId != null && GlAcId != undefined && GlAcId != -1) { obj["GlAcId"] = GlAcId } else { obj["GlAcId"] = -1 }
+                if (StateId != '' && StateId != 'Select State' && StateId != null && StateId != undefined && StateId != -1) { obj["StateId"] = StateId } else { obj["StateId"] = -1 }
+                if (RouteId != '' && RouteId != 'Select Route' && RouteId != null && RouteId != undefined && RouteId != -1) { obj["RouteId"] = RouteId } else { obj["RouteId"] = -1 }
+                if (DeliveryAt != '') { obj["DeliveryAt"] = DeliveryAt } else { obj["DeliveryAt"] = '' }
+                if (DeliveryAdd != '') { obj["DeliveryAdd"] = DeliveryAdd } else { obj["DeliveryAdd"] = '' }
+                if (ContactNo != '') { obj["ContactNo"] = ContactNo } else { obj["ContactNo"] = '' }
+                if (ChargesUpTo != '') { obj["ChargesUpTo"] = ChargesUpTo } else { obj["ChargesUpTo"] = '' }
+                if (isMultiRoute != '') { obj["isMultiRoute"] = isMultiRoute } else { obj["isMultiRoute"] = 0 }
+                if (OrderNo != '') { obj["OrderNo"] = OrderNo } else { obj["OrderNo"] = '' }
+                if (BusChg != '') { obj["BusChg"] = BusChg } else { obj["BusChg"] = '' }
+                if (Distance != '') { obj["Distance"] = Distance } else { obj["Distance"] = '' }
+                if (Catg != '') { obj["Catg"] = Catg } else { obj["Catg"] = '' }
+                if (ParentId != '' && ParentId != 'Select Parent City' && ParentId != null && ParentId != undefined) { obj["ParentId"] = ParentId } else { obj["ParentId"] = -1 }
+                if (CompId != '') { obj["CompId"] = CompId } else { obj["CompId"] = '' }
+                if (LocId != '' && LocId != 'Select Location' && LocId != null && LocId != undefined && LocId != -1) { obj["LocId"] = LocId } else { obj["LocId"] = -1 }
+                if (DfToLocId != '' && DfToLocId != 'Select Df. Location' && DfToLocId != null && DfToLocId != undefined && DfToLocId != -1) { obj["DfToLocId"] = DfToLocId } else { obj["DfToLocId"] = -1 }
+                if (DefDelComPer != '') { obj["DefDelComPer"] = DefDelComPer } else { obj["DefDelComPer"] = '' }
+                if (Remark != '') { obj["Remark"] = Remark } else { obj["Remark"] = '' }
+                if (DistId != '' && DistId != 'Select District') { obj["DistId"] = DistId } else { obj["DistId"] = -1 }
+            }
+
+            JasonCityMstData.push(obj);
+
+
+            $.ajax({
+                url: urlLink + 'ApiMaster/SaveCityMasterData',
+                type: "POST",
+                dataType: "JSON",
+                data: JSON.stringify(obj),
+                contentType: "application/json; charset=utf-8",
+                async: false,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
+                    xhr.setRequestHeader("UserCode", LocalDataStorage[0]['UserCode']);
+                    xhr.setRequestHeader("CompId", LocalDataStorage[0]['dfCompId']);
+                },
+                success: function (data) {
+                    debugger;
+
+                    if (data.status == 1) {
+                        $('#CityMstForm')[0].reset();
+                        data = data.message
+                        //alert(data)
+                        //DashBoardData = data
+                        DisplaySeccessMsg(data);
+                        if (DaleteCityListEntryMode == 3) {
+                            //location.reload();
+                            GetCityMst();
+                            $('#CityMstdataTable thead tr')
+                                .clone(true)
+                                .addClass('filters')
+                                .appendTo('#CityMstdataTable thead');
+
+                            //$('#CityMstdataTable').DataTable({
+
+                            //var tableCityMst = new DataTable('#CityMstdataTable', {
+
+                            tableCityMst = $('#CityMstdataTable').DataTable({
+                                //dom: 'Bfrtip',
+                                //buttons: [
+                                //    'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+
+                                //    //'copy', 'csv', 'excel', 'pdf', 'print'
+                                //],
+
+                                //fixedHeader: true,
+                                fixedHeader: {
+                                    header: true,
+                                    footer: true
+                                },
+
+                                orderCellsTop: true,
+                                fixedHeader: true,
+                                initComplete: function () {
+                                    var api = this.api();
+
+                                    // For each column
+                                    api
+                                        .columns()
+                                        .eq(0)
+                                        .each(function (colIdx) {
+                                            // Set the header cell to contain the input element
+                                            var cell = $('.filters th').eq(
+                                                $(api.column(colIdx).header()).index()
+                                            );
+                                            var title = $(cell).text();
+                                            if (title != 'Action') {
+                                                $(cell).html('<input type="text" placeholder="' + title + '" />');
+                                            }
+                                            else {
+                                                $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
+                                            }
+
+                                            // On every keypress in this input
+                                            $(
+                                                'input',
+                                                $('.filters th').eq($(api.column(colIdx).header()).index())
+                                            )
+                                                .off('keyup change')
+                                                .on('change', function (e) {
+                                                    // Get the search value
+                                                    $(this).attr('title', $(this).val());
+                                                    var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                                    var cursorPosition = this.selectionStart;
+                                                    // Search the column for that value
+                                                    api
+                                                        .column(colIdx)
+                                                        .search(
+                                                            this.value != ''
+                                                                ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                                                : '',
+                                                            this.value != '',
+                                                            this.value == ''
+                                                        )
+                                                        .draw();
+                                                })
+                                                .on('keyup', function (e) {
+                                                    e.stopPropagation();
+
+                                                    $(this).trigger('change');
+                                                    $(this)
+                                                        .focus()[0]
+                                                        .setSelectionRange(cursorPosition, cursorPosition);
+                                                });
+                                        });
+                                },
+
+                            });
+                        }
+                    }
+                    else {
+
+                        DisplayErroeMsg(data.message)
+                        $("#loader").css("display", "none");
+                    }
+
+                }
+            });
+        }
+
+
+        //Code For Validation Form
+        function validationCityName() {
+            if ($('#inputCityMstName').val() == '') {
+                $("#validMsgCityMstCityName").css("display", "block")
+                $('#inputCityMstPinCode').css('background-color', '');
+                $('#inputCityMstName').focus();
+                return false
+                //setTimeout(function () {
+                //}, 100);
+            }
+            else {
+                $("#validMsgCityMstCityName").css("display", "none")
+            }
+        }
+        function validationPinCode() {
+            if ($('#inputCityMstPinCode').val() == '') {
+                $("#validMsgCityMstPinCode").css("display", "block")
+                $('input').css('background-color', '');
+                $('#inputCityMstPinCode').focus();
+                return false
+            }
+            else {
+                $("#validMsgCityMstPinCode").css("display", "none")
+            }
+        }
+        function validationState() {
+            alert(true);
+            if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
+                $("#validMsgCityMstState").css("display", "block")
+                $('input').css('background-color', '');
+                $('#inputCityMstState').focus();
+                return false
+            }
+            else {
+                $("#validMsgCityMstState").css("display", "none")
+            }
+
+            return true
+        }
+
+        function ValidationCityForm() {
+
+            if ($('#inputCityMstName').val() == '') {
+                $("#validMsgCityMstCityName").css("display", "block")
+                $('#inputCityMstPinCode').css('background-color', '');
+                $('#inputCityMstName').focus();
+                return false
+                //setTimeout(function () {
+                //}, 100);
+            }
+            else {
+                $("#validMsgCityMstCityName").css("display", "none")
+            }
+
+            if ($('#inputCityMstPinCode').val() == '') {
+                $("#validMsgCityMstPinCode").css("display", "block")
+                $('input').css('background-color', '');
+                $('#inputCityMstPinCode').focus();
+                return false
+            }
+            else {
+                $("#validMsgCityMstPinCode").css("display", "none")
+            }
+            if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
+                $("#validMsgCityMstState").css("display", "block")
+                $('input').css('background-color', '');
+                $('#inputCityMstState').focus();
+                return false
+            }
+            else {
+                $("#validMsgCityMstState").css("display", "none")
+            }
+
+            return true
+        }
+
+        function ClearForm() {
+            $('#CityMstForm')[0].reset();
+        }
+
+        //================ Code For get City Table View ===================
+
+        var CityMstModelFlag = false;
+        var CityMstTblId = ''
+        var CityMstTblDiv = ''
+
+        function BindCityDetailModel() {
+            debugger
+            CityMstModelFlag = true;
+            CityMstTblId = 'CityMstdataTableModel';
+            CityMstTblDiv = 'bindCityMstListModel';
+            tableCityMstModle = ''
+            GetCityMst();
+
+            $('#CityMstdataTableModel thead tr')
+
+                .clone(true)
+                .addClass('filters')
+                .appendTo('#CityMstdataTableModel thead');
+
+            tableCityMstModle = $('#CityMstdataTableModel').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    //'copyHtml5', 'excelHtml5', 'pdfHtml5'
+                    //'csvHtml5',
+                    {
+                        extend: 'csvHtml5',
+                        text: 'Excel Export',
+                        title: 'City Data export',
+                        //customize: function (xlsx) {
+                        //    var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                        //    $('c[r=D2] t', sheet).text('Category');
+                        //},
+                    }
+                ],
+
+                orderCellsTop: true,
+                fixedHeader: true,
+                initComplete: function () {
+                    var api = this.api();
+
+                    // For each column
+                    api
+                        .columns()
+                        .eq(0)
+                        .each(function (colIdx) {
+                            // Set the header cell to contain the input element
+                            var cell = $('#CityMstdataTableModel .filters th').eq(
+                                $(api.column(colIdx).header()).index()
+                            );
+                            var title = $(cell).text();
+                            if (title != 'Action') {
+                                $(cell).html('<input type="text" placeholder="' + title + '" />');
+                            }
+                            else {
+                                $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
+                            }
+
+                            // On every keypress in this input
+                            $(
+                                'input',
+                                $('#CityMstdataTableModel .filters th').eq($(api.column(colIdx).header()).index())
+                            )
+                                .off('keyup change')
+                                .on('change', function (e) {
+                                    // Get the search value
+                                    $(this).attr('title', $(this).val());
+                                    var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                    var cursorPosition = this.selectionStart;
+                                    // Search the column for that value
+                                    api
+                                        .column(colIdx)
+                                        .search(
+                                            this.value != ''
+                                                ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                                : '',
+                                            this.value != '',
+                                            this.value == ''
+                                        )
+                                        .draw();
+                                })
+                                .on('keyup', function (e) {
+                                    e.stopPropagation();
+
+                                    $(this).trigger('change');
+                                    $(this)
+                                        .focus()[0]
+                                        .setSelectionRange(cursorPosition, cursorPosition);
+                                });
+                        });
+                },
+
+
+
             });
 
+            $("#CityMstdataTableModel_info").parent().parent().css({ "position": "sticky", "bottom": "0px" });
 
-
-        //=============Code for Camel Case====================
-        var inputValue = $('#inputCityMstName').val();
-        var words = inputValue.split(' ');
-        for (var i = 0; i < words.length; i++) {
-            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+            $("#CityMstdataTableModel_filter").css({ display: 'none' });
+            // $("#CityMstdataTableModel_filter").css({ display: 'inline-block', float: 'right' });
+            $(".dt-buttons").css("display", "inline-block");
+            $("#CityMstdataTableModel_info").css("display", "inline-block");
+            $("#CityMstdataTableModel_paginate").css({ display: 'inline-block', float: 'right' });
         }
-        var camelCaseValue = words.join(" ");
-        $("#inputCityMstName").val(camelCaseValue);
-        // Display the result
-        $('#result').text('Camel Case: ' + camelCaseValue);
-        //============END
-        
-        if (AddCityFlag == true) {
-            $("#inputCityMstChargeUpTo").val('');
-            $("#inputCityMstChargeUpTo").val($("#inputCityMstName").val());
 
-            $("#inputCityMstDeliveryAt").val('');
-            $("#inputCityMstDeliveryAt").val($("#inputCityMstName").val());
+        var TotalCityMstDataArray = new Array();
+        function GetCityMst() {
+            $.ajax({
+                url: urlLink + 'ApiMaster/GetCityMasterData',
+                type: "GET",
+                dataType: "JSON",
+                async: false,
+                //data: { "DfLocDetId": LocalDataStorage[0]['LocId'] },
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("DBNAME", sessionStorage.dbName);
+                    // xhr.setRequestHeader("UserCode", LocalDataStorage[0]['UserCode']);
+                    //xhr.setRequestHeader("CampId", LocalDataStorage[0]['dfCompId']);
+                },
+                success: function (data) {
+                    debugger;
+
+                    if (data.status == 1) {
+                        TotalCityMstDataArray = []
+                        TotalCityMstDataArray = data.message
+                        DisplayAllCityTableView(TotalCityMstDataArray)
+                    }
+                    else {
+                        console.log(error);
+                        DisplayErroeMsg(data.message)
+                        $("#loader").css("display", "none");
+                    }
+
+                }
+            });
         }
-        
-    }
 
-    function searchPinCode() {
-        var cityName = $("#inputCityMstName").val(); //document.getElementById("inputCityMstName").value;
-        var googleSearchUrl = "https://www.google.co.in/search?ei=9aRFWrX3NYPYvASLiLDQBQ&q=" + cityName + "+pin+code&oq=" + cityName + "+&gs_l=psy-ab.3.0.0i131i67k1j0i67k1j0i131i67k1j0i67k1j0l6.154125.155813.0.157410.7.7.0.0.0.0.188.675.0j4.4.0....0...1c.1.64.psy-ab..3.4.672...0i131k1.0.D5su-wrJtNM";
-        window.open(googleSearchUrl, "_blank");
-        
-    }
-</script>
+        function DisplayAllCityTableView(Data) {
+            if (Data.length > 0) {
+                var str = ''
+                //str += '<table class="table table-sm table-bordered" id="CityMstdataTable" width="100%" cellspacing="0">';
+                str += '<table class="table table-sm table-bordered" id="' + CityMstTblId + '" width="100%" cellspacing="0">';
+                str += '<thead style="position: sticky;top: 0;">';
+                str += '<tr>';
+                str += '<th style="width: 100px;">City ID</th>';
+                str += '<th style="">City Name</th>';
+
+                if (CityMstModelFlag == true) {
+                    //str += '<th style="display:none">Zip Code</th>';
+                    //str += '<th style="display:none">Contact</th>';
+
+                } else {
+                    str += '<th style="">Zip Code</th>';
+                    str += '<th style="">Contact</th>';
+                }
+                str += '<th style="">Action</th>';
+
+                str += '</tr>';
+                str += '</thead>';
+                str += '<tbody>';
+                for (var i = 0; i < Data.length; i++) {
+                    str += '<tr>';
+                    if (Data[i]['CityId'] == null) {
+                        str += '<td></td>';
+                    } else {
+                        str += '<td>' + Data[i]['CityId'] + '</td>';
+                    }
+
+                    if (Data[i]['CityName'] == null) {
+                        str += '<td></td>';
+                    } else {
+                        str += '<td>' + Data[i]['CityName'] + '</td>';
+                    }
+
+                    if (CityMstModelFlag == true) {
+                        str += '<td><span class="btnEditDelet" style="padding: 4%;" onclick="EditCityMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span class="btnEditDelet" style="padding: 4%; display:none" onclick="DeleteCityMst(this)"><i style="color: red;" class="fa fa-trash" /></span></td>';
+                    }
+                    else {
+                        if (Data[i]['Zip'] == null) {
+                            str += '<td></td>';
+                        }
+                        else {
+                            str += '<td>' + Data[i]['Zip'] + '</td>';
+                        }
+                        if (Data[i]['ContactNo'] == null) {
+                            str += '<td></td>';
+                        } else {
+                            str += '<td>' + Data[i]['ContactNo'] + '</td>';
+                        }
+                        str += '<td><span class="btnEditDelet" style="padding: 4%;" onclick="EditCityMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span class="btnEditDelet" style="padding: 4%;" onclick="DeleteCityMst(this)"><i style="color: red;" class="fa fa-trash" /></span></td>';
+                    }
+                    str += '</tr>';
+                }
+
+
+                str += '</tbody>';
+                str += '</table>';
+
+
+                $("#" + CityMstTblDiv).html(str);
+                //$("#bindCityMstList").html(str);
+                //$("#bindCityMstListModel").html(str);
+            }
+            else {
+
+            }
+
+        }
+
+        function EditCityMst(e) {
+            debugger;
+            $('#btnCloseCityMstModel').trigger("click");
+
+            var cityTr = e.closest('tr')
+            var CityId = cityTr.cells[0].textContent
+
+            var FilterData = new Array();
+            FilterData = $.grep(TotalCityMstDataArray, function (element) {
+                return (element.CityId == CityId);
+            });
+
+            $("#btnCityMstCitySearch").css('display', 'inline-block');
+            $("#CityMstFormSection").css('display', 'block');
+            $('#FindCity_Mst').css('display', 'none');
+            $('#btnAddListCity').css('display', 'none');
+            $('#btnBackListCity').css('display', 'block');
+            $('#UpdateOldCity').css('display', 'none');
+            $('#SaveNewCity').css('display', 'none');
+            $('#SaveNewCityForm').css('display', 'none');
+            $('#UpdateOldCity').css('display', 'inline-block');
+            $('#UpdateOldCityFrom').css('display', 'inline-block');
+
+            $("#inputCityId").val(FilterData[0]['CityId'])
+            $("#inputCityMstSrNo").val(FilterData[0]['OrderNo'])
+            $("#inputCityMstRefNo").val(FilterData[0]['Remark'])
+
+            if (FilterData[0]['isStation'] == 1) {
+                $("#BookingCityCheck").prop('checked', true);
+            } else {
+                $("#BookingCityCheck").prop('checked', false);
+            }
+
+            if (FilterData[0]['isRoute'] == 1) {
+                $("#RouteCheck").prop('checked', true);
+            }
+            else {
+                $("#RouteCheck").prop('checked', false);
+            }
+
+            $("#inputCityMstName").val(FilterData[0]['CityName']);
+            $("#inputCityMstPinCode").val(FilterData[0]['Zip']);
+            if (FilterData[0]['StateId'] >= 0) {
+                //$("#inputCityMstState").val(FilterData[0]['StateId']).trigger('change')
+                var selectedValue = FilterData[0]['StateId'];
+                const dropdown = $('#inputCityMstState');
+                $('#inputCityMstState').html('');
+
+                StateDropDval.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.StateId,
+                        text: item.StateName,
+                        selected: item.StateId === selectedValue
+                    }));
+                });
+            }
+            else {
+                $("#inputCityMstState").val(0)
+            }
+            if (FilterData[0]['DistId'] >= 0) {
+                // $("#inputCityMstDistrict").val(FilterData[0]['DistId'])
+
+                const dropdown = $('#inputCityMstDistrict');
+                var selectedValue = FilterData[0]['DistId'];
+                $('#inputCityMstDistrict').html('');
+                DistrictDropDval.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.DistId,
+                        text: item.DistName,
+                        selected: item.DistId === selectedValue
+                    }));
+                });
+            }
+            else {
+                $("#inputCityMstDistrict").val(0)
+            }
+            if (FilterData[0]['ParentId'] >= 0) {
+                //$("#inputCityMstParentCity").val(FilterData[0]['ParentId'])
+                var selectedValue = FilterData[0]['ParentId'];
+                const ParentCitydropdown = $('#inputCityMstParentCity');
+                $('#inputCityMstParentCity').html('');
+                ParentRouteCityDropDval.forEach(function (item) {
+                    ParentCitydropdown.append($('<option>', {
+                        value: item.CityId,
+                        text: item.CityName,
+                        selected: item.CityId === selectedValue
+                    }));
+                });
+            }
+            else {
+                $("#inputCityMstParentCity").val(0)
+            }
+            if (FilterData[0]['DeliveryAt'] >= 0) {
+                $("#inputCityMstDeliveryAt").val(FilterData[0]['DeliveryAt'])
+            }
+            else {
+                $("#inputCityMstDeliveryAt").val(0)
+            }
+
+            $("#inputCityMstChargeUpTo").val(FilterData[0]['ChargesUpTo'])
+            $("#inputCityMstDfTransport").val(FilterData[0]['DfTransport'])
+
+            if (FilterData[0]['GlAcId'] >= 0) {
+                //$("#inputCityMstBranchAc").val(FilterData[0]['GlAcId'])
+                const dropdown = $('#inputCityMstBranchAc');
+                var selectedValue = FilterData[0]['GlAcId'];
+                $('#inputCityMstBranchAc').html('');
+
+                BranchACDropDval.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.GlAcId,
+                        text: item.GlName,
+                        selected: item.GlAcId === selectedValue
+                    }));
+                });
+            }
+            else {
+                $("#inputCityMstBranchAc").val(0)
+            }
+            $("#inputCityMstBiltyCharg").val(FilterData[0]['DefDocChrgs'])
+            $("#inputCityMstDelComm").val(FilterData[0]['DefDelComPer'])
+
+            if (FilterData[0]['LocId'] >= 0) {
+                //$("#inputCityMstCityLocation").val(FilterData[0]['LocId'])
+
+                const dropdown = $('#inputCityMstCityLocation');
+                var selectedValue = FilterData[0]['LocId'];
+                $('#inputCityMstCityLocation').html('');
+                LocationDropDval.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.LocId,
+                        text: item.LocName,
+                        selected: item.LocId === selectedValue
+                    }));
+                });
+            }
+            else {
+                $("#inputCityMstCityLocation").val(0)
+            }
+
+            if (FilterData[0]['DfToLocId'] >= 0) {
+                $("#inputCityMstDfLocation").val(FilterData[0]['DfToLocId'])
+            }
+            else {
+                $("#inputCityMstDfLocation").val(0)
+            }
+            if (FilterData[0]['RouteId'] >= 0) {
+                //$("#inputCityMstRoute").val(FilterData[0]['RouteId'])
+                var selectedValue = FilterData[0]['RouteId'];
+                const dropdown = $('#inputCityMstRoute');
+                $('#inputCityMstRoute').html('');
+                ParentRouteCityDropDval.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.CityId,
+                        text: item.CityName,
+                        selected: item.CityId === selectedValue
+                    }));
+                });
+            }
+            else {
+                $("#inputCityMstRoute").val(0)
+            }
+
+            if (FilterData[0]['isMultiRoute'] == 1) {
+                $("#CityMstIsMultRoutCheck").prop('checked', true);
+            } else {
+                $("#CityMstIsMultRoutCheck").prop('checked', false);
+            }
+
+            if (FilterData[0]['isLocked'] == 1) {
+                $("#CityMstLockedCheck").prop('checked', true);
+            } else {
+                $("#CityMstLockedCheck").prop('checked', false);
+            }
+
+            $("#inputCityMstName").focus();
+        }
+
+        function DeleteCityMst(e) {
+
+            var confim = confirm("Are You Sure, You Want To Delete This Record?");
+
+            if (!confim) {
+                return false
+            }
+            var cityTr = e.closest('tr')
+            var CityId = cityTr.cells[0].textContent
+
+            DeleteCityIdList = CityId
+            DaleteCityListEntryMode = 3;
+            SaveCityMstData(e);
+        }
+
+        var AddCityFlag = false;
+        function AddBackNewCity(e) {
+            if (e.textContent == 'Add City') {
+                AddCityFlag = true;
+                $('#FindCity_Mst').css('display', 'none');
+                $('#btnAddListCity').css('display', 'none');
+                $('#UpdateOldCity').css('display', 'none');
+                $('#UpdateOldCityForm').css('display', 'none');
+                $('#SaveNewCity').css('display', 'inline-block');
+                $('#SaveNewCityForm').css('display', 'inline-block');
+
+                $('#btnBackListCity').css('display', 'block');
+                $('#CityMstFormSection').css('display', 'block');
+                $('#btnCityMstCitySearch').css('display', 'inline-block');
+                $('#CityMstForm')[0].reset();
+                $("#BookingCityCheck").prop('checked', true);
+                $("#inputCityMstName").focus();
+
+                //$("#inputCityMstDfTransport").val(LocalDataStorage[0]['LocName']);
+            }
+            else if (e.textContent == 'Back') {
+                AddCityFlag = false;
+                $('#FindCity_Mst').css('display', 'block');
+                $('#btnAddListCity').css('display', 'block');
+                $('#btnBackListCity').css('display', 'none');
+                $('#CityMstFormSection').css('display', 'none');
+                $('#UpdateOldCity').css('display', 'inline-block');
+                $('#UpdateOldCityForm').css('display', 'inline-block');
+                $('#btnCityMstCitySearch').css('display', 'none');
+                $('#SaveNewCity').css('display', 'none');
+                $('#SaveNewCityForm').css('display', 'none');
+
+                CityMstModelFlag = false;
+                CityMstTblId = 'CityMstdataTable';
+                CityMstTblDiv = 'bindCityMstList';
+
+                GetCityMst();
+
+                $('#CityMstdataTable thead tr')
+                    .clone(true)
+                    .addClass('filters')
+                    .appendTo('#CityMstdataTable thead');
+
+
+                tableCityMst = $('#CityMstdataTable').DataTable({
+                    //fixedHeader: true,
+                    fixedHeader: {
+                        header: true,
+                        footer: true
+                    },
+
+                    orderCellsTop: true,
+                    fixedHeader: true,
+                    initComplete: function () {
+                        var api = this.api();
+
+                        // For each column
+                        api
+                            .columns()
+                            .eq(0)
+                            .each(function (colIdx) {
+                                // Set the header cell to contain the input element
+                                var cell = $('.filters th').eq(
+                                    $(api.column(colIdx).header()).index()
+                                );
+                                var title = $(cell).text();
+                                if (title != 'Action') {
+                                    $(cell).html('<input type="text" placeholder="' + title + '" />');
+                                }
+                                else {
+                                    $(cell).html('<input type="text" style="display:none" placeholder="' + title + '" />');
+                                }
+
+                                // On every keypress in this input
+                                $(
+                                    'input',
+                                    $('.filters th').eq($(api.column(colIdx).header()).index())
+                                )
+                                    .off('keyup change')
+                                    .on('change', function (e) {
+                                        // Get the search value
+                                        $(this).attr('title', $(this).val());
+                                        var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                        var cursorPosition = this.selectionStart;
+                                        // Search the column for that value
+                                        api
+                                            .column(colIdx)
+                                            .search(
+                                                this.value != ''
+                                                    ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                                    : '',
+                                                this.value != '',
+                                                this.value == ''
+                                            )
+                                            .draw();
+                                    })
+                                    .on('keyup', function (e) {
+                                        e.stopPropagation();
+
+                                        $(this).trigger('change');
+                                        $(this)
+                                            .focus()[0]
+                                            .setSelectionRange(cursorPosition, cursorPosition);
+                                    });
+                            });
+                    },
+
+                });
+                //location.reload();
+
+            }
+
+        }
+
+        //================= City Table END ===========================
+
+        $("input,button,#inputCityMstName").focus(function () {
+            $(this).css("background-color", "rgb(255, 255, 49)");
+            $(this).css("color", "black");
+        });
+        $("input,button").focusout(function () {
+            $(this).css("background-color", "");
+
+        });
+        $("button").focusout(function () {
+            $(this).css("color", "#fff");
+
+        });
+
+        $("select").focus(function () {
+            //alert('Errror')
+            debugger
+            $(this).css("background-color", "rgb(255, 255, 49)");
+            $(this).css("color", "black");
+        });
+        $("select").focusout(function () {
+            $(this).css("background-color", "");
+
+        });
+
+
+        $('#inputCityMstState,#inputCityMstDistrict,#inputCityMstParentCity,#inputCityMstBranchAc,#inputCityMstDfLocation,#inputCityMstRoute,#inputCityMstCityLocation').select2({
+            selectOnClose: true
+        });
+
+
+        function CityNameTranslate() {
+            //var textToTrans =
+            const inputBox1 = $("#inputCityMstName").val();
+            const inputBox2 = $("#inputCityMstNameAlias").val();
+            debugger
+            const textToTranslate = inputBox1;
+            const targetLanguage = 'hi'; // Change this to your desired target language code
+
+            // Make a request to the Google Translate API
+            fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLanguage}&dt=t&q=${encodeURIComponent(textToTranslate)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Extract the translation from the response
+                    const translation = data[0][0][0];
+
+                    // Update the second input box with the translated text
+                    $("#inputCityMstNameAlias").val(translation);
+                })
+                .catch(error => {
+                    console.error('Translation error:', error);
+                });
+
+
+
+            //=============Code for Camel Case====================
+            var inputValue = $('#inputCityMstName').val();
+            var words = inputValue.split(' ');
+            for (var i = 0; i < words.length; i++) {
+                words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+            }
+            var camelCaseValue = words.join(" ");
+            $("#inputCityMstName").val(camelCaseValue);
+            // Display the result
+            $('#result').text('Camel Case: ' + camelCaseValue);
+            //============END
+
+            if (AddCityFlag == true) {
+                $("#inputCityMstChargeUpTo").val('');
+                $("#inputCityMstChargeUpTo").val($("#inputCityMstName").val());
+
+                $("#inputCityMstDeliveryAt").val('');
+                $("#inputCityMstDeliveryAt").val($("#inputCityMstName").val());
+            }
+
+        }
+
+        function searchPinCode() {
+            var cityName = $("#inputCityMstName").val(); //document.getElementById("inputCityMstName").value;
+            var googleSearchUrl = "https://www.google.co.in/search?ei=9aRFWrX3NYPYvASLiLDQBQ&q=" + cityName + "+pin+code&oq=" + cityName + "+&gs_l=psy-ab.3.0.0i131i67k1j0i67k1j0i131i67k1j0i67k1j0l6.154125.155813.0.157410.7.7.0.0.0.0.188.675.0j4.4.0....0...1c.1.64.psy-ab..3.4.672...0i131k1.0.D5su-wrJtNM";
+            window.open(googleSearchUrl, "_blank");
+
+        }
+    </script>
+}

@@ -226,14 +226,12 @@
 
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
         </ul>
-
+        
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
-            <div id="content">
-
+            <div id="headerBarDiv">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow">
 
@@ -430,8 +428,8 @@
                                     display: inline-block;"></div><span style="vertical-align: super"> Blue-Purple</span>
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
-                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-            </a> -->
+                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+                        </a> -->
                                 <a class="dropdown-item" href="#" onclick="toggleTheme('grey-dark')">
                                     <div class="mr-2 text-gray-400" style="background-color:#252525 ;height: 25px;
                                     width: 25px;
@@ -465,8 +463,277 @@
                                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Forgot Password
                                 </a>
                                 <!-- <a class="dropdown-item" href="#">
-                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-            </a> -->
+                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                        </a> -->
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#TransportlogoffModal1">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> logoff
+                                </a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                </a>
+
+                                <a class="dropdown-item" href="/Home/CityMasterList">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CityMaster
+                                </a>
+                                <a class="dropdown-item" href="/Home/RateListbilty">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> RateListbilty
+                                </a>
+                                <a class="dropdown-item" href="/Home/TripSheet">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> TripSheet
+                                </a>
+                                <a class="dropdown-item" href="/Home/CoOprativeLoan">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> CoOprativeLoan
+                                </a>
+                                <a class="dropdown-item" href="/Home/ContractScreen">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Contract
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+            </div>
+
+
+            <!-- Main Content -->
+            <div id="content" class="DashboardTableMainDiv ">
+
+                <!-- Topbar -->
+                <nav class="d-none navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form class="d-none d-sm-inline-blockf form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <h5 class="d-sm-inline-blockf form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <span id="Userloaction" style="color:black ;cursor:pointer">
+
+                        </span>
+                    </h5>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+
+
+
+                        <li class="nav-item dropdown no-arrow mx-0">
+                            <span class="nav-link" href="#" role="button" style="color:black ;cursor:pointer" id="CurrentDateHeader">
+                                @*07-07-2023*@
+                                @*<span class="">07-07-2023</span>*@
+                            </span>
+                        </li>
+                        <li class="nav-item dropdown no-arrow mx-0">
+                            <span class="nav-link" href="#" role="button" style="color:black ;" id="ShowDBNameHeader">
+                            </span>
+                        </li>
+                        <li class="nav-item dropdown no-arrow mx-0">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-print fa-fw" style="font-size: 18px;
+                                color: #3d1746;"></i>
+                                <!-- Counter - Messages -->
+                                <!-- <span class="badge badge-danger badge-counter">7</span> -->
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown no-arrow mx-0">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-file-pdf fa-fw" style="font-size: 18px;
+                                color: #3d1746;"></i>
+                                <!-- Counter - Messages -->
+                                <!-- <span class="badge badge-danger badge-counter">7</span> -->
+                            </a>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-0">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <!-- <i class="fas fa-bell fa-fw"></i> -->
+                                <i class="fas fa-phone fa-fw" style="font-size: 18px;
+                                color: #3d1746;"></i>
+                                <!-- //Counter - Alerts -->
+                                <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+                            </a>
+                            <!-- //Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Contact
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-envelope text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <!-- <div class="small text-gray-500">December 12, 2019</div> -->
+                                        <span class="font-weight-bold">support123@gmail.com</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-phone text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <!-- <div class="small text-gray-500">December 7, 2019</div> -->
+                                        +91 1234567890
+                                    </div>
+                                </a>
+
+                            </div>
+                        </li>
+
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-0 d-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw" style="font-size:18px;
+                                color: #3d1746;"></i>
+                                <!-- Counter - Messages -->
+                                <!-- <span class="badge badge-danger badge-counter">7</span> -->
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="~/Content/img/undraw_profile_1.svg" alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="~/Content/img/undraw_profile_2.svg" alt="...">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="~/Content/img/undraw_profile_3.svg" alt="...">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Change Theme  -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="themDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Theme</span>
+                                <i class="fa fa-adjust" style="color: black;"></i>
+                                <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="themDropdown">
+                                <a class="dropdown-item" href="#" onclick="toggleTheme('blue-purple')">
+                                    <!-- <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Blue-Purple -->
+                                    <div class="mr-2 text-gray-400" style="background-image: linear-gradient(to left, #3d1746, #2d1e48, #1d2345, #13253f, #102537); ;height: 25px;
+                                    width: 25px;
+                                    border-radius: 50%;
+                                    display: inline-block;"></div><span style="vertical-align: super"> Blue-Purple</span>
+                                </a>
+                                <!-- <a class="dropdown-item" href="#">
+                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+                        </a> -->
+                                <a class="dropdown-item" href="#" onclick="toggleTheme('grey-dark')">
+                                    <div class="mr-2 text-gray-400" style="background-color:#252525 ;height: 25px;
+                                    width: 25px;
+                                    border-radius: 50%;
+                                    display: inline-block;"></div><span style="vertical-align: super"> Gray</span>
+                                </a>
+
+                                <a class="dropdown-item" href="#" onclick="toggleTheme('light-blue')">
+                                    <div class="mr-2 bg-gradient-primary text-gray-400" style="height: 25px;
+                                    width: 25px;
+                                    border-radius: 50%;
+                                    display: inline-block;"></div><span style="vertical-align: super"> Light Blue</span>
+                                </a>
+
+                            </div>
+                        </li>
+
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="logUserName"></span>
+                                <img class="img-profile rounded-circle" src="~/Content/img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Forgot Password
+                                </a>
+                                <!-- <a class="dropdown-item" href="#">
+                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                        </a> -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#TransportlogoffModal1">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> logoff
@@ -596,8 +863,11 @@
 
     <script>
         var urlLink ='http://localhost:10666/Api/'
-        var DataLocalStore = new Array();
-        DataLocalStore = JSON.parse(localStorage.LogingObj)
+        var LocalDataStorage = new Array();
+        LocalDataStorage = JSON.parse(localStorage.LogingObj)
+
+        var heightContent = window.innerHeight - $("#headerBarDiv").height() - 10;
+        $("#content").css({ "overflow-y": "scroll", "height": heightContent });
 
 
         $(document).ready(function () {
@@ -611,7 +881,7 @@
 
             if (sessionStorage.CityName != undefined || sessionStorage.CityName != null || sessionStorage.CityName != '') {
                 //$("#Userloaction").html(sessionStorage.CityName);
-                $("#Userloaction").html(DataLocalStore[0]['LocName']);
+                $("#Userloaction").html(LocalDataStorage[0]['LocName']);
             } else {
                 $("#Userloaction").html('');
             }
@@ -624,7 +894,7 @@
     
         function GetSideMenuLink() {
             $("#loader").css("display", "block");
-
+            console.log("Call Side menu.............");
             let obj = { ObjId: "GETMAINMENUWEB", DateFrom: "09-May-2020", DateTo: "09-May-2020", Others: "TRPR", UserCode: "1571" }
             $.ajax({
                 url: urlLink + 'ApiMaster/GetMenuData',
@@ -738,7 +1008,7 @@
             str += '<div class="sidebar-brand-icon rotate-n-15" style="width:25%">';
             str += '<img class="img-profile rounded-circle" src="/Content/img/esoft.jpeg" alt="" width="100%" />';
             str += '</div>';
-            str += '<div class="sidebar-brand-text mx-3" id="menuCompNameId" style="font-size: 12px;">'+DataLocalStore[0]['CompName']+'</div>'
+            str += '<div class="sidebar-brand-text mx-3" id="menuCompNameId" style="font-size: 12px;">'+LocalDataStorage[0]['CompName']+'</div>'
             str += '</a>'
             str += '<hr class="sidebar-divider my-0">';
             //str += '<li class="nav-item">';
@@ -763,7 +1033,7 @@
                 str += '</a>'
 
                 //str += '<ul class="nav-link pt-0 hideshowUl treeview-menu" style ="display:' + (((secondlevelId == "0" ? thirdlevelId : secondlevelId) == parentlist[i]["MnuId"]) ? 'block;' : 'none;') + '">'
-                str += '<ul class="nav-link pt-0 hideshowUl treeview-menu hideParentUl pb-1" style="width:100%">'
+                str += '<ul class="nav-link pt-0 hideshowUl treeview-menu hideParentUl pb-1 " style="width:100%">'
                 for (var j = 0; j < child_list.length; j++) {
                     third_level_list(child_list[j]["MnuId"], menu);
                     if (sub_child_list.length > 0) {
@@ -775,7 +1045,7 @@
                         str += '</span>';
                         str += '</a>';
                         //str += '<ul  class="nav-link pt-0 hideshowUl treeview-menu" style ="display:' + ((thirdlevelId == child_list[j]["MnuId"]) ? 'block;' : 'none;') + '">';
-                        str += '<ul  class="nav-link pt-0 hideshowUl treeview-menu pb-1 " style ="display:none">';
+                        str += '<ul  class="nav-link pt-0 hideshowUl treeview-menu pb-1 ManulistScroll " style ="display:none;height: 200px;overflow-y: scroll;width: 100%;">';
                         for (var k = 0; k < sub_child_list.length; k++) {
                             var classnameNew = "";
 
@@ -871,8 +1141,13 @@
                 //classList.remove('showParentUl')
                 //classList.add('hideParentUl')
 
-                e.nextSibling.classList.remove('hideParentUl')
-                e.nextSibling.classList.add('showParentUl')
+                e.nextSibling.classList.remove('hideParentUl');
+                e.nextSibling.classList.add('showParentUl');
+                var countLi = $(".showParentUl")[0]['childNodes'].length;
+                if (countLi > 5) {
+                    $(".showParentUl").css({ "height": "200px", "overflow-y": "scroll", });
+                    $(".showParentUl").addClass("ManulistScroll ");
+                }
             }
 
         }
@@ -1078,6 +1353,8 @@
 
     </script>
 
+
+    @RenderSection("Script", required: false)
 </body>
 
 </html>
