@@ -1091,7 +1091,7 @@
             //str += '<div class="text-center d-none d-md-inline">';
             //str += '<button class="rounded-circle border-0" id="sidebarToggle"></button>';
             //str +='</div>';
-            $("#accordionSidebar").html(str)
+            $("#accordionSidebar").html(str);
 
         }
 
@@ -1112,29 +1112,29 @@
                         //classList.add('hideParentUl')
 
                         if (e.nextSibling.classList.contains('showParentUl') == true) {
-                            classList.remove('showParentUl')
+                            classList.remove('showParentUl');
 
-                            e.nextSibling.classList.remove('showParentUl')
-                            e.nextSibling.classList.add('hideParentUl')
+                            e.nextSibling.classList.remove('showParentUl');
+                            e.nextSibling.classList.add('hideParentUl');
                         }
                         else if (e.nextSibling.classList.contains('hideParentUl') == true) {
-                            classList.remove('showParentUl')
-                            classList.add('hideParentUl')
+                            classList.remove('showParentUl');
+                            classList.add('hideParentUl');
 
-                            e.nextSibling.classList.remove('hideParentUl')
-                            e.nextSibling.classList.add('showParentUl')
+                            e.nextSibling.classList.remove('hideParentUl');
+                            e.nextSibling.classList.add('showParentUl');
                         }
                         else {
-                            classList.remove('hideParentUl')
+                            classList.remove('hideParentUl');
 
-                            e.nextSibling.classList.add('hideParentUl')
-                            e.nextSibling.classList.remove('showParentUl')
+                            e.nextSibling.classList.add('hideParentUl');
+                            e.nextSibling.classList.remove('showParentUl');
                         }
                     }
                     else {
-                        classList.remove('hideParentUl')
-                        e.nextSibling.classList.remove('hideParentUl')
-                        e.nextSibling.classList.add('showParentUl')
+                        classList.remove('hideParentUl');
+                        e.nextSibling.classList.remove('hideParentUl');
+                        e.nextSibling.classList.add('showParentUl');
                     }
                 });
             } else {
@@ -1153,7 +1153,7 @@
         }
 
         function HideShowChild(e) {
-            $(".mainmenuChild.Manuactivebtn").removeClass('Manuactivebtn')
+            $(".mainmenuChild.Manuactivebtn").removeClass('Manuactivebtn');
             e.classList.add('Manuactivebtn');
 
             var boxes = document.querySelectorAll('.showChildUl');
@@ -1164,27 +1164,27 @@
                     var classList = box.classList;
 
                     if (classList.contains('showChildUl')) {
-                        classList.remove('showChildUl')
-                        classList.add('hideChildUl')
+                        classList.remove('showChildUl');
+                        classList.add('hideChildUl');
 
-                        e.nextSibling.classList.remove('hideChildUl')
-                        e.nextSibling.classList.add('showChildUl')
+                        e.nextSibling.classList.remove('hideChildUl');
+                        e.nextSibling.classList.add('showChildUl');
                     }
                     else {
-                        classList.remove('hideChildUl')
-                        e.nextSibling.classList.remove('hideChildUl')
-                        e.nextSibling.classList.add('showChildUl')
+                        classList.remove('hideChildUl');
+                        e.nextSibling.classList.remove('hideChildUl');
+                        e.nextSibling.classList.add('showChildUl');
                     }
                 });
             } else {
-                e.nextSibling.classList.remove('hideChildUl')
-                e.nextSibling.classList.add('showChildUl')
+                e.nextSibling.classList.remove('hideChildUl');
+                e.nextSibling.classList.add('showChildUl');
             }
         }
 
         function HideShowSubChild(e) {
             //debugger
-            $(".mainmenuSubChild.Manuactivebtn").removeClass('Manuactivebtn')
+            $(".mainmenuSubChild.Manuactivebtn").removeClass('Manuactivebtn');
             e.classList.add('Manuactivebtn');
 
             var boxes = document.querySelectorAll('.showSubChildUl');
@@ -1196,21 +1196,21 @@
 
 
                     if (classList.contains('showSubChildUl')) {
-                        classList.remove('showSubChildUl')
-                        classList.add('hideSubChildUl')
-                        e.nextSibling.classList.remove('hideSubChildUl')
-                        e.nextSibling.classList.add('showSubChildUl')
+                        classList.remove('showSubChildUl');
+                        classList.add('hideSubChildUl');
+                        e.nextSibling.classList.remove('hideSubChildUl');
+                        e.nextSibling.classList.add('showSubChildUl');
 
                     }
                     else {
-                        classList.remove('hideSubChildUl')
-                        e.nextSibling.classList.remove('hideSubChildUl')
-                        e.nextSibling.classList.add('showSubChildUl')
+                        classList.remove('hideSubChildUl');
+                        e.nextSibling.classList.remove('hideSubChildUl');
+                        e.nextSibling.classList.add('showSubChildUl');
                     }
                 });
             } else {
-                e.nextSibling.classList.remove('hideSubChildUl')
-                e.nextSibling.classList.add('showSubChildUl')
+                e.nextSibling.classList.remove('hideSubChildUl');
+                e.nextSibling.classList.add('showSubChildUl');
             }
         }
 
@@ -1221,7 +1221,7 @@
         //});
 
         function SubChildMenuChange(e) {
-            $(".mainmenuSubChild.Manuactivebtn").removeClass('Manuactivebtn')
+            $(".mainmenuSubChild.Manuactivebtn").removeClass('Manuactivebtn');
             e.classList.add('Manuactivebtn');
         }
 

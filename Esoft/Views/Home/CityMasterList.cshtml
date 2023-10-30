@@ -6,7 +6,7 @@
 
 <!-- Page Heading -->
 <div id="PageHeader">
-    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <h1 class="h3 mb-0 text-gray-800">City Master</h1>
         <button id="btnAddListCity" type="button" class="btn btn-sm btn-primary" onclick="AddBackNewCity(this)">Add City</button>
         @*<button id="btnCityMstCitySearch" type="button" class="btn btn-sm btn-primary" onclick="BindCityDetailModel()" style="display:none" data-toggle="modal" data-target="#CityMstSearcCityModal">Search City</button>*@
@@ -736,14 +736,14 @@
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDistrict">District</label>
                             <select onkeydown="moveToNextInput(event)" id="inputCityMstDistrict" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="-1" selected>Select District</option>
+                                @*<option value="-1" selected>Select District</option>*@
 
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstParentCity">Parent City</label>
                             <select onkeydown="moveToNextInput(event)" id="inputCityMstParentCity" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="-1" selected>Select Parent City</option>
+                                @*<option value="-1" selected>Select Parent City</option>*@
 
                             </select>
                         </div>
@@ -756,7 +756,7 @@
                     <div class="form-row mt-1">
                         <div class="form-group col-md-4">
                             <label for="inputCityMstChargeUpTo">Charges Up To</label>
-                            <input onkeydown="moveToNextInput(event)" type="text" value="0" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputCityMstChargeUpTo">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDfTransport">Df. Transport</label>
@@ -766,7 +766,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputCityMstBranchAc">Branch A/C</label>
                             <select onkeydown="moveToNextInput(event)" id="inputCityMstBranchAc" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="-1" selected>Select Branch A/C</option>
+                                @*<option value="-1" selected>Select Branch A/C</option>*@
 
                             </select>
                         </div>
@@ -784,7 +784,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputCityMstCityLocation">Location</label>
                             <select onkeydown="moveToNextInput(event)" id="inputCityMstCityLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="-1" selected>Select Location</option>
+                                @*<option value="-1" selected>Select Location</option>*@
 
                             </select>
                         </div>
@@ -794,7 +794,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputCityMstDfLocation">Df. To Location</label>
                             <select onkeydown="moveToNextInput(event)" id="inputCityMstDfLocation" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="-1" selected>Select Df. Location</option>
+                                @*<option value="-1" selected>Select Df. Location</option>*@
 
                             </select>
                         </div>
@@ -802,7 +802,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputCityMstRoute">Route</label>
                             <select onkeydown="moveToNextInput(event)" id="inputCityMstRoute" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="-1" selected>Select Route</option>
+                                @*<option value="-1" selected>Select Route</option>*@
                             </select>
                         </div>
 
@@ -1010,6 +1010,7 @@
 
 
         //================ Code For get City Tree View===================
+       
         function getCityHiererchiView() {
 
             $.ajax({
@@ -1165,7 +1166,7 @@
 
 
         //================ Code For get City Dropdown ===================
-
+        var DropDownData = new Array();
         function GetCityMasterDropdownData() {
             $.ajax({
                 url: urlLink + 'ApiMaster/GetDataForCityMasterDropDowns',
@@ -1185,11 +1186,12 @@
                         DashBoardData = []
                         data = data.message
                         //DashBoardData = data
-                        DisplayCityDroupdownData(data)
+                        DropDownData = data;
+                        DisplayCityDroupdownData(data);
                     }
                     else {
                         console.log(error);
-                        DisplayErroeMsg(data.message)
+                        DisplayErroeMsg(data.message);
                         $("#loader").css("display", "none");
                     }
 
@@ -1212,14 +1214,21 @@
                 DistrictDropDval = [];
                 DistrictDropDval = Data['mDist'];
                 var data = new Array();
-                const dropdown = $('#inputCityMstDistrict');
+                $('#inputCityMstDistrict').html('');
+                const dropdown = $('#inputCityMstDistrict').html('');
+                dropdown.select2('destroy');
                 data = Data['mDist']
+                dropdown.append($('<option>', {
+                    value: '-1',
+                    text: 'Select District'
+                }));
                 data.forEach(function (item) {
                     dropdown.append($('<option>', {
                         value: item.DistId,
                         text: item.DistName
                     }));
                 });
+                dropdown.select2();
             }
             else {
 
@@ -1230,9 +1239,14 @@
                 LocationDropDval = [];
                 LocationDropDval = Data['mLoc'];
                 var data = new Array();
-                const dropdown = $('#inputCityMstCityLocation');
+                const dropdown = $('#inputCityMstCityLocation').html('');
+                dropdown.select2('destroy');
                 var selectedValue = LocalDataStorage[0]['LocId'];
-                data = Data['mLoc']
+                data = Data['mLoc'];
+                dropdown.append($('<option>', {
+                    value: '-1',
+                    text: 'Select Location'
+                }))
                 data.forEach(function (item) {
                     dropdown.append($('<option>', {
                         value: item.LocId,
@@ -1240,6 +1254,7 @@
                         //selected: item.LocId === selectedValue
                     }));
                 });
+                dropdown.select2();
             }
             else {
 
@@ -1250,9 +1265,14 @@
                 LocationDropDval = [];
                 LocationDropDval = Data['mLoc'];
                 var data = new Array();
-                const dropdown = $('#inputCityMstDfLocation');
+                const dropdown = $('#inputCityMstDfLocation').html('');
+                dropdown.select2('destroy');
                 var selectedValue = LocalDataStorage[0]['LocId'];
-                data = Data['mLoc']
+                data = Data['mLoc'];
+                dropdown.append($('<option>', {
+                    value: '-1',
+                    text: 'Select Df. To Location'
+                }));
                 data.forEach(function (item) {
                     dropdown.append($('<option>', {
                         value: item.LocId,
@@ -1260,6 +1280,7 @@
                         //selected: item.LocId === selectedValue
                     }));
                 });
+                dropdown.select2();
             }
             else {
 
@@ -1269,14 +1290,20 @@
                 StateDropDval = [];
                 StateDropDval = Data['mState'];
                 var data = new Array();
-                const dropdown = $('#inputCityMstState');
-                data = Data['mState']
+                const dropdown = $('#inputCityMstState').html('');
+                dropdown.select2('destroy');
+                data = Data['mState'];
+                dropdown.append($('<option>', {
+                    value: '-1',
+                    text: 'Select State'
+                }))
                 data.forEach(function (item) {
                     dropdown.append($('<option>', {
                         value: item.StateId,
                         text: item.StateName
                     }));
                 });
+                dropdown.select2();
             }
             else {
 
@@ -1287,22 +1314,34 @@
                 ParentRouteCityDropDval = [];
                 ParentRouteCityDropDval = Data['Route'];
                 var data = new Array();
-                const dropdown = $('#inputCityMstRoute');
-                data = Data['Route']
+                const dropdown = $('#inputCityMstRoute').html('');
+                dropdown.select2('destroy');
+                data = Data['Route'];
+                dropdown.append($('<option>', {
+                    value: '-1',
+                    text: 'Select Route'
+                }))
                 data.forEach(function (item) {
                     dropdown.append($('<option>', {
                         value: item.CityId,
                         text: item.CityName
                     }));
                 });
+                dropdown.select2();
 
-                const ParentCitydropdown = $('#inputCityMstParentCity');
+                const ParentCitydropdown = $('#inputCityMstParentCity').html('');
+                ParentCitydropdown.select2('destroy');
+                ParentCitydropdown.append($('<option>', {
+                    value: '-1',
+                    text: 'Select Parent City'
+                }))
                 data.forEach(function (item) {
                     ParentCitydropdown.append($('<option>', {
                         value: item.CityId,
                         text: item.CityName
                     }));
                 });
+                ParentCitydropdown.select2();
             }
             else {
 
@@ -1312,14 +1351,20 @@
                 BranchACDropDval = [];
                 BranchACDropDval = Data['mGlActMst'];
                 var data = new Array();
-                const dropdown = $('#inputCityMstBranchAc');
-                data = Data['mGlActMst']
+                const dropdown = $('#inputCityMstBranchAc').html('');
+                dropdown.select2('destroy');
+                data = Data['mGlActMst'];
+                dropdown.append($('<option>', {
+                    value: '-1',
+                    text: 'Select Branch A/C'
+                }))
                 data.forEach(function (item) {
                     dropdown.append($('<option>', {
                         value: item.GlAcId,
                         text: item.GlName
                     }));
                 });
+                dropdown.select2();
             }
             else {
 
@@ -1428,7 +1473,7 @@
                 if (ContactNo != '') { obj["ContactNo"] = ContactNo } else { obj["ContactNo"] = '' }
                 if (ChargesUpTo != '') { obj["ChargesUpTo"] = ChargesUpTo } else { obj["ChargesUpTo"] = '' }
                 if (isMultiRoute != '') { obj["isMultiRoute"] = isMultiRoute } else { obj["isMultiRoute"] = 0 }
-                if (OrderNo != '') { obj["OrderNo"] = OrderNo } else { obj["OrderNo"] = '' }
+                if (OrderNo != '') { obj["OrderNo"] = OrderNo } else { obj["OrderNo"] = '51' }
                 if (BusChg != '') { obj["BusChg"] = BusChg } else { obj["BusChg"] = '' }
                 if (Distance != '') { obj["Distance"] = Distance } else { obj["Distance"] = '' }
                 if (Catg != '') { obj["Catg"] = Catg } else { obj["Catg"] = '' }
@@ -1588,8 +1633,8 @@
             }
         }
         function validationState() {
-            alert(true);
-            if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
+          
+            if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '-1') {
                 $("#validMsgCityMstState").css("display", "block")
                 $('input').css('background-color', '');
                 $('#inputCityMstState').focus();
@@ -1625,7 +1670,7 @@
             else {
                 $("#validMsgCityMstPinCode").css("display", "none")
             }
-            if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '0') {
+            if ($('#inputCityMstState').val() == '' || $('#inputCityMstState').val() == '-1') {
                 $("#validMsgCityMstState").css("display", "block")
                 $('input').css('background-color', '');
                 $('#inputCityMstState').focus();
@@ -1640,6 +1685,12 @@
 
         function ClearForm() {
             $('#CityMstForm')[0].reset();
+            $("#inputCityMstSrNo").val('');
+            $("#SaveNewCity").css("display", "inline-block");
+            $("#UpdateOldCity").css("display", "none");
+            $("#UpdateOldCityFrom").css("display", "none");
+            $("#SaveNewCityForm").css("display", "inline-block");
+            DisplayCityDroupdownData(DropDownData);
         }
 
         //================ Code For get City Table View ===================
@@ -1910,7 +1961,7 @@
                 });
             }
             else {
-                $("#inputCityMstState").val(0)
+                $("#inputCityMstState").val(-1)
             }
             if (FilterData[0]['DistId'] >= 0) {
                 // $("#inputCityMstDistrict").val(FilterData[0]['DistId'])
@@ -1927,13 +1978,13 @@
                 });
             }
             else {
-                $("#inputCityMstDistrict").val(0)
+                $("#inputCityMstDistrict").val(-1)
             }
             if (FilterData[0]['ParentId'] >= 0) {
                 //$("#inputCityMstParentCity").val(FilterData[0]['ParentId'])
                 var selectedValue = FilterData[0]['ParentId'];
-                const ParentCitydropdown = $('#inputCityMstParentCity');
-                $('#inputCityMstParentCity').html('');
+                const ParentCitydropdown = $('#inputCityMstParentCity').html('');
+               
                 ParentRouteCityDropDval.forEach(function (item) {
                     ParentCitydropdown.append($('<option>', {
                         value: item.CityId,
@@ -1943,7 +1994,7 @@
                 });
             }
             else {
-                $("#inputCityMstParentCity").val(0)
+                $("#inputCityMstParentCity").val(-1)
             }
             if (FilterData[0]['DeliveryAt'] >= 0) {
                 $("#inputCityMstDeliveryAt").val(FilterData[0]['DeliveryAt'])
@@ -1970,7 +2021,7 @@
                 });
             }
             else {
-                $("#inputCityMstBranchAc").val(0)
+                $("#inputCityMstBranchAc").val(-1)
             }
             $("#inputCityMstBiltyCharg").val(FilterData[0]['DefDocChrgs'])
             $("#inputCityMstDelComm").val(FilterData[0]['DefDelComPer'])
@@ -1981,6 +2032,7 @@
                 const dropdown = $('#inputCityMstCityLocation');
                 var selectedValue = FilterData[0]['LocId'];
                 $('#inputCityMstCityLocation').html('');
+
                 LocationDropDval.forEach(function (item) {
                     dropdown.append($('<option>', {
                         value: item.LocId,
@@ -1990,11 +2042,22 @@
                 });
             }
             else {
-                $("#inputCityMstCityLocation").val(0)
+                $("#inputCityMstCityLocation").val(-1)
             }
 
             if (FilterData[0]['DfToLocId'] >= 0) {
-                $("#inputCityMstDfLocation").val(FilterData[0]['DfToLocId'])
+                //$("#inputCityMstDfLocation").val(FilterData[0]['DfToLocId'])
+                const dropdown = $('#inputCityMstDfLocation');
+                var selectedValue = FilterData[0]['DfToLocId'];
+                $('#inputCityMstDfLocation').html('');
+
+                LocationDropDval.forEach(function (item) {
+                    dropdown.append($('<option>', {
+                        value: item.LocId,
+                        text: item.LocName,
+                        selected: item.LocId === selectedValue
+                    }));
+                });
             }
             else {
                 $("#inputCityMstDfLocation").val(0)
@@ -2013,7 +2076,7 @@
                 });
             }
             else {
-                $("#inputCityMstRoute").val(0)
+                $("#inputCityMstRoute").val(-1)
             }
 
             if (FilterData[0]['isMultiRoute'] == 1) {
@@ -2053,6 +2116,7 @@
                 $('#FindCity_Mst').css('display', 'none');
                 $('#btnAddListCity').css('display', 'none');
                 $('#UpdateOldCity').css('display', 'none');
+                $('#UpdateOldCityFrom').css('display', 'none');
                 $('#UpdateOldCityForm').css('display', 'none');
                 $('#SaveNewCity').css('display', 'inline-block');
                 $('#SaveNewCityForm').css('display', 'inline-block');
@@ -2063,6 +2127,7 @@
                 $('#CityMstForm')[0].reset();
                 $("#BookingCityCheck").prop('checked', true);
                 $("#inputCityMstName").focus();
+                DisplayCityDroupdownData(DropDownData);
 
                 //$("#inputCityMstDfTransport").val(LocalDataStorage[0]['LocName']);
             }
