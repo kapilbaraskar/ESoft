@@ -142,14 +142,14 @@ namespace Esoft.HelperClass
                         objCommand.Parameters.Add("@cityid", SqlDbType.VarChar).Value = DBNull.Value;
 
                     if (Obj.CityName != null && Obj.CityName != "")
-                        objCommand.Parameters.Add("@CityName", SqlDbType.VarChar).Value = Obj.CityName;
+                        objCommand.Parameters.Add("@CityName", SqlDbType.NVarChar).Value = Obj.CityName;
                     else
-                        objCommand.Parameters.Add("@CityName", SqlDbType.VarChar).Value = DBNull.Value;
+                        objCommand.Parameters.Add("@CityName", SqlDbType.NVarChar).Value = DBNull.Value;
 
                     if (Obj.CtAlias != null && Obj.CtAlias != "")
-                        objCommand.Parameters.Add("@CtAlias", SqlDbType.VarChar).Value = Obj.CtAlias;
+                        objCommand.Parameters.Add("@CtAlias", SqlDbType.NVarChar).Value = Obj.CtAlias;
                     else
-                        objCommand.Parameters.Add("@CtAlias", SqlDbType.VarChar).Value = DBNull.Value;
+                        objCommand.Parameters.Add("@CtAlias", SqlDbType.NVarChar).Value = DBNull.Value;
 
                     if (Obj.Zip != null && Obj.Zip != "")
                         objCommand.Parameters.Add("@Zip", SqlDbType.VarChar).Value = Obj.Zip;

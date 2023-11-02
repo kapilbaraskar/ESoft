@@ -224,10 +224,13 @@ namespace Esoft.Controllers
                     else
                         resObj["message"] = "Data Deleted Successfully.";
                 }
-                else
+                else 
                 {
                     resObj["status"] = 0;
-                    resObj["message"] = "Something Went Wrong.";
+                    if (data.EntryMode == "1")
+                        resObj["message"] = "City Already Exist.";
+                    else
+                        resObj["message"] = "City Not Found.";
                 }
             }
             else

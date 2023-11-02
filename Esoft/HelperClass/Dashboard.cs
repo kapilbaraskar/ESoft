@@ -25,7 +25,6 @@ namespace Esoft.HelperClass
                     SqlCommand objCommand = new SqlCommand();
                     objCommand.Connection = con;
 
-                    #region System Generated Booking Details
                     objCommand.Parameters.Clear();
                     if (Ind != null && Ind != "")
                         objCommand.Parameters.Add("@Ind", SqlDbType.VarChar).Value = Ind;
@@ -46,7 +45,6 @@ namespace Esoft.HelperClass
                         return ds;
                     else
                         return null;
-                    #endregion
                 }
             }
             catch (Exception EX)
