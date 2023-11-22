@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <!-- Page Heading -->
 <div>
     <div class="d-sm-flex align-items-center justify-content-between mb-3">
@@ -11,25 +12,149 @@
     </div>
 </div>
 
-<section>
+<section id="ContractListSessionn">
+    <div class="row d-none">
+        <div class ="col-lg-12 col-md-12 col-sm-12">
+            <div >
+                <table class="table table-bordered nowrap table-sm" id="ContractListTable" style="width:100%;" cellspacing="0">
+                    <thead style="color: #fff;">
+                        <tr>
+                            @*<th style="text-align: center;width:180px !important"><span style="padding: 0px 10px 0px 10px;background: white;"><i style="color: blue;" class="fa fa-plus"></i></span></th>
+                            <th style="width: 100%;">DocDate</th>
+                            <th style="width: 100%;">Customer Name</th>
+                            <th style="width: 100%;">Contract Name</th>
+                            <th style="width: 100%;">Amc Start Date</th>
+                            <th style="width: 100%;">Amc End Date</th>
+                            <th style="width: 100%;">CustRefNo</th>
+                            <th style="width: 100%;">Total Quantity</th>
+                            <th style="width: 100%;">Default Tax Code</th>
+                            <th style="width: 100%;">Default SAC Code</th>
+                            <th style="width: 100%;">Key Manager</th>
+                            <th style="width: 100%;">MgmFeePer</th>
+                            <th style="width: 100%;">Contract Description</th>*@
+
+                            <th><span style="padding: 0px 10px 0px 10px;background: white;"><i style="color: blue;" class="fa fa-plus"></i></span></th>
+                            <th>DocDate</th>
+                            <th>Customer Name</th>
+                            <th>Contract Name</th>
+                            <th>Amc Start Date</th>
+                            <th>Amc End Date</th>
+                            <th>CustRefNo</th>
+                            <th>Total Quantity</th>
+                            <th>Default Tax Code</th>
+                            <th>Default SAC Code</th>
+                            <th>Key Manager</th>
+                            <th>MgmFeePer</th>
+                            <th>Contract Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center;"><span><a href="#">123</a></span> </td>
+                            <td>20 Nov 2023</td>
+                            <td>Sun Pharmaceuticals Industries Ltd Dewas</td>
+                            <td>Over Time for O&M Of DG Set, HT, LT, Tr And Substation Of API Division</td>
+                            <td>31 Mar 2023</td>
+                            <td>01 Apr 2024</td>
+                            <td>5000287197</td>
+                            <td>0</td>
+                            <td>110035</td>
+                            <td>998519</td>
+                            <td>Kalyani Patil</td>
+                            <td>0</td>
+                            <td>Over Time For O&M Of DG Set, HT, LT, Tr And Substation Of API Division</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;"><span><a href="#">124</a></span> </td>
+                            <td>20 Nov 2023</td>
+                            <td>Sun Pharmaceuticals Industries Ltd Dewas</td>
+                            <td>Over Time for O&M Of DG Set, HT, LT, Tr And Substation Of API Division</td>
+                            <td>31 Mar 2023</td>
+                            <td>01 Apr 2024</td>
+                            <td>5000287197</td>
+                            <td>0</td>
+                            <td>110035</td>
+                            <td>998519</td>
+                            <td>Kalyani Patil</td>
+                            <td>0</td>
+                            <td>Over Time For O&M Of DG Set, HT, LT, Tr And Substation Of API Division</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;"><span><a href="#">125</a></span> </td>
+                            <td>20 Nov 2023</td>
+                            <td>Sun Pharmaceuticals Industries Ltd Dewas</td>
+                            <td>Over Time for O&M Of DG Set, HT, LT, Tr And Substation Of API Division</td>
+                            <td>31 Mar 2023</td>
+                            <td>01 Apr 2024</td>
+                            <td>5000287197</td>
+                            <td>0</td>
+                            <td>110035</td>
+                            <td>998519</td>
+                            <td>Kalyani Patil</td>
+                            <td>0</td>
+                            <td>Over Time For O&M Of DG Set, HT, LT, Tr And Substation Of API Division</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;"><span><a href="#">126</a></span> </td>
+                            <td>20 Nov 2023</td>
+                            <td>Sun Pharmaceuticals Industries Ltd Dewas</td>
+                            <td>Over Time for O&M Of DG Set, HT, LT, Tr And Substation Of API Division</td>
+                            <td>31 Mar 2023</td>
+                            <td>01 Apr 2024</td>
+                            <td>5000287197</td>
+                            <td>0</td>
+                            <td>110035</td>
+                            <td>998519</td>
+                            <td>Kalyani Patil</td>
+                            <td>0</td>
+                            <td>Over Time For O&M Of DG Set, HT, LT, Tr And Substation Of API Division</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="ContractAddSession">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <div style="background-color: #fff; padding: 1%; height: 100%; box-shadow: 3px 3px 6px -3px rgba(0,0,0,0.7); ">
+            <button class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-plus"></i> New</button>
+            <button class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-edit"></i> Edit</button>
+            <button class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-save"></i> Save</button>
+            <button class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-close"></i> Exit</button>
+            <button class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-print fa-fw"></i> Print</button>
+            <button class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-file"></i> PrvDoc</button>
+            <button class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-spinner"></i> Dupl</button>
+        </div>
+    </div>
+
+
+    <div class="row mt-2">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; padding: 1%; background-color: #ffff; ">
                 <form>
                     <div class="form-row mt-1">
                         <div class="form-group col-md-4">
                             <label for="inputContractTrid">TRid</label>
-                            <input onkeydown="moveToNextInput(event)" disabled type="text" value="0" class="form-control form-control-sm" id="inputContractTrid">
+                            <div>
+                            <input style="width: 90%;display: inline;" onkeydown="moveToNextInput(event)" disabled type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                <span  id="validatedInputGroupPrepend"><i class="fa fa-search"></i></span>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputDocDate">Doc. Date</label><span style="color:red">*</span>
-                            <input  type="date" class="form-control form-control-sm" id="inputDocDate">
+                            <input type="date" class="form-control form-control-sm" id="inputDocDate">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="inputDiovisionName">Division Name</label><span style="color:red">*</span>
                             <select onkeydown="moveToNextInput(event)" id="inputDiovisionName" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Select Division Name</option>
+                                <option   selected>Select Division Name</option>
                             </select>
                         </div>
 
@@ -46,7 +171,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputContractType">Contact Type</label><span style="color:red">*</span>
                             <select onkeydown="moveToNextInput(event)" id="inputContractType" class="form-control form-control-sm CommonScroleStyle ">
-                                <option value="0" selected>Select Contact Type</option>
+                                <option   selected>Select Contact Type</option>
                             </select>
                         </div>
 
@@ -55,12 +180,167 @@
             </div>
         </div>
     </div>
-</section>
+
+    <div class="row mt-3">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="accordion" id="accordionExample" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0" style="color:rgba(0,0,0,0.7)">
+                            Customer Detail
+                            <button class="btn float-right text-right" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form>
+                                <div>
+                                    <label class="mb-1">Billing Address</label>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-md-4">
+                                            <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="mb-1">Registered Address</label>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-md-4">
+                                            <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row mt-1">
+                                    <div class="form-group col-md-3">
+                                        <label class="mb-1">Billing City</label>
+                                        <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="mb-1">Registered City</label>
+                                        <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="mb-1">Billing Zip</label>
+                                        <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label class="mb-1">Registered Zip</label>
+                                        <input onkeydown="moveToNextInput(event)" type="text"   class="form-control form-control-sm" id="inputContractTrid">
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; padding: 1%; background-color: #ffff; ">
+                <form>
+                    <div class="form-row mt-1">
+                        <div class="form-group col-md-3">
+                            <label for="inputContractTrid">Contract Start Date</label><span style="color:red;">*</span>
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputContractTrid">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputDocDate">Contract End Date</label><span style="color:red">*</span>
+                            <input type="date" class="form-control form-control-sm" id="inputDocDate">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="inputContractTrid">PO Number</label>
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputContractTrid">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="inputContractTrid">PO Quantity</label>
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputContractTrid">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row mt-1">
+                        <div class="form-group col-md-3">
+                            <label for="inputContractTrid">Default Tax Code</label>
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputContractTrid">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputDocDate">Default SAC Code</label>
+
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputContractTrid">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="inputContractTrid">Key Accounts Management</label>
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputContractTrid">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="inputContractTrid">Management Fees(%)</label>
+                            <input onkeydown="moveToNextInput(event)" type="text" class="form-control form-control-sm" id="inputContractTrid">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row mt-1">
+                        <div class="form-group col-md-6">
+                            <label for="inputContractTrid">Contract Description(Scope Of Work)</label><span style="color:red;">*</span>
+                            <textarea onkeydown="moveToNextInput(event)" class="form-control form-control-sm"></textarea>
+
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputDocDate">Is Management Fees</label>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1"></label>
+                            </div>
+                            @*<input type="date" class="form-control form-control-sm" id="inputDocDate">*@
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="inputContractTrid">Document Upload </label><span style="color:red">*</span>
+                            <input onkeydown="moveToNextInput(event)" type="file" class="form-control-file form-control-sm" id="inputContractTrid">
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
 
 
-<section>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12" >
+    <!-- Add Val in Text-->
+    <div class="row mt-3">
+        <div class="col-sm-12 col-md-12 col-lg-12">
             <button class="btn btn-sm btn-outline-secondary mb-2 mt-2" id="addRowButton">Add New</button>
             <div class="DashboardTableMainDiv" style="width: 100%; overflow: auto; padding-left: 1%; padding-right: 1%;">
                 <table id="ContractTableForm" class="table table-sm" cellspacing="0" width="100%">
@@ -74,27 +354,30 @@
                             <th>Salary</th>
                             <th>Action</th>
                             @*<th></th>
-                    <th></th>*@
+                                <th></th>*@
                         </tr>
                     </thead>
                     <tbody>
                         @*<tr>
-                            <td>111</td>
-                            <td>Ahmedabad</td>
-                            <td>13415</td>
-                            <td>1234567890</td>
-                            <td>1234567890</td>
-                            <td>1234567890</td>
-                         
-                            <td><span style="padding: 4%;" onclick="EditContractMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span style="padding: 4%;" onclick="DeleteContractMst(this)"><i style="color: red;"  class="fa fa-trash" /></span></td>
-                        </tr>*@
-                       
+                                <td>111</td>
+                                <td>Ahmedabad</td>
+                                <td>13415</td>
+                                <td>1234567890</td>
+                                <td>1234567890</td>
+                                <td>1234567890</td>
+
+                                <td><span style="padding: 4%;" onclick="EditContractMst(this)"><i style="color: blue;" class="fas fa-pencil-alt"></i></span> <span style="padding: 4%;" onclick="DeleteContractMst(this)"><i style="color: red;"  class="fa fa-trash" /></span></td>
+                            </tr>*@
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </section>
+
+
+
 
 
 <script src="~/Content/vendor/jquery/jquery.min.js"></script>
@@ -121,12 +404,56 @@
 
 <script>
     var editor = '';
+    var tableList = ''
     var table = ''
     $(document).ready(function () {
         debugger
         $("#loader").css("display", "none");
 
+        tableList = $('#ContractListTable').DataTable({
+           // scrollX: true,
+            //"columnDefs": [
+            //    { "width": "200px", "targets": 0 }
+            //]
 
+            "columns": [
+                { "width": "100px"},
+                { "width": "200px" },
+                { "width": "100px" },
+                { "width": "200px" },
+                { "width": "200px" },
+                { "width": "200px" },
+                { "width": "200px" },
+                { "width": "200px" },
+                { "width": "200px" },
+                { "width": "200px" },
+                { "width": "200px" },
+                { "width": "200px" },
+                { "width": "200px" },               
+            ],
+            //"responsive": true, // Enable responsive features
+            //"autoWidth": false,
+
+
+            //"bServerSide": true,
+
+            "scrollY": 430,
+            "scrollX": true,
+            //"scroller": {
+            //    loadingIndicator: true
+            //},
+            "orderable": true,
+            "autoWidth": true,
+
+
+            //dom: 'Bfrtip',
+            //buttons: [
+            //    'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+
+            //    //'copy', 'csv', 'excel', 'pdf', 'print'
+            //],
+
+        });
 
    
 
