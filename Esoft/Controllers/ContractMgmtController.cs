@@ -51,5 +51,41 @@ namespace Esoft.Controllers
             }
             return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
         }
+
+        [HttpGet]
+        public HttpResponseMessage GetDropDownsForContractMgmt()
+        {
+            IEnumerable<string> DB_NAME;
+            IEnumerable<string> Comp_Id;
+            if (Request.Headers.TryGetValues("DBNAME", out DB_NAME))
+            {
+                DBNAME = ((string[])DB_NAME)[0].ToString();
+            }
+            if (Request.Headers.TryGetValues("CompId", out Comp_Id))
+            {
+                CompId = ((string[])Comp_Id)[0].ToString();
+            }
+            if (DBNAME != "")
+            {
+                MasterMethods obj = new MasterMethods();
+                DataSet ds = obj.GetDataSetBySp("", DBNAME, "spGetTableDataWebKB", "@ObjId", "TAMCOS", "@TableId", "1", "@CompId", CompId, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","","");
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    resObj["status"] = 1;
+                    resObj["message"] = ds;
+                }
+                else
+                {
+                    resObj["status"] = 0;
+                    resObj["message"] = "Data Not Found.";
+                }
+            }
+            else
+            {
+                resObj["status"] = 0;
+                resObj["message"] = "Database Not Found.";
+            }
+            return GeneralUtil.SetHttpResponseMessage(JsonConvert.SerializeObject(resObj));
+        }
     }
 }
