@@ -129,7 +129,6 @@ namespace Esoft.HelperClass
                     SqlCommand objCommand = new SqlCommand();
                     objCommand.Connection = con;
 
-                    #region System Generated Booking Details
                     objCommand.Parameters.Clear();
                     if (Obj.EntryMode != null && Obj.EntryMode != "")
                         objCommand.Parameters.Add("@EntryMode", SqlDbType.VarChar).Value = Obj.EntryMode;
@@ -284,7 +283,6 @@ namespace Esoft.HelperClass
                         return ds;
                     else
                         return null;
-                    #endregion
                 }
             }
             catch (Exception EX)
